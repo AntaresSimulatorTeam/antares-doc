@@ -5,4 +5,4 @@
 Hello, World
 Test JMJ
 
-![adequacy-patch](img/adequacy patch.png)
+![adequacy-patch](img/adequacy-patch.png)
