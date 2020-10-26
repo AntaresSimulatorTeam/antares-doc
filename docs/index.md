@@ -4,3 +4,5 @@
 
 Hello, World
 Test JMJ
+
+![adequacy-patch](img/adequacy patch.png)
