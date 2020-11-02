@@ -7,4 +7,4 @@ Test JMJ
 
 TEST avec Firefox
 
-![adequacy-patch](img/adequacy-patch.png)
+![adequacy-patch](img/Figure1.png)
