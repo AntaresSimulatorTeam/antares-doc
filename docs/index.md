@@ -12,6 +12,6 @@ Dans la suite du document, on introduit les variables suivantes :
 
 Il s’entend que pour une zone donnée à chaque instant les couples de variables (ENS, Margin) et (DENS, DMargin) comportent au moins une variable nulle.
 
-# 2.1 Indétermination à lever :
+## 2.1 Indétermination à lever :
 
 ![adequacy-patch](img/Figure1.PNG)
