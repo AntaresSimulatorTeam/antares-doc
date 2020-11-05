@@ -1,3 +1,4 @@
+# Index
 # 2.	Principes de l’adéquacy patch et règles associées :
 
 Dans la suite du document, on introduit les variables suivantes :
