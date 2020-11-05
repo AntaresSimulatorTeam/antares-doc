@@ -15,3 +15,5 @@ Il s’entend que pour une zone donnée à chaque instant les couples de variabl
 ## 2.1 Indétermination à lever :
 
 ![adequacy-patch](img/Figure1.PNG)
+
+![adequacy-patch2](img/Capture.PNG)
