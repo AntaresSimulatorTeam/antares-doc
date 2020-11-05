@@ -1,1 +1,1 @@
-# My Part 2
+# 2. Principes de l’adéquacy patch et règles associées 
