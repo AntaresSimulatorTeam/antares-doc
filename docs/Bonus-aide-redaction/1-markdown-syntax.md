@@ -1,4 +1,4 @@
-# Coder en Markdown
+# Écrire en Markdown
 # H1 `# H1`
 
 ## H2 `## H2`
@@ -12,7 +12,7 @@
 |  italique | `*hello*`  | *hello*  |
 |  gras | `**bonjour**`  | **bonjour**  |
 |  lien |  ```[mon lien](https://google.com)``` |  [mon lien](https://google.com) |
-| image | `![nom de l'image](img/aide/antares.png)` | ![image](img/aide/antares.png) |
+| image | `![nom de l'image](antares.png)` | ![image](antares.png) |
 | latex | `$$\sum^{N}_{i=0}{\Gamma_c}$$` | $$\sum^{N}_{i=0}{\Gamma_c}$$ |
 
 ### Puces
