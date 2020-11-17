@@ -1,1 +1,0 @@
-# ANTARES General Reference Guide
