@@ -1,4 +1,7 @@
-# Index
+# Introduction
+
+# Previously
+```
 # 2.	Principes de l’adéquacy patch et règles associées :
 
 Dans la suite du document, on introduit les variables suivantes :
@@ -18,3 +21,4 @@ Il s’entend que pour une zone donnée à chaque instant les couples de variabl
 ![adequacy-patch](img/Figure1.PNG)
 
 ![adequacy-patch2](img/Capture.PNG)
+```

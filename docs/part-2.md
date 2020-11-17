@@ -1,1 +1,0 @@
-# 2. Principes de l’adéquacy patch et règles associées 
