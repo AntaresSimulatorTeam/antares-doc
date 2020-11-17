@@ -1,32 +1,24 @@
-# Advanced modeling
-## Objects modeling
-### Modeling of binding constraints
+# Create a study
+## Create a study, an area, a link
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-### Modeling of a Pumped Storage Power Station (PSP)
+## Add inputs : load, wind, solar and Run of River time-series for an area
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-### Modeling of a Energy System Storage (ESS)
+## Use the Time-Series analyzer and the Time-Series generator to generate load, wind and solar data
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-### Modeling  of cascading reservoirs
+## Create a thermal cluster, use the Time-Series generator to generate thermal time-series
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-### Modeling of a multi-energy system
+## Set up a reservoir
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-### Modeling of  Power-to-Gas …
+## Set up links
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-## Use the Kirchhoff’s constraint generator
-### Modeling of Flow-Based and Adequacy Patch
+## Fill in the other production time-series
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
 
-### Advanced modeling of hydro
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
-
-### Modeling of investment optimization (Expansion)
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
-
-### Understand the prices in Antares
+## Fill in the economic parameters
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc magna tortor, scelerisque eu tincidunt eu, malesuada ut odio. Aliquam a massa lorem. Donec finibus est non urna ultrices iaculis. Duis eros orci, efficitur et facilisis sit amet, dictum dignissim ante. Nam et tincidunt nibh, egestas accumsan nisl. Nunc sit amet tellus pretium, pharetra metus quis, accumsan lectus. Aenean sed felis egestas, consectetur felis sit amet, viverra justo.
