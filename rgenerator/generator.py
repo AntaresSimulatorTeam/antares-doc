@@ -16,7 +16,7 @@ class Method:
     title: str
     description: str
     details: str
-    example: str
+    examples: str
     value: str
     usage: str
     arguments: List[Argument]
@@ -56,3 +56,21 @@ class Parser:
             imports=data["Imports"].split(', '),
             api=[]
         )
+
+    def _parse_method(self, path_method: Path) -> Method:
+        def find(token: str, data: str) -> str:
+            res = re.findall(r"\\" + re.escape(token) + r"{([^}]*)}", data)
+            return res[0].strip() if len(res) else ""
+
+        def args(data: str) -> List[Argument]:
+            items = [item.replace('\n', ' ').split('}{') for item in re.findall(r"\\item{(.+\}\{[^}]+)}", data)]
+            return [Argument(name=n, description=d) for n, d in items]
+
+        content = path_method.read_text()
+
+        attributes = {att: find(att, content)
+                      for att in ["name", "title", "description", "details",
+                                  "examples", "value", "usage"]}
+        method = Method(**attributes, arguments=args(content))
+
+        return method
