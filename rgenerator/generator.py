@@ -1,3 +1,4 @@
+import argparse
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -8,6 +9,9 @@ from typing import List
 class Argument:
     name: str
     description: str
+
+    def to_mk(self):
+        return f"- `{self.name}`:  {self.description}\n"
 
 
 @dataclass
@@ -21,6 +25,31 @@ class Method:
     usage: str
     arguments: List[Argument]
 
+    def to_mk(self):
+        details = "*Details:*" + self.details if self.details else ""
+        description = self.description if self.description != self.title else ""
+        args = "\n".join([a.to_mk() for a in self.arguments])
+        return f"""
+### `{self.name}`
+**{self.title}**\n
+{description}\n
+{details}
+ **Usage:**
+```
+{self.usage}
+```
+**Arguments**\n
+{args}
+
+**Value**\n
+{self.value}
+
+**Examples**
+```
+{self.examples}
+```
+"""
+
 
 @dataclass
 class References:
@@ -32,10 +61,26 @@ class References:
     imports: List[str]
     api: List[Method]
 
+    def to_mk(self):
+        imports = ', '.join([f"`{i}`" for i in self.imports])
+        api = '\n'.join([i.to_mk() for i in self.api])
+        return f"""
+# {self.name}
+## References
+**Title:** {self.title}\n
+**Description:** {self.description}\n
+**Version:** {self.version}\n
+**License:** {self.license}\n
+**Imports:** {imports}\n
+{api}
+"""
+
 
 class Parser:
     def parse(self, path_r: Path) -> References:
-        pass
+        ref = self._parse_head(path_r / "DESCRIPTION")
+        ref.api = [self._parse_method(p) for p in (path_r / "man").iterdir()]
+        return ref
 
     def _parse_head(self, path_head: Path) -> References:
         content = path_head.read_text()
@@ -66,11 +111,37 @@ class Parser:
             items = [item.replace('\n', ' ').split('}{') for item in re.findall(r"\\item{(.+\}\{[^}]+)}", data)]
             return [Argument(name=n, description=d) for n, d in items]
 
+        def examples(data: str) -> str:
+            return find("examples", data).replace("\\dontrun{\n", "")
+
         content = path_method.read_text()
+        return Method(name=find("name", content),
+                      title=find("title", content),
+                      description=find("description", content),
+                      details=find("details", content),
+                      examples=examples(content),
+                      value=find("value", content),
+                      usage=find("usage", content),
+                      arguments=args(content))
 
-        attributes = {att: find(att, content)
-                      for att in ["name", "title", "description", "details",
-                                  "examples", "value", "usage"]}
-        method = Method(**attributes, arguments=args(content))
 
-        return method
+class Generator:
+    def generate(self, ref: References) -> str:
+        content = ref.to_mk()
+        return content
+
+
+def main(path_r: Path, out: Path):
+    ref = Parser().parse(path_r)
+    content = Generator().generate(ref)
+
+    (out / f"{path_r.name}.md").write_text(content)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--package", dest="path_r", help="Path to R package")
+    parser.add_argument("-o", "--output", dest="out", help="Path to the output directory")
+
+    args = parser.parse_args()
+    main(Path(args.path_r), Path(args.out))

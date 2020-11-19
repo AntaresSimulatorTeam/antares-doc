@@ -39,25 +39,10 @@ applying the local-matching and curtailment sharing rules as defined by the
 EUPHEMIA to correct situations with at least one country in loss of load.
 }
 \details{
-This function does not solve anything itself, it sets up and transfers the
-relevant data to an AMPL model which then solves it using XPRESS.
+This function does not solve anything itself
 }
 \examples{
 \dontrun{
-sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
-areas = antaresRead::getAreas()
-
-patch_data = extract_patch(areas=areas, mcYears=c(1, 3), sim_opts=sim_opts)
-ts_FB_data = extract_FB_ts(sim_opts=sim_opts)
-capacity_FB_data = extract_FB_capacity(sim_opts=sim_opts)
-ptdf_FB_data = extract_FB_ptdf(sim_opts=sim_opts)
-links_NTC_data = extract_NTC_links(areas=areas, sim_opts=sim_opts)
-
-output = adq_patch(
-patch_data,
-ts_FB_data,
-capacity_FB_data, links_NTC_data$capacity,
-ptdf_FB_data, links_NTC_data$ptdf
-)
+sim_opts = antaresRead
 }
 }
