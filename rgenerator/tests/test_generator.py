@@ -2,6 +2,7 @@ import hashlib
 import os
 import unittest
 from pathlib import Path
+from unittest.mock import Mock
 
 from rgenerator.generator import Parser, Method, Argument, References, Generator
 
@@ -59,6 +60,27 @@ class TestParser(unittest.TestCase):
 
 
 class TestTemplate(unittest.TestCase):
+    def setUp(self) -> None:
+        self.root = Path(os.path.dirname(__file__))
+
+    def test_vignette(self):
+        path = self.root / "my-vignette.Rmd"
+
+        exp = """## my-vignette
+La fonction prends en entrée 5 arguments :
+
+```r
+
+library(antaresEditObject)
+opts <- setSimulationPath("PATH/TO/SIMULATION")
+computeTimeStampFromHourly(opts)
+
+```"""
+
+        generator = Generator(parser=Mock())
+        content = generator._get_vignette(path)
+        self.assertEqual(exp, content)
+
     def test_generate(self):
         ref = References(
             name="A",
@@ -97,5 +119,5 @@ class TestTemplate(unittest.TestCase):
             ]
         )
 
-        content = Generator().generate(ref)
+        content = ref.to_mk()
         self.assertEqual("a66e279337a7b12ccdbba2521cedfab95029e6d2f886ccc49911fe9103589bba", hashlib.sha256(content.encode()).hexdigest())

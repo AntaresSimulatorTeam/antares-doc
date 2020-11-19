@@ -2,7 +2,7 @@ import argparse
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List
+from typing import List, Tuple
 
 
 @dataclass
@@ -126,14 +126,39 @@ class Parser:
 
 
 class Generator:
-    def generate(self, ref: References) -> str:
-        content = ref.to_mk()
+    def __init__(self, parser: Parser):
+        self.parser = parser
+
+    def _get_vignette(self, path: Path) -> str:
+        content = path.read_text()
+        # Get vignette name
+        name = re.search(r"^\s*---\s+title: \"(.+)\"", content).group(1)
+
+        # Replace header
+        content = re.sub(r"^---[\w\W\n]*---\s*", f"## {name}\n", content)
+
+        # Remove include and setup code block
+        content = re.sub(r"```{r, include = FALSE}[^`]*```\s*", "", content)
+        content = re.sub(r"```{r setup}[^`]*```\s*", "", content)
+
+        # Replace code bloc
+        content = re.sub(r"```{r.*}", "```r", content)
+
+        # downgrade all chapter level
+        content = content.replace("\n#", "\n##")
+
+        return content
+
+    def generate(self, path_r: Path) -> str:
+        content = self.parser.parse(path_r).to_mk()
+        for vi in (path_r / "vignettes").iterdir():
+            if vi.suffix == '.Rmd':
+                content += self._get_vignette(vi) + "\n"
         return content
 
 
 def main(path_r: Path, out: Path):
-    ref = Parser().parse(path_r)
-    content = Generator().generate(ref)
+    content = Generator(parser=Parser()).generate(path_r)
 
     (out / f"{path_r.name}.md").write_text(content)
 
