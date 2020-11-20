@@ -857,12 +857,12 @@ _A typical situation in which this feature proves useful is, for instance, encou
 
 _In such cases, assuming that:_
 
-- denotes the impedance of interconnections
-- _A preliminary study of the graph modeling the grid has shown that it can be described by a set of independent meshes_ _(cycle basis of the graph)_
+- \\(Z_l\\) denotes the impedance of interconnections \\(l=1, L\\)
+- _A preliminary study of the graph modeling the grid has shown that it can be described by a set of independent meshes_ \\(c=1, C\\)_(cycle basis of the graph)_
 
-_Then the DC flow approximation may be implemented, for each time-step of the simulation, by a set of C binding constraints between AC flows :_
+_Then the DC flow approximation may be implemented, for each time-step of the simulation, by a set of C binding constraints between AC flows \\(F_l\\):_
 
-// TODO LaTeX
+$$ c= 1, ..., C : \sum_{i \in C}{sign(l,c)F_lZ_l = 0}$$
 
 _Note that such specific binding constraints can be automatically generated within Antares by using the auxiliary module &quot;Kirchhoff&#39;s Constraints Generator&quot; further described in Section 7._
 
