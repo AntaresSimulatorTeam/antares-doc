@@ -40,7 +40,7 @@ $$
 
 On peut alors réécrire ce problème pour faire apparaître les ratios de défaillance :
 $$
-	min ∑(DENS+DTG.MRG)×[\frac{ENS}{(DENS+DTG.MRG)}]
+	min ∑(DENS+DTG.MRG)×\left[ \frac{ENS}{(DENS+DTG.MRG)} \right]
 $$
 $$
 	net~positions∈flowbased
@@ -49,7 +49,7 @@ $$
 Dans cette nouvelle écriture, on peut réinterpréter la fonction objectif comme la moyenne des ratios défaillance pondérée par la défaillance locale.
 L’Adequacy patch revient alors à rajouter la contrainte de local matching et à modifier légèrement l’objectif précédent, en en faisant la moyenne quadratique. En effet, celle-ci tend à pénaliser les valeurs extrêmes et donc à homogénéiser les ratios de défaillance.
 $$
-	min ∑(DENS+DTG.MRG)×[\frac{ENS}{(DENS+DTG.MRG)}]^2
+	min ∑(DENS+DTG.MRG)×\left[ \frac{ENS}{(DENS+DTG.MRG)} \right]^2
 $$
 $$
 	net~position≤DMRG 
