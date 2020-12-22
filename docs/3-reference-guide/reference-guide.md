@@ -1086,83 +1086,70 @@ _The area files that belong to the « values » class display_  **28**  _fields 
 || `HURD. COST = (hourly direct hurdle cost) \* (FLOW LIN.)` |
 || `else HURD.COST = (hourly indirect hurdle cost) \* (-1)\* (FLOW LIN.)` |
 
-## Economy and Adequacy, other results
+### Economy and Adequacy, other results
 
 _Depending on the options chosen in the main simulation window, the output folders may also include either, both or none of the following sections:_
 
-- _OUTPUT/ Simu Id / ts-numbers / Load /area names / ..._
-
-_/ Thermal /area names / ..._
-
-_/ Hydro /area names / ..._
-
-_/ Wind /area names / ..._
-
-_/ Solar /area names / ..._
+| OUTPUT/Simu Id/ts-numbers | | |
+|------------------------------|-|-|
+||/Load|/area names/...|
+||/Hydro|/area names/...|
+||/Wind|/area names/...|
+||/Solar|/area names/...|
 
 _These files contain, for each kind of time-series, the number drawn (randomly or not) in each Monte-Carlo year (files are present if &quot;output profile / MC scenarios&quot; was set to &quot;true&quot;)_
 
-- _OUTPUT/ Simu Id / ts-generator / Load / batch number /area names / ..._
 
-_/ Thermal / batch number /area names / ..._
+| OUTPUT/Simu Id/ts-generator | | |
+|------------------------------|-|-|
+||/Load|/batch number/area names/...|
+||/Hydro|/batch number/area names/...|
+||/Wind|/batch number/area names/...|
+||/Solar|/batch number/area names/...|
 
-_/ Hydro / batch number /area names / ..._
-
-_/ Wind / batch number /area names / ..._
-
-_/ Solar / batch number /area names / ..._
 
 _These files contain, for each kind of Antares-generated time-series, copies of the whole set of time-series generated. Batch numbers depend on the values set for the &quot;refresh span&quot; parameters of the stochastic generators (files are present if &quot;store in output&quot; was set to &quot;true&quot;)_
 
-## Draft, area results
+### Draft, area results
 
-_ **1** _ _file « annual » +_ _ **6** _ _files resulting from the combination of the following attributes :_
-
-_[with-network | without-network | id] X [hourly | annual]_
+**1** _file « annual » +_ **6** _files resulting from the combination of the following attributes :_
+[with-network | without-network | id] X [hourly | annual]
 
 - _The second attribute defines the period of time over which the results are assessed : hourly detail or annual summary._
 
 - _The first attribute defines the nature of the results presented in the file_
 
-_ **with network** _ _values of adequacy indices (shortfall duration, loss of load probability) assessed while taking into account the effective grid capacities. The results in these files bear the suffix –CN (connex)_
+**with network** _values of adequacy indices (shortfall duration, loss of load probability) assessed while taking into account the effective grid capacities. The results in these files bear the suffix –CN (connex)_
 
-_ **without network** _ _values of adequacy indices (shortfall duration, loss of load probability) assessed without taking into account any interconnection. The results in these files bear the suffix –IS (isolated areas)_
+**without network** _values of adequacy indices (shortfall duration, loss of load probability) assessed without taking into account any interconnection. The results in these files bear the suffix –IS (isolated areas)_
 
-_ **id** _ _identifiers (numbers) of the MC years for which were observed the extreme values of the different variables presented in the « w/net » and &quot;wo/net&quot; files_
+**id** _identifiers (numbers) of the MC years for which were observed the extreme values of the different variables presented in the « w/net » and &quot;wo/net&quot; files_
 
 _Files « with network » et « without network » present the expectations and extreme values observed for the variables whose list is given hereafter:_
 
-_LOLD Overall length of time for which there were shortfalls (Loss of Load Duration)_
+| variables | description |
+|-----------|-------------|
+|LOLD | Overall length of time for which there were shortfalls (Loss of Load Duration) |
+||(note: the commonly used LOLE index is equivalent to LOLD expectation ) |
+|LOLP | Loss of Load Probability |
+|EENS | Energy Not Supplied |
+|MARG | Margin = available generation – (load + primary reserve) |
+||When MARG\&gt;0, MARG is a security margin |
+||When MARG \&lt;0 , MARG is a curtailment depth |
 
-_(note: the commonly used LOLE index is equivalent to LOLD expectation )_
-
-_LOLP Loss of Load Probability_
-
-_EENS Energy Not Supplied_
-
-_MARG Margin = available generation – (load + primary reserve)_
-
-_When MARG\&gt;0, MARG is a security margin_
-
-_When MARG \&lt;0 , MARG is a curtailment depth_
 
 _The file « annual » has one line per simulated Monte-Carlo year and gives, for each year, the following information:_
 
-_LOLD IS Load shedding duration, if the grid capacities are not considered as available_
-
-_LOLD CN Load shedding duration, if the grid capacities are actually available_
-
-_MAX DEPTH IS Margin available at the most critical hour of the whole MC year, w/o grid_
-
-_When MAX DEPTH \&gt;0 , MAX DEPTH is a security margin_
-
-_When MAX DEPTH \&lt;0,MAX DEPTH is a shortfall depth_
-
-_MAX DEPTH CN Margin available at the most critical hour of the whole MC year, w/ grid_
-
-_When MAX DEPTH \&gt;0 , MAX DEPTH is a security margin_
-
-_When MAX DEPTH \&lt;0,MAX DEPTH is a shortfall depth_
+| variables | description |
+|-----------|-------------|
+| LOLD IS | Load shedding duration, if the grid capacities are not considered as available |
+| LOLD CN | Load shedding duration, if the grid capacities are actually available |
+| MAX DEPTH IS | Margin available at the most critical hour of the whole MC year, w/o grid |
+|| When MAX DEPTH \&gt;0 , MAX DEPTH is a security margin |
+|| When MAX DEPTH \&lt;0,MAX DEPTH is a shortfall depth |
+| MAX DEPTH CN | Margin available at the most critical hour of the whole MC year, w/ grid |
+|| When MAX DEPTH \&gt;0 , MAX DEPTH is a security margin |
+|| When MAX DEPTH \&lt;0,MAX DEPTH is a shortfall depth |
 
 _Remark: In spite of their likenesses, the fields  « MARG » of the files w/net, wo/net and the fields « MAX DEPTH » of the file mc-details are not identical (hence different names):_
 
@@ -1175,24 +1162,17 @@ _Min { MC years } MAX DEPTH IS = Min { hours} MARG IS [MIN]_
 
 _Min { MC years } MAX DEPTH CN = Min { hours} MARG CN [MIN]_
 
-## Miscellaneous
+### Miscellaneous
 
 _Alike Input data, output results can be filtered so as to include only items that are associated with Areas and Links defined as &quot;visible&quot; in the current map. In addition, the output filtering dialog box makes it possible to filter according to two special categories ( __**Districts** _ _and_ _ **Unknown**__ ) that are not related to standard maps:_
 
-- _ **Districts** _ _displays only results obtained for spatial aggregates_
-- _ **Unknown** _ _displays only results attached to Areas or Links that no longer exist in the Input dataset (i.e. study has changed since the last simulation)_
+- **Districts** _displays only results obtained for spatial aggregates_
+- **Unknown** _displays only results attached to Areas or Links that no longer exist in the Input dataset (i.e. study has changed since the last simulation)_
 
-#
 
-#
+## 6 Time-series analysis and generation
 
-#
-
-#
-
-# 6 Time-series analysis and generation
-
-## General
+### General
 
 _When ready-made time-series are not available or are too scarce for building the required number of Monte-Carlo annual simulation scenarios, Antares provides means to generate sets of stochastic time-series to use instead._
 
