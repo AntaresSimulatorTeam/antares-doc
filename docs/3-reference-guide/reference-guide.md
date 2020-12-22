@@ -937,55 +937,47 @@ _The general file organization is the same for Economy, Adequacy and Draft simul
 - _Economy and Adequacy results may be displayed in the GUI ( &quot;Output&quot; in main menu)_
 - _Draft results are available only as flat .txt files. They can be viewed with &quot;Tool /csv viewer&quot; in the main menu (As well as any other files, they can also be accessed by Xcel or suchlike)_
 
-_Economy:_
+**Economy:**
 
-_OUTPUT/ Simu id / Economy /mc-all / grid /... contains a summary file &quot;digest.txt&quot;_
-
-_/areas/name/... contains area-related results_
-
-_/links / name/... contains interconnection-related results_
-
-_/mc-ind /\&lt;year number\&gt;_
-
-_/areas/name/... contains area-related results_
-
-_/links / name/... contains interconnection-related results_
+| OUTPUT/Simu id/economy/mc-all/   |               |                 |                                       |
+|----------------------------------|---------------|-----------------|---------------------------------------|
+|                                  |/grid/...         |                 | contains a summary file "digest.txt"  |
+|                                  |/areas/name/...|                 | contains area-related results         |
+|                                  |/links / name/...|               | contains interconnection-related results |
+|                                  |/mc-ind /year_number|  | |
+|                                  |                    |/areas/name/...| contains area-related results|
+|                                  |                    |/links/name/...| contains interconnection-related results|
 
 _(&quot;mc-all&quot; files contain synthetic results over all years, &quot;year-number&quot; files contain results for a single year_
-
 _The variables present in each file are detailed in the following sections_
-
 _In &quot;Economy&quot; simulations, all variables have a techno-economic meaning_
 
-_Adequacy:_
+**Adequacy:**
 
-_OUTPUT/ Simu id / Adequacy /mc-all / grid /... contains a summary file &quot;digest.txt&quot;_
-
-_/areas/name/... contains area-related results_
-
-_/links / name/... contains interconnection-related results_
-
-_/mc-ind /\&lt;year number\&gt;_
-
-_/areas/name/... contains area-related results_
-
-_/links / name/... contains interconnection-related results_
+| OUTPUT/Simu id/adequacy/mc-all/   |               |                 |                                       |
+|----------------------------------|---------------|-----------------|---------------------------------------|
+|                                  |/grid/...         |                 | contains a summary file "digest.txt"  |
+|                                  |/areas/name/...|                 | contains area-related results         |
+|                                  |/links / name/...|               | contains interconnection-related results |
+|                                  |/mc-ind /year_number|  | |
+|                                  |                    |/areas/name/...| contains area-related results|
+|                                  |                    |/links/name/...| contains interconnection-related results|
 
 _(&quot;mc-all&quot; files contain synthetic results over all years, &quot;year-number&quot; files contain results for a single year_
-
 _The variables present in each file bear exactly the same name as in Economy simulations but do not have the same values_
-
 _The only variables that have a techno-economic meaning are the &quot;Adequacy&quot; indicators (unsupplied energy,LOLD,LOLP)_
 
-_Draft:_
+**Draft:**
 
-_OUTPUT / Simu id / Adequacy-Draft / mc-all /grid/... contains a condensed file &quot;digest.txt&quot;_
+| OUTPUT/Simu id/adequacy-draft/mc-all/   |             |                                         |
+|----------------------------------|-------------------|-----------------------------------|
+|                                  |/grid/...         | contains a summary file "digest.txt"  |
+|                                  |/areas/name/...| contains area-related results         |
 
-_/areas/name/... contains area-related results_
 
 _(&quot;mc-all&quot; files contains mostly synthetic results over all years ; However, there is (for each area) a &quot;mc-annual.txt&quot; file that gives a short view of local results for each simulated year)_
 
-_ **IMPORTANT** _ _Adequacy and Economy files look the same but their content are specific_
+**IMPORTANT** _Adequacy and Economy files look the same but their content are specific_
 
 _In &quot;Economy&quot; and &quot;Adequacy&quot; simulations, the optimization ignores the &quot;primary&quot; and &quot;strategic&quot; reserves (however, it may include the [other] spinning and day-ahead reserves, depending on the settings made in &quot;optimization preferences&quot;)._
 
@@ -995,152 +987,104 @@ _As a consequence, both &quot;Adequacy&quot; and &quot;Economy&quot; simulations
 
 _The files and their content are hereafter described._
 
-## Economy and Adequacy, area results
-# 11
+### Economy and Adequacy, area results [11]
 
-_ **15** _ _files resulting from the combination of the following attributes:_
-
-_**[values | id | details] X [hourly | daily | weekly | monthly | annual]**_
+**15** _files resulting from the combination of the following attributes:_
+**[values | id | details] X [hourly | daily | weekly | monthly | annual]**
 
 - _The second attribute defines the time span over which the results are assessed: hourly detail, daily bundle, weekly bundle, monthly bundle, annual bundle._
 
 - _The first attribute defines the nature of the results presented in the file :_
 
-_ **Values** _ _Values of different variables (price, load, overall generation issued from coal, etc.), the list of which is common to all areas of the interconnected system. Files of type &quot;values&quot; have therefore the same size for all areas._
+**Values** _Values of different variables (price, load, overall generation issued from coal, etc.), the list of which is common to all areas of the interconnected system. Files of type &quot;values&quot; have therefore the same size for all areas._
 
 _These results appear under the label &quot;general values&quot; in the output GUI_
 
-_ **details** _ _Values regarding the different dispatchable thermal generating plants of each area (e.g. &quot;older 300 MW coal from the south coast&quot;). The sizes of these files differ from one area to another._
+**details** _Values regarding the different dispatchable thermal generating plants of each area (e.g. &quot;older 300 MW coal from the south coast&quot;). The sizes of these files differ from one area to another._
 
 _These results appear under the label &quot;thermal plants&quot; in the output GUI_
 
-_ **id** _ _Identifier (number) of the Monte-Carlo years for which were observed the extreme values of the different variables presented in the « values » files_
+**id** _Identifier (number) of the Monte-Carlo years for which were observed the extreme values of the different variables presented in the « values » files_
 
 _These results appear under the label &quot;record years&quot; in the output GUI_
 
-_The area files that belong to the « values » class display_ _ **122** _ _fields corresponding to the expectation , standard deviation, minimal and maximal values of the variables whose list is given hereafter._
+_The area files that belong to the « values » class display_ **122** _fields corresponding to the expectation , standard deviation, minimal and maximal values of the variables whose list is given hereafter._
 
-_OV.COST Overall cost = operating cost + unsupplied cost+ spilled cost+ hydro cost_
+| variables | description |
+|-----------|-------------|
+| OV.COST | Overall cost = operating cost + unsupplied cost+ spilled cost+ hydro cost |
+| OP.COST | Operating cost = Proportional costs + Non- proportional costs |
+| MRG. PRICE | LMP : overall economic effect of a local 1MW load increase |
+| CO2 EMIS. | Amount of CO2 emitted by all dispatchable thermal plants |
+| BALANCE | Overall Import/export balance of the area (positive value : export) |
+| ROW BAL | Import/export with areas outside the modeled system (positive value: import) |
+| PSP | User-defined settings for pumping and subsequent generating |
+| MISC. NDG | Miscellaneous non dispatchable generation |
+| LOAD | Demand (including DSM potential if relevant) |
+| H.ROR | Hydro generation, Run-of-river share |
+| WIND | Wind generation |
+| SOLAR | Solar generation (thermal and PV) |
+| NUCLEAR | Overall generation of nuclear clusters |
+| LIGNITE | Overall generation of dispatchable thermal clusters burning brown coal |
+| COAL | Overall generation of dispatchable thermal clusters burning hard coal |
+| GAS | Overall generation of dispatchable thermal clusters burning gas |
+| OIL | Overall generation of dispatchable thermal clusters using petroleum products |
+| MIX.FUEL | Overall gen. of disp. thermal clusters using a mix of the previous fuels |
+| MISC.DTG | Overall gen. of disp. thermal clusters using other fuels |
+| H.STOR | Power generated from energy storage units (typically: Hydro reservoir) |
+| H.PUMP | Power absorbed by energy storage units (typically: PSP pumps consumption) |
+| H.LEV | Energy level remaining in storage units (percentage of reservoir size) |
+| H.INFL | External input to the energy storage units (typically: natural inflows) |
+| H.OVFL | Wasted natural inflow overflowing from an already full energy storage unit |
+| H.VAL | Marginal value of stored energy (typically: shadow water value) |
+| H.COST | Expenses /Income brought by energy storage actions (H.STOR,H.PUMP) |
+| UNSP. | ENRG Unsupplied energy: adequacy indicator (Expected Energy Not Served–EENS) |
+| SPIL. | ENRG Spilled energy (energy produced that cannot be used and has to be wasted) |
+| LOLD | Loss of load duration: adequacy indicator (length of shortfalls) |
+| LOLP | Loss of Load probability: adequacy indicator (probability of shortfalls) |
+| AVL | DTG Available dispatchable thermal generation (sum of av. power over all plants) |
+| DTG | MRG Disp. Ther. Gen. (AVL DTG – sum of all dispatched thermal generation) |
+| MAX | MRG Maximum margin: operational margin obtained if the hydro storage energy of the week were used to maximise margins instead of minimizing costs |
+| NP COST | Non-proportional costs of the dispatchable plants (start-up and fixed costs) |
+| NODU | Number of Dispatched Units |
 
-_OP.COST Operating cost = Proportional costs + Non- proportional costs_
 
-_MRG. PRICE LMP : overall economic effect of a local 1MW load increase_
-
-_CO2 EMIS. Amount of CO2 emitted by all dispatchable thermal plants_
-
-_BALANCE Overall Import/export balance of the area (positive value : export)_
-
-_ROW BAL Import/export with areas outside the modeled system (positive value: import)_
-_# 12_
-
-_PSP User-defined settings for pumping and subsequent generating_
-
-_MISC. NDG Miscellaneous non dispatchable generation_
-
-_LOAD Demand (including DSM potential if relevant)_
-
-_H.ROR Hydro generation, Run-of-river share_
-
-_WIND Wind generation_
-
-_SOLAR Solar generation (thermal and PV)_
-
-_NUCLEAR Overall generation of nuclear clusters_
-
-_LIGNITE Overall generation of dispatchable thermal clusters burning brown coal_
-
-_COAL Overall generation of dispatchable thermal clusters burning hard coal_
-
-_GAS Overall generation of dispatchable thermal clusters burning gas_
-
-_OIL Overall generation of dispatchable thermal clusters using petroleum products_
-
-_MIX.FUEL Overall gen. of disp. thermal clusters using a mix of the previous fuels_
-
-_MISC.DTG Overall gen. of disp. thermal clusters using other fuels_
-
-_H.STOR Power generated from energy storage units (typically: Hydro reservoir)_
-
-_H.PUMP Power absorbed by energy storage units (typically: PSP pumps consumption)_
-
-_H.LEV Energy level remaining in storage units (percentage of reservoir size)_
-
-_H.INFL External input to the energy storage units (typically: natural inflows)_
-
-_H.OVFL Wasted natural inflow overflowing from an already full energy storage unit_
-
-_H.VAL Marginal value of stored energy (typically: shadow water value)_
-
-_H.COST Expenses /Income brought by energy storage actions (H.STOR,H.PUMP)_
-
-_UNSP. ENRG Unsupplied energy: adequacy indicator (Expected Energy Not Served–EENS)_
-
-_SPIL. ENRG Spilled energy (energy produced that cannot be used and has to be wasted)_
-
-_LOLD Loss of load duration: adequacy indicator (length of shortfalls)_
-
-_LOLP Loss of Load probability: adequacy indicator (probability of shortfalls)_
-
-_AVL DTG Available dispatchable thermal generation (sum of av. power over all plants)_
-
-_DTG MRG Disp. Ther. Gen. (AVL DTG – sum of all dispatched thermal generation)_
-
-_MAX MRG Maximum margin: operational margin obtained if the hydro storage energy of the week were used to maximise margins instead of minimizing costs_
-
-_NP COST Non-proportional costs of the dispatchable plants (start-up and fixed costs)_
-
-_NODU Number of Dispatched Units_
-_# 13_
-
-## Economy and Adequacy, interconnection results
-# 14
-
-_ **10** _ _files resulting from the combination of the following attributes :_
-
-_**[values | id] X [hourly | daily | weekly | monthly | annual]**_
+### Economy and Adequacy, interconnection results [14]
+**10** _files resulting from the combination of the following attributes :_
+**[values | id] X [hourly | daily | weekly | monthly | annual]**
 
 - _The second attribute defines the period of time over which the results are assessed : hourly detail, daily bundle, weekly bundle, monthly bundle, annual bundle._
 - _The first attribute defines the nature of the results presented in the file_
 
-_ **values** _ _values of different variables (flow, congestion rent) the list of which is common to all interconnections. The files of type &quot;values&quot; have therefore the same size everywhere_
+
+**values** _values of different variables (flow, congestion rent) the list of which is common to all interconnections. The files of type &quot;values&quot; have therefore the same size everywhere_
 
 _These results appear under the label &quot;general values&quot; in the output GUI_
 
-_ **id** _ _identifier (number) of the Monte-Carlo years for which were observed the extreme values of the different variables presented in the « values » files_
+**id** _identifier (number) of the Monte-Carlo years for which were observed the extreme values of the different variables presented in the « values » files_
 
 _These results appear under the label &quot;record years&quot; in the output GUI_
 
-_The area files that belong to the « values » class display_ _ **28** _ _fields corresponding to the expectation, standard deviation, minimal and maximal values of the variables whose list is given hereafter._
 
-_FLOW LIN. Flow (signed + from upstream to downstream) assessed by the linear optimization. These flows follow Kirchhoff&#39;s law only if these laws have been explicitly enforced by the means of suitable binding constraints_
+_The area files that belong to the « values » class display_  **28**  _fields corresponding to the expectation, standard deviation, minimal and maximal values of the variables whose list is given hereafter._
 
-_UCAP Used capacity: absolute value of FLOW LIN. This indicator may be of interest to differentiate the behavior of interconnectors showing low average flows: in some cases this may indicate that the line is little used, while in others this may be the outcome of high symmetric flows_
-
-_LOOP FLOW Flow circulating through the grid when all areas have a zero import/export balance. This flow, to be put down to the simplification of the real grid, is not subject to hurdle costs in the course of the optimization_
-
-_FLOW QUAD. Flow computed anew, starting from the linear optimum, by minimizing a quadratic function equivalent to an amount of Joule losses, while staying within the transmission capacity limits. This calculation uses for this purpose the impedances found in the &quot;Links&quot; Input data. If congestions occur on the grid, these results are not equivalent to those of a DC load flow_
-
-_CONG. FEE ALG Algebraic congestion rent = linear flow \* (downstream price – upstream price)_
-
-_CONG. FEE ABS Absolute congestion rent = linear flow\* abs(downstream price–upstream price)_
-
-_MARG. COST Decrease of the system&#39;s overall cost that would be brought by the optimal use of an additional 1 MW transmission capacity (in both directions)_
-
-_CONG PROB + Up\&gt;Dwn Congestion probability = (NC+) / (total number of MC years) with:_
-
-_NC+ = number of years during which the interconnection was congested in the Up\&gt;Dwn way for_ _ **any** _ _length of time within the time frame relevant with the file_
-
-_CONG PROB - Dwn\&gt;Up Congestion probability = (NC-) / (total number of MC years) with:_
-
-_NC- = number of years during which the interconnection was congested in the Dwn\&gt;Up way for_ _ **any** _ _length of time within the time frame relevant with the file_
-
-_HURD. COST Contribution of the flows to the overall economic function through the &quot;hurdles costs&quot; component. For each hour:_
-
-_if (FLOW.LIN –LOOP FLOW) \&gt; 0_
-
-_HURD. COST = (hourly direct hurdle cost) \* (FLOW LIN.)_
-
-_else HURD.COST = (hourly indirect hurdle cost) \* (-1)\* (FLOW LIN.)_
+| variables | description |
+|-----------|-------------|
+| FLOW LIN. | Flow (signed + from upstream to downstream) assessed by the linear optimization. These flows follow Kirchhoff&#39;s law only if these laws have been explicitly enforced by the means of suitable binding constraints |
+| UCAP | Used capacity: absolute value of FLOW LIN. This indicator may be of interest to differentiate the behavior of interconnectors showing low average flows: in some cases this may indicate that the line is little used, while in others this may be the outcome of high symmetric flows |
+| LOOP FLOW | Flow circulating through the grid when all areas have a zero import/export balance. This flow, to be put down to the simplification of the real grid, is not subject to hurdle costs in the course of the optimization |
+| FLOW QUAD. | Flow computed anew, starting from the linear optimum, by minimizing a quadratic function equivalent to an amount of Joule losses, while staying within the transmission capacity limits. This calculation uses for this purpose the impedances found in the &quot;Links&quot; Input data. If congestions occur on the grid, these results are not equivalent to those of a DC load flow|
+| CONG. FEE ALG | Algebraic congestion rent = linear flow \* (downstream price – upstream price) |
+| CONG. FEE ABS | Absolute congestion rent = linear flow\* abs(downstream price–upstream price) |
+| MARG. COST | Decrease of the system&#39;s overall cost that would be brought by the optimal use of an additional 1 MW transmission capacity (in both directions) |
+| CONG PROB + | Up\&gt;Dwn Congestion probability = (NC+) / (total number of MC years) with: |
+|| NC+ = number of years during which the interconnection was congested in the Up\&gt;Dwn way for **any** length of time within the time frame relevant with the file |
+| CONG PROB - | Dwn\&gt;Up Congestion probability = (NC-) / (total number of MC years) with:
+|| NC- = number of years during which the interconnection was congested in the Dwn\&gt;Up way for **any** length of time within the time frame relevant with the file |
+| HURD. COST | Contribution of the flows to the overall economic function through the &quot;hurdles costs&quot; component. For each hour:
+|| `if (FLOW.LIN –LOOP FLOW) > 0 ` |
+|| `HURD. COST = (hourly direct hurdle cost) \* (FLOW LIN.)` |
+|| `else HURD.COST = (hourly indirect hurdle cost) \* (-1)\* (FLOW LIN.)` |
 
 ## Economy and Adequacy, other results
 
