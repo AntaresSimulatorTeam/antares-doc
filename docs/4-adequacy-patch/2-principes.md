@@ -45,3 +45,14 @@ Dans le cas d’un domaine Flow-Based, l’objectif d’Antares qui est de minim
 
 ![adequacy-patch](Figure3.png)
 
+*Figure 3 : Minimisation de la défaillance globale, incompatible avec le local matching*
+
+Dans l’exemple présenté, cela conduira Antares à retenir la solution en bleue qui permet de maximiser les exports de l’Allemagne. Toutefois en augmentant les exports de l’Allemagne de +137 MW, les contraintes Flow-Based conduisent à augmenter de +167 MW les exports des Pays-Bas qui se trouvent alors en défaillance. Ces 2 exports bénéficient à la France qui avec +304 MW d’import supprime sa défaillance. La mise en défaillance des Pays-Bas n’est pas conforme à la règle de local matching et post-adéquacy patch, les flux retenus sont ceux en noir, maintenant une défaillance en France de 245 MW, contre 167 MW en sortie d’Antares. Ne nous autorisant pas à modifier le plan de production d’une quelconque zone dans le cadre du calcul d’adéquacy patch, les 137 MW de réduction d’export de l’Allemagne sont convertis en 137 MW de spillage en Allemagne. 
+
+**Il s’agit là d’une désoptimisation induite par l’exécution découplée de l’Adéquacy Patch qui ne pourra être résorbée que par un calcul couplé avec Antares.** Par la suite, on proposera un filtre pour supprimer les désoptimisations au-delà d’un seuil à définir.
+
+## Règle de Curtailment Sharing
+
+Contrairement à la règle précédente qui doit être strictement respectée, cette règle est une incitation à respecter dans la mesure du possible les ratios de défaillance constatés.
+
+![adequacy-patch](Figure4.png)
