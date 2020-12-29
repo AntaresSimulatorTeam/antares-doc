@@ -56,3 +56,11 @@ Dans l’exemple présenté, cela conduira Antares à retenir la solution en ble
 Contrairement à la règle précédente qui doit être strictement respectée, cette règle est une incitation à respecter dans la mesure du possible les ratios de défaillance constatés.
 
 ![adequacy-patch](Figure4.png)
+
+*Figure 4 : Répartition de la défaillance conforme aux ratios de défaillance constatés*
+
+Dans le cas déjà évoqué au chapitre "Indétermination à lever", pour lever l’indétermination parfois induite sur la répartition de la défaillance, une règle supplémentaire sous forme incitative (via des pénalités) conduit, entre 2 solutions équivalentes par ailleurs, à privilégier celle qui assure le meilleur respect du ratio de défaillance observé. Concrètement, cela revient à réduire la DENS constatée dans des différents pays d’un ratio le plus proche possible, sans annuler totalement la défaillance dans aucun des pays.
+
+Dans l’exemple présenté, les marges de l’Espagne (1100 MWh avant export) doivent ainsi être réparties entre 100 MWh d’export vers le Portugal et 1000 MWh vers la France. Ainsi, le Portugal comme la France, réduisent chacun de 50% leurs déséquilibres locaux, … mais conservent chacun de la défaillance, alors que l’Espagne aurait pu résorber la défaillance du Portugal.
+
+**Par construction, cette règle va naturellement largement augmenter le nombre de pays simultanément en défaillance et donc la LOLE sur ces différents pays.**
