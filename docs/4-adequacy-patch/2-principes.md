@@ -14,7 +14,7 @@ Il s’entend que pour une zone donnée à chaque instant les couples de variabl
 
 ## Indétermination à lever :
 
-![adequacy-patch](Figure1.PNG)
+![adequacy-patch](Figure1.png)
 
 *Figure 1 : Indétermination de la répartition de la défaillance en l’absence d’adéquacy patch*
 
@@ -28,3 +28,5 @@ La solution 2 devrait être celle favorisée par l’adéquacy patch, elle est p
 
 ## Règle de Local Matching
 ### Cas de frontières NTC
+
+![adequacy-patch](Figure2.png)
