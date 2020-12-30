@@ -1,3 +1,3 @@
 # Package R `AdequacyPatch`
 
-[Go to *technical dev*](/6-technical-dev/adq-master)
+[Go to *technical dev*](/en/latest/6-technical-dev/adq-master)
