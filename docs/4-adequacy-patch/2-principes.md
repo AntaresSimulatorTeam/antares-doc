@@ -29,7 +29,7 @@ La solution 2 devrait être celle favorisée par l’adéquacy patch, elle est p
 ## Règle de Local Matching
 ### Cas de frontières NTC
 
-![adequacy-patch](Figure2.png)
+![adequacy-patch](Figure2.png){: style="height:400px;"}
 
 *Figure 2 : Prise en compte de la règle de Local Matching sur frontières NTC*
 

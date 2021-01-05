@@ -12,9 +12,31 @@
 |  italique | `*hello*`  | *hello*  |
 |  gras | `**bonjour**`  | **bonjour**  |
 |  lien |  ```[mon lien](https://google.com)``` |  [mon lien](https://google.com) |
-| image | `![nom de l'image](antares.png)` | ![image](antares.png) |
 | latex | `$$\sum^{N}_{i=0}{\Gamma_c}$$` | $$\sum^{N}_{i=0}{\Gamma_c}$$ |
 || `inline \\( \Gamma_c \\)` |inline \\(\Gamma_c\\) |
+
+
+## Image
+### Basic
+```
+![image](antares.png)
+```
+
+![image](antares.png)
+
+### Specific size
+```
+![image](antares.png){: style="width: 200px; height: 200px"}
+```
+![image](antares.png){: style="width: 200px"}
+
+### side by side
+```
+![image](antares.png)
+![image](antares.png)
+```
+![image](antares.png){: style="width: 200px"}
+![image](antares.png){: style="width: 200px"}
 
 ### Puces
 ```
