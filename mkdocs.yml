@@ -1,6 +1,17 @@
-site_name: My Docs
+site_name: Antares
 theme:
   name: material
+  logo: assets/Icone_orange.png
+  #palette:
+  #  primary: blue
+  features:
+    #- header.autohide
+    #- navigation.tabs
+    #- navigation.tabs.sticky
+    - toc.separate
+
+plugins:
+  - search
 
 navbar:
   - Home: index.md
@@ -12,5 +23,5 @@ extra_javascript:
 markdown_extensions:
     - attr_list
     - toc:
-        permalink: #
+        permalink: true
 

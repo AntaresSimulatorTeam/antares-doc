@@ -2,7 +2,7 @@
 
 This sections aim to describe how the optimisation problem is solved
 by __Antares_Simulator__.
-The starting point is the problem formulated in the modeling [section](modeling.md).
+The starting point is the problem formulated in the modeling [section](2-modeling.md).
 
 ## The objective 
 The _objective_ of the optimisation \\( \Omega\\) is the total cost of the dispatch and is
