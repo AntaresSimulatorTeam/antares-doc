@@ -4,11 +4,11 @@ theme:
   logo: assets/Icone_orange.png
   #palette:
   #  primary: blue
-  features:
+  #features:
     #- header.autohide
     #- navigation.tabs
     #- navigation.tabs.sticky
-    - toc.separate
+    #- toc.separate
 
 plugins:
   - search
