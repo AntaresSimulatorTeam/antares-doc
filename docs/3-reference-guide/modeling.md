@@ -64,15 +64,15 @@ Note that this independency assumption may sometimes be too lax, because in many
 1. Use of an economic signal (typically, a shadow &quot;water value&quot;) yielded by an external preliminary stochastic dynamic programming optimization of the use of energy-constrained resources.
 2. Use of heuristics that provide an assessment of the relevant energy credits that should be used for each period, fitted so as to accommodate with sufficient versatility different operational rules.
 
-Quite different is the situation that prevails in expansion studies, in which weekly problems cannot at all be separated from a formal standpoint, because new assets should be paid for all year-long, regardless of the fact that they are used or not during such or such week : the generic expansion problem encompasses therefore all the weeks of all the Monte-Carlo years at the same time. It will be further denoted
+Quite different is the situation that prevails in expansion studies, in which weekly problems cannot at all be separated from a formal standpoint, because new assets should be paid for all year-long, regardless of the fact that they are used or not during such or such week : the generic expansion problem encompasses therefore all the weeks of all the Monte-Carlo years at the same time. It will be further denoted \\(\mathcal{P}\\).
 
 The next sections of this document develop the following subjects:
 
-- Notations used for and
+- Notations used for \\(\mathcal{P}^k\\) and \\(\mathcal{P}\\)
 
-- Formulation of
+- Formulation of \\(\mathcal{P}^k\\)
 
-- Formulation of
+- Formulation of \\(\mathcal{P}\\)
 
 - Complements to the standard problems (how to make **Antares\_Simulator** work as a SCOPF )
 
@@ -80,7 +80,45 @@ The next sections of this document develop the following subjects:
 
 # 3 Notations
 
-# 4 Formulation of problem
+## 3.1 General notations
+
+| Notation | Explanation |
+| ------------ | ------------- |
+| \\( k \in  K \\) | optimization periods (weeks) over which \\(P\\) and \\(P^k\\) are defined (omitted for simplicity)|
+| \\(t \in T\\)| individual time steps of any optimization period \\( k\in K\\) (hours of the week)|
+| \\(G(N,L)\\)| undirected graph of the power system (connected)|
+| \\(n \in N\\)| vertices of \\(G\\), \\(N\\) is an ordered set|
+| \\(l \in L\\)| edges of \\(G\\)|
+| \\(A\\)| incidence matrix of \\(G\\), dimension \\(N\times L\\)|
+| \\(g\\)| spanning tree of \\(G\\)|
+| \\(C_g\\)| cycle basis associated with \\(g\\), dimension \\(L\times (L+1-N)\\)|
+| \\(L_n^+\subset L\\)| set of edges for which \\(n\\) is the upstream vertex|
+| \\(L_n^-\subset L\\)| set of edges for which \\(n\\) is the downstream vertex|
+| \\(u_l \in N\\)| vertex upstream from \\(l\\) |
+| \\(d_l \in N\\)| vertex downstream from \\(l\\)|
+| \\(u \cdot v\\)| inner product of vectors \\(u\\) and \\(v\\)|
+| \\(u_\uparrow^p\\)| vector resulting from the permutation on \\(u \in R^s\\) : $$ u\_\uparrow^p(i)=u(i+p\, \mathrm{mod}\,s)$$ |
+
+
+## 3.2 Grid
+| Notation | Explanation |
+| ------------ | ------------- |
+| \\(C_l^+ \in R^T_+\\)| initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))|
+| \\( \overline{C}\_l^+ \in R^T\_+ \\) | maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
+| \\(C_l^- \in R^T_+\\)| initial transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\) and \\(P^k\\))|
+| \\( \bar{C}^{-}\_l\in R^T\_{+} \\)|  maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
+| \\(\Psi_l \in R_+\\)| weekly cost of a maximum capacity investment|
+| \\(x_l \in [0,1]\\)| transmission capacity investment level|
+| \\(F_l^+ \in R^T_+\\)| power flow through \\(l\\), from \\(u_l\\) to \\(d_l\\)|
+| \\(F_l^- \in R^T_+\\)| power flow through \\(l\\), from \\(d_l\\) to \\(u_l\\)|
+| \\(F_l\in R^T\\)| total power flow through \\(l\\), \\(F_l=F_l^+-F_l^-\\) |
+| \\(\tilde{F}_t \in R^T\\) | system flow snapshot at time \\(t\\)|
+| \\(\gamma_l^+\in R^T\\)| transmission cost through \\(l\\), from \\(u_l\\) to \\(d_l\\). Proportional to the power flow|
+| \\(\gamma_l^-\in R^T\\)| transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow|
+| \\(Z_l \in R\_+\\)| overall impedance of \\(l\\)|
+
+
+# 4 Formulation of problem \\(\mathcal{P}^k\\)
 
 Superscript k is implicit in all subsequent notations of this section (omitted for simplicity&#39;s sake)
 
