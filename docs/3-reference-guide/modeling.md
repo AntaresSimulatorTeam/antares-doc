@@ -115,7 +115,7 @@ The next sections of this document develop the following subjects:
 | FIXME \\(\tilde{F}_t \in R^T\\) | system flow snapshot at time \\(t\\)|
 | \\(\gamma_l^+\in R^T\\)| transmission cost through \\(l\\), from \\(u_l\\) to \\(d_l\\). Proportional to the power flow|
 | \\(\gamma_l^-\in R^T\\)| transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow|
-| \\(Z_l \in R_\+\)| overall impedance of \\(l\\)|
+| \\(Z_l \in R_\+\\)| overall impedance of \\(l\\)|
 
 
 # 4 Formulation of problem \\(\mathcal{P}^k\\)
