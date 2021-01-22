@@ -1,5 +1,6 @@
 site_name: My Docs
-theme: material
+theme:
+  name: material
 
 navbar:
   - Home: index.md
