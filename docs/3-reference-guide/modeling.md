@@ -97,25 +97,25 @@ The next sections of this document develop the following subjects:
 | \\(u_l \in N\\)| vertex upstream from \\(l\\) |
 | \\(d_l \in N\\)| vertex downstream from \\(l\\)|
 | \\(u \cdot v\\)| inner product of vectors \\(u\\) and \\(v\\)|
-| \\(u_\uparrow^p\\)| vector resulting from the permutation on \\(u \in R^s\\) : FIXME $$ u_\uparrow^p(i)=u(i+p\, mod\, s)$$|
+| \\(u_\uparrow^p\\)| vector resulting from the permutation on \\(u \in R^s\\) : $$ u\_\uparrow^p(i)=u(i+p\, \mathrm{mod}\,s)$$ |
 
 
 ## 3.2 Grid
 | Notation | Explanation |
 | ------------ | ------------- |
 | \\(C_l^+ \in R^T_+\\)| initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))|
-| \\(\overline{C}_l^+ \in R^T_+\\)| maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
+| \\( \overline{C}\_l^+ \in R^T\_+ \\) | maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
 | \\(C_l^- \in R^T_+\\)| initial transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\) and \\(P^k\\))|
-| \\(\bar{C}_l^- \in R^T_+\\) FIXME| maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
+| \\( \bar{C}^{-}\_l\in R^T\_{+} \\)|  maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
 | \\(\Psi_l \in R_+\\)| weekly cost of a maximum capacity investment|
 | \\(x_l \in [0,1]\\)| transmission capacity investment level|
 | \\(F_l^+ \in R^T_+\\)| power flow through \\(l\\), from \\(u_l\\) to \\(d_l\\)|
 | \\(F_l^- \in R^T_+\\)| power flow through \\(l\\), from \\(d_l\\) to \\(u_l\\)|
 | \\(F_l\in R^T\\)| total power flow through \\(l\\), \\(F_l=F_l^+-F_l^-\\) |
-| FIXME \\(\tilde{F}_t \in R^T\\) | system flow snapshot at time \\(t\\)|
+| \\(\tilde{F}_t \in R^T\\) | system flow snapshot at time \\(t\\)|
 | \\(\gamma_l^+\in R^T\\)| transmission cost through \\(l\\), from \\(u_l\\) to \\(d_l\\). Proportional to the power flow|
 | \\(\gamma_l^-\in R^T\\)| transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow|
-| \\(Z_l \in R_\+\\)| overall impedance of \\(l\\)|
+| \\(Z_l \in R\_+\\)| overall impedance of \\(l\\)|
 
 
 # 4 Formulation of problem \\(\mathcal{P}^k\\)
