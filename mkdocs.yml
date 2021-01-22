@@ -10,4 +10,6 @@ extra_javascript:
 
 markdown_extensions:
     - attr_list
+    - toc:
+        permalink: #
 
