@@ -82,63 +82,64 @@ The next sections of this document develop the following subjects:
 
 ## 3.1 General notations
 
-| Notation | Explanation |
-| ------------ | ------------- |
-| \\( k \in  K \\) | optimization periods (weeks) over which \\(P\\) and \\(P^k\\) are defined (omitted for simplicity)|
-| \\(t \in T\\)| individual time steps of any optimization period \\( k\in K\\) (hours of the week)|
-| \\(G(N,L)\\)| undirected graph of the power system (connected)|
-| \\(n \in N\\)| vertices of \\(G\\), \\(N\\) is an ordered set|
-| \\(l \in L\\)| edges of \\(G\\)|
-| \\(A\\)| incidence matrix of \\(G\\), dimension \\(N\times L\\)|
-| \\(g\\)| spanning tree of \\(G\\)|
-| \\(C_g\\)| cycle basis associated with \\(g\\), dimension \\(L\times (L+1-N)\\)|
-| \\(L_n^+\subset L\\)| set of edges for which \\(n\\) is the upstream vertex|
-| \\(L_n^-\subset L\\)| set of edges for which \\(n\\) is the downstream vertex|
-| \\(u_l \in N\\)| vertex upstream from \\(l\\) |
-| \\(d_l \in N\\)| vertex downstream from \\(l\\)|
-| \\(u \cdot v\\)| inner product of vectors \\(u\\) and \\(v\\)|
-| \\(u_\uparrow^p\\)| vector resulting from the permutation on \\(u \in R^s\\) : $$ u\_\uparrow^p(i)=u(i+p\, \mathrm{mod}\,s)$$ |
+| Notation             | Explanation                                                                                               |
+| ------------         | -------------                                                                                             |
+| \\( k \in  K \\)     | optimization periods (weeks) over which \\(P\\) and \\(P^k\\) are defined (omitted for simplicity)        |
+| \\(t \in T\\)        | individual time steps of any optimization period \\( k\in K\\) (hours of the week)                        |
+| \\(G(N,L)\\)         | undirected graph of the power system (connected)                                                          |
+| \\(n \in N\\)        | vertices of \\(G\\), \\(N\\) is an ordered set                                                            |
+| \\(l \in L\\)        | edges of \\(G\\)                                                                                          |
+| \\(A\\)              | incidence matrix of \\(G\\), dimension \\(N\times L\\)                                                    |
+| \\(g\\)              | spanning tree of \\(G\\)                                                                                  |
+| \\(C_g\\)            | cycle basis associated with \\(g\\), dimension \\(L\times (L+1-N)\\)                                      |
+| \\(L_n^+\subset L\\) | set of edges for which \\(n\\) is the upstream vertex                                                     |
+| \\(L_n^-\subset L\\) | set of edges for which \\(n\\) is the downstream vertex                                                   |
+| \\(u_l \in N\\)      | vertex upstream from \\(l\\)                                                                              |
+| \\(d_l \in N\\)      | vertex downstream from \\(l\\)                                                                            |
+| \\(u \cdot v\\)      | inner product of vectors \\(u\\) and \\(v\\)                                                              |
+| \\(u_\uparrow^p\\)   | vector resulting from the permutation on \\(u \in R^s\\) : $$ u\_\uparrow^p(i)=u(i+p\, \mathrm{mod}\,s)$$ |
 
 
 ## 3.2 Grid
-| Notation | Explanation |
-| ------------ | ------------- |
-| \\(C_l^+ \in R^T_+\\)| initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))|
-| \\( \overline{C}\_l^+ \in R^T\_+ \\) | maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
-| \\(C_l^- \in R^T_+\\)| initial transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\) and \\(P^k\\))|
-| \\( \bar{C}^{-}\_l\in R^T\_{+} \\)|  maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\))|
-| \\(\Psi_l \in R_+\\)| weekly cost of a maximum capacity investment|
-| \\(x_l \in [0,1]\\)| transmission capacity investment level|
-| \\(F_l^+ \in R^T_+\\)| power flow through \\(l\\), from \\(u_l\\) to \\(d_l\\)|
-| \\(F_l^- \in R^T_+\\)| power flow through \\(l\\), from \\(d_l\\) to \\(u_l\\)|
-| \\(F_l\in R^T\\)| total power flow through \\(l\\), \\(F_l=F_l^+-F_l^-\\) |
-| \\(\tilde{F}_t \in R^T\\) | system flow snapshot at time \\(t\\)|
-| \\(\gamma_l^+\in R^T\\)| transmission cost through \\(l\\), from \\(u_l\\) to \\(d_l\\). Proportional to the power flow|
-| \\(\gamma_l^-\in R^T\\)| transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow|
-| \\(Z_l \in R\_+\\)| overall impedance of \\(l\\)|
+| Notation                             | Explanation                                                                                            |
+| ------------                         | -------------                                                                                          |
+| \\(C_l^+ \in R^T_+\\)                | initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))          |
+| \\( \overline{C}\_l^+ \in R^T\_+ \\) | maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
+| \\(C_l^- \in R^T_+\\)                | initial transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\) and \\(P^k\\))          |
+| \\( \bar{C}^{-}\_l\in R^T\_{+} \\)   | maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
+| \\(\Psi_l \in R_+\\)                 | weekly cost of a maximum capacity investment                                                           |
+| \\(x_l \in [0,1]\\)                  | transmission capacity investment level                                                                 |
+| \\(F_l^+ \in R^T_+\\)                | power flow through \\(l\\), from \\(u_l\\) to \\(d_l\\)                                                |
+| \\(F_l^- \in R^T_+\\)                | power flow through \\(l\\), from \\(d_l\\) to \\(u_l\\)                                                |
+| \\(F_l\in R^T\\)                     | total power flow through \\(l\\), \\(F_l=F_l^+-F_l^-\\)                                                |
+| \\(\tilde{F}_t \in R^T\\)            | system flow snapshot at time \\(t\\)                                                                   |
+| \\(\gamma_l^+\in R^T\\)              | transmission cost through \\(l\\), from \\(u_l\\) to \\(d_l\\). Proportional to the power flow         |
+| \\(\gamma_l^-\in R^T\\)              | transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow         |
+| \\(Z_l \in R\_+\\)                   | overall impedance of \\(l\\)                                                                           |
 
 ## 3.3 Thermal units
-| Notation | Explanation |
-| ------------ | ------------- |
-|\\(\theta \in \Theta_n\\)|thermal clusters (sets of identical units) installed in node \\(n\\)|
-|\\(\Theta\\)|set of all thermal clusters of the power system \\(\Theta = \cup_{n\in N} \Theta_n\\)|
-|\\(\overline{P}\_\theta \in R^T_+\\)|maximum power output from cluster \\(\theta\\), depends on units availability|
-|\\(\underline{P}\_\theta \in R^T_+\\)|mimimum power output from cluster \\(\theta\\), units availability allowing|
-|\\(P_\theta \in R^T_+\\)|power output from cluster \\(\theta\\)|
-|\\(\chi_\theta \in R^T\\)|power output from cluster \\(\theta\\)|
-|\\(\sigma_\theta^+ \in R^T\\)|startup cost of a single unit in cluster \\(\theta\\)|
-|\\(\tau_\theta \in R^T\\)|running unit in \\(\theta\\) : cost independent from output level (aka NoLoadHeatCost)|
-|\\(l_\theta \in R_+\\)|unit in \\(\theta\\) : minimum stable power output when running|
-|\\(u_\theta \in R_+\\)|unit in \\(\theta\\) : maximum net power output when running|
-|\\(\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace\\)|unit in \\(\theta\\) : minumum on time when running|
-|\\(\Delta_\theta^- \in \lbrace1,\dots, \|T\|\rbrace\\)|unit in \\(\theta\\) : minumum off time when not running|
-|\\(\Delta_\theta = \max(\Delta_\theta^-, \Delta_\theta^+) \\)|duration above which both state changes are allowed|
-|\\(M_\theta \in N^T\\)|number of running units in cluster \\(\theta\\)|
-|\\(\overline{M}_\theta \in N^T\\)|maximum number of running units in cluster \\(\theta\\)|
-|\\(\underline{M}_\theta \in N^T\\)|minimum number of running units in cluster \\(\theta\\)|
-|\\(M_\theta^+ \in N^T\\)|number of units in cluster changing from state off to state on in cluster \\(\theta\\)|
-|\\(M_\theta^- \in N^T\\)|number of units in cluster changing from state on to state off in cluster \\(\theta\\)|
-|\\(M_\theta^{--} \in N^T\\)|number of units in cluster changing from state on to state outage cluster \\(\theta\\)|
+| Notation                                                      | Explanation                                                                            |
+| ------------                                                  | -------------                                                                          |
+| \\(\theta \in \Theta_n\\)                                     | thermal clusters (sets of identical units) installed in node \\(n\\)                   |
+| \\(\Theta\\)                                                  | set of all thermal clusters of the power system \\(\Theta = \cup_{n\in N} \Theta_n\\)  |
+| \\(\overline{P}\_\theta \in R^T_+\\)                          | maximum power output from cluster \\(\theta\\), depends on units availability          |
+| \\(\underline{P}\_\theta \in R^T_+\\)                         | mimimum power output from cluster \\(\theta\\), units availability allowing            |
+| \\(P_\theta \in R^T_+\\)                                      | power output from cluster \\(\theta\\)                                                 |
+| \\(\chi_\theta \in R^T\\)                                     | power output from cluster \\(\theta\\)                                                 |
+| \\(\sigma_\theta^+ \in R^T\\)                                 | startup cost of a single unit in cluster \\(\theta\\)                                  |
+| \\(\tau_\theta \in R^T\\)                                     | running unit in \\(\theta\\) : cost independent from output level (aka NoLoadHeatCost) |
+| \\(l_\theta \in R_+\\)                                        | unit in \\(\theta\\) : minimum stable power output when running                        |
+| \\(u_\theta \in R_+\\)                                        | unit in \\(\theta\\) : maximum net power output when running                           |
+| \\(\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace\\)       | unit in \\(\theta\\) : minumum on time when running                                    |
+| \\(\Delta_\theta^- \in \lbrace1,\dots, \|T\|\rbrace\\)        | unit in \\(\theta\\) : minumum off time when not running                               |
+| \\(\Delta_\theta = \max(\Delta_\theta^-, \Delta_\theta^+) \\) | duration above which both state changes are allowed                                    |
+| \\(M_\theta \in N^T\\)                                        | number of running units in cluster \\(\theta\\)                                        |
+| \\(\overline{M}_\theta \in N^T\\)                             | maximum number of running units in cluster \\(\theta\\)                                |
+| \\(\underline{M}_\theta \in N^T\\)                            | minimum number of running units in cluster \\(\theta\\)                                |
+| \\(M_\theta^+ \in N^T\\)                                      | number of units in cluster changing from state off to state on in cluster \\(\theta\\) |
+| \\(M_\theta^- \in N^T\\)                                      | number of units in cluster changing from state on to state off in cluster \\(\theta\\) |
+| \\(M_\theta^{--} \in N^T\\)                                   | number of units in cluster changing from state on to state outage cluster \\(\theta\\) |
+|                                                               |                                                                                        |
 
 
 
