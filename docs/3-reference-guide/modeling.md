@@ -144,7 +144,6 @@ The next sections of this document develop the following subjects:
 | \\(M_\theta^+ \in N^T\\)                                      | number of units in cluster changing from state off to state on in cluster \\(\theta\\) |
 | \\(M_\theta^- \in N^T\\)                                      | number of units in cluster changing from state on to state off in cluster \\(\theta\\) |
 | \\(M_\theta^{--} \in N^T\\)                                   | number of units in cluster changing from state on to state outage cluster \\(\theta\\) |
-|                                                               |                                                                                        |
 
 ## 3.4 Reservoir-type hydropower units (or other power storage facilities)
 **TODO : add units**
@@ -168,7 +167,7 @@ The next sections of this document develop the following subjects:
 | \\(\overline{\Pi}\_\lambda \in R_+^T\\) | maximum power absorbed by pumps of reservoir \\(\lambda\\)                                                                           |
 | \\(\Pi\_\lambda \in R_+^T\\)            | power absorbed by pumps of reservoir \\(\lambda\\)                                                                                   |
 | \\(I\_\lambda \in R^T_+\\)              | natural power inflow to reservoir \\(\lambda\\)                                                                                      |
-| \\(O\_\lambda\\)                        | power overflowing from reservoir \\(\lambda\\) : part of inflow that cannot be stored                                                |
+| \\(O\_\lambda \in R_+^T\\)              | power overflowing from reservoir \\(\lambda\\) : part of inflow that cannot be stored                                                |
 | \\(\overline{R}\_\lambda \in R_+^T\\)   | upper bound of the admissible level in reservoir \\(\lambda\\)                                                                       |
 | \\(\underline{R}\_\lambda \in R_+^T\\)  | lower bound of the admissible level in reservoir \\(\lambda\\)                                                                       |
 | \\(R\_\lambda \in R_T^+\\)              | stored energy level in reservoir \\(\lambda\\)                                                                                       |
