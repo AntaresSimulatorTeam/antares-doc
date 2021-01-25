@@ -122,20 +122,20 @@ The next sections of this document develop the following subjects:
 | ------------ | ------------- |
 |\\(\theta \in \Theta_n\\)|thermal clusters (sets of identical units) installed in node \\(n\\)|
 |\\(\Theta\\)|set of all thermal clusters of the power system \\(\Theta = \cup_{n\in N} \Theta_n\\)|
-|\\(\overline{P}_\theta \in R^T_+\\)|maximum power output from cluster \\(\theta\\), depends on units availability|
-|\\(\underline{P}_\theta \in R^T_+\\)|mimimum power output from cluster \\(\theta\\), units availability allowing|
+|\\(\overline{P}\_\theta \in R^T_+\\)|maximum power output from cluster \\(\theta\\), depends on units availability|
+|\\(\underline{P}\_\theta \in R^T_+\\)|mimimum power output from cluster \\(\theta\\), units availability allowing|
 |\\(P_\theta \in R^T_+\\)|power output from cluster \\(\theta\\)|
 |\\(\chi_\theta \in R^T\\)|power output from cluster \\(\theta\\)|
 |\\(\sigma_\theta^+ \in R^T\\)|startup cost of a single unit in cluster \\(\theta\\)|
 |\\(\tau_\theta \in R^T\\)|running unit in \\(\theta\\) : cost independent from output level (aka NoLoadHeatCost)|
 |\\(l_\theta \in R_+\\)|unit in \\(\theta\\) : minimum stable power output when running|
 |\\(u_\theta \in R_+\\)|unit in \\(\theta\\) : maximum net power output when running|
-|\\(\Delta_\theta^+ \in \{1,ldots, |T|\}\\)|unit in \\(\theta\\) : minumum on time when running|
-|\\(\Delta_\theta^- \in \{1,ldots, |T|\}\\)|unit in \\(\theta\\) : minumum off time when not running|
+|\\(\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace\\)|unit in \\(\theta\\) : minumum on time when running|
+|\\(\Delta_\theta^- \in \lbrace1,\dots, \|T\|\rbrace\\)|unit in \\(\theta\\) : minumum off time when not running|
 |\\(\Delta_\theta = \max(\Delta_\theta^-, \Delta_\theta^+) \\)|duration above which both state changes are allowed|
 |\\(M_\theta \in N^T\\)|number of running units in cluster \\(\theta\\)|
-|\\(\overline{M}_\theta\\) \in N^T|maximum number of running units in cluster \\(\theta\\)|
-|\\(\underline{M}_\theta\\) \in N^T|minimum number of running units in cluster \\(\theta\\)|
+|\\(\overline{M}_\theta \in N^T\\)|maximum number of running units in cluster \\(\theta\\)|
+|\\(\underline{M}_\theta \in N^T\\)|minimum number of running units in cluster \\(\theta\\)|
 |\\(M_\theta^+ \in N^T\\)|number of units in cluster changing from state off to state on in cluster \\(\theta\\)|
 |\\(M_\theta^- \in N^T\\)|number of units in cluster changing from state on to state off in cluster \\(\theta\\)|
 |\\(M_\theta^{--} \in N^T\\)|number of units in cluster changing from state on to state outage cluster \\(\theta\\)|
