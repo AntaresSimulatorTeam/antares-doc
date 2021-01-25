@@ -81,7 +81,7 @@ The next sections of this document develop the following subjects:
 
 ## 3 Notations
 
-## 3.1 General notations
+### 3.1 General notations
 **TODO : add units**
 
 | Notation             | Explanation                                                                                               |
@@ -102,7 +102,7 @@ The next sections of this document develop the following subjects:
 | \\(u_\uparrow^p\\)   | vector resulting from the permutation on \\(u \in R^s\\) : $$ u\_\uparrow^p(i)=u(i+p\, \mathrm{mod}\,s)$$ |
 
 
-## 3.2 Grid
+### 3.2 Grid
 **TODO : add units**
 
 | Notation                             | Explanation                                                                                            |
@@ -121,7 +121,7 @@ The next sections of this document develop the following subjects:
 | \\(\gamma_l^-\in R^T\\)              | transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow         |
 | \\(Z_l \in R\_+\\)                   | overall impedance of \\(l\\)                                                                           |
 
-## 3.3 Thermal units
+### 3.3 Thermal units
 **TODO : add units**
 
 | Notation                                                      | Explanation                                                                            |
@@ -147,12 +147,11 @@ The next sections of this document develop the following subjects:
 | \\(M_\theta^{--} \in N^T\\)                                   | number of units in cluster changing from state on to state outage cluster \\(\theta\\) |
 |                                                               |                                                                                        |
 
-## 3.4 Reservoir-type hydropower units (or other power storage facilities)
+### 3.4 Reservoir-type hydropower units (or other power storage facilities)
 **TODO : add units**
 
 | Notation                                | Explanation                                                                                                                          |
 | ------------                            | -------------                                                                                                                        |
-|                                         |                                                                                                                                      |
 | \\(\lambda \in \Lambda_n\\)             | reservoirs connected to node \\(n\\)                                                                                                 |
 | \\(\Sigma_\lambda \in R_+\\)            | size of reservoir \\(\lambda\\) : amount of energy that can be stored in \\(\lambda\\)                                               |
 | \\(Q\in N\\)                            | number of discrete levels defined in reservoir                                                                                       |
