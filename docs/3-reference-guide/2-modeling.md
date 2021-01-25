@@ -119,7 +119,7 @@ The next sections of this document develop the following subjects:
 | \\(\tilde{F}_t \in \mathbb{R}^T\\)            | system flow snapshot at time \\(t\\)                                                                   |
 | \\(\gamma_l^+\in \mathbb{R}^T\\)              | transmission cost through \\(l\\), from \\(u_l\\) to \\(d_l\\). Proportional to the power flow         |
 | \\(\gamma_l^-\in \mathbb{R}^T\\)              | transmission cost through \\(l\\), from \\(d_l\\) to \\(u_l\\). Proportional to the power flow         |
-| \\(Z_l \in R\_+\\)                            | overall impedance of \\(l\\)                                                                           |
+| \\(Z_l \in \mathbb{R}\_+\\)                   | overall impedance of \\(l\\)                                                                           |
 
 ### 3.3 Thermal units
 **TODO : add units**
@@ -144,7 +144,7 @@ The next sections of this document develop the following subjects:
 | \\(\underline{M}_\theta \in \mathbb{N}^T\\)                   | minimum number of running units in cluster \\(\theta\\)                                |
 | \\(M_\theta^+ \in \mathbb{N}^T\\)                             | number of units in cluster changing from state off to state on in cluster \\(\theta\\) |
 | \\(M_\theta^- \in \mathbb{N}^T\\)                             | number of units in cluster changing from state on to state off in cluster \\(\theta\\) |
-| \\(M_\theta^{--} \in N^T\\)                                   | number of units in cluster changing from state on to state outage cluster \\(\theta\\) |
+| \\(M_\theta^{--} \in \mathbb{N}^T\\)                                   | number of units in cluster changing from state on to state outage cluster \\(\theta\\) |
 
 ### 3.4 Reservoir-type hydropower units (or other power storage facilities)
 **TODO : add units**
@@ -153,15 +153,15 @@ The next sections of this document develop the following subjects:
 | ------------                                     | -------------                                                                                                                     
 | \\(\lambda \in \Lambda_n\\)                      | reservoirs connected to node \\(n\\)                                                                                                 |
 | \\(\Sigma_\lambda \in \mathbb{R}_+\\)            | size of reservoir \\(\lambda\\) : amount of energy that can be stored in \\(\lambda\\)                                               |
-| \\(Q\in N\\)                                     | number of discrete levels defined in reservoir                                                                                       |
+| \\(Q\in \mathbb{N}\\)                                     | number of discrete levels defined in reservoir                                                                                       |
 | \\(\overline{W}\_\lambda \in \mathbb{R}_+\\)     | maximum energy output from \\(\lambda\\) throughout the optimization period                                                          |
 | \\(\underline{W}\_\lambda \in \mathbb{R}_+\\)    | minimum energy output from \\(\lambda\\) throughout the optimization period                                                          |
 | \\(\overline{H}\_\lambda \in \mathbb{R}_+^T\\)   | maximum power output from reservoir \\(\lambda\\). Note : \\(\sum_{t\in T} \overline{H}\_{\lambda\_t} \geq \underline{W}\_\lambda\\) |
 | \\(\underline{H}\_\lambda \in \mathbb{R}_+^T\\)  | minimum power output from reservoir \\(\lambda\\). Note : \\(\sum_{t\in T} \underline{H}\_{\lambda\_t} \leq \overline{W}\_\lambda\\) |
 | \\(H\_\lambda \in \mathbb{R}_+^T\\)              | power output from reservoir \\(\lambda\\)                                                                                            |
 | \\(r\_\lambda \in \mathbb{R}_+\\)                | maximum ratio between output power daily peak and daily average (\\(1 \leq r\_\lambda \leq 24\\))                                    |
-| \\(\varepsilon\_\lambda \in R\\)                 | reference water value associated with the reservoir's initial state (date, level)                                                    |
-| \\(\varepsilon^*\_\lambda \in R\\)               | random component added to the water value (dispatch smoothing effect)                                                                |
+| \\(\varepsilon\_\lambda \in \mathbb{R}\\)                 | reference water value associated with the reservoir's initial state (date, level)                                                    |
+| \\(\varepsilon^*\_\lambda \in \mathbb{R}\\)               | random component added to the water value (dispatch smoothing effect)                                                                |
 | \\(\eta\_\lambda \in \mathbb{R}^Q\\)             | reference water value associated with the reservoir's final state (date)                                                             |
 | \\(\rho\_\lambda \in \mathbb{R}_+\\)             | efficiency ratio of pumping units (or equivalent devices) available in reservoir \\(\lambda\\)                                       |
 | \\(\overline{\Pi}\_\lambda \in \mathbb{R}_+^T\\) | maximum power absorbed by pumps of reservoir \\(\lambda\\)                                                                           |
@@ -170,7 +170,7 @@ The next sections of this document develop the following subjects:
 | \\(O\_\lambda \in \mathbb{R}_+^T\\)              | power overflowing from reservoir \\(\lambda\\) : part of inflow that cannot be stored                                                |
 | \\(\overline{R}\_\lambda \in \mathbb{R}_+^T\\)   | upper bound of the admissible level in reservoir \\(\lambda\\)                                                                       |
 | \\(\underline{R}\_\lambda \in \mathbb{R}_+^T\\)  | lower bound of the admissible level in reservoir \\(\lambda\\)                                                                       |
-| \\(R\_\lambda \in \mathbb{R}_T^+\\)              | stored energy level in reservoir \\(\lambda\\)                                                                                       |
+| \\(R\_\lambda \in \mathbb{R}^T_+\\)              | stored energy level in reservoir \\(\lambda\\)                                                                                       |
 | \\(\mathfrak{R}\_{\lambda_q} \in \mathbb{R}_+\\) | filling level of reservoir layer \\(q\\) at time \\(T\\) (end of the week)                                                           |
 
 
