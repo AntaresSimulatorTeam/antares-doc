@@ -81,6 +81,7 @@ The next sections of this document develop the following subjects:
 # 3 Notations
 
 ## 3.1 General notations
+**TODO : add units**
 
 | Notation             | Explanation                                                                                               |
 | ------------         | -------------                                                                                             |
@@ -101,6 +102,8 @@ The next sections of this document develop the following subjects:
 
 
 ## 3.2 Grid
+**TODO : add units**
+
 | Notation                             | Explanation                                                                                            |
 | ------------                         | -------------                                                                                          |
 | \\(C_l^+ \in R^T_+\\)                | initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))          |
@@ -118,6 +121,8 @@ The next sections of this document develop the following subjects:
 | \\(Z_l \in R\_+\\)                   | overall impedance of \\(l\\)                                                                           |
 
 ## 3.3 Thermal units
+**TODO : add units**
+
 | Notation                                                      | Explanation                                                                            |
 | ------------                                                  | -------------                                                                          |
 | \\(\theta \in \Theta_n\\)                                     | thermal clusters (sets of identical units) installed in node \\(n\\)                   |
