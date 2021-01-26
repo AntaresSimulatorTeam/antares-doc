@@ -5,7 +5,6 @@
 **Document available on : [https://antares-simulator.org](https://antares-simulator.org/)**
 
 
-
 ## 1 Introduction
 
 The purpose of this document is to give every user of the _ **Antares\_Simulator** _ model (regardless of its version number), a detailed and comprehensive formulation of the main optimization problems solved by the application&#39;s inner optimization engine.
