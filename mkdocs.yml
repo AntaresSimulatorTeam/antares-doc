@@ -2,13 +2,14 @@ site_name: Antares
 theme:
   name: material
   logo: assets/Icone_orange.png
-  #palette:
-  #  primary: blue
-  #features:
+  favicon: assets/Icone.png
+  palette:
+    primary: blue
+  features:
     #- header.autohide
-    #- navigation.tabs
-    #- navigation.tabs.sticky
+    #- navigation.sections
     #- toc.separate
+    - navigation.instant
 
 plugins:
   - search
@@ -24,4 +25,5 @@ markdown_extensions:
     - attr_list
     - toc:
         permalink: true
+        toc_depth: 3
 
