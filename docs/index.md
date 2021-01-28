@@ -12,6 +12,7 @@ Consultants, NGO and all others actors concerned by energy policy issues are wel
 ## This documentation
 This documentation is meant not only to present the functionalities of Antares_Simulator, its user guide and the theoretical 
 model it uses, but also the software that work together with the simulator:
+
 - _R_-packages aimed at the preparation, post-processing and visualisation of Antares simulations
-- Antares_xpansion that optimizes the installed capacities of an ANTARES studya
+- Antares_xpansion that optimizes the installed capacities of an ANTARES study
 - Antares_Launcher that allows to run Antares simulations on a remote dedicated machines (that have a suitable Antares installation)
