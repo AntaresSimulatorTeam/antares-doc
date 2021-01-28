@@ -149,7 +149,7 @@ The next sections of this document develop the following subjects:
 **TODO : add units**
 
 | Notation                                         | Explanation                                                                                                                          |
-| ------------                                     | -------------                                                                                                                     
+| ------------                                     | -------------                
 | \\(\lambda \in \Lambda_n\\)                      | reservoirs connected to node \\(n\\)                                                                                                 |
 | \\(\Sigma_\lambda \in \mathbb{R}_+\\)            | size of reservoir \\(\lambda\\) : amount of energy that can be stored in \\(\lambda\\)                                               |
 | \\(Q\in \mathbb{N}\\)                                     | number of discrete levels defined in reservoir                                                                                       |
@@ -197,6 +197,16 @@ Generic notations for binding constraints :
 | \\(o_e^b \in \mathbb{N}\\)               | time offset of \\(e\\) (flow within \\(e\\) or output from \\(e\\)) in the expression of constraint \\(b\\) |
 | \\(u^b \in \mathbb{R}^{\mathrm{size}}\\) | upper bound of binding constraint \\(b\\)                                                                   |
 | \\(l^b \in \mathbb{R}^{\mathrm{size}}\\) | lower bound of binding constraint \\(b\\)                                                                   |
+
+## 3.6 Demand, security uplift, unsupplied and spilled energies
+| Notation                          | Explanation                                                                            |
+| ------------                      | -------------                                                                          |
+| \\(D_n \in \mathbb{R}^T\\)        | net power demand expressed in node \\(n\\), including must-run generation              |
+| \\(S_n \in \mathbb{R}^T_+\\)      | demand security uplift to be faced in node \\(n\\), by activation of security reserves |
+| \\(\delta_n^+ \in \mathbb{R}^T\\) | normative unsupplied energy value in node \\(n\\). Value of lost load - VOLL           |
+| \\(G_n^+ \in \mathbb{R}^T_+\\)    | unsupplied power in the nominal state                                                  |
+| \\(\delta_n^- \in \mathbb{R}^T\\) | normative spilled energy value in node \\(n\\) (value of wasted energy)                |
+| \\(G_n^- \in \mathbb{R}^T_+\\)    | spilled power in the nominal state                                                     |
 
 
 ## 4 Formulation of problem \\(\mathcal{P}^k\\)
