@@ -190,9 +190,9 @@ Generic notations for binding constraints :
 | ------------                             | -------------                                                                                               |
 | \\(e \in E\\)                            | set of all grid interconnections and thermal clusters. \\(E = L \cup \Theta\\)                              |
 | \\(b \in B\\)                            | binding constraints                                                                                         |
-| \\(B_h \subset B\\) subset of \\(B\\)    | containing the binding constraints between hourly powers                                                    |
-| \\(B_d \subset B\\) subset of \\(B\\)    | containing the binding constraints between daily energies                                                   |
-| \\(B_w \subset B\\) subset of \\(B\\)    | containing the binding constraints between weekly energies                                                  |
+| \\(B_h \subset B\\)                      | subset of \\(B\\) containing the binding constraints between hourly powers                                  |
+| \\(B_d \subset B\\)                      | subset of \\(B\\) containing the binding constraints between daily energies                                 |
+| \\(B_w \subset B\\)                      | subset of \\(B\\) containing the binding constraints between weekly energies                                |
 | \\(\alpha_e^b \in \mathbb{R}\\)          | weight of \\(e\\) (flow within \\(e\\) or output from \\(e\\)) in the expression of constraint \\(b\\)      |
 | \\(o_e^b \in \mathbb{N}\\)               | time offset of \\(e\\) (flow within \\(e\\) or output from \\(e\\)) in the expression of constraint \\(b\\) |
 | \\(u^b \in \mathbb{R}^{\mathrm{size}}\\) | upper bound of binding constraint \\(b\\)                                                                   |
