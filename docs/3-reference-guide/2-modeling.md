@@ -268,7 +268,7 @@ FIXME
 
 ### 5.2 Constraints
 
-## 6 Antares as a SCOPF (";FB model";)
+## 6 Antares as a SCOPF ("FB model")
 
 When problems and do not include any instance of so-called ";binding constraints"; and if no market pools are defined, the flows within the grid are only committed to meet the bounds set on the initial transmission capacities, potentially reinforced by investments (problem ).In other words, there are no electrical laws enforcing any particular pattern on the flows, even though hurdles costs and may influence flow directions through an economic signal.
 
@@ -276,11 +276,11 @@ In the general case, such a raw backbone model is a very simplified representati
 
 In a particularly favorable case, various upstream studies, taking account the detailed system characteristics in different operation conditions (generating units outages and/or grid components outages N, N-1 , N-k,…) may prove able to provide a translation of all relevant system limits as a set of additional linear constraints on the power flowing on the graph handled by Antares.
 
-These can therefore be readily translated as ";hourly binding constraints";, without any loss of information. This kind of model will be further referred to as a ";FB model";. Its potential downside is the fact that data may prove to be volatile in short-term studies and difficult to assess in long-term studies.
+These can therefore be readily translated as ";hourly binding constraints";, without any loss of information. This kind of model will be further referred to as a "FB model". Its potential downside is the fact that data may prove to be volatile in short-term studies and difficult to assess in long-term studies.
 
-## 7 Antares as a SCOPF (";KL model";)
+## 7 Antares as a SCOPF ("KL model")
 
-When a full FB model cannot be set up (lack of robust data for the relevant horizon), it remains possible that classical power system studies carried on the detailed system yield sufficient information to enrich the raw backbone model. An occurrence of particular interest is when these studies show that the physics of the active power flow within the real system can be valuably approached by considering that the edges of behave as simple impedances .This model can be further improved if a residual (passive) loop flow is to be expected on the real system when all nodes have a zero net import and export balance (situation typically encountered when individual nodes actually represent large regions of the real system). This passive loop flow should therefore be added to the classical flow dictated by Kirchhoff's rules on the basis of impedances . This model will be further referred to as a ";KL model";. Different categories of binding constraints, presented hereafter, make it possible to implement this feature in and
+When a full FB model cannot be set up (lack of robust data for the relevant horizon), it remains possible that classical power system studies carried on the detailed system yield sufficient information to enrich the raw backbone model. An occurrence of particular interest is when these studies show that the physics of the active power flow within the real system can be valuably approached by considering that the edges of behave as simple impedances .This model can be further improved if a residual (passive) loop flow is to be expected on the real system when all nodes have a zero net import and export balance (situation typically encountered when individual nodes actually represent large regions of the real system). This passive loop flow should therefore be added to the classical flow dictated by Kirchhoff's rules on the basis of impedances . This model will be further referred to as a "KL model". Different categories of binding constraints, presented hereafter, make it possible to implement this feature in and
 
 ### 7.1 Implementation of Kirchhoff's second law
 
