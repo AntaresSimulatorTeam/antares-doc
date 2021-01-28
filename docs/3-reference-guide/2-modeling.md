@@ -172,7 +172,7 @@ The next sections of this document develop the following subjects:
 | \\(R\_\lambda \in \mathbb{R}^T_+\\)              | stored energy level in reservoir \\(\lambda\\)                                                                                       |
 | \\(\mathfrak{R}\_{\lambda_q} \in \mathbb{R}_+\\) | filling level of reservoir layer \\(q\\) at time \\(T\\) (end of the week)                                                           |
 
-## 3.5 Binding constraints
+### 3.5 Binding constraints
 
 In both \\(\mathcal{P}^k\\) and \\(\mathcal{P}\\), the need for a versatile modelling of the power system calls for the introduction of an arbitrary number of linear binding constraints between system's variables throughout the grid, expressed either in terms of hourly power, daily energies or weekly energies.
 These constraints may bind together synchronous flows as well as thermal units power outputs. They may be related to synchronous values or bear on different times.
@@ -190,15 +190,15 @@ Generic notations for binding constraints :
 | ------------                             | -------------                                                                                               |
 | \\(e \in E\\)                            | set of all grid interconnections and thermal clusters. \\(E = L \cup \Theta\\)                              |
 | \\(b \in B\\)                            | binding constraints                                                                                         |
-| \\(B_h \subset B\\) subset of \\(B\\)    | containing the binding constraints between hourly powers                                                    |
-| \\(B_d \subset B\\) subset of \\(B\\)    | containing the binding constraints between daily energies                                                   |
-| \\(B_w \subset B\\) subset of \\(B\\)    | containing the binding constraints between weekly energies                                                  |
+| \\(B_h \subset B\\)                      | subset of \\(B\\) containing the binding constraints between hourly powers                                  |
+| \\(B_d \subset B\\)                      | subset of \\(B\\) containing the binding constraints between daily energies                                 |
+| \\(B_w \subset B\\)                      | subset of \\(B\\) containing the binding constraints between weekly energies                                |
 | \\(\alpha_e^b \in \mathbb{R}\\)          | weight of \\(e\\) (flow within \\(e\\) or output from \\(e\\)) in the expression of constraint \\(b\\)      |
 | \\(o_e^b \in \mathbb{N}\\)               | time offset of \\(e\\) (flow within \\(e\\) or output from \\(e\\)) in the expression of constraint \\(b\\) |
 | \\(u^b \in \mathbb{R}^{\mathrm{size}}\\) | upper bound of binding constraint \\(b\\)                                                                   |
 | \\(l^b \in \mathbb{R}^{\mathrm{size}}\\) | lower bound of binding constraint \\(b\\)                                                                   |
 
-## 3.6 Demand, security uplift, unsupplied and spilled energies
+### 3.6 Demand, security uplift, unsupplied and spilled energies
 | Notation                          | Explanation                                                                            |
 | ------------                      | -------------                                                                          |
 | \\(D_n \in \mathbb{R}^T\\)        | net power demand expressed in node \\(n\\), including must-run generation              |
