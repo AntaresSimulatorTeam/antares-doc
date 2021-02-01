@@ -214,7 +214,45 @@ Generic notations for binding constraints :
 Superscript k is implicit in all subsequent notations of this section (omitted for simplicity&#39;s sake)
 
 ## 4.1 Objective
-FIXME
+$$
+    \min\_{M\_\theta \in \mathrm{Argmin} \Omega\_{\mathrm{unit com}}}(\Omega\_{\mathrm{dispatch}})
+$$
+
+
+with
+
+
+\\(
+\displaystyle \Omega\_{\mathrm{dispatch}} = \Omega\_{\mathrm{transmission}}+\Omega\_{\mathrm{hydro}}+\Omega\_{\mathrm{thermal}}+\Omega\_{\mathrm{unsupplied}}+\Omega\_{\mathrm{spillage}}
+\\)
+
+
+\\(
+\displaystyle \Omega\_{\mathrm{transmission}}=\sum_{l \in L} \gamma_l^+ \cdot F_l^+ + \gamma_l^- \cdot F_l^-
+\\)
+
+
+\\(
+\displaystyle \Omega\_{\mathrm{hydro}} = \sum\_{n \in N} \sum\_{\lambda in \Lambda\_n} (\varepsilon\_\lambda + \varepsilon^*\_\lambda)\cdot(H\_\lambda - \rho\_\lambda \Pi\_\lambda + O\_\lambda) - \sum\_{n \in N} \sum\_{\lambda \in \Lambda\_n}\sum\_{q=1}^Q \eta\_{\lambda\_q} \mathfrak{R}\_{\lambda_q}
+\\)
+
+
+\\(
+\displaystyle \Omega\_{\mathrm{thermal}}=\sum\_{n \in N} \sum\_{\theta \in \Theta\_n} \chi\_\theta \cdot P\_\theta + \sigma\_\theta^+ \cdot M\_\theta^+ + \tau\_\theta \cdot M\_\theta
+\\)
+
+
+\\(
+\displaystyle \Omega\_{\mathrm{unsupplied}}=\sum\_{n \in N} \delta_n^+ \cdot G_n^+
+\\)
+
+
+\\(
+\displaystyle \Omega\_{\mathrm{spillage}}=\sum\_{n \in N} \delta_n^- \cdot G_n^-
+\\)
+
+\\(\Omega\_{\mathrm{unit com}}\\) is the expression derived from \\(\Omega\_{\mathrm{dispatch}}\\) by replacing all variables that depend on the system's state by their equivalent in the uplifted state.
+
 ## 4.2 Constraints related to the nominal system state
 
 Balance between load and generation:
