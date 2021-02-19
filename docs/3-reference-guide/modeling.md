@@ -109,7 +109,7 @@ The next sections of this document develop the following subjects:
 | \\(C_l^+ \in \mathbb{R}^T_+\\)                | initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))          |
 | \\( \overline{C}\_l^+ \in \mathbb{R}^T\_+ \\) | maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
 | \\(C_l^- \in \mathbb{R}^T_+\\)                | initial transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\) and \\(P^k\\))          |
-| \\( \bar{C}^{-}\_l\in \mathbb{R}^T\_{+} \\)   | maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
+| \\( \overline{C}^{-}\_l\in \mathbb{R}^T\_{+} \\)   | maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
 | \\(\Psi_l \in \mathbb{R}_+\\)                 | weekly cost of a maximum capacity investment                                                           |
 | \\(x_l \in [0,1]\\)                           | transmission capacity investment level                                                                 |
 | \\(F_l^+ \in \mathbb{R}^T_+\\)                | power flow through \\(l\\), from \\(u_l\\) to \\(d_l\\)                                                |
