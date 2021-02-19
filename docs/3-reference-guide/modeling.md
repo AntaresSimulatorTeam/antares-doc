@@ -259,15 +259,52 @@ Balance between load and generation:
 
 First Kirchhoff&#39;s law:
 
+\\(
+\displaystyle  \forall n \in N, \sum\_{l \in L\_n^+} F_l - \sum\_{l \in L\_n^-} F_l = \left( G\_n^+ + \sum\_{\lambda \in \Lambda\_n}(H\_\lambda - \Pi\_\lambda) + \sum\_{\theta \ \in \Theta\_n} P\_\theta\right)-(G\_n^-+D\_n)
+\\)
+
+
 On each node, the unsupplied power is bounded by the net positive demand:
+
+\\(
+\displaystyle \forall n \in N, 0 \leq G\_n^+ \leq \max(0, D_n)
+\\)
 
 On each node, the spilled power is bounded by the overall generation of the node (must-run + dispatchable power):
 
+\\(
+\displaystyle \forall n \in N, 0 \leq G_n^- \leq -\min(0, D_n) + \sum\_{\lambda \in \Lambda\_n}H\_\lambda + \sum\_{\theta \ \in \Theta\_n} P\_\theta
+\\)
+
 Flows on the grid:
+
+\\(
+\displaystyle \forall l \in L, 0 \leq F\_l^+ \leq C\_l^+ +(\overline{C}^{+}\_l - C\_l^+)x\_l
+\\)
+
+\\(
+\displaystyle \forall l \in L, 0 \leq F\_l^- \leq C\_l^- +(\overline{C}^{-}\_l - C\_l^-)x\_l
+\\)
+
+\\(
+\displaystyle \forall l \in L, F\_l = F\_l^+ - F\_l^-
+\\)
 
 Flows are bounded by the sum of an initial capacity and of a complement brought by investment
 
 Binding constraints :
+
+\\(
+\displaystyle \forall b \in B\_h, l^b \leq \sum\_{e \in E} \alpha\_e^b (F\_e)\_{\uparrow}^{o\_e^b} \leq u^b
+\\)
+
+\\(
+\displaystyle \forall b \in B\_d, \forall k \in \lbrace 0,\dots,6\rbrace, l^b \leq \sum\_{e \in E} \alpha\_e^b \sum\_{t \in \lbrace 1,\dots,24\rbrace} (F\_e)\_{\uparrow {24k+t}}^{o\_e^b} \leq u^b
+\\)
+
+\\(
+\displaystyle \forall b \in B\_w, l^b \leq \sum\_{e \in E} \alpha\_e^b \sum\_{t \in T} F\_{e\_t} \leq u^b
+\\)
 
 Reservoir-type Hydro power:
 
