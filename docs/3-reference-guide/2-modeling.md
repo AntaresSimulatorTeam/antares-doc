@@ -109,7 +109,7 @@ The next sections of this document develop the following subjects:
 | \\(C_l^+ \in \mathbb{R}^T_+\\)                | initial transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\) and \\(P^k\\))          |
 | \\( \overline{C}\_l^+ \in \mathbb{R}^T\_+ \\) | maximum transmission capacity from \\(u_l\\) to \\(d_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
 | \\(C_l^- \in \mathbb{R}^T_+\\)                | initial transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\) and \\(P^k\\))          |
-| \\( \bar{C}^{-}\_l\in \mathbb{R}^T\_{+} \\)   | maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
+| \\( \overline{C}^{-}\_l\in \mathbb{R}^T\_{+} \\)   | maximum transmission capacity from \\(d_l\\) to \\(u_l\\) (variable of \\(P\\), not used in \\(P^k\\)) |
 | \\(\Psi_l \in \mathbb{R}_+\\)                 | weekly cost of a maximum capacity investment                                                           |
 | \\(x_l \in [0,1]\\)                           | transmission capacity investment level                                                                 |
 | \\(F_l^+ \in \mathbb{R}^T_+\\)                | power flow through \\(l\\), from \\(u_l\\) to \\(d_l\\)                                                |
@@ -136,7 +136,7 @@ The next sections of this document develop the following subjects:
 | \\(l_\theta \in \mathbb{R}_+\\)                               | unit in \\(\theta\\) : minimum stable power output when running                        |
 | \\(u_\theta \in \mathbb{R}_+\\)                               | unit in \\(\theta\\) : maximum net power output when running                           |
 | \\(\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace\\)       | unit in \\(\theta\\) : minumum on time when running                                    |
-| \\(\Delta_\theta^- \in \lbrace1,\dots, \|T\|\rbrace\\)        | unit in \\(\theta\\) : minumum off time when not running                               |
+| \\(\Delta_\theta^- \in \lbrace 1,\dots, \|T\|\rbrace\\)        | unit in \\(\theta\\) : minumum off time when not running                               |
 | \\(\Delta_\theta = \max(\Delta_\theta^-, \Delta_\theta^+) \\) | duration above which both state changes are allowed                                    |
 | \\(M_\theta \in \mathbb{N}^T\\)                               | number of running units in cluster \\(\theta\\)                                        |
 | \\(\overline{M}_\theta \in \mathbb{N}^T\\)                    | maximum number of running units in cluster \\(\theta\\)                                |
@@ -259,25 +259,83 @@ Balance between load and generation:
 
 First Kirchhoff's law:
 
+\\(
+\displaystyle  \forall n \in N, \sum\_{l \in L\_n^+} F_l - \sum\_{l \in L\_n^-} F_l = \left( G\_n^+ + \sum\_{\lambda \in \Lambda\_n}(H\_\lambda - \Pi\_\lambda) + \sum\_{\theta \ \in \Theta\_n} P\_\theta\right)-(G\_n^-+D\_n)
+\\)
+
+
 On each node, the unsupplied power is bounded by the net positive demand:
+
+\\(
+\displaystyle \forall n \in N, 0 \leq G\_n^+ \leq \max(0, D_n)
+\\)
 
 On each node, the spilled power is bounded by the overall generation of the node (must-run + dispatchable power):
 
+\\(
+\displaystyle \forall n \in N, 0 \leq G_n^- \leq -\min(0, D_n) + \sum\_{\lambda \in \Lambda\_n}H\_\lambda + \sum\_{\theta \ \in \Theta\_n} P\_\theta
+\\)
+
 Flows on the grid:
+
+\\(
+\displaystyle \forall l \in L, 0 \leq F\_l^+ \leq C\_l^+ +(\overline{C}^{+}\_l - C\_l^+)x\_l
+\\)
+
+\\(
+\displaystyle \forall l \in L, 0 \leq F\_l^- \leq C\_l^- +(\overline{C}^{-}\_l - C\_l^-)x\_l
+\\)
+
+\\(
+\displaystyle \forall l \in L, F\_l = F\_l^+ - F\_l^-
+\\)
 
 Flows are bounded by the sum of an initial capacity and of a complement brought by investment
 
 Binding constraints :
 
+\\(
+\displaystyle \forall b \in B\_h, l^b \leq \sum\_{e \in E} \alpha\_e^b (F\_e)\_{\uparrow}^{o\_e^b} \leq u^b
+\\)
+
+\\(
+\displaystyle \forall b \in B\_d, \forall k \in \lbrace 0,\dots,6\rbrace, l^b \leq \sum\_{e \in E} \alpha\_e^b \sum\_{t \in \lbrace 1,\dots,24\rbrace} (F\_e)\_{\uparrow {24k+t}}^{o\_e^b} \leq u^b
+\\)
+
+\\(
+\displaystyle \forall b \in B\_w, l^b \leq \sum\_{e \in E} \alpha\_e^b \sum\_{t \in T} F\_{e\_t} \leq u^b
+\\)
+
 Reservoir-type Hydro power:
 
 The energy generated throughout the optimization period is bounded
 
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \underline{W}\_{\lambda} \ leq \sum\_{t\in T} H\_{\lambda\_t} \leq \overline{W}\_{\lambda}
+\\)
+
+FIXME : RHS
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \sum\_{t\in T} H\_{\lambda\_t} - \sum\_{t\in T} \rho\_t \Pi\_{\lambda\_t} = \overline{W}\_{\lambda}
+\\)
+
 Instantaneous generating power is bounded
+
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \underline{H}\_{\lambda} \leq H\_{\lambda} \leq \overline{H}\_{\lambda}
+\\)
 
 Intra-daily power modulations are bounded
 
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \forall k \in \lbrace 1, \ldots, 6 \rbrace, \frac{\max\_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H\_{\lambda\_t}}{\sum\_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H\_{\lambda\_t}} \leq r\_{\lambda}
+\\)
+
 Instantaneous pumping power is bounded
+
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, 0 \leq \Pi\_{\lambda} \leq \overline{\Pi}\_{\lambda}
+\\)
 
 Reservoir level evolution depends on generating power, pumping power, pumping efficiency, natural inflows and overflows
 
