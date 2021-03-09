@@ -136,7 +136,7 @@ The next sections of this document develop the following subjects:
 | \\(l_\theta \in \mathbb{R}_+\\)                               | unit in \\(\theta\\) : minimum stable power output when running                        |
 | \\(u_\theta \in \mathbb{R}_+\\)                               | unit in \\(\theta\\) : maximum net power output when running                           |
 | \\(\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace\\)       | unit in \\(\theta\\) : minumum on time when running                                    |
-| \\(\Delta_\theta^- \in \lbrace1,\dots, \|T\|\rbrace\\)        | unit in \\(\theta\\) : minumum off time when not running                               |
+| \\(\Delta_\theta^- \in \lbrace 1,\dots, \|T\|\rbrace\\)        | unit in \\(\theta\\) : minumum off time when not running                               |
 | \\(\Delta_\theta = \max(\Delta_\theta^-, \Delta_\theta^+) \\) | duration above which both state changes are allowed                                    |
 | \\(M_\theta \in \mathbb{N}^T\\)                               | number of running units in cluster \\(\theta\\)                                        |
 | \\(\overline{M}_\theta \in \mathbb{N}^T\\)                    | maximum number of running units in cluster \\(\theta\\)                                |
