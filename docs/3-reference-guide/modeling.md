@@ -310,11 +310,32 @@ Reservoir-type Hydro power:
 
 The energy generated throughout the optimization period is bounded
 
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \underline{W}\_{\lambda} \ leq \sum\_{t\in T} H\_{\lambda\_t} \leq \overline{W}\_{\lambda}
+\\)
+
+FIXME : RHS
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \sum\_{t\in T} H\_{\lambda\_t} - \sum\_{t\in T} \rho\_t \Pi\_{\lambda\_t} = \overline{W}\_{\lambda}
+\\)
+
 Instantaneous generating power is bounded
+
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \underline{H}\_{\lambda} \leq H\_{\lambda} \leq \overline{H}\_{\lambda}
+\\)
 
 Intra-daily power modulations are bounded
 
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, \forall k \in \lbrace 1, \ldots, 6 \rbrace, \frac{\max\_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H\_{\lambda\_t}}{\sum\_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H\_{\lambda\_t}} \leq r\_{\lambda}
+\\)
+
 Instantaneous pumping power is bounded
+
+\\(
+\displaystyle \forall n \in N, \forall \lambda \in \Lambda\_n, 0 \leq \Pi\_{\lambda} \leq \overline{\Pi}\_{\lambda}
+\\)
 
 Reservoir level evolution depends on generating power, pumping power, pumping efficiency, natural inflows and overflows
 
