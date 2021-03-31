@@ -1,10 +1,10 @@
-site_name: Antares
+site_name: Antares Docs
 theme:
   name: material
   logo: assets/Icone_orange.png
   favicon: assets/Icone.png
   palette:
-    primary: blue
+    primary: '#112446'
   features:
     #- header.autohide
     #- navigation.sections
@@ -14,9 +14,14 @@ theme:
 plugins:
   - search
 
-navbar:
-  - Home: index.md
-  - Aide: aide.md
+
+# nav:
+#   - Home: index.md
+#   - Reference: 
+#     - 'Reference guide': '3-reference-guide/1-reference-guide.md'
+#     - 'Modeling': '3-reference-guide/2-modeling.md'
+#     - 'Resolution algorithm': '3-reference-guide/2-resolution-algorithm.md'
+#   - 'Adequacy patch': '4-adequacy-patch'
 
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML

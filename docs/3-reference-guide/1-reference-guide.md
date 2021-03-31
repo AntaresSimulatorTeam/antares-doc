@@ -1,3 +1,6 @@
+---
+title: Reference Guide
+---
 
 # General reference guide v7.2.0
 
