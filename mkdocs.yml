@@ -1,5 +1,18 @@
-site_name: My Docs
-theme: readthedocs
+site_name: Antares
+theme:
+  name: material
+  logo: assets/Icone_orange.png
+  favicon: assets/Icone.png
+  palette:
+    primary: blue
+  features:
+    #- header.autohide
+    #- navigation.sections
+    #- toc.separate
+    - navigation.instant
+
+plugins:
+  - search
 
 navbar:
   - Home: index.md
@@ -11,5 +24,6 @@ extra_javascript:
 markdown_extensions:
     - attr_list
     - toc:
-        permalink: #
+        permalink: true
+        toc_depth: 3
 
