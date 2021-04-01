@@ -1,7 +1,7 @@
 site_name: Antares Docs
 theme:
   name: material
-  logo: assets/Icone_orange.png
+  logo: assets/logo.png
   favicon: assets/Icone.png
   palette:
     primary: '#112446'
@@ -14,15 +14,26 @@ theme:
 plugins:
   - search
 
+extra:
+  version:
+    provider: mike
 
 nav:
   - Home: index.md
-  - Reference: 
-    - 'Reference guide': '3-reference-guide/1-reference-guide.md'
+  - 'Reference guide': '3-reference-guide/1-reference-guide.md'
+  - 'Packages R':
+    - 'Overview': '5-r-packages/overview.md'
+    - 'Adequacy patch': 
+      - 'Introduction': '4-adequacy-patch/1-Introduction.md'
+      - 'Principles': '4-adequacy-patch/2-principes.md'
+      - 'Modelisation': '4-adequacy-patch/3-modelisation.md'
+      - 'R Package': '4-adequacy-patch/4-r-package.md'
+  - 'Technical Reference':
     - 'Modeling': '3-reference-guide/2-modeling.md'
     - 'Resolution algorithm': '3-reference-guide/3-resolution-algorithm.md'
-  - 'Adequacy patch': '4-adequacy-patch'
 
+extra_css:
+  - stylesheets/extra.css
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
