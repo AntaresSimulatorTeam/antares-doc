@@ -4,11 +4,16 @@ theme:
   name: material
   logo: assets/logo.png
   favicon: assets/Icone.png
+  prev_next_buttons_location: none
   features:
-    #- header.autohide
-    #- navigation.sections
-    #- toc.separate
     - navigation.instant
+    - navigation.top
+  #  - navigation.sections
+  #   - header.autohide
+  #   - toc.separate
+
+extra:
+  generator: false
 
 plugins:
   - search
@@ -41,3 +46,4 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
 
+copyright: Copyright &copy; 2007 - 2021 RTE
