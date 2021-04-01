@@ -1,10 +1,9 @@
 site_name: Antares Docs
+repo_url: https://github.com/AntaresSimulatorTeam/Antares_Simulator
 theme:
   name: material
   logo: assets/logo.png
   favicon: assets/Icone.png
-  palette:
-    primary: '#112446'
   features:
     #- header.autohide
     #- navigation.sections
@@ -34,12 +33,14 @@ nav:
 
 extra_css:
   - stylesheets/extra.css
+
 extra_javascript:
-    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 markdown_extensions:
-    - attr_list
-    - toc:
-        permalink: true
-        toc_depth: 3
+  - attr_list
+  - toc:
+      permalink: true
+      toc_depth: 3
 
