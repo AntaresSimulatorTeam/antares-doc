@@ -13,10 +13,6 @@ theme:
 plugins:
   - search
 
-extra:
-  version:
-    provider: mike
-
 nav:
   - Home: index.md
   - 'Reference guide': '3-reference-guide/1-reference-guide.md'
