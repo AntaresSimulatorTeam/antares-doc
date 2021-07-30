@@ -20,6 +20,7 @@ plugins:
 
 nav:
   - Home: index.md
+  - 'Getting Started': '2-getting-started/getting-started.md'
   - 'Reference guide': '3-reference-guide/1-reference-guide.md'
   - 'Packages R':
     - 'Overview': '5-r-packages/overview.md'
