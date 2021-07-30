@@ -1,8 +1,3 @@
----
-output:
-  html_document: default
-  word_document: default
----
 # Adequacy patch principles and associated rules
 
 In the rest of the paper, the following variables are introduced:
