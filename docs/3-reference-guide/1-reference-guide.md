@@ -1,3 +1,10 @@
+---
+title: "Reference Guide"
+output:
+  html_document:
+    df_print: paged
+---
+
 # General reference guide v7.2.0
 
 ## 1 Introduction
@@ -1150,7 +1157,7 @@ _In the expressions of expectation and variance, Γ(x) is the standard Euler Fun
 #
 
 |                                | **TS Gen. Parameters**        ||                    |
-| ------------------------------ | --------- | ------------------ |
+| ------------------------------ | --------- | ------------------ |                    |
 | _**Law**_                      | θ         | μ                  | **Corr (Xt,Xt+h)** |
 | Pure exponential decay         | θ \&gt; 0 | μ=1                | exp( - θh)         |
 | Smoothed exponential decay(\*) | θ \&gt; 0 | 1 \&lt; μ \&lt; 24 | Phi(θ,μ,h)         |
