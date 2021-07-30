@@ -666,11 +666,10 @@ parallelAggregMcall(opts)
 aggregateResult(opts, filtering = TRUE,
                 selected = list(areas = "at"),
                 timestep = "annual")
-```
-/%
+<!---
 ## my-vignette
 
 ### Bonjour tout le monde
 
 Ma super vignette
-%/
+-->
