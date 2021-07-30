@@ -1,12 +1,3 @@
----
-output:
-  word_document: default
-  html_document: default
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # R package : AdequacyPatch
 
 ## References
