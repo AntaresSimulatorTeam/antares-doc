@@ -1,10 +1,3 @@
----
-title: "Reference Guide"
-output:
-  html_document:
-    df_print: paged
----
-
 # General reference guide v7.2.0
 
 ## 1 Introduction
