@@ -1718,69 +1718,69 @@ _Extreme cases are:_
   _The hydro storage energy monthly and weekly profiles of each zone z do not depend at all on the local demand and must-run generation in z_
   
 
-$L^*_z$ :  _Time-series of &quot;net&quot; load for zone , defined as:_ $L^*_z = L_z - M_z$
+\\(L^\*_z\\) :  _Time-series of &quot;net&quot; load for zone , defined as:_ \\(L^\*_z = L_z - M_z\\)
 
 \\(\\Lambda_z\\) : _Time-series of &quot;weighted&quot; load for zone , defined as:_  \\(\\Lambda_z = A^t L^*_z\\)
 
-__All following parameters are related to the generic zone__ $z$
+__All following parameters are related to the generic zone__ \\(z\\)
 
-$\alpha$ : _&quot;inter-monthly generation breakdown&quot; parameter_
+\\(\\alpha\\) : _&quot;inter-monthly generation breakdown&quot; parameter_
 
-$\beta$ : &quot;_inter-daily generation breakdown&quot; parameter_
+\\(\\beta\\) : &quot;_inter-daily generation breakdown&quot; parameter_
 
-$\phi$ : &quot;_follow-load&quot; parameter_
+\\(\\phi\\) : &quot;_follow-load&quot; parameter_
 
-$\mu$ : &quot;_reservoir-management&quot; parameter_
+\\(\\mu\\) : &quot;_reservoir-management&quot; parameter_
 
-$\Sigma$ : _Reservoir size_
+\\(\\Sigma\\) : _Reservoir size_
 
-$\overline{S_d}$ : _Reservoir maximum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
+\\(\\overline{S_d}\\) : _Reservoir maximum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
 
-$S_d$ : _Reservoir minimum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
+\\(S_d\\) : _Reservoir minimum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
 
-$\overline{S_0}$ : _Reservoir initial level at the beginning of the first day of the &quot;hydro-year&quot;_
+\\(\\overline{S_0}\\) : _Reservoir initial level at the beginning of the first day of the &quot;hydro-year&quot;_
 
-$I_d$ : _Natural inflow of energy to the reservoir during day d_
+\\(I_d\\) : _Natural inflow of energy to the reservoir during day d_
 
-$I_m$ : _Natural inflow of energy to the reservoir during month m (sum of )_
+\\(I_m\\) : _Natural inflow of energy to the reservoir during month m (sum of )_
 
-$\overline{W_d}$ : _Maximum energy that can be generated on day d (standard credit)_
+\\(\\overline{W_d}\\) : _Maximum energy that can be generated on day d (standard credit)_
 
-__All following variables, defined for both stages, are related to the generic zone__ $z$
+__All following variables, defined for both stages, are related to the generic zone__ \\(z\\)
 
-$S^k_d$ : _Reservoir level at the end of day d, at the end of stage k of pre-allocation_
+\\(S^k_d\\) : _Reservoir level at the end of day d, at the end of stage k of pre-allocation_
 
-$S^k_m$ : _Reservoir level at the end of month m, at the end of stage k of pre-allocation_
+\\(S^k_m\\) : _Reservoir level at the end of month m, at the end of stage k of pre-allocation_
 
-$O^k_d$ : _Overflow from the reservoir on day d, at the end of stage k of pre-allocation (inflow in excess to an already full reservoir)_
+\\(O^k_d\\) : _Overflow from the reservoir on day d, at the end of stage k of pre-allocation (inflow in excess to an already full reservoir)_
 
-$W^k_d$ : _Energy to generate on day d, at the end of stage k of pre-allocation_
+\\(W^k_d\\) : _Energy to generate on day d, at the end of stage k of pre-allocation_
 
-$W^k_m$ : _Energy to generate on month m, at the end of stage k of pre-allocation_
+\\(W^k_m\\) : _Energy to generate on month m, at the end of stage k of pre-allocation_
 
 _Following variables and parameters are local to linear optimization problems_ _M &amp; D(m)_ _solved within the heuristic. For the sake of clarity, the same generic index is used for all time steps, knowing that in_ _M_ _there are 12 monthly time-steps, while in_ _D(m)_ _there are from 28 to 31 daily time-steps. Costs given to these variables are chosen so as to enforce a logical hierarchy of penalties (letting the reservoir overflow is worse than violating rule curves, which is worse than deviating from the generation objective assessed in stage 1, etc.)_
 
-$Y$ : _Generation deficit at the end of the period, as compared to the objective aimed at_
+\\(Y\\) : _Generation deficit at the end of the period, as compared to the objective aimed at_
 
-$O_t$ : _Overflow from the reservoir on time step t_
+\\(O_t\\) : _Overflow from the reservoir on time step t_
 
-$G_t,\overline{G_t}$ : _Optimal generation and maximum generation on time step t_
+\\(G_t,\overline{G_t}\\) : _Optimal generation and maximum generation on time step t_
 
-$T_t$ : _Generation objective assessed in the first stage, for time step t (_ $W^1_m$ _or_ $W^1_d$ _)_
+\\(T_t\\) : _Generation objective assessed in the first stage, for time step t (_ \\(W^1_m\\) _or_ \\(W^1_d\\) _)_
 
-$S_t,\overline{S_t},\underline{S_t}$ : _Optimal stock level, maximum level, minimum level at the end of time step t_
+\\(S_t,\overline{S_t},\underline{S_t}\\) : _Optimal stock level, maximum level, minimum level at the end of time step t_
 
-$I_t$ : _Natural inflow on time step t_
+\\(I_t\\) : _Natural inflow on time step t_
 
-$D_t$ : _Deviation (absolute difference) between target reached and initial aim_
+\\(D_t\\) : _Deviation (absolute difference) between target reached and initial aim_
 
-$\Delta$ : _Maximum deviation throughout the period_
+\\(\\Delta\\) : _Maximum deviation throughout the period_
 
-$V^+_t$ : _Amplitude of the violation of the upper rule curve at time step t_
+\\(V^+_t\\) : _Amplitude of the violation of the upper rule curve at time step t_
 
-$V^-_t$ : _Amplitude of the violation of the lower rule curve at time step t_
+\\(V^-_t\\) : _Amplitude of the violation of the lower rule curve at time step t_
 
-$\Psi$ : _Maximum violation of lower rule curve throughout the period_
+\\(\\Psi\\) : _Maximum violation of lower rule curve throughout the period_
 
 
 **General heuristic for each zone :**
@@ -1801,8 +1801,8 @@ End\\)
 
 _Note: In the formulation of the optimal hydro-thermal unit-commitment and dispatch problem (see dedicated document), the reference hydro energy used to set the right hand sides of hydro- constraints depends on the value chosen for the optimization preference &quot;simplex range&quot; and is defined as follows:_
 
-- _Daily : for each day_ $d$ _of week_ $w$ _:_ $HIT=W^2_d$
-- _Weekly : for week_ $w$ _:_ $HIT=W^2_d$
+- _Daily : for each day_ \\(d\\) _of week_ \\(w\\) _:_ \\(HIT=W^2_d\\)
+- _Weekly : for week_ \\)(\\) _:_ \\(HIT=W^2_d\\)
 
 **Optimization problem** _**M**_ **:**
 
