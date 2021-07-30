@@ -1,33 +1,55 @@
-# R package : AdequacyPatch
-## References
-**Title:** Applies the Adequacy Patch Curtailment Sharing Rules to an Antares Study
+---
+output:
+  word_document: default
+  html_document: default
+editor_options: 
+  markdown: 
+    wrap: 72
+---
 
-**Description:** This package provides tools to apply the Adequacy patch on an Antares study. It provides functions to import:  - an Antares study, and in particular the time-steps where at least one country is in loss of load - the flow-based related files (time-serires, weigths and second-members) - the NTC links, formatted like the flow-based ones It also defines the main Adequacy patch function, taking the previously imported data and applying the following rules:  - Local matching: a country in loss of load cannot be globally exporting (it can on certain of its borders though) - Curtailment sharing: the "curtailment ratios" of countries in loss of load should be relatively close The optimization process of the patch is delegated to the optimization modelling langugage AMPL, and to the solver XPRESS.
+# R package : AdequacyPatch
+
+## References
+
+**Title:** Applies the Adequacy Patch Curtailment Sharing Rules to an
+Antares Study
+
+**Description:** This package provides tools to apply the Adequacy patch
+on an Antares study. It provides functions to import: - an Antares
+study, and in particular the time-steps where at least one country is in
+loss of load - the flow-based related files (time-series, weights and
+second-members) - the NTC links, formatted like the flow-based ones It
+also defines the main Adequacy patch function, taking the previously
+imported data and applying the following rules: - Local matching: a
+country in loss of load cannot be globally exporting (it can on certain
+of its borders though) - Curtailment sharing: the "curtailment ratios"
+of countries in loss of load should be relatively close The optimization
+process of the patch is delegated to the optimization modelling language
+AMPL, and to the solver XPRESS.
 
 **Version:** 0.0.0.9000
 
 **License:** GPL-3
 
-**Imports:** `data.table`, `antaresRead`, `stats`, `rAMPL`, `doParallel`, `plyr`, `antaresEditObject`, `fs`, `pipeR`
-
+**Imports:** `data.table`, `antaresRead`, `stats`, `rAMPL`,
+`doParallel`, `plyr`, `antaresEditObject`, `fs`, `pipeR`
 
 ### `extract_FB_ptdf`
-**Extracts the Power Transmission and Distribution Flows on each CB for each
-country for the flow-based domain of a study.
-It also converts the initial PTDFs, given for each link in PTDFs fiven for
-each country.**
 
+**Extracts the Power Transmission and Distribution Flows on each CB for
+each country for the flow-based domain of a study. It also converts the
+initial PTDFs, given for each link in PTDFs given for each country.**
 
+**Usage:**
 
-
- **Usage:**
-```
+``` {.r}
 extract_FB_ptdf(sim_opts = antaresRead::simOptions())
 ```
+
 **Arguments**
 
-- `sim_opts`:  (list) Simulation options as given by antaresRead::setSimulationPath
-
+-   `sim_opts`: (list) Simulation options as given by
+    antaresRead::setSimulationPath
 
 **Value**
 
@@ -35,27 +57,27 @@ extract_FB_ptdf(sim_opts = antaresRead::simOptions())
 critical branch
 
 **Examples**
-```
+
+``` {.r}
 sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
 
 ptdf_FB_data = extract_FB_ptdf(sim_opts=sim_opts)
 ```
 
-
 ### `extract_FB_ts`
+
 **Extracts the flow-based time-series from an Antares study**
 
+**Usage:**
 
-
-
- **Usage:**
-```
+``` {.r}
 extract_FB_ts(sim_opts = antaresRead::simOptions())
 ```
+
 **Arguments**
 
-- `sim_opts`:  (list) Simulation options as given by antaresRead::setSimulationPath
-
+-   `sim_opts`: (list) Simulation options as given by
+    antaresRead::setSimulationPath
 
 **Value**
 
@@ -63,22 +85,24 @@ extract_FB_ts(sim_opts = antaresRead::simOptions())
 Monte-Carlo year of the simulation.
 
 **Examples**
-```
+
+``` {.r}
 sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
 
 ts_FB_data = extract_FB_ts(sim_opts=sim_opts)
 ```
 
-
 ### `extract_patch`
-**Extracts the data relevant for the Adequacy patch for a simulation output.**
 
-It selects the time-steps in an ANtares study when at least one country is in
-loss of load.
+**Extracts the data relevant for the Adequacy patch for a simulation
+output.**
 
+It selects the time-steps in an ANtares study when at least one country
+is in loss of load.
 
- **Usage:**
-```
+**Usage:**
+
+``` {.r}
 extract_patch(
   areas,
   virtual_areas,
@@ -86,16 +110,21 @@ extract_patch(
   sim_opts = antaresRead::simOptions()
 )
 ```
+
 **Arguments**
 
-- `areas`:  (string or vector of strings) what areas the patch should be applied on. Default: ""
+-   `areas`: (string or vector of strings) what areas the patch should
+    be applied on. Default: ""
 
-- `virtual_areas`:  (string or vector of strings) Virtual areas of the study, excluded from the patch. Default: NULL
+-   `virtual_areas`: (string or vector of strings) Virtual areas of the
+    study, excluded from the patch. Default: NULL
 
-- `mcYears`:  (numeric or vector of numeric) The Monte-Carlo years to extract from. The special value "all" extracts all Monte-Carlo Years. Default: "all"
+-   `mcYears`: (numeric or vector of numeric) The Monte-Carlo years to
+    extract from. The special value "all" extracts all Monte-Carlo
+    Years. Default: "all"
 
-- `sim_opts`:  (list) Simulation options as given by antaresRead::setSimulationPath
-
+-   `sim_opts`: (list) Simulation options as given by
+    antaresRead::setSimulationPath
 
 **Value**
 
@@ -103,26 +132,29 @@ extract_patch(
 the DENS (domestic Energy Not Served) and DMRG (Domestic Margin).
 
 **Examples**
-```
+
+``` {.r}
 sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
 areas = antaresRead::getAreas()
 
 patch_data = extract_patch(areas=areas, mcYears=c(1, 3), sim_opts=sim_opts)
 ```
 
-
 ### `adq_patch`
+
 **Applies the Adequacy patch on given DENS and DMRG for countries and
 constrained by the flow_based and NTC data.**
 
-The Adequacy patch is a post-processing phase on an Antares study simulation,
-applying the local-matching and curtailment sharing rules as defined by the
-EUPHEMIA to correct situations with at least one country in loss of load.
+The Adequacy patch is a post-processing phase on an Antares study
+simulation, applying the local-matching and curtailment sharing rules as
+defined by the EUPHEMIA to correct situations with at least one country
+in loss of load.
 
-*Details:*This function does not solve anything itself, it sets up and transfers the
-relevant data to an AMPL model which then solves it using XPRESS.
- **Usage:**
-```
+*Details:*This function does not solve anything itself, it sets up and
+transfers the relevant data to an AMPL model which then solves it using
+XPRESS. **Usage:**
+
+``` {.r}
 adq_patch(
   patch_data,
   ts_FB_data,
@@ -132,20 +164,24 @@ adq_patch(
   ptdf_NTC_data
 )
 ```
+
 **Arguments**
 
-- `patch_data`:  (data.table) DENS and DMRG for each country at each time-step
+-   `patch_data`: (data.table) DENS and DMRG for each country at each
+    time-step
 
-- `ts_FB_data`:  (data.table) typical day for each day
+-   `ts_FB_data`: (data.table) typical day for each day
 
-- `capacity_FB_data`:  (data.table) Capacity on each critical branch in the flow-based domain depeding on the typical day
+-   `capacity_FB_data`: (data.table) Capacity on each critical branch in
+    the flow-based domain depeding on the typical day
 
-- `capacity_NTC_data`:  (data.table) Maximum transfer capacity of each NTC border, mimicking capacity_FB_data
+-   `capacity_NTC_data`: (data.table) Maximum transfer capacity of each
+    NTC border, mimicking capacity_FB_data
 
-- `ptdf_FB_data`:  (data.table) PTDF for each country on each critical branch
+-   `ptdf_FB_data`: (data.table) PTDF for each country on each critical
+    branch
 
-- `ptdf_NTC_data`:  (data.table) Mimics ptdf_FB_data for each border
-
+-   `ptdf_NTC_data`: (data.table) Mimics ptdf_FB_data for each border
 
 **Value**
 
@@ -153,7 +189,8 @@ adq_patch(
 at each time-step
 
 **Examples**
-```
+
+``` {.r}
 sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
 areas = antaresRead::getAreas()
 
@@ -171,21 +208,21 @@ ptdf_FB_data, links_NTC_data$ptdf
 )
 ```
 
-
 ### `extract_FB_capacity`
-**Extracts the maximum transfer capacity on each CB for the flow-based domain of a study**
 
+**Extracts the maximum transfer capacity on each CB for the flow-based
+domain of a study**
 
+**Usage:**
 
-
- **Usage:**
-```
+``` {.r}
 extract_FB_capacity(sim_opts = antaresRead::simOptions())
 ```
+
 **Arguments**
 
-- `sim_opts`:  (list) Simulation options as given by antaresRead::setSimulationPath
-
+-   `sim_opts`: (list) Simulation options as given by
+    antaresRead::setSimulationPath
 
 **Value**
 
@@ -193,21 +230,20 @@ extract_FB_capacity(sim_opts = antaresRead::simOptions())
 branch on each typical day and for each hour.
 
 **Examples**
-```
+
+``` {.r}
 sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
 
 capacity_FB_data = extract_FB_capacity(sim_opts=sim_opts)
 ```
 
-
 ### `adq_write`
+
 **Applies the Adequacy and write study by mc year**
 
+**Usage:**
 
-
-
- **Usage:**
-```
+``` {.r}
 adq_write(
   sim_opts,
   areas,
@@ -221,55 +257,59 @@ adq_write(
   thresholdFilter
 )
 ```
+
 **Arguments**
 
-- `sim_opts`:  Simulation options, as returned by antaresRead::setSimulationPath
+-   `sim_opts`: Simulation options, as returned by
+    antaresRead::setSimulationPath
 
-- `areas`:  (string or vector of strings) what areas the patch should be applied on. Default: ""
+-   `areas`: (string or vector of strings) what areas the patch should
+    be applied on. Default: ""
 
-- `virtual_areas`:  (string or vector of strings) Virtual areas of the study, excluded from the patch. Default: NULL
+-   `virtual_areas`: (string or vector of strings) Virtual areas of the
+    study, excluded from the patch. Default: NULL
 
-- `links_NTC_data`:  NTC
+-   `links_NTC_data`: NTC
 
-- `ptdf_FB_data`:  ptdf
+-   `ptdf_FB_data`: ptdf
 
-- `capacity_FB_data`:  capa
+-   `capacity_FB_data`: capa
 
-- `ts_FB_data`:  ts
+-   `ts_FB_data`: ts
 
-- `mcYears`:  (numeric or vector of numeric) The Monte-Carlo years to extract from. The special value "all" extracts all Monte-Carlo Years. Default: "all"
+-   `mcYears`: (numeric or vector of numeric) The Monte-Carlo years to
+    extract from. The special value "all" extracts all Monte-Carlo
+    Years. Default: "all"
 
-- `antaresfbzone`:  name for new antares area
-
+-   `antaresfbzone`: name for new antares area
 
 **Value**
 
-
-
 **Examples**
-```
 
+``` {.r}
 ```
-
 
 ### `.single_time_step`
+
 **Calls the AMPL Adequacy patch at each time-step**
 
+**Usage:**
 
-
-
- **Usage:**
-```
+``` {.r}
 .single_time_step(ampl, patch, capacity)
 ```
+
 **Arguments**
 
-- `ampl`:  (rAMPL::AMPL) AMPL object, with model and PTDF already loaded
+-   `ampl`: (rAMPL::AMPL) AMPL object, with model and PTDF already
+    loaded
 
-- `patch`:  (data.table) Relevant data form the simulation for this time-step
+-   `patch`: (data.table) Relevant data form the simulation for this
+    time-step
 
-- `capacity`:  (data.table) Limit capacity on each CB, containing both flow-based and NTC data
-
+-   `capacity`: (data.table) Limit capacity on each CB, containing both
+    flow-based and NTC data
 
 **Value**
 
@@ -277,21 +317,22 @@ adq_write(
 at this time-step
 
 **Examples**
-```
 
+``` {.r}
 ```
-
 
 ### `apply_adq_patch`
+
 **Applies the Adequacy Patch on a given simulation**
 
-The Adequacy patch is a post-processing phase on an Antares study simulation,
-applying the local-matching and curtailment sharing rules as defined by the
-EUPHEMIA to correct situations with at least one country in loss of load.
+The Adequacy patch is a post-processing phase on an Antares study
+simulation, applying the local-matching and curtailment sharing rules as
+defined by the EUPHEMIA to correct situations with at least one country
+in loss of load.
 
+**Usage:**
 
- **Usage:**
-```
+``` {.r}
 apply_adq_patch(
   sim_opts = antaresRead::simOptions(),
   areas = "all",
@@ -303,24 +344,29 @@ apply_adq_patch(
   ts_FB_data = NULL
 )
 ```
+
 **Arguments**
 
-- `sim_opts`:  (string) Simulation options, as returned by antaresRead::setSimulationPath
+-   `sim_opts`: (string) Simulation options, as returned by
+    antaresRead::setSimulationPath
 
-- `areas`:  (string or vector of strings) what areas the patch should be applied on. Default: ""
+-   `areas`: (string or vector of strings) what areas the patch should
+    be applied on. Default: ""
 
-- `virtual_areas`:  (string or vector of strings) Virtual areas of the study, excluded from the patch. Default: NULL
+-   `virtual_areas`: (string or vector of strings) Virtual areas of the
+    study, excluded from the patch. Default: NULL
 
-- `mcYears`:  (numeric or vector of numeric) The Monte-Carlo years to extract from. The special value "all" extracts all Monte-Carlo Years. Default: "all"
+-   `mcYears`: (numeric or vector of numeric) The Monte-Carlo years to
+    extract from. The special value "all" extracts all Monte-Carlo
+    Years. Default: "all"
 
-- `links_NTC_data`:  links_NTC_data
+-   `links_NTC_data`: links_NTC_data
 
-- `ptdf_FB_data`:  ptdf_FB_data
+-   `ptdf_FB_data`: ptdf_FB_data
 
-- `capacity_FB_data`:  capacity_FB_data
+-   `capacity_FB_data`: capacity_FB_data
 
-- `ts_FB_data`:  ts_FB_data
-
+-   `ts_FB_data`: ts_FB_data
 
 **Value**
 
@@ -328,19 +374,17 @@ apply_adq_patch(
 at each time-step
 
 **Examples**
-```
 
+``` {.r}
 ```
-
 
 ### `run_adq`
+
 **Applies the Adequacy Patch on a study**
 
+**Usage:**
 
-
-
- **Usage:**
-```
+``` {.r}
 run_adq(
   opts,
   areas,
@@ -353,33 +397,37 @@ run_adq(
   thresholdFilter = 1e+06
 )
 ```
+
 **Arguments**
 
-- `opts`:  Simulation options, as returned by antaresRead::setSimulationPath
+-   `opts`: Simulation options, as returned by
+    antaresRead::setSimulationPath
 
-- `areas`:  (string or vector of strings) what areas the patch should be applied on. Default: ""
+-   `areas`: (string or vector of strings) what areas the patch should
+    be applied on. Default: ""
 
-- `virtual_areas`:  (string or vector of strings) Virtual areas of the study, excluded from the patch. Default: NULL
+-   `virtual_areas`: (string or vector of strings) Virtual areas of the
+    study, excluded from the patch. Default: NULL
 
-- `mcYears`:  (numeric or vector of numeric) The Monte-Carlo years to extract from. The special value "all" extracts all Monte-Carlo Years. Default: "all"
+-   `mcYears`: (numeric or vector of numeric) The Monte-Carlo years to
+    extract from. The special value "all" extracts all Monte-Carlo
+    Years. Default: "all"
 
-- `ext`:  name extand for output study.
+-   `ext`: name extand for output study.
 
-- `nbcl`:  numeric, number of process in cluster
+-   `nbcl`: numeric, number of process in cluster
 
-- `antaresfbzone`:  antares names of flowbased zone
+-   `antaresfbzone`: antares names of flowbased zone
 
-- `showProgress`:  show progress
+-   `showProgress`: show progress
 
-- `thresholdFilter`:  filtering to important modification
-
+-   `thresholdFilter`: filtering to important modification
 
 **Value**
 
-
-
 **Examples**
-```
+
+``` {.r}
 opts <- setSimulationPath("path", 4)
 
 areas = c("fr", "lu", "de", "cz", "pl", "ch", "at", "itn", "nl", "be", "es", "non", "se1", "model_description_fb_adq")
@@ -387,111 +435,141 @@ virtual_areas = getAreas(select = "_", regexpSelect = TRUE, exclude = c("model_d
 run_adq(opts, areas, virtual_areas, 1)
 ```
 
-
 ### `extract_NTC_links`
-**Extracts the NTC links data from a study and formats the like the flow-based data**
 
+**Extracts the NTC links data from a study and formats the like the
+flow-based data**
 
+**Usage:**
 
-
- **Usage:**
-```
+``` {.r}
 extract_NTC_links(areas = NULL, sim_opts = antaresRead::simOptions())
 ```
+
 **Arguments**
 
-- `areas`:  (string or vector of strings) Areas between which we want to extract the links.
+-   `areas`: (string or vector of strings) Areas between which we want
+    to extract the links.
 
-- `sim_opts`:  (list) Simulation options as given by antaresRead::setSimulationPath
-
+-   `sim_opts`: (list) Simulation options as given by
+    antaresRead::setSimulationPath
 
 **Value**
 
-(list) such that $capacity is a data.table containing the maximum
-transfer capacity for each link (divided in Direct and Indirect)
-and $ptdf is a data.table containing, for each link, a PTDF of 1 for the
-origin country of the link if it is direct, or for the destination country
-if it is indirect.
+(list) such that \$capacity is a data.table containing the maximum
+transfer capacity for each link (divided in Direct and Indirect) and
+\$ptdf is a data.table containing, for each link, a PTDF of 1 for the
+origin country of the link if it is direct, or for the destination
+country if it is indirect.
 
 **Examples**
-```
+
+``` {.r}
 sim_opts = antaresRead::setSimulationPath("path/to/my/simulation")
 areas = antaresRead::getAreas()
 
 links_NTC_data = extract_NTC_links(areas=areas, sim_opts=sim_opts)
 ```
 
-
 ### `.pos`
+
 **Computes the positive part of a numeric.**
 
-The positive part is defined as follows:
-.pos(x) = x if x >= 0
-.pos(x) = 0 otherwise
+The positive part is defined as follows: .pos(x) = x if x \>= 0 .pos(x)
+= 0 otherwise
 
+**Usage:**
 
- **Usage:**
-```
+``` {.r}
 .pos(x)
 ```
+
 **Arguments**
 
-- `x`:  (numeric)
-
+-   `x`: (numeric)
 
 **Value**
 
 (numeric) the positive part of x
 
 **Examples**
-```
+
+``` {.r}
 .pos(3)  # 3
 .pos(-5)  # 5
 ```
 
-## adq
+## Adequacy (adq) patch
+
 ### Introduction
 
-L’algorithme opérationnel du couplage des marchés Euphémia implémente des règles de « dés-optimisation » permettant de définir le partage de la défaillance entre les zones de marché lorsqu’il y en a (de telle sorte d’assurer une certaine équité dans le partage de la défaillance) : il s’agit de l’adequacy patch. 
+**EUPHEMIA, the power market coupling operational algorithm,**
+implements "de-optimization" rules to define **failure sharing between
+market areas** when necessary (to ensure a certain equity in failure
+sharing). This is the *adequacy patch*.
 
-Le problème lié à l’absence d’adequacy patch dans les études Antares est devenu visible avec l’introduction de la modélisation Flow-Based. Auparavant, ce problème était contourné par le biais d’un mécanisme de hurdle costs (petits coûts sur les interconnexions) limitant les exports à partir d’une zone défaillante. Or ce contournement ne s’applique pas sur les frontières Flow-Based. 
+**This algorithm is not currently used in the Projected Supply Estimate
+(PSE) studies.**
 
-Qui plus est les règles de partage de la défaillance, même en dehors du domaine Flow-Based ne sont pas correctement pris en compte par les hurdle costs qui priorise le traitement de la défaillance dans les pays directement connectés aux pays disposant de marges, au détriment du traitement de la défaillance dans les pays plus éloignés
+The lack of *adequacy patch* became a visible problem in some Antares
+studies when the Flow-Based modeling was introduced. This problem could
+previously be by-passed using a *hurdle costs* mechanism (small costs
+added to interconnections) limiting the exports from a failing area.
+Yet, this bypass does not apply to Flow-Based borders.
 
-Les conséquences sont les suivantes :
+What's more, failure sharing rules (even outside of the Flow-Based
+domain) are not correctly considered by the *hurdle costs* which
+prioritize failure treatment in countries directly connected to those
+with margins, at the expense of failure treatment in the furthest
+countries.
 
-* La France peut exporter et se mettre en défaillance de manière artificielle par ses exports ou au contraire importer de façon trop importante d’autres pays et leur transmettre sa défaillance ;
-* Le nombre d’heures de défaillance, en France et dans les autres pays européens, n’est pas juste (a priori sous-estimé pour la France) ;  
-* Si une zone au moins est en défaillance, les échanges sont faussés. Or la contribution des interconnexions au mécanisme de capacité est aujourd’hui calculée à partir des imports simulés aux heures où la France est en défaillance.
+The consequences are the following:
 
-Dans un contexte de déclassement des parcs charbon et nucléaires en France et en Europe, les cas de défaillance simultanées tendent à augmenter. Le problème lié à l’absence d’adequacy patch est en conséquence plus visible. Ainsi, dans l’exercice 2019 et pour les configurations les plus défavorables, la France pouvait exporter dans la moitié des situations de défaillance rencontrées.  
+-   France can export and artificially put itself in failure with those
+    exports or, on the contrary, import too much from other countries
+    and transmit its failure to them;
 
-Dans un contexte où les marges de de capacité se réduisent, la question de la gestion de la défaillance simultanée dans les études EOD doit être instruite.
+-   The failure number of hours in France and in the other European
+    countries is not right (a priori under-estimated for France);
 
-Ce package à été construit pour appliquer l'adquacy patch aux output antares.
+-   If at least one area is failing, exchanges are distorted. Yet, the
+    interconnections contribution to the capacity mechanism is currently
+    calculated from imports simulated at hours when France is in
+    failure.
 
+**In a context of coal and nuclear power plants decommissioning in
+France and in Europe, the cases of simultaneous failures tend to
+increase.** The problem related to the lack of *adequacy patch* is
+therefore more visible. Thus, in the 2019 exercise and in the most
+unfavorable configurations, France could export in half of the failure
+situations encountered.
 
-### Notice d'utilisation
+**In a context where capacity margins are shrinking, the issue of
+simultaneous failure management in Supply and Demand Balance studies
+must therefore be addressed.**
 
+This package was built to apply the adequacy patch on Antares outputs.
 
-#### L'utilisation de la fonction `run_adq`
+### Operating instructions
 
-La fonction principale est nommée `run_adq` et permet de lancer l'adequacy patch sur une étude Antares.
+#### Use of the `run_adq` function
 
+The main function is called `run_adq` and allows to launch the adequacy
+patch on an Antares study.
 
+This function accepts 8 arguments :
 
-La fonction accepte 8 arguments :
+-   opts
+-   areas : Areas concerned by the adequacy patch.
+-   virtual_areas : Not in uses anymore (to be deleted).
+-   mcYears : mcYears on which the treatment is applied.
+-   antaresfbzone : Name of the Flow-Based zone.
+-   ext : Name of the output after the adequacy, if NULL, the output
+    will be overwritten.
+-   nbcl : Number of computing cores.
+-   thresholdFilter : Filtering of results (acceptability threshold).
 
-* opts
-* areas : Areas concernées par l'adquacy patch.
-* virtual_areas : Plus utilisé aujourd'hui (à supprimer)
-* mcYears : mcYears sur lesquelles appliquer le traitement.
-* antaresfbzone : Nom de la zone flow-based
-* ext : Nom de l'output pour la sortie après adequacy, si NULL, la sortie sera écrasée
-* nbcl : Nombre de coeurs de calcul 
-* thresholdFilter : Filtre des résultats (seuil d'accéptabilité)
-
-```r
+``` {.r}
 library(AdequacyPatch)
 opts <- setSimulationPath("myoutputstudy")
 
@@ -501,51 +579,50 @@ virtual_areas = getAreas(select = "_", regexpSelect = TRUE,
 
 
 run_adq(opts = opts,
-					areas = areas,
-					virtual_areas = virtual_areas,
-					mcYears = "all",
-					antaresfbzone = "model_description_fb",
-					ext = 'adq',
-					nbcl = 8, thresholdFilter = 100)
-
-
-
+                    areas = areas,
+                    virtual_areas = virtual_areas,
+                    mcYears = "all",
+                    antaresfbzone = "model_description_fb",
+                    ext = 'adq',
+                    nbcl = 8, thresholdFilter = 100)
 ```
 
-####  Les développements complémentaires
+#### Additional developments
 
-Le développement de l'adequacy patch à nécessité d'enrichir le package `antaresEditObject` avec des fonctionnalités pouvant être transposées à d'autres besoins. 
+The adequacy patch development required enriching the
+`antaresEditObject` package with features that could be transposed to
+other means.
 
-##### Copier une sortie d'étude `copyOutput`
+##### Copy a study output `copyOutput`
 
-Cette fonctionnalité permet de copier une sortie antares (dans le dossier output) et lui donnant un suffixe pour la renommer.
+This feature allows to copy an Antares output (in the output folder) and
+give it a suffix name.
 
-La fonction accepte deux arguments :
+The function accepts 2 arguments:
 
-* opts
-* extname : Nom du suffixe
+-   opts
+-   extname : Suffix name
 
-
-```r
+``` {.r}
 library(antaresRead)
 ## Set simulation path
 opts = setSimulationPath(path = "PATH/TO/SIMULATION", simulation = "input")
 
 ## Copy study
 copyOutput(opts, "_adq")
-
 ```
 
-##### Ecrire des output antares `write_output_values`
+##### Write Antares outputs `write_output_values`
 
-La fonctionnalité suivante permet d'écrire des output antares à partir d'un readAntares. 
+The following feature allows to write Antares outputs from an
+readAntares object.
 
-La fonction accepte deux arguments :
+The function accepts 2 arguments:
 
-* opts
-* data : Données issues d'un readAntares et potentiellement modifiées par l'utilisateur.
+-   opts
+-   data : Data from readAntares, potentially modified by the user.
 
-```r
+``` {.r}
 library(antaresRead)
 library(data.table)
 opts <- setSimulationPath("PATH/TO/SIMULATION")
@@ -556,54 +633,52 @@ data$clusters$production <- 0
 write_output_values(data)
 ```
 
-##### Génération à partir des données horraires `computeTimeStampFromHourly`
+##### Generation from data with an Hourly time-step `computeTimeStampFromHourly`
 
-La fonctionnalité suivante permet de générer les données des différents par de temps à partir des données horaires.
+The following feature allows data generation from different time-step
+using hourly data.
 
-La fonction prends en entrée 5 arguments :
+The function accepts 5 arguments:
 
-* opts
-* mcYears : Les mcyears à traiter.
-* nbcl : Pour une utilisation en parallèle, le nombre de cœurs de calcul.
-* verbose : Pour la log console.
-* type : Type de données à traiter (areas, links, clusters)
+-   opts
+-   mcYears : mcyears to be treated.
+-   nbcl : For parallel computation, Number of computing cores.
+-   verbose : For the log console.
+-   type : Data type to be treated (areas, links, clusters).
 
-```r
-
+``` {.r}
 library(antaresEditObject)
 opts <- setSimulationPath("PATH/TO/SIMULATION")
 computeTimeStampFromHourly(opts)
-
 ```
 
+##### Building of the mc-all: `parallelAggregMcall` & `aggregateResult`
 
-##### Construction des mc-all `parallelAggregMcall` & `aggregateResult`
+The following feature allows to rebuild the mc-all from the mc-ind.
 
-La fonctionnalité suivante permet de reconstruire le mc-all à partir des mc-ind.
-La fonction aggregateResult prends en entrée 5 arguments :
+The function `aggregateResult` accepts 5 arguments:
 
-* opts
-* verbose : Pour la log console.
-* filtering : Traiter tout ou un sous sélection de données
-* selected : Liste des areas, links et clusters à traiter
-* timestep : timestep à traiter.
+-   opts
+-   verbose : For the log console.
+-   filtering : Treat either all or a data selection.
+-   selected : List of areas, links et clusters to be treated.
+-   timestep : time-step to be treated.
 
-La fonction parallelAggregMcall permet de lancer aggregateResult pour toute l'étude en parallel (traitement global)
+The `parallelAggregMcall` function allows the launch of
+`aggregateResult` for all parallel studies (global treatment).
 
-
-```r
+``` {.r}
 parallelAggregMcall(opts)
 ```
 
-
-```r
+``` {.r}
 aggregateResult(opts, filtering = TRUE,
                 selected = list(areas = "at"),
                 timestep = "annual")
 ```
 
 ## my-vignette
+
 ### Bonjour tout le monde
 
 Ma super vignette
-

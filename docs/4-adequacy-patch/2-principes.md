@@ -1,66 +1,71 @@
-# Principes de l’adéquacy patch et règles associées 
+---
+output:
+  html_document: default
+  word_document: default
+---
+# Adequacy patch principles and associated rules
 
-Dans la suite du document, on introduit les variables suivantes :
+In the rest of the paper, the following variables are introduced:
 
-* ENS : Energy Not Served après échange ;
+* ENS: Energy Not Served (after an exchange);
 
-* Margin : marges disponibles dans la zone après échange ;
+* Margin: available margins in a zone after an exchange;
 
-* DENS : Domestic Energy Not Served (défaillance qu’aurait la zone sans échange, correspondant au déséquilibre local)
+* DENS: Domestic Energy Not Served (failure that the zone would have without exchange, corresponding to the local imbalance)
 
-* Dmargin : Domestic Margin (marges disponibles dans la zone avant échange)
+* Dmargin: Domestic Margin (available margin in the zone before exchanges)
 
-Il s’entend que pour une zone donnée à chaque instant les couples de variables (ENS, Margin) et (DENS, DMargin) comportent au moins une variable nulle.
+For a given zone at every moment the variables couples (ENS, Margin) and (DENS, DMargin) each contain at least one null variable.
 
-## Indétermination à lever
+## Indeterminacy to be removed
 
 ![adequacy-patch](Figure1.png)
 
-*Figure 1 : Indétermination de la répartition de la défaillance en l’absence d’adéquacy patch*
+*Figure 1: Indeterminacy of failure distribution without the adequacy patch*
 
-Dans l’exemple présenté, en l’absence d’adéquacy patch, les 2000 MW de marges disponibles en Espagne avant échange peuvent arbitrairement concourir à réduire tout ou partie de la défaillance locale constatée en France ou au Portugal.  On présente 3 propositions équivalentes économiquement pour Antares (de gauche à droite puis de haut en bas) :
+In the shown example without adequacy patch, the 2000 MWh margins available in Spain before the exchanges can be arbitrary used to reduce all or part of the local failures in France and Portugal. We show 3 economically equivalent propositions for Antares below (from left to right, then up to down):
 
-    1. Résorber la défaillance de la France ;
-    2. Résorber 50% de la défaillance en France et au Portugal ;
-    3. Résorber la défaillance au Portugal.
+    1. Absorb the failure in France;
+    2. Absorb 50% of the failures in France and Portugal;
+    3. Absorb the failure in Portugal.
 
-La solution 2 devrait être celle favorisée par l’adéquacy patch, elle est pénalisante en terme de nombre d’heures de défaillance puisqu‘elle maintient à la fois la France et le Portugal en défaillance.
+The second solution should be fostered by the adequacy patch: it is penalizing in term of failure number of hours since it maintains both France and Portugal in failure.
 
-## Règle de Local Matching
-### Cas de frontières NTC
+## Local Matching rule
+### NTC borders case
 
 ![adequacy-patch](Figure2.png){: style="height:400px;"}
 
-*Figure 2 : Prise en compte de la règle de Local Matching sur frontières NTC*
+*Figure 2: Considering the Local Matching rule on NTC borders*
 
-La première règle à respecter par l’adéquacy patch est celle dit du « Local Matching ». Cette règle consiste à imposer à un pays qui est localement déséquilibré (DENS > 0, DMargin = 0) de ne pas accentuer son déséquilibre et donc d’être globalement importateur. Par extension, cette règle conduit à interdire à ce qu’un pays qui n’est pas localement déséquilibré (DENS = 0, DMargin >= 0) ne soit pas mis en défaillance et respecte donc après échange (ENS = 0, Margin >= 0).
+The first rule followed by the adequacy patch is the one called "Local Matching". This rule consists in imposing to a locally unbalanced country (DENS > 0, DMargin = 0) to not accentuate its imbalance and thus to globally be an importer. By extent, this rule leads to forbid a non-locally unbalanced country (DENS = 0, DMargin >= 0) to be put in failure and thus, it respects after exchange (ENS = 0, Margin >= 0).
 
-Dans l’exemple présenté, si la France exporte 1700 MW vers l’Espagne, et l’Espagne exporte 1700 MW vers le Portugal (graphe du haut) alors la France se mettrait volontairement en défaillance pour résorber en partie la défaillance du Portugal via un transit par l’Espagne. Cet échange n’est pas conforme à la règle et la France ne peut donc exporter que 1500 MW vers l’Espagne, qui à son tour ne peut exporter que 1500 MW vers le Portugal.
+In the shown example, if France exports 1700 MWh to Spain and Spain exports 1700 MWh to Portugal (Figure 2), then France would voluntarily put itself in failure to partially absorb Portugal's failure via a transit through Spain. This exchange does not conform to the rule and France can thus only export 1500 MWh towards Spain, which in turn can only export 1500 MWh towards Portugal.
 
-Avec des liens NTC (capacité d’échange indépendante pour chaque lien), comme ceux considérés dans l’exemple, les « hurdle costs » (coûts de transit) d’Antares devraient favoriser la prise en compte de cette règle car les solutions des 2 graphes sont équivalentes en termes de défaillance globale (510 MW) mais la première augmente de 200 MW le transit entre la France et l’Espagne et entre l’Espagne et le Portugal, ce qui augmente le coût total du système.
+With NTC links (independent exchange capacity for each link), like the ones considered in the example, the Antares “hurdle costs” should foster this rule since the 2 graphs solutions are equivalent in term of global failure (510 MWh), however the first increases by 200 MWh the transit between France and Spain, and between Spain and Portugal,  which increases the total system cost.
 
-### Cas de frontières Flow-Based
+### Flow-Based borders case
 
-Dans le cas d’un domaine Flow-Based, l’objectif d’Antares qui est de minimiser la défaillance globale sur le domaine, conduira à maximiser les exports des zones disposant de marges, sans nécessairement respecter la règle dite de local matching.
+In the case of a Flow-Based domain, Antares objective, which is to minimize the global failure on the domain, will lead to maximize the exports of the zones with margins without necessarily respecting the "Local Matching" rule.
 
 ![adequacy-patch](Figure3.png)
 
-*Figure 3 : Minimisation de la défaillance globale, incompatible avec le local matching*
+*Figure 3: Minimization of the global failure, incompatible with the local matching*
 
-Dans l’exemple présenté, cela conduira Antares à retenir la solution en bleue qui permet de maximiser les exports de l’Allemagne. Toutefois en augmentant les exports de l’Allemagne de +137 MW, les contraintes Flow-Based conduisent à augmenter de +167 MW les exports des Pays-Bas qui se trouvent alors en défaillance. Ces 2 exports bénéficient à la France qui avec +304 MW d’import supprime sa défaillance. La mise en défaillance des Pays-Bas n’est pas conforme à la règle de local matching et post-adéquacy patch, les flux retenus sont ceux en noir, maintenant une défaillance en France de 245 MW, contre 167 MW en sortie d’Antares. Ne nous autorisant pas à modifier le plan de production d’une quelconque zone dans le cadre du calcul d’adéquacy patch, les 137 MW de réduction d’export de l’Allemagne sont convertis en 137 MW de spillage en Allemagne. 
+In the shown example, it will lead Antares to choose the blue solution which maximizes Germany's exports. However, by increasing Germany's exports by +137 MWh, the Flow-Based constraints lead to an increase of +167 MWh in the Netherlands' exports, which are then in failure. This 2 exports benefit to France which suppresses its failure with +304 MWh of imports. Putting the Netherlands into failure is not conform with the "Local Matching" rule and post-adequacy patch. The chosen flows are the black-colored ones, now a 245 MWh failure in France, against a 167 MWh one in the Antares output. In the context of the adequacy patch, it is not authorized to modify the production plan of any zone, Germany's 137 MWh of export reduction are converted in a 137 MWh spillage in Germany. 
 
-**Il s’agit là d’une désoptimisation induite par l’exécution découplée de l’Adéquacy Patch qui ne pourra être résorbée que par un calcul couplé avec Antares.** Par la suite, on proposera un filtre pour supprimer les désoptimisations au-delà d’un seuil à définir.
+**This is a deoptimization induced by the decoupled execution of the Adequacy Patch that can only be resolved by a coupled calculation with Antares.** Subsequently, a filter will be proposed to remove the deoptimizations beyond a threshold to be defined.
 
-## Règle de Curtailment Sharing
+## Curtailment Sharing rule
 
-Contrairement à la règle précédente qui doit être strictement respectée, cette règle est une incitation à respecter dans la mesure du possible les ratios de défaillance constatés.
+Unlike the previous rule which must be strictly adhered to, this rule is an incentive to respect, as much as possible, the observed failure ratios.
 
 ![adequacy-patch](Figure4.png)
 
-*Figure 4 : Répartition de la défaillance conforme aux ratios de défaillance constatés*
+*Figure 4: Distribution of the failure, conform to the observed failure ratios*
 
-Dans le cas déjà évoqué au chapitre "Indétermination à lever", pour lever l’indétermination parfois induite sur la répartition de la défaillance, une règle supplémentaire sous forme incitative (via des pénalités) conduit, entre 2 solutions équivalentes par ailleurs, à privilégier celle qui assure le meilleur respect du ratio de défaillance observé. Concrètement, cela revient à réduire la DENS constatée dans des différents pays d’un ratio le plus proche possible, sans annuler totalement la défaillance dans aucun des pays.
+In the previous case mentioned in the chapter "Indeterminacy to be removed", in order to remove the indeterminacy sometimes induced on the distribution of the failure, an additional rule in the form of an incentive (via penalties) leads, between two otherwise equivalent solutions, to focus on the one which ensures the best respect of the observed failure ratio. Concretely, it means reducing the DENS found in different countries by the closest ratio possible without completely cancelling out the failure in any of the countries.
 
-Dans l’exemple présenté, les marges de l’Espagne (1100 MWh avant export) doivent ainsi être réparties entre 100 MWh d’export vers le Portugal et 1000 MWh vers la France. Ainsi, le Portugal comme la France, réduisent chacun de 50% leurs déséquilibres locaux, … mais conservent chacun de la défaillance, alors que l’Espagne aurait pu résorber la défaillance du Portugal.
+In the shown example, Spain's margins (1100 MWh before exports) must be distributed between 100 MWh export towards Portugal and 1000 MWh towards France. Thus, Portugal and France both reduce their local failure by 50%… but they both keep some failure, while Spain could have absorbed Portugal's failure.
 
-**Par construction, cette règle va naturellement largement augmenter le nombre de pays simultanément en défaillance et donc la LOLE sur ces différents pays.**
+**By construction, this rule will naturally widely increase the number of countries simultaneously in failure and thus the LOLE on those different countries.**
