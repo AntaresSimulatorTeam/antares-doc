@@ -1,13 +1,3 @@
----
-output:
-  html_document: default
-  word_document: default
-  pdf_document: default
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Mathematical modeling
 
 ## Approximations
