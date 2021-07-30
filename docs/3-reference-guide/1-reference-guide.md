@@ -1723,7 +1723,7 @@ _Extreme cases are:_
   _The hydro storage energy monthly and weekly profiles of each zone z do not depend at all on the local demand and must-run generation in z_
   
 
-\\(L^\*_z\\) :  _Time-series of &quot;net&quot; load for zone , defined as:_ \\(L^\*_z = L_z - M_z\\)
+\\(L_z^\*\\) :  _Time-series of &quot;net&quot; load for zone , defined as:_ \\(L^\*_z = L_z - M_z\\)
 
 \\(\\Lambda_z\\) : _Time-series of &quot;weighted&quot; load for zone , defined as:_  \\(\\Lambda_z = A^t L^*_z\\)
 
