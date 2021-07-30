@@ -1,5 +1,8 @@
 ---
-title: Reference Guide
+title: "Reference Guide"
+output:
+  html_document:
+    df_print: paged
 ---
 
 # General reference guide v7.2.0
@@ -40,7 +43,7 @@ These steps most often involve:
 
 The scope of this document is to give a detailed description of the software involved in step (a) to (e) mostly based on a functional approach, leaving thereby aside a significant part of the mathematical content involved in several of these steps. [2] The following picture gives a functional view of all that is involved in steps (a) to (e).
 
-![](RackMultipart20201119-4-pwwyin_html_ca6164c8f4d9c041.gif)
+<!-- ![](RackMultipart20201119-4-pwwyin_html_ca6164c8f4d9c041.gif) -->
 
 The number and the size of the individual problems to solve (typically, a least-cost hydro-thermal power schedule and unit commitment, with an hourly resolution and throughout a week, over a large interconnected system) make optimization sessions often computer-intensive.
 
@@ -1128,65 +1131,60 @@ _The stationary processes are defined at a monthly scale. For each month, there 
 
 - _Four parameters for the definition of the marginal law_
 
-|
- | **TS Gen. Parameters** |
- |
- |
-| --- | --- | --- | --- |
-| _ **Law** _ |  |  |  |  | **Expectation** | **Variance** |
-| Uniform | N/A | N/A | \&lt;  | \&gt; |  | ^ |
-| Beta | \&gt;0 | \&gt;0 | \&lt;  | \&gt; |  | ^^ |
-| Normal | Any | \&gt;0 | N/A | N/A |  | ^2 |
-| Weibull | \&gt;=1 \&lt;50 | \&gt;0 | N/A | N/A |  | ^2^2 |
-| Gamma | \&gt;=1 \&lt;50 | \&gt;0 | N/A | N/A |  | ^2 |
+|           | **TS Gen. Parameters**                    ||||                 |                              |
+| --------- | --------------- | ------ | ------- | ------- | --------------- | ---------------------------- |
+| _**Law**_ | α               | β      | γ       | δ       | **Expectation** | **Variance**                 |
+| Uniform   | N/A             | N/A    | \&lt; δ | \&gt; γ | (δ-γ)/2         | (δ-γ)^2/12                   |
+| Beta      | \&gt;0          | \&gt;0 | \&lt; δ | \&gt; γ | γ + α(δ-γ)/(α+β)| [αβ(δ-γ)^2]/[(α+β+1)(α+β)]   |
+| Normal    | Any             | \&gt;0 | N/A     | N/A     | α               | β^2                          |
+| Weibull   | \&gt;=1 \&lt;50 | \&gt;0 | N/A     | N/A     | β Γ(1+1/α)      | β^2[ Γ(1+2/α) - Γ(1+1/α)^2 ] |
+| Gamma     | \&gt;=1 \&lt;50 | \&gt;0 | N/A     | N/A     | α\*β             | α\*β^2                        |
 
-_Uniform : uniform defined on_ __
+_Uniform : uniform defined on (γ,δ)_
 
-_Beta : Beta ____ ) defined on_ __
+_Beta : Beta (α,β)  defined on (γ,δ)_
 
-_Normal : expectation_ ___, standard deviation_ __
+_Normal : expectation α, standard deviation β_
 
-_Weibull : shape_ _ __, scale_ ___ , defined on (0,+inf.)_
+_Weibull : shape α, scale β , defined on (0,+inf.)_
 
-_Gamma : shape_ ___, scale_ __ _defined on (0, +inf.)_
+_Gamma : shape α, scale β defined on (0, +inf.)_
 
-_In the expressions of expectation and variance,_ ___(x) is the standard Euler Function_
+_In the expressions of expectation and variance, Γ(x) is the standard Euler Function_
 
 - _Two parameters for the definition of the autocorrelation function_
 
 #
 
-|
- | **TS Gen. Parameters** |
- |
-| --- | --- | --- |
-| _ **Law** _ |  |  | **Corr (Xt,Xt+h)** |
-| Pure exponential decay |  |  | exp( - h) |
-| Smoothed exponential decay(\*) |  |  | Phi(h) |
+|                                | **TS Gen. Parameters**        ||                    |
+| ------------------------------ | --------- | ------------------ |
+| _**Law**_                      | θ         | μ                  | **Corr (Xt,Xt+h)** |
+| Pure exponential decay         | θ \&gt; 0 | μ=1                | exp( - θh)         |
+| Smoothed exponential decay(\*) | θ \&gt; 0 | 1 \&lt; μ \&lt; 24 | Phi(θ,μ,h)         |
 
 #
 
-**Phi(**** ****,**** ****,h)= (1/A) \*sigma {i=0,********} [sigma {j=h,h+********} (exp(-********j-i|))]**
+**Phi(θ,μ,h)= (1/A) \*sigma {i=0,μ} [sigma {j=h,h+μ} (exp(-θ\|j-i\|))]**
 
-**with A=**  ****  **+ 2 sigma{i=1,****  **** ;j=1,**** **** ; j\&gt;i } (exp(-********(j-i))**
+**with A= μ + 2 sigma{i=1, μ ;j=1,μ ; j\&gt;i } (exp(-θ(j-i))**
 
-_(\*) Obtained by the generation of purely exponentially autocorrelated values (parameter_ ___) followed by a moving average transformation (parameter_ ___)._ __ _and_ __ _should be carefully chosen so as to accommodate at best the experimental data at hand. If meaningful historical data are available, this identification may be directly made using the Antares time-series analyzer_
+_(\*) Obtained by the generation of purely exponentially autocorrelated values (parameter θ) followed by a moving average transformation (parameter μ). θ and μ should be carefully chosen so as to accommodate at best the experimental data at hand. If meaningful historical data are available, this identification may be directly made using the Antares time-series analyzer_
 
 ## Time-series generation (load, wind, solar): GUI
 
 _The section of the GUI specific to the generation of wind, solar and load time-series comprises:_
 
-1. _ **Spatial correlation matrices that are located within the &quot;spatial correlation&quot; tab of each path &quot; Wind | Solar | Load / \&lt;area\_name \&gt;&quot;** _
+1. _**Spatial correlation matrices that are located within the &quot;spatial correlation&quot; tab of each path &quot; Wind | Solar | Load / \&lt;area\_name \&gt;&quot;**_
 
-_This tab contains a workspace for the description of 12 monthly spatial correlation matrices_ __ _and one annual correlation matrix. For the stochastic generators to work properly, these matrices must meet the usual requirements (matrices must be p.s.d, symmetric, with all terms between -100 and +100, and a main diagonal made of 100s). If this is not the case, generators will emit an unfeasibility diagnosis. Matrices can be either set up manually OR automatically filled out by the time-series analyzer (see next paragraph)._
+_This tab contains a workspace for the description of 12 monthly spatial correlation matrices Ξ and one annual correlation matrix. For the stochastic generators to work properly, these matrices must meet the usual requirements (matrices must be p.s.d, symmetric, with all terms between -100 and +100, and a main diagonal made of 100s). If this is not the case, generators will emit an unfeasibility diagnosis. Matrices can be either set up manually OR automatically filled out by the time-series analyzer (see next paragraph)._
 
 _Depending on the choices made in the main &quot;simulation&quot; window, the matrices used will be either the 12 monthly matrices or the annual matrix. Whether to use the first or the second option depends on the quality of the statistical data at hand: with high quality data (for instance, that derived from the analysis of a very large pool of historical data), use of monthly correlations is recommended because monthly differences between matrices have a physical meaning ; with less robust data (derived from a handful of historical data,…), use of the single annual correlation matrix should be preferred because it smooths out the numeric noise which impairs the monthly matrices._
 
-1. _ **Four parameters and four subtabs that are located within the &quot;local&quot; tab of each path &quot;Wind | Solar | Load / \&lt;area\_name \&gt;&quot;** _
+1. _**Four parameters and four subtabs that are located within the &quot;local&quot; tab of each path &quot;Wind | Solar | Load / \&lt;area\_name \&gt;&quot;**_
 
-_ **FOUR PARAMETERS** _
+_**FOUR PARAMETERS**_
 
-- _Capacity : This first parameter is used to scale up time-series generated on the basis of the ( ____ ) parameters described previously in the &quot;principles&quot; paragraph, together with coefficients characterizing the diurnal pattern (see below)_
+- _Capacity : This first parameter is used to scale up time-series generated on the basis of the (α,β,γ,δ,θ,μ) parameters described previously in the &quot;principles&quot; paragraph, together with coefficients characterizing the diurnal pattern (see below)_
 
 - _Distribution : This second parameter gives the type of marginal distribution of the stationary stochastic processes to generate (Beta, Weibull, Normal, Gamma, Uniform)_
 
@@ -1202,11 +1200,11 @@ _ **FOUR PARAMETERS** _
 
 - _Use: The time-series produced by the stochastic generators (wind speeds, for instance) are turned into other values (wind power) by using the transfer function described in the &quot;conversion&quot; subtab._
 
-_ **FOUR SUBTABS** _
+_**FOUR SUBTABS**_
 
 - _Subtab &quot;Coefficients&quot;_
 
-_A twelve-month table of values for the primary parameters_ __
+_A twelve-month table of values for the primary parameters α,β,γ,δ,θ,μ_
 
 _This table may be either filled out manually or automatically (use of the time-series analyzer)_
 
@@ -1228,13 +1226,13 @@ _A table of 2 \* N values (with 1\&lt;=N\&lt;=50) that is used to turn the initi
 
 _The time-series analyzer module available in Antares is meant to identify the values that should be given to the parameters used in the time-series generators (load, solar power, wind power) so as to fit best historical time-series at hand_
 
-_ **IMPORTANT** _
+_**IMPORTANT**_
 
 _When the time-series analyzer is used, it automatically updates the parameters relevant to the analysis (for instance: analysis of &quot;wind&quot; time-series will overwrite all local and global &quot;wind&quot; parameters [correlation matrices] that may have been previously set manually)_
 
 _The primary TS analyzer window shows two tabs:_
 
-1. _ **Tab &quot;Time-series and areas&quot;** _
+1. _**Tab &quot;Time-series and areas&quot;**_
 
 - _Time-series (load, wind, solar) : class of parameters to be assessed by the analyzer_
 
@@ -1244,7 +1242,7 @@ _The primary TS analyzer window shows two tabs:_
 
   - _Activity status_
     - _yes : parameters will be assessed and updated by the analyzer_
-    - _no : the area will be skipped (__ **local** _ _parameters for the area will remain unchanged, however_ _ **spatial** _ _correlation with other areas will be reset to zero)_
+    - _no : the area will be skipped (_ **local**  _parameters for the area will remain unchanged, however_ **spatial** _correlation with other areas will be reset to zero)_
 
   - _Distribution_
     - _Type of distribution to fit (beta, normal, etc.)_
@@ -1259,13 +1257,13 @@ _The primary TS analyzer window shows two tabs:_
     - _Ready (a file bearing the expected name was found)_
     - _Not found (no file found with the expected name)_
 
-_ **IMPORTANT** _ _To generate stochastic data similar to the historical data analyzed, generation parameters must be kept consistent with the results of the analysis, which means, in the generators:_
+_**IMPORTANT**_ _To generate stochastic data similar to the historical data analyzed, generation parameters must be kept consistent with the results of the analysis, which means, in the generators:_
 
 _Keep the same:_
 
 _Type of distribution_
 
-_Values for_ ___and for the diurnal–seasonal pattern (table of 12 X 24 values)_
+_Values for α,β,γ,δ and for the diurnal–seasonal pattern (table of 12 X 24 values)_
 
 _Value for the &quot;capacity&quot; parameter (the analyzer automatically sets it to 1)_
 
@@ -1275,7 +1273,7 @@ _&quot;Translation&quot; option must be set to &quot;do not use &quot;if data we
 
 _and to &quot;add after scaling&quot; or &quot;add before scaling&quot; if data were analyzed as &quot;detrended&quot; (both options give the same value in this case because the scaling is 1:1)_
 
-1. _ **Tab &quot;Global settings&quot;** _
+1. _**Tab &quot;Global settings&quot;**_
 
 - _Temporary folder : workspace that can be used for the analysis (cleaned after use)_
 
@@ -1284,7 +1282,7 @@ _and to &quot;add after scaling&quot; or &quot;add before scaling&quot; if data 
   - _Short- term autocorrelation adjustment (%)_
   - _Long – term autocorrelation adjustment (%)_
 
-_These two parameters are used by Antares as targets for the fitting of_ __ _and_ __ _parameters. For instance, if the historical time-series autocorrelation function is such that Corr(T,T+ 18 hours)=90 % and Corr(T,T+60 hours)= 50%, and if the parameters in the analyzer are (ST = 90%,LT = 50%) , then it will search values of_ __ _and_ __ _matching the historical autocorr.function in two points(18 hours, 60 hours)_
+_These two parameters are used by Antares as targets for the fitting of θ and μ parameters. For instance, if the historical time-series autocorrelation function is such that Corr(T,T+ 18 hours)=90 % and Corr(T,T+60 hours)= 50%, and if the parameters in the analyzer are (ST = 90%,LT = 50%) , then it will search values of θ and μ matching the historical autocorr.function in two points(18 hours, 60 hours)_
 
   - _Trimming threshold (%)_
 
@@ -1304,17 +1302,17 @@ _In the analysis, all values above Max in the historical files will be replaced 
 
 _In the analysis, all values below Min in the historical files will be replaced by Min_
 
-_ **IMPORTANT** _ _For each month, time-series to analyze are assumed to represent a stationary stochastic signal modulated by 24 hourly shape-factors. All of these shape-factors are expected to be different from zero. If the signal is partly masked by sequences of zeroes (for instance, if solar power time-series are to be analyzed as such because time-series of nebulosity are not available), the analysis is possible but is subject to the following restrictions:_
+_**IMPORTANT**_ _For each month, time-series to analyze are assumed to represent a stationary stochastic signal modulated by 24 hourly shape-factors. All of these shape-factors are expected to be different from zero. If the signal is partly masked by sequences of zeroes (for instance, if solar power time-series are to be analyzed as such because time-series of nebulosity are not available), the analysis is possible but is subject to the following restrictions:_
 
-- _ **Use of the &quot;detrended&quot; mode in the first Tab is mandatory** _ _(use of the &quot;raw&quot; mode would produce wrong correlation matrices)_
+- _**Use of the &quot;detrended&quot; mode in the first Tab is mandatory** _ _(use of the &quot;raw&quot; mode would produce wrong correlation matrices)_
 
-- _ **Short- and Long- Term autocorrelation parameters in the second Tab must be identical and set to 99%** _ _(to ensure that auto-correlation be assessed for the shortest possible time lag, i.e. one hour)_
+- _**Short- and Long- Term autocorrelation parameters in the second Tab must be identical and set to 99%** _ _(to ensure that auto-correlation be assessed for the shortest possible time lag, i.e. one hour)_
 
-_ **NOTICE** _ _For the whole year, the analyzer delivers a table of 12x24 hourly shape-factors consistent with the 12 sets of parameters identified for the stationary stochastic processes. The content of the table depends on the mode of analysis chosen:_
+_**NOTICE**_ _For the whole year, the analyzer delivers a table of 12x24 hourly shape-factors consistent with the 12 sets of parameters identified for the stationary stochastic processes. The content of the table depends on the mode of analysis chosen:_
 
-&quot;_ **raw&quot;** _ _analysis: for each month, the sum of the 24 hourly shape-factors is equal to 24 (i.e. each term is a modulation around the daily average)._
+&quot;_**raw&quot;**_ _analysis: for each month, the sum of the 24 hourly shape-factors is equal to 24 (i.e. each term is a modulation around the daily average)._
 
-&quot;_ **detrended&quot;** _ _analysis: for the whole year, hourly coefficients are expressed relatively to the annual hourly peak of the (zero-mean) signal absolute value. (i.e. all factors belong to the [0,1] interval)_
+&quot;_**detrended&quot;** _ _analysis: for the whole year, hourly coefficients are expressed relatively to the annual hourly peak of the (zero-mean) signal absolute value. (i.e. all factors belong to the [0,1] interval)_
 
 ## Time-series generation (thermal)
 
@@ -1344,7 +1342,7 @@ _(integer, lies in [PO Min Nb, Nb of units in the cluster]_
 
     - _Two parameters describing how planned outages durations may randomly deviate from their average value (law : uniform or geometric , volatility : lie in [0,1])_
 
-1. _ **Outage duration : meaning and modeling** _
+1. _**Outage duration : meaning and modeling**_
 
 _In the thermal time-series generator, the concept of outage duration (either forced or planned) is simple enough: for any given plant affected by such an event, it is the duration of a single outage, expressed in days._
 
@@ -1354,9 +1352,9 @@ _In complement to the average value of the duration D of outages beginning on a 
 
   - _The first parameter (law) can take either the value &quot;uniform&quot; or &quot;geometric&quot; :_
 
-_Uniform: the actual outage duration will be randomly drawn (one draw per outage), according to a_ _ **uniform distribution** _ _centred on the average value_ _ **D** __. The width of the interval [min duration, max duration] will depend on the value of the second parameter (volatility)_
+_Uniform: the actual outage duration will be randomly drawn (one draw per outage), according to a_ _ **uniform distribution** _ _centred on the average value **D**. The width of the interval [min duration, max duration] will depend on the value of the second parameter (volatility)_
 
-_Geometric : the actual outage duration will be expressed as the sum of a fixed value F and a randomly drawn (one draw per outage) variable following a_ _ **geometric distribution** _ _of expectation G, with_ _ **F+G=D** __. The ratio of F to G will depend on the value of the second parameter (volatility)._
+_Geometric : the actual outage duration will be expressed as the sum of a fixed value F and a randomly drawn (one draw per outage) variable following a **geometric distribution** of expectation G, with **F+G=D**. The ratio of F to G will depend on the value of the second parameter (volatility)._
 
   - _The second parameter (volatility) can take any value within [0,1]_
 
@@ -1364,17 +1362,17 @@ _0: The outage duration does not show any stochastic fluctuation at all._
 
 _Therefore, regardless of the chosen distribution law:_
 
-_ **actual duration = D** _
+_**actual duration = D**_
 
 _1: The variability of the actual outage duration is as high as the chosen distribution law makes it possible, which means respectively that:_
 
-_If choice = &quot;uniform&quot;:_ _ **1 \&lt;= actual duration \&lt;= 2D-1** _
+_If choice = &quot;uniform&quot;: **1 \&lt;= actual duration \&lt;= 2D-1** _
 
-_If choice = &quot;geometric&quot;_ _ **: F=0 and G = D** _
+_If choice = &quot;geometric&quot; **: F=0 and G = D** _
 
 _(which in turn implies 1\&lt;=actual duration \&lt;= #4D )_
 
-_0\&lt;V\&lt;1: The variability of the actual outage duration is such that the ratio_ _ **** __ **D** _ _of its standard deviation to its expectation has a value that depends on_ _ **V** _ _, on_ _ **D** _ _and on the chosen distribution law. More precisely:_
+_0\&lt;V\&lt;1: The variability of the actual outage duration is such that the ratio **** if its standard deviation to its expectation has a value that depends on_**V** _ on_ **D** _ _and on the chosen distribution law. More precisely:_
 
 _If choice = &quot;uniform&quot;:_ _ **** __ **D** _ _**= [1/3^0.5] \* V \***_ _**(D-1) / D**_
 
@@ -1388,9 +1386,9 @@ _If choice = &quot;geometric&quot;:_ _ **** __ **D** _ _**= V \* [**
 
 _and_
 
-_ **Duration min = F** _
+_**Duration min = F**_
 
-_ **Duration max # 4D-3F** _
+_**Duration max # 4D-3F**_
 
 _with F = D – G_
 
@@ -1398,18 +1396,18 @@ _G = 2z /[(1+4z)^0.5 - 1]_
 
 _z = (V^2) \* D \* (D-1)_
 
-_ **NOTE:** _ _The calculation time required for the generation of time-series does not depend of the kind of chosen law but depends on the fact that the volatility is null or not (it is minimal for zero-volatility)._
+_**NOTE:**_ _The calculation time required for the generation of time-series does not depend of the kind of chosen law but depends on the fact that the volatility is null or not (it is minimal for zero-volatility)._
 
-_ **NOTE:** _ _A geometric law associated with a volatility parameter V yielding a characteristic parameter F (according to the previous formulas) will produce a distribution summarized by:_
+_**NOTE:**_ _A geometric law associated with a volatility parameter V yielding a characteristic parameter F (according to the previous formulas) will produce a distribution summarized by:_
 
 - _63 % of values in the interval [F , D]_
 - _23 % of values in the interval [D , 2D-F]_
 - _12 % of values in the interval [2D-F , 4D-3F]_
 - _2 % of values in the interval [4D-3F , infinite )_
 
-_ **Remark:** _ _Antares is able to provide these options because it involves more than a simple Markov chain mechanism (intrinsically limited to : law = geometric, volatility = 1)_
+_**Remark:**_ _Antares is able to provide these options because it involves more than a simple Markov chain mechanism (intrinsically limited to : law = geometric, volatility = 1)_
 
-1. _ **Outage rates : meaning and modeling** _
+1. _**Outage rates : meaning and modeling**_
 
 _The concept of outage rate is not always clearly distinguished from the notion of failure rate, to which it is closely related._
 
@@ -1649,11 +1647,11 @@ _Several classes of reserves may therefore be used in Antares; how to use them a
 
 - _**Pre-allocated reserve on dispatchable thermal plants (R0)**_
 
-_This reserve (which corresponds to the parameter &quot;spinning&quot; attached to the thermal plants) is expressed as a percentage of the nominal capacity of the plants. It is simply used as a derating parameter: for instance, a 1000 MW plant with a 2.5% spinning parameter will not be able to generate more than 975 MW. It is important to notice that, if the plant is not scheduled on, it will NOT contribute to the spinning reserve (to be effectively available, the 25 MW of reserve would need the plant to be started). This first class of reserve is available for_ _ **Adequacy** _ _as well as for_ _ **Economy** _ _simulations but is not taken into account in_ _ **Draft** _ _simulations._
+_This reserve (which corresponds to the parameter &quot;spinning&quot; attached to the thermal plants) is expressed as a percentage of the nominal capacity of the plants. It is simply used as a derating parameter: for instance, a 1000 MW plant with a 2.5% spinning parameter will not be able to generate more than 975 MW. It is important to notice that, if the plant is not scheduled on, it will NOT contribute to the spinning reserve (to be effectively available, the 25 MW of reserve would need the plant to be started). This first class of reserve is available for_ _**Adequacy**_ _as well as for_ _**Economy**_ _simulations but is not taken into account in_ _**Draft**_ _simulations._
 
 - _**Primary and strategic reserves (R1,R2):**_
 
-_These two reserves may be used in_ _ **Draft** _ _simulations, with the following meaning:_
+_These two reserves may be used in_ _**Draft**_ _simulations, with the following meaning:_
 
     - _Primary reserve must be supplied by local generation and has a higher priority than load: for instance, if overall load L=43.6 GW, overall generation G=44.0 GW, primary reserve = 0.7 GW, then an adequacy analysis will show 300 MW of unsupplied energy. The primary reserve is in essence a frequency containment reserve._
 
@@ -1661,7 +1659,7 @@ _These two reserves may be used in_ _ **Draft** _ _simulations, with the followi
 
 - _**Day-ahead reserve (R3):**_
 
-_This reserve is available in_ _ **Adequacy** _ _and_ _ **Economy** _ _simulations, with the following meaning:_
+_This reserve is available in_ _**Adequacy**_ _and_ _**Economy**_ _simulations, with the following meaning:_
 
 &quot;_For any day D, so as to be able to accommodate last-minute random variations of the expected demand and/or generation (as they were seen from day D -1), a certain amount of power (R3) should be ready to be available at short notice&quot;_
 
@@ -1677,8 +1675,7 @@ _Note that this &quot;standard&quot; feature of Antares makes it possible to ass
 
 _The table below gives an overview of the different reserves available in Antares_
 
-|
- | _Economy_ | _Adequacy_ | _Draft_ |
+| | _Economy_ | _Adequacy_ | _Draft_ |
 | --- | --- | --- | --- |
 | _R0_ | _Yes_ | _Yes_ | _No_ |
 | _R1_ | _No_ | _No_ | _Yes_ |
@@ -1691,113 +1688,140 @@ _This heuristic, first introduced in broad terms in Section 4, chapter &quot;hyd
 
 _Basically, the seasonal hydro pre-allocation process comprises two stages carried out two times (first time: monthly scale; second time: daily scale)._
 
-- _Stage 1: Definition of an_ _ **a** __llocation_ _ **i**__ deal_ _ **m** __odulation profile, which may be based (or not) on local and/or remote load profiles_
-- _Stage 2: Mitigation of the previous raw profile to obtain a feasible_ _ **h** __ydro_ _ **i**__ deal_ _ **t** __arget , compatible as much as possible with reservoir rule curves_
+- _Stage 1: Definition of an **a**llocation **i**deal **m**odulation profile, which may be based (or not) on local and/or remote load profiles_
+- _Stage 2: Mitigation of the previous raw profile to obtain a feasible **h**ydro **i**deal **t**arget , compatible as much as possible with reservoir rule curves_
 
-_The description given hereafter makes use of the following local notations, not be confused with those of the document &quot;optimization problem formulation&quot; (dedicated to the optimal hydro-thermal unit-commitment and dispatch problem):___
+_The description given hereafter makes use of the following local notations, not be confused with those of the document &quot;optimization problem formulation&quot; (dedicated to the optimal hydro-thermal unit-commitment and dispatch problem):_
 
-_Number of Areas (zones ) in the system_
+\\(Z\\) : _Number of Areas (zones \\(z\\) ) in the system_
 
-_Hourly time-series of cumulated must-generation of all kinds for zone_
+\\(M_{zh}\\) : _Hourly time-series of cumulated must-generation of all kinds for zone_
 
-_Daily time-series of cumulated must-generation of all kinds for zone (sum of )_
+\\(M_{zd}\\) : _Daily time-series of cumulated must-generation of all kinds for zone (sum of _\\(M_{zh}\\) _)_
 
-_Monthly time-series of cumulated must-generation of all kinds for zone (sum of )_
+\\(M_{zm}\\) : _Monthly time-series of cumulated must-generation of all kinds for zone (sum of _\\(M_{zd}\\) _)_
 
-_Either or , relevant time index &quot;.&quot; is defined by the context_
+\\(M_{z}\\) : _Either_ \\(M_{zd}\\) _or_ \\(M_{zm}\\) _, relevant time index &quot;.&quot; is defined by the context_
 
-_Time-series of &quot;natural&quot; load for zone_
+\\(L_{z}\\) : _Time-series of &quot;natural&quot; load for zone_
 
-_Inter-area hydro-allocation matrix (dimension ) is a weight given to the load of area in the definition of the monthly and daily primary hydro generation target of area_
+\\(A\\) : _Inter-area hydro-allocation matrix (dimension \\(\times Z\\))_ \\(A_{uv}\\) _is a weight given to the load of area in the definition of the monthly and daily primary hydro generation target of area_ \\(v\\)
 
-_Extreme cases are:_ _ **A is the identity matrix** _
+_Extreme cases are:_
 
-_The hydro storage energy monthly and weekly profiles of each zone z depend only on the local demand and must-run generation in z_
+- _**A is the identity matrix**_
 
-_ **A has a main diagonal of zeroes** _
+  _The hydro storage energy monthly and weekly profiles of each zone z depend only on the local demand and must-run generation in z_
 
-_The hydro storage energy monthly and weekly profiles of each zone z do not depend at all on the local demand and must-run generation in z_
+- _**A has a main diagonal of zeroes**_
 
-_Time-series of &quot;net&quot; load for zone , defined as:_
+  _The hydro storage energy monthly and weekly profiles of each zone z do not depend at all on the local demand and must-run generation in z_
+  
 
-_Time-series of &quot;weighted&quot; load for zone , defined as:_
+$L^*_z$ :  _Time-series of &quot;net&quot; load for zone , defined as:_ $L^*_z = L_z - M_z$
 
-_All following parameters are related to the generic zone_
+\\(\\Lambda_z\\) : _Time-series of &quot;weighted&quot; load for zone , defined as:_  \\(\\Lambda_z = A^t L^*_z\\)
 
- _&quot;inter-monthly generation breakdown&quot; parameter_
+__All following parameters are related to the generic zone__ $z$
 
- &quot;_inter-daily generation breakdown&quot; parameter_
+$\alpha$ : _&quot;inter-monthly generation breakdown&quot; parameter_
 
- &quot;_follow-load&quot; parameter_
+$\beta$ : &quot;_inter-daily generation breakdown&quot; parameter_
 
- &quot;_reservoir-management&quot; parameter_
+$\phi$ : &quot;_follow-load&quot; parameter_
 
- _Reservoir size_
+$\mu$ : &quot;_reservoir-management&quot; parameter_
 
-_Reservoir maximum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
+$\Sigma$ : _Reservoir size_
 
-_Reservoir minimum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
+$\overline{S_d}$ : _Reservoir maximum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
 
-_Reservoir initial level at the beginning of the first day of the &quot;hydro-year&quot;_
+$S_d$ : _Reservoir minimum level at the end of day d, expressed as a fraction of_ __ _(rule curve)_
 
-_Natural inflow of energy to the reservoir during day d_
+$\overline{S_0}$ : _Reservoir initial level at the beginning of the first day of the &quot;hydro-year&quot;_
 
-_Natural inflow of energy to the reservoir during month m (sum of )_
+$I_d$ : _Natural inflow of energy to the reservoir during day d_
 
-_Maximum energy that can be generated on day d (standard credit)_
+$I_m$ : _Natural inflow of energy to the reservoir during month m (sum of )_
 
-_All following variables, defined for both stages, are related to the generic zone_
+$\overline{W_d}$ : _Maximum energy that can be generated on day d (standard credit)_
 
-_Reservoir level at the end of day d, at the end of stage k of pre-allocation_
+__All following variables, defined for both stages, are related to the generic zone__ $z$
 
-_Reservoir level at the end of month m, at the end of stage k of pre-allocation_
+$S^k_d$ : _Reservoir level at the end of day d, at the end of stage k of pre-allocation_
 
-_Overflow from the reservoir on day d, at the end of stage k of pre-allocation (inflow in excess to an already full reservoir)_
+$S^k_m$ : _Reservoir level at the end of month m, at the end of stage k of pre-allocation_
 
-_Energy to generate on day d, at the end of stage k of pre-allocation_
+$O^k_d$ : _Overflow from the reservoir on day d, at the end of stage k of pre-allocation (inflow in excess to an already full reservoir)_
 
-_Energy to generate on month m, at the end of stage k of pre-allocation_
+$W^k_d$ : _Energy to generate on day d, at the end of stage k of pre-allocation_
+
+$W^k_m$ : _Energy to generate on month m, at the end of stage k of pre-allocation_
 
 _Following variables and parameters are local to linear optimization problems_ _M &amp; D(m)_ _solved within the heuristic. For the sake of clarity, the same generic index is used for all time steps, knowing that in_ _M_ _there are 12 monthly time-steps, while in_ _D(m)_ _there are from 28 to 31 daily time-steps. Costs given to these variables are chosen so as to enforce a logical hierarchy of penalties (letting the reservoir overflow is worse than violating rule curves, which is worse than deviating from the generation objective assessed in stage 1, etc.)_
 
-_Generation deficit at the end of the period, as compared to the objective aimed at_
+$Y$ : _Generation deficit at the end of the period, as compared to the objective aimed at_
 
-_Overflow from the reservoir on time step t_
+$O_t$ : _Overflow from the reservoir on time step t_
 
-_Optimal generation and maximum generation on time step t_
+$G_t,\overline{G_t}$ : _Optimal generation and maximum generation on time step t_
 
-_Generation objective assessed in the first stage, for time step t (__or_
+$T_t$ : _Generation objective assessed in the first stage, for time step t (_ $W^1_m$ _or_ $W^1_d$ _)_
 
-_Optimal stock level, maximum level, minimum level at the end of time step t_
+$S_t,\overline{S_t},\underline{S_t}$ : _Optimal stock level, maximum level, minimum level at the end of time step t_
 
-_Natural inflow on time step t_
+$I_t$ : _Natural inflow on time step t_
 
-_Deviation (absolute difference) between target reached and initial aim_
+$D_t$ : _Deviation (absolute difference) between target reached and initial aim_
 
-_Maximum deviation throughout the period_
+$\Delta$ : _Maximum deviation throughout the period_
 
-_Amplitude of the violation of the upper rule curve at time step t_
+$V^+_t$ : _Amplitude of the violation of the upper rule curve at time step t_
 
-_Amplitude of the violation of the lower rule curve at time step t_
+$V^-_t$ : _Amplitude of the violation of the lower rule curve at time step t_
 
-_Maximum violation of lower rule curve throughout the period_
+$\Psi$ : _Maximum violation of lower rule curve throughout the period_
 
-**General heuristic for each zone**
 
-_M_
+**General heuristic for each zone :**
 
-_D(m)_
+> \\(Begin \\\\
+if(not.\\mu) \\{ \\Sigma \\leftarrow \\inf ; \\overline{S_d} \\leftarrow \\Sigma ; S_0 \\leftarrow \\Sigma/2 \\} \\\\
+M1: \\\\
+if(\\phi \\, and \\, \\mu): for(m:1,12):\\{ W^1_m \\leftarrow \\Lambda_m^\\alpha . (\\Sigma_m I_m)/(\\Sigma_m \\Lambda_m^\\alpha)\\} \\\\
+else \\quad : for(m:1,12):\\{ W^1_m \\leftarrow I_m\\} \\\\
+M2: \\\\
+for(m;1,12): W^2_m \\leftarrow Solution \\, of \\, linear \\, problem \\, M \\\\
+D1: \\\\
+if (\\phi): for(d:1,31):\\{ W^1_d \\leftarrow \\Lambda_d^\\beta . (W^2_m) /(\\Sigma_{d \\in m} \\Lambda_d^\\beta) \\} \\\\
+else : for(d:1,31):\\{ W^1_d \\leftarrow I_d . (W^2_m) /(\\Sigma_{d \\in m} I_d) \\} \\\\
+D2: \\\\
+for (m: 1,12): W^2_{d \\in m} \\leftarrow Solution \\, of \\, linear \\, problem \\, D(m) \\\\
+End\\)
 
 _Note: In the formulation of the optimal hydro-thermal unit-commitment and dispatch problem (see dedicated document), the reference hydro energy used to set the right hand sides of hydro- constraints depends on the value chosen for the optimization preference &quot;simplex range&quot; and is defined as follows:_
 
-- _Daily : for each day of week :_
-- _Weekly : for week :_
+- _Daily : for each day_ $d$ _of week_ $w$ _:_ $HIT=W^2_d$
+- _Weekly : for week_ $w$ _:_ $HIT=W^2_d$
 
-**Optimization problem** _ **M** _
+**Optimization problem** _**M**_ **:**
+
+> \\(min \\\\
+s.t\\\\
+S_t \\\\
+S_t \\\\
+S_t + G_t \\\\
+\\Sigma \\\\
+G_t - D_t \\\\
+G_t + D_t \\\\
+V^-_t + S_t \\\\
+V^+_t + S_t \\\\
+\\Psi - V^-_t
+\\)
 
 s.t
 
-**Optimization problems** _**D(m)**_
+**Optimization problems** _**D(m)**_ **:**
 
 s.t
 
@@ -2105,9 +2129,9 @@ _The Unit Commitment mode parameter defines two different ways to address the is
 
 _Besides, dynamic thermal constraints (minimum on- and off- time durations) are formulated on time-indices rolling over the week; this simplification brings the ability to run a simulation over a short period of time, such as one single week extracted from a whole year, while avoiding the downside (data management complexity, increased runtime) of a standard implementation based on longer simulations tiled over each other (illustration below)._
 
-![](RackMultipart20201119-4-pwwyin_html_e27a775b780f9f63.gif)
+<!-- ![](RackMultipart20201119-4-pwwyin_html_e27a775b780f9f63.gif)
 
-![](RackMultipart20201119-4-pwwyin_html_aee41505219b9092.gif)
+![](RackMultipart20201119-4-pwwyin_html_aee41505219b9092.gif) -->
 
 _ **Fast:** _
 
