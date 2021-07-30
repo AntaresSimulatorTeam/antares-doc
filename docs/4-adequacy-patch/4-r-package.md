@@ -491,56 +491,6 @@ The positive part is defined as follows: .pos(x) = x if x \>= 0 .pos(x)
 ```
 
 ## Adequacy (adq) patch
-
-### Introduction
-
-**EUPHEMIA, the power market coupling operational algorithm,**
-implements "de-optimization" rules to define **failure sharing between
-market areas** when necessary (to ensure a certain equity in failure
-sharing). This is the *adequacy patch*.
-
-**This algorithm is not currently used in the Projected Supply Estimate
-(PSE) studies.**
-
-The lack of *adequacy patch* became a visible problem in some Antares
-studies when the Flow-Based modeling was introduced. This problem could
-previously be by-passed using a *hurdle costs* mechanism (small costs
-added to interconnections) limiting the exports from a failing area.
-Yet, this bypass does not apply to Flow-Based borders.
-
-What's more, failure sharing rules (even outside of the Flow-Based
-domain) are not correctly considered by the *hurdle costs* which
-prioritize failure treatment in countries directly connected to those
-with margins, at the expense of failure treatment in the furthest
-countries.
-
-The consequences are the following:
-
--   France can export and artificially put itself in failure with those
-    exports or, on the contrary, import too much from other countries
-    and transmit its failure to them;
-
--   The failure number of hours in France and in the other European
-    countries is not right (a priori under-estimated for France);
-
--   If at least one area is failing, exchanges are distorted. Yet, the
-    interconnections contribution to the capacity mechanism is currently
-    calculated from imports simulated at hours when France is in
-    failure.
-
-**In a context of coal and nuclear power plants decommissioning in
-France and in Europe, the cases of simultaneous failures tend to
-increase.** The problem related to the lack of *adequacy patch* is
-therefore more visible. Thus, in the 2019 exercise and in the most
-unfavorable configurations, France could export in half of the failure
-situations encountered.
-
-**In a context where capacity margins are shrinking, the issue of
-simultaneous failure management in Supply and Demand Balance studies
-must therefore be addressed.**
-
-This package was built to apply the adequacy patch on Antares outputs.
-
 ### Operating instructions
 
 #### Use of the `run_adq` function
