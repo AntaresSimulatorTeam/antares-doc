@@ -1,3 +1,10 @@
+---
+title: "Reference Guide"
+output:
+  html_document:
+    df_print: paged
+---
+
 # General reference guide v7.2.0
 
 ## 1 Introduction
@@ -787,7 +794,7 @@ _In such cases, assuming that:_
 
 _Then the DC flow approximation may be implemented, for each time-step of the simulation, by a set of C binding constraints between AC flows \\(F_l\\):_
 
-$$ c= 1, ..., C : \sum_{i \in C}{sign(l,c)F_lZ_l = 0}$$
+$$= 1, ..., C : \sum_{i \in C}{sign(l,c)F_lZ_l = 0}$$
 
 _Note that such specific binding constraints can be automatically generated within Antares by using the auxiliary module &quot;Kirchhoff&#39;s Constraints Generator&quot; further described in Section 7._
 
@@ -1105,7 +1112,7 @@ _The different categories of time-series call for wholly different generation pr
 
 - _For thermal power, the generator is based on the animation of a daily three-state Markov chain (available – planned outage – forced outage ) attached to each plant._
 
-- _For Hydro-power, the generator works out monthly time-series of energies, based on the assumption that they can be modeled by Log Normal variables with known correlations through space and time. So as to keep the model simple, for an interconnected system made of N areas, the user defines, along with the N expectations and N standard deviations of the monthly energies, the N X N correlation matrix R(n,m) of the logs of the annual hydro energies between the areas n,m, and the N average auto-correlations r(k) between one month and the next in each area k. The correlation_ _**C(n,i,m,j)**_ _between the logs of hydro energies in area_ _ **n** __, month_ _ **i** _ _and area_ _ **m**__ , month_ _ **j** _ _is taken to be_ _**C(n,i,m,j)= R(n,m)\*sqrt((r(n)\*r(m))^abs(j-i))**__This most simplified model asks for considerably fewer data than a comprehensive 12N X 12N time-space matrix. Note that if R is positive semi-definite but C is not, matrix C is automatically transformed into a fitting p.s.d matrix and the data generation keeps going on (however, the log report will show a warning message). If the primary matrix R is not p.s.d, data are considered as corrupted, the generation stops and a fatal error message will be displayed in the log report_
+- _For Hydro-power, the generator works out monthly time-series of energies, based on the assumption that they can be modeled by Log Normal variables with known correlations through space and time. So as to keep the model simple, for an interconnected system made of N areas, the user defines, along with the N expectations and N standard deviations of the monthly energies, the N X N correlation matrix R(n,m) of the logs of the annual hydro energies between the areas n,m, and the N average auto-correlations r(k) between one month and the next in each area k. The correlation_ _**C(n,i,m,j)**_ _between the logs of hydro energies in area_ _**n**__, month_ _**i**_ _and area_ _**m**__, month_ _**j**_ _is taken to be_ _**C(n,i,m,j)= R(n,m)\*sqrt((r(n)\*r(m))^abs(j-i))**__This most simplified model asks for considerably fewer data than a comprehensive 12N X 12N time-space matrix. Note that if R is positive semi-definite but C is not, matrix C is automatically transformed into a fitting p.s.d matrix and the data generation keeps going on (however, the log report will show a warning message). If the primary matrix R is not p.s.d, data are considered as corrupted, the generation stops and a fatal error message will be displayed in the log report_
 
 - _For Wind power, Solar power and Load, the required time-series are 8760-hour long and have to emulate as closely as possible the response of the system to variations of wind speed, sunshine and temperature. In all three cases, the rationale of the model is to offer the possibility to consider either the final variable to model (wind power output, solar power output, load) or an underlying intermediate variable (wind speed, nebulosity, deviation between load and the level expected in standard temperature conditions) as a stationary stochastic process, with given marginal laws, given auto-correlation functions and given spatial correlations (eventually, the values of the final variables and those of the core stationary process are tied by diurnal/seasonal rhythms and scaling functions)._
 
@@ -1365,9 +1372,9 @@ _If choice = &quot;geometric&quot; **: F=0 and G = D** _
 
 _(which in turn implies 1\&lt;=actual duration \&lt;= #4D )_
 
-_0\&lt;V\&lt;1: The variability of the actual outage duration is such that the ratio **** if its standard deviation to its expectation has a value that depends on_**V** _ on_ **D** _ _and on the chosen distribution law. More precisely:_
+_0\&lt;V\&lt;1: The variability of the actual outage duration is such that the ratio \\(\\delta/D\\) of its standard deviation to its expectation has a value that depends on **V** on **D** and on the chosen distribution law. More precisely:_
 
-_If choice = &quot;uniform&quot;:_ _ **** __ **D** _ _**= [1/3^0.5] \* V \***_ _**(D-1) / D**_
+_If choice = &quot;uniform&quot;:_    \\(\\delta/D = [1/3^0.5] \* V \*(D-1) / D \\)
 
 _and_
 
@@ -1375,7 +1382,7 @@ _**Duration min = D (1-V) + V**_
 
 _**Duration max = D (1+V) - V**_
 
-_If choice = &quot;geometric&quot;:_ _ **** __ **D** _ _**= V \* [**_ _**(D-1) / D]^0.5**_
+_If choice = &quot;geometric&quot;:_    \\(\\delta/D = V \* [(D-1) / D]^0.5\\)
 
 _and_
 
@@ -1400,13 +1407,13 @@ _**NOTE:**_ _A geometric law associated with a volatility parameter V yielding a
 
 _**Remark:**_ _Antares is able to provide these options because it involves more than a simple Markov chain mechanism (intrinsically limited to : law = geometric, volatility = 1)_
 
-1. _**Outage rates : meaning and modeling**_
+2. _**Outage rates : meaning and modeling**_
 
 _The concept of outage rate is not always clearly distinguished from the notion of failure rate, to which it is closely related._
 
-_Outage rates OR represent the average_ _ **proportion** _ _of time during which a plant is unavailable (for instance, OR = 5.2%)._
+_Outage rates OR represent the average_ _**proportion**_ _of time during which a plant is unavailable (for instance, OR = 5.2%)._
 
-_Failure rates FR represent the average_ _ **number** _ _of outages_ _ **starting** _ _during a period of time of a given length (for instance, FR = 1.5 per year). If the time step is short enough (typically one day, which is the value used in Antares), the failure rates are always lower than 1 (for instance, FR = (1.5 / 365) per day)._
+_Failure rates FR represent the average_ _**number**_ _of outages_ _**starting**_ _during a period of time of a given length (for instance, FR = 1.5 per year). If the time step is short enough (typically one day, which is the value used in Antares), the failure rates are always lower than 1 (for instance, FR = (1.5 / 365) per day)._
 
 _When this condition is met and if the physical outage process can be modelled by a Poisson process, failure rates can be interpreted as probabilities._
 
@@ -1426,11 +1433,11 @@ _Whether to describe the &quot;planned outage&quot; process as a random process 
 
 _For long term studies in which only general patterns are known, season-, month- or week- modulated rates and duration may be used to describe the &quot;planned&quot; process as a stochastic one. Another possible use of the model is to incorporate the overhauls plans in the &quot;nominal capacity modulation&quot; array, and consider the stochastic &quot;planned outage&quot; processor as a simulator for a second modality of forced outage (longer or shorter than the main component)_
 
-_ **NOTE:** _ _Once the outage duration and outage rate are defined, the failure rate is completely determined. For the sake of clarity, the Antares GUI displays still another parameter often used in reliability analysis, which is the MTBF (Mean Time Between Failure). Relations between MTBF, FR and OR are:_
+_**NOTE:**_ _Once the outage duration and outage rate are defined, the failure rate is completely determined. For the sake of clarity, the Antares GUI displays still another parameter often used in reliability analysis, which is the MTBF (Mean Time Between Failure). Relations between MTBF, FR and OR are:_
 
 _**FR= 1 / ( MTBF+1 ) OR = OD / ( MTBF+OD )**_
 
-_ **NOTE:** _ _When two stochastic processes of outages (forced and planned, or forced-type-1 and forced-type-2) are used, the overall resulting outage rate OOR is not equal to the sum of the two rates FOR and POR. Instead, the following relation holds:_
+_**NOTE:**_ _When two stochastic processes of outages (forced and planned, or forced-type-1 and forced-type-2) are used, the overall resulting outage rate OOR is not equal to the sum of the two rates FOR and POR. Instead, the following relation holds:_
 
 _**OOR = ( FOR + POR – 2\*FOR\*POR ) / (1 - FOR\*POR)**_
 
@@ -1458,7 +1465,7 @@ _POR=P/(A+P)_
 
 _OOR=(F+P)/(A+F+P)_
 
-1. _ **Planned Outages Minimum and Maximum Numbers** _
+3. _**Planned Outages Minimum and Maximum Numbers**_
 
 _In the description given so far regarding how outages are modeled, no true difference was made between &quot;forced&quot; and &quot;planned&quot; outages, i.e. both relied on unconstrained random draws. This is satisfactory only if the process to model through the &quot;planned&quot; data is actually little constrained, or not at all._
 
@@ -1466,7 +1473,7 @@ _In all other occurences, it makes sense to define a general framework for the m
 
 _PO Min Nb and PO Max Nb._
 
-_These parameters are used by the time-series generator as constraints that_ _ **cannot be** __**violated**__ , regardless of the raw outcome of regular random draws. To meet these constraints, the generator may have to anticipate or delay &quot;planned&quot; outages yielded by the primary random draws stage. If data regarding planned outage rates and planned outage Max and Min numbers are not consistent, the Max and Min Numbers take precedence._
+_These parameters are used by the time-series generator as constraints that  **cannot be** **violated**, regardless of the raw outcome of regular random draws. To meet these constraints, the generator may have to anticipate or delay &quot;planned&quot; outages yielded by the primary random draws stage. If data regarding planned outage rates and planned outage Max and Min numbers are not consistent, the Max and Min Numbers take precedence._
 
 _Exemples (for simplicity&#39;sake, they are described here with only one value instead of 365) :_
 
@@ -1493,53 +1500,46 @@ _Different ways can be considered to work out values for FOR,POR,FOD,POD from hi
 
 _With the following notations:_
 
-_D(w) = Overall cumulated statistical observation time available for week (w)_
-
+* _D(w) = Overall cumulated statistical observation time available for week (w)_
 _for instance, for w = 1= first week of January : D(w) = 3500 days coming from 10 years of observation of 50 identical plants_
 
-_Df(w) = Within D(w), overall time spent in forced outages, either beginning_
-
+* _Df(w) = Within D(w), overall time spent in forced outages, either beginning_
 _during week w or before (for instance , Df(1) = 163 days)_
 
-_Dp(w) = Within D(w), overall time spent in planned outages, either beginning_
-
+* _Dp(w) = Within D(w), overall time spent in planned outages, either beginning_
 _during week w or before (for instance, Dp(1) = 22 days)_
 
-_Kf(w) = Number of forced outages beginning during week (w)_
-
+* _Kf(w) = Number of forced outages beginning during week (w)_
 _(for instance, Kf(1) = 26)_
 
-_Kp(w) = Number of planned outages beginning during week (w)_
-
+* _Kp(w) = Number of planned outages beginning during week (w)_
 _(for instance, Kp(1) = 3)_
 
-_FOT(w) = Overall cumulated time (expressed in days) spent in forced outages beginning during week (w) (for instance, FOT(1)= 260)_
-
+* _FOT(w) = Overall cumulated time (expressed in days) spent in forced outages beginning during week (w) (for instance, FOT(1)= 260)_
 _Note that if outages last more than one week FOT(w) necessarily includes days from weeks w+1, w+2,…_
-
-_POT(w) = Overall cumulated time (expressed in days) spent in planned outages beginning during week (w) (for instance, POT(1) = 84)_
+* _POT(w) = Overall cumulated time (expressed in days) spent in planned outages beginning during week (w) (for instance, POT(1) = 84)_
 
 _Note that if outages last more than one week POT(w) necessarily includes days from weeks w+1, w+2,…_
 
 _The following formulas can be used :_
 
-_**FOD (w) = FOT(w) / Kf(w)**_
+$$FOD (w) = FOT(w) / Kf(w)$$
 
-_**POD (w) = POT(w) / Kp(w)**_
+$$POD (w) = POT(w) / Kp(w)$$
 
-_**FOR(w) = FOD(w) / [FOD(w) + ( (D(w) - Dp(w)) / Kf(w))]**_
+$$FOR(w) = FOD(w) / [FOD(w) + ( (D(w) - Dp(w)) / Kf(w))]$$
 
-_**POR(w) = POD(w) /[POD(w) + ( (D(w) - Df(w))) / Kp(w))]**_
+$$POR(w) = POD(w) /[POD(w) + ( (D(w) - Df(w))) / Kp(w))]$$
 
 _For the examples given above, the estimated parameters would therefore be :_
 
-_FOD(1) = 10 (days)_
+**FOD(1) = 10 (days)**
 
-_POD(1) = 28 (days)_
+**POD(1) = 28 (days)**
 
-_FOR(1) = 0.0695 # 7 %_
+**FOR(1) = 0.0695 # 7 %**
 
-_POR(1) = 0.0245 # 2.5 %_
+**POR(1) = 0.0245 # 2.5 %**
 
 _These values should eventually (using the GUI or other means) be assigned to the first seven days of January._
 
@@ -1551,24 +1551,24 @@ _The historical data to work from depend on the kind of modeling chosen (statist
 
 _In both cases, assuming that a large number of historical time-series of energies are available, the rationale of the assessment of parameters is the following (from now on, &quot;energies&quot; mean either &quot;ROR and HS energies generated&quot; or &quot;inflows to ROR and HS&quot;),_
 
-1. _For each area n, build up annual energy time-series_ _**A(n)**_ _by aggregation of the original monthly energy time-series_ _**M(n)**__. For each pair of areas (n,m) , assess the correlation_ _**R(n,m)**_ _between the random variables_ _**Log(A(n))**_ _and_ _**Log(A(m))**__. Expressed in percentage, matrix_ _ **R** _ _should be used to fill out the &quot;spatial correlation tab&quot; of in the active window &quot;hydro&quot;_
+a) _For each area n, build up annual energy time-series **A(n)** by aggregation of the original monthly energy time-series**M(n)**. For each pair of areas (n,m) , assess the correlation **R(n,m)** between the random variables **Log(A(n))** and **Log(A(m))**. Expressed in percentage, matrix **R** should be used to fill out the &quot;spatial correlation tab&quot; of in the active window &quot;hydro&quot;_
 
-1. _For each area n, build up two monthly time-series derived from the original array_ _**M(n)**__, by proceeding as follows. Assuming that_ _**M(n)**_ _has K elements (for instance, K= 180 if 15 years of statistics are available):_
+b) _For each area n, build up two monthly time-series derived from the original array **M(n)**, by proceeding as follows. Assuming that **M(n)** has K elements (for instance, K= 180 if 15 years of statistics are available):_
 
     - _**M&#39;(n)**_ _= time-series of K-1 elements obtained by deleting the first element of the time-series Log(M(n))_
     - _**M&#39;&#39;(n)**_ _= time-series of K-1 elements obtained by deleting the last element of the time-series Log(M(n))_
 
-_Assess the correlation_ _**IMC(n)**_ _between the random variables_ _**M&#39;(n)**_ _and_ _**M&#39;&#39;(n)**__. This value (lying in [-1,1]) should be used to fill out the field &quot;inter-monthly correlation value&quot; of the &quot;local data&quot; tab in the &quot;hydro&quot; active window_
+_Assess the correlation **IMC(n)** between the random variables **M&#39;(n)** and **M&#39;&#39;(n)**. This value (lying in [-1,1]) should be used to fill out the field &quot;inter-monthly correlation value&quot; of the &quot;local data&quot; tab in the &quot;hydro&quot; active window_
 
-1. _For each area n, build up 12 monthly energy time-series derived from the original array_ _**M(n)**_ _by extracting from_ _**M(n)**_ _the values related to each month of the year (_ _**M1(n)**_ _= time-series of energies in January,…,_ _**M12(n)**_ _= time-series of energies in December.)_
+c) _For each area n, build up 12 monthly energy time-series derived from the original array_ _**M(n)**_ _by extracting from_ _**M(n)**_ _the values related to each month of the year (_ _**M1(n)**_ _= time-series of energies in January,…,_ _**M12(n)**_ _= time-series of energies in December.)_
 
-_Assess the expectations and standard deviations of the 12 random variables_ _**M1(n)** __,…,__ **M12(n)**__. These values should be used to fill out the fields &quot;expectation&quot; and &quot;std deviation&quot; of the &quot;local data&quot; tab in the &quot;hydro&quot; active window._
+_Assess the expectations and standard deviations of the 12 random variables **M1(n)** ,…,**M12(n)**. These values should be used to fill out the fields &quot;expectation&quot; and &quot;std deviation&quot; of the &quot;local data&quot; tab in the &quot;hydro&quot; active window._
 
 _Aside from expectation and standard deviations, minimum and maximum bounds can be freely set on the monthly overall energies (ROR + HS). Whether to assess these bounds by examination of historical data or on the basis of other considerations depends on the context of the studies to carry out_
 
-1. _For each area n, extract from the 12 monthly overall energy time-series_ _**M1(n)** __,…,__ **M12(n)**_ _the contribution of the 12 monthly time-series of ROR energies_ _**R1(n),…, R12(n)**__._
+d) _For each area n, extract from the 12 monthly overall energy time-series_ _**M1(n)** __,…,__ **M12(n)**_ _the contribution of the 12 monthly time-series of ROR energies_ _**R1(n),…, R12(n)**__._
 
-_Assess the expectations of the 12 random variables_ _**R1(n)/M1(n),…., R12(n)/M12(n)**__. These values should be used to fill out the fields &quot;ROR share&quot; of the &quot;local data&quot; tab in the &quot;hydro&quot; active window._
+_Assess the expectations of the 12 random variables **R1(n)/M1(n),…., R12(n)/M12(n)**. These values should be used to fill out the fields &quot;ROR share&quot; of the &quot;local data&quot; tab in the &quot;hydro&quot; active window._
 
 # 7 Kirchhoff&#39;s Constraints Generator
 
@@ -1588,17 +1588,29 @@ _To get around this issue, the KCG is an autonomous Antares module (much like th
 _To achieve that, the KCG implements an efficient algorithm yielding a minimal cycle basis_
 _# 16_ _and, for all cycles of the chosen basis, generates constraints of the form:_
 
-_Where_ _are the impedances (parameters) and are the flows (variables)._
+$$c=1,...,C : \Sigma_{l \in c} sign(l,c)F_lZ_l=0$$
+
+_Where_ \\(Z_l\\) _are the impedances (parameters) and_ \\(F_l\\) _are the flows (variables)._
 
 _Beyond this basic purpose, the KCG is meant to provide additional modeling capacities, so as to allow the representation of two important phenomena:_
 
 - _As a rule, the power system graph represented in Antares in not fully detailed, it is usually more a &quot;backbone&quot; approximation, in which &quot;vertices&quot; are not equivalent to individual bus-bars. More likely, vertices of the graph stand for whole regions, or even countries: as a consequence, it is highly possible that when all Areas/Vertices have a zero-balance (neither import, nor export), there are real physical flows between them, so-called &quot;loop flows&quot;. If assessments of the level of these loop flows are available (and filled out as link input data), the KCG may include them (on user&#39;s request) in the binding constraints formulation, which becomes:_
 
+$$c=1,...,C : \Sigma_{l \in c} sign(l,c)F_lZ_l=\Sigma_{l \in c} sign(l,c)\phi_lZ_l$$
+
 - _To mitigate the effects of actual loop flows, or more generally to allow the transmission assets to give the maximum of their potential, the power system may include components such as phase-shifting transformers, whose function can be modeled by changing the formulation of the binding constraints. Provided that estimates of the shifting capacities ( ) of the installed PST are known and filled out in the link data section, the KCG will (on user&#39;s request) automatically reformulate the binding constraints as:_
+
+$$c=1,...,C : \Psi^-_c +\Sigma_{l \in c} sign(l,c)(\phi_lZ_l) \le \Sigma_{l \in c} sign(l,c)\F_lZ_l \le \Psi^+_c +\Sigma_{l \in c} sign(l,c)(\phi_lZ_l)$$
+
+_with_
+
+$$\Psi^-_c = \Sigma_{l \in c} Min(sign(l,c)\Psi^-_l,sign(l,c)\Psi^+_l)$$
+
+$$\Psi^+_c = \Sigma_{l \in c} Max(sign(l,c)\Psi^-_l,sign(l,c)\Psi^+_l)$$
 
 _Besides, the KCG takes into account the fact that the &quot;best estimates&quot; of all critical data (loop flows, phase-shifting ratings, or even impedances) may vary in time: In such cases, the KCG formulates as many different binding constraints as necessary to model this operating context diversity, and relax them when appropriate (by setting the right hand sides of the equation to +/- infinite)_
 
-_From a practical standpoint, assessments of should be derived from knowledge about the actual components installed on the grid, while and can be estimated by various methods._
+_From a practical standpoint, assessments of_ \\(\\Psi^+,\\Psi^-\\) _should be derived from knowledge about the actual components installed on the grid, while_ \\(Z_l\\) _and_ \\(\\phi_l\\) _can be estimated by various methods._
 
 _In addition to the previous functionalities, the KCG&#39;s GUI also includes the following options:_
 
@@ -1795,32 +1807,40 @@ End\\)
 _Note: In the formulation of the optimal hydro-thermal unit-commitment and dispatch problem (see dedicated document), the reference hydro energy used to set the right hand sides of hydro- constraints depends on the value chosen for the optimization preference &quot;simplex range&quot; and is defined as follows:_
 
 - _Daily : for each day_ \\(d\\) _of week_ \\(w\\) _:_ \\(HIT=W^2_d\\)
-- _Weekly : for week_ \\)(\\) _:_ \\(HIT=W^2_d\\)
+- _Weekly : for week_ \\(w\\) _:_ \\(HIT=W^2_d\\)
 
 **Optimization problem** _**M**_ **:**
 
-> \\(min \\\\
+> \\(min_{G_t,S_t,...}(\\gamma_\\Delta \\Delta + \\gamma_\\Psi \\Psi +  \\Sigma_t(\\gamma_D D_t + \\gamma_{V+} V_t^+ + \\gamma_{V-} V_t^-)) \\\\
 s.t\\\\
-S_t \\\\
-S_t \\\\
-S_t + G_t \\\\
-\\Sigma \\\\
-G_t - D_t \\\\
-G_t + D_t \\\\
-V^-_t + S_t \\\\
-V^+_t + S_t \\\\
-\\Psi - V^-_t
+S_t \\ge 0 \\\\
+S_t \\le \\Sigma \\\\
+S_t + G_t -S_{t-1} = I_t (see \\, note^{18}) \\\\
+\\Sigma_t G_t = \\Sigma_t T_t \\\\
+G_t - D_t \\le T_t\\\\
+G_t + D_t \\ge T_t \\\\
+V^-_t + S_t \\ge \\underline{S_t} \\\\
+V^+_t + S_t \\ge -\\overline{S_t} \\\\
+\\Psi - V^-_t \\ge 0
 \\)
 
-s.t
 
 **Optimization problems** _**D(m)**_ **:**
 
-s.t
-
-_D(m-1)_
-
-##
+> \\(min_{G_t,S_t,...}(\\gamma_\\Delta \\Delta + \\gamma_\\Psi \\Psi +  \\Sigma_t(\\gamma_D D_t + \\gamma_{V-} V_t^- + \\gamma_O O_t + \\gamma_S S_t)) \\\\
+s.t\\\\
+S_t \\ge 0 \\\\
+S_t \\le \\Sigma \\\\
+G_t \\ge 0 \\\\
+G_t \\le \\overline{G_t} \\\\
+S_t + G_t + O_t -S_{t-1} = I_t (see \\, note^{19}) \\\\
+\\Sigma_t G_t + Y = \\Sigma_t T_t + Y(m-1) (value \\, of \\, Y \\, previously \\, found \\, in \\, solving \\, D(m-1)\\\\
+G_t - D_t \\le T_t\\\\
+G_t + D_t \\ge T_t \\\\
+\\Delta - D_t \\ge 0 \\\\
+V^-_t + S_t \\ge \\underline{S_t} \\\\
+\\Psi - V^-_t \\ge 0
+\\)
 
 
 ## Conventions regarding colors and names
