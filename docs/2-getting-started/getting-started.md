@@ -13,7 +13,7 @@ RTE (French Electricity Transmission system Operator) has initially developed th
 
 The executable file of Antares-Simulator is [provided free of charge](https://antares-simulator.org/pages/antares-simulator/6/). By subscribing to the User’s Club, one can also benefit from services such as software maintenance or trainings.
 
-### How does Antares-Simulator work?
+### Starting with Antares
 
 User can define an electrical network using _nodes_ that represent regions or countries. Each _node_ contains data on its electrical **production**, **consumption** and **reserves**. The nodes can also exchange flows using _links_ with defined parameters such as commercial capacities or impedance.
 
