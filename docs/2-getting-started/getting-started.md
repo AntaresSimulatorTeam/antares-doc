@@ -25,9 +25,23 @@ The use of the _Thermal_ units and of _Hydro Storage_ is optimized to reduce cos
 
 ### Post-processing with R-packages
 
-Different R-packages have been developed by RTE around Antares. They can be used to study, read simulation outputs or visualize them. After running an Antares study, one can use the package [_antaresRead_](https://rte-antares-rpackage.github.io/antaresRead/index.html) to import the output to a R session. One can then use [_antaresProcessing_](https://github.com/rte-antares-rpackage/antaresProcessing) to manipualte the results or [ _antaresViz_](https://rte-antares-rpackage.github.io/antaresViz/index.html) to visualize them using interactive graphs.
+Different R-packages have been developed by RTE to process the output of an Antares study. They can be used to manipulate simulation output, read or visualize them:
+
+- [**antaresRead**](https://rte-antares-rpackage.github.io/antaresRead/index.html) to import the output to a R session;
+
+- [**antaresProcessing**](https://github.com/rte-antares-rpackage/antaresProcessing) to manipulate data on Antares output;
+
+- [**antaresViz**](https://rte-antares-rpackage.github.io/antaresViz/index.html) to visualize Antares output using interactive graphs.
 
 
 ### Pre-processing with R-packages
 
-Different packages have been developed to launch Antares studies from a R session: the package [_antaresEditObject_](https://rte-antares-rpackage.github.io/antaresEditObject/index.html) to edit an Antares study before launching it, [_antaresXpansion_](https://github.com/rte-antares-rpackage/antaresXpansion) to optimizes the installed capacities of an Antares study, [_antaresFlowbased_](https://github.com/rte-antares-rpackage/antaresFlowbased) to  launch a flowBased study from an existed Antares study and [_antaresWaterValues_](https://rte-antares-rpackage.github.io/antaresWaterValues/index.html) to  generate water values for Antares and to run specific simulations.
+Different packages have been developed to launch Antares studies from a R session:
+
+- [**antaresEditObject**](https://rte-antares-rpackage.github.io/antaresEditObject/index.html) to edit an Antares study before launching it; 
+
+- [**antaresXpansion**](https://github.com/rte-antares-rpackage/antaresXpansion) to optimizes the installed capacities of an Antares study;
+
+- [**antaresFlowbased**](https://github.com/rte-antares-rpackage/antaresFlowbased) to  launch a flowBased study from an existed Antares study; 
+
+- [**antaresWaterValues**](https://rte-antares-rpackage.github.io/antaresWaterValues/index.html) to  generate water values for Antares and to run specific simulations.
