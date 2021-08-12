@@ -15,13 +15,35 @@ The executable file of Antares-Simulator is [provided free of charge](https://an
 
 ### Starting with _Antares-Simulator_
 
-User can define an electrical network using _nodes_ that represent regions or countries. Each _node_ contains data on its electrical **production**, **consumption** and **reserves**. The nodes can also exchange flows using _links_ with defined parameters such as commercial capacities or impedance.
+User can define an electrical network using _nodes_ (or _areas_) that represent regions or countries. Each _area_ will have specific parameters, powerplants, and links with other _areas_ etc. Each _node_ represents an independent system with its own production fleet and hourly consumption. Within a zone, it is assumed that there is no network constraint on energy exchanges. Several _nodes_ can be interconnected to exchange power with one another, with specific network constraints.
+
+The consumption of a _node_ is defined by its _Load_. The _Load_ can be an user-input with _Time-series_ or it can be generated via probabilistic models.
+
+The _Thermal_ production units are defined in _clusters_. The _clusters_ can be defined as containing _Gas_, _Hard Coal_, _Lignite_, _Mixed Fuel_, _Nuclear_, _Oil_ or _Other_ production units. They are set using their _Operating Parameters_, _Operating Costs_ and _Reliability Model_. Then, the production of the thermal units is generated and optimized using the **TS generator**. Production is limited by the units’ outages which are simulated through multiple parameters.
 
 
-The consumption of a _node_ is defined by its _Load_. The _Load_ can be an user-input with _Time-series_ or it can be generated via probabilistic models. The different production means which can be set are: renewable energies such as _Wind_ and _Solar_ energy, _Hydro_ energy, and different kinds of _Thermal_ units. _Wind_ and _Solar_ production units are a fatal production means which cannot be optimized: they are either user input or randomly generated through probabilistic models. The _Thermal_ units can be defined as being _Gas_, _Hard Coal_, _Lignite_, _Mixed Fuel_, _Nuclear_, _Oil_ or _Other_. They are set using their _Operating Parameters_, _Operating Costs_ and _Reliability Model_. Finally, the _Hydro_ units are defined between a fatal _Run-of-the-river (ROR)_ production and _Hydro Storage_.
+The _Wind_ and _Solar_ production is fatal and cannot be optimized. It is either input by the user or randomly generated using probabilistic models. The parameters of theses models can be derived from historical data.
 
-The use of the _Thermal_ units and of _Hydro Storage_ is optimized to reduce costs. It is also possible to simulate multiple _Monte Carlo_ years in Antares in order to compare different production scenarios.
 
+Hydroelectricity generation is both Run of the River (_ROR_) and _hydro storage_.
+
+_ROR_ uses streamflow to produce electricity. This generation is non-dispatchable.
+
+_Hydro storage_ refers to the water stored in dams and lakes. Two types of storage can be employed: 
+
+-	**Hydro plants with storage**: releasing water through turbines when needed.
+
+-	**Pumped storage**: like hydro plants with storage with a high and a low reservoir but with a turbine between. When the when demand and price are low, water is pumped, from the lower to the higher levels. If the demand and price are high, water is turbinated
+
+Hydro with storage is dispatchable generation unlike RoR, Antares Simulator will optimize the use of water week by week throughout the year. Reservoirs depend on inflows such as melting ice which correspond to the daily amount of hydro energy being added to the reservoir. These inflows are modeled by daily TS.
+
+
+Miscellaneous generation can also be set, it contains all other internal electricity production and external (ROW - representing electricity interconnections) electricity production. Negative values mean that the actual area exports electricity to the ROW. This data is “deterministic”, as the corresponding Time-Series are the same whatever Monte-Carlo year is considered.
+
+Finally, additional economic information, such as the _unsupplied energy cost_ can be added to the study, before launching the simulation. The output is a data table containing _costs_, _balance_, _production_, etc.
+
+
+Antares' outputs can then be processed and visualized using spreadsheet software or using the developped R-packages.
 
 ### Post-processing with R-packages
 
