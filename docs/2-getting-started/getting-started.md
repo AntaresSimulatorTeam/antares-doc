@@ -25,7 +25,7 @@ The use of the _Thermal_ units and of _Hydro Storage_ is optimized to reduce cos
 
 ### Post-processing with R-packages
 
-Different R-packages have been developed by RTE to process the output of an Antares study. They can be used to manipulate simulation output, read or visualize them:
+Different R-packages have been developed to process the output of an Antares study. They can be used to manipulate simulation output, read or visualize them:
 
 - [**antaresRead**](https://rte-antares-rpackage.github.io/antaresRead/index.html) to import the output to a R session;
 
