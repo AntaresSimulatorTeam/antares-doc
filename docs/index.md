@@ -14,5 +14,6 @@ This documentation is meant not only to present the functionalities of Antares_S
 model it uses, but also the software that work together with the simulator:
 
 - _R_-packages aimed at the preparation, post-processing and visualisation of Antares simulations
-- Antares_xpansion that optimizes the installed capacities of an ANTARES study
-- Antares_Launcher that allows to run Antares simulations on a remote dedicated machines (that have a suitable Antares installation)
+- [Antares_xpansion](antares-xpansion.readthedocs.io) that optimizes the installed capacities of an ANTARES study
+- [Antares_Simulator](antares-xpansion.readthedocs.io)
+- Antares_Launcher that allows to run Antares simulations on a remote dedicated machine (that have a suitable Antares installation)
