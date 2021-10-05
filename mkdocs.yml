@@ -1,5 +1,7 @@
 site_name: Antares Docs
 repo_url: https://github.com/AntaresSimulatorTeam/Antares_Simulator
+
+
 theme:
   name: material
   logo: assets/logo.png
@@ -8,15 +10,21 @@ theme:
   features:
     - navigation.instant
     - navigation.top
+    - navigation.expand
   #  - navigation.sections
   #   - header.autohide
   #   - toc.separate
-
-extra:
-  generator: false
-
-plugins:
-  - search
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: antares
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
 
 nav:
   - Home: index.md
@@ -32,6 +40,13 @@ nav:
     - 'Modeling': '3-reference-guide/2-modeling.md'
     - 'Resolution algorithm': '3-reference-guide/3-resolution-algorithm.md'
 
+extra:
+  generator: false
+  version:
+    provider: mike
+plugins:
+  - search
+
 extra_css:
   - stylesheets/extra.css
 
@@ -45,5 +60,12 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
 
 copyright: Copyright &copy; 2007 - 2021 RTE
