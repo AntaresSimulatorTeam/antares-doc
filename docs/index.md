@@ -9,11 +9,13 @@ scenarios made of 8760 hourly time-frames each.
 Transmission system Operators, Power and Gas Producers, Regulators, Academics,
 Consultants, NGO and all others actors concerned by energy policy issues are welcome to use the software. 
 
-## This documentation
+The detailed documentation of Antares_Simulator can be found [here](https://antares-simulator.readthedocs.io).
+
+## Additional packages
 This documentation is meant not only to present the functionalities of Antares_Simulator, its user guide and the theoretical 
 model it uses, but also the software that work together with the simulator:
 
-- _R_-packages aimed at the preparation, post-processing and visualisation of Antares simulations
-- [Antares_xpansion](antares-xpansion.readthedocs.io) that optimizes the installed capacities of an ANTARES study
-- [Antares_Simulator](antares-xpansion.readthedocs.io)
+- [_R_-packages](https://rte-antares-rpackage.github.io/rPackagesRte/) aimed at the preparation, post-processing and visualisation of Antares simulations
+- [Antares_xpansion](https://antares-xpansion.readthedocs.io) that optimizes the installed capacities of an ANTARES study
+- [Antares_Simulator](https://antares-simulator.readthedocs.io)
 - Antares_Launcher that allows to run Antares simulations on a remote dedicated machine (that have a suitable Antares installation)
