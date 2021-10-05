@@ -28,7 +28,6 @@ theme:
 
 nav:
   - Home: index.md
-  - 'Reference guide': '3-reference-guide/1-reference-guide.md'
   - 'Packages R':
     - 'Overview': '5-r-packages/overview.md'
     - 'Adequacy patch': 

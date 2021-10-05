@@ -15,7 +15,7 @@ The detailed documentation of Antares_Simulator can be found [here](https://anta
 This documentation is meant not only to present the functionalities of Antares_Simulator, its user guide and the theoretical 
 model it uses, but also the software that work together with the simulator:
 
+- [Antares_Simulator](https://antares-simulator.readthedocs.io) official documentation
 - [_R_-packages](https://rte-antares-rpackage.github.io/rPackagesRte/) aimed at the preparation, post-processing and visualisation of Antares simulations
 - [Antares_xpansion](https://antares-xpansion.readthedocs.io) that optimizes the installed capacities of an ANTARES study
-- [Antares_Simulator](https://antares-simulator.readthedocs.io)
 - Antares_Launcher that allows to run Antares simulations on a remote dedicated machine (that have a suitable Antares installation)
