@@ -28,8 +28,9 @@ theme:
 
 nav:
   - Home: index.md
-  - Antares_Simulator : 'https://antares-simulator.readthedocs.io'
-  - antares-xpansion : 'https://antares-xpansion.readthedocs.io'
+  - Antares Simulator : 'https://antares-simulator.readthedocs.io'
+  - Antares Xpansion : 'https://antares-xpansion.readthedocs.io'
+  - Antares Web : 'https://antares-web.readthedocs.io'
   - 'Packages R':
     - 'Overview': 'r-packages/overview.md'
     - 'Adequacy patch': 
