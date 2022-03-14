@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antares Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"> 
     <style>
         body {
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -19,8 +23,9 @@
             align-items: center;
             width: 100%;
             padding: 16px 0;
-            margin-bottom: 16px;
             background-color: white;
+            position: relative;
+            z-index: 2;
         }
         header img {
             width: 200px;
@@ -30,69 +35,93 @@
             color: #112446;
         }
         .introduction p {
+            position: relative;
+            z-index: 2;
             text-align: center;
             width: 80%;
-            margin: 16px auto;
+            margin: 32px auto;
         }
         #particles-js {
             position: absolute;
+            top: 0;
             width: 100%;
-            height: 100%;
-            background-color: #112446;
-            background-image: url("");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 50% 50%;
-            z-index: -1;
+            height: 160vh;
+            z-index: 1;
         }
         .parent {
-            width: 50%;
+            position: relative;
+            z-index: 2;
+            width: 80%;
             height: 80vh;
             margin: 0 auto;
             margin-bottom: 16px;
 
             display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 32px;
+            grid-row-gap: 32px;
+        }
+        .parent div {
+            border: 1px solid #fff;
+            background-color: #112446;
+            display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
+            grid-template-rows: 72px 1fr;
+            padding: 8px;
         }
         .div1 {
             grid-row: 1;
             grid-column: 1;
-            border: 1px solid #fff;
-            background-color: #112446;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .div2 { 
             grid-row: 1;
             grid-column: 2;
-            border: 1px solid #fff;
-            background-color: #112446;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .div3 { 
-            grid-row: 2;
-            grid-column: 1;
-            border: 1px solid #fff;
-            background-color: #112446;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            grid-row: 1;
+            grid-column: 3;
         }
         .div4 { 
             grid-row: 2;
+            grid-column: 1;
+        }
+        .div5 {
+            grid-row: 2;
             grid-column: 2;
-            border: 1px solid #fff;
-            background-color: #112446;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        } 
+        }
+        .div6 {
+            grid-row: 2;
+            grid-column: 3;
+        }
+        .div7 { 
+            grid-row: 3;
+            grid-column: 1;
+        }
+        .div8 {
+            grid-row: 3;
+            grid-column: 2;
+        }
+        .div9 {
+            grid-row: 3;
+            grid-column: 3;
+        }
+        .img {
+            width: 100%;
+            height: 100%;
+            grid-row: 1 / 3;
+            grid-column: 1;
+        }
+        .subtitle {
+            grid-row: 1;
+            grid-column: 2;
+            text-align: center;
+        }
+        .description {
+            grid-row: 2;
+            grid-column: 2;
+            padding: 16px;
+        }
     </style>
 </head>
 <body>
@@ -101,23 +130,55 @@
         <h1 class="title">Antares Documentation</h1>
     </header>
     <main>
-
         <div id="particles-js"></div>
         <div class="introduction">
             <p>Antares-Simulator is an Open Source (GNU GPL 3.0) power system simulator meant to be used by anybody places value in quantifying the adequacy, or the economic performance of interconnected energy systems, at short or remote time horizons. With an adequate modelling of the energy consumption, generation and transportation, the software performs probabilistic simulations of the system throughout many year-long scenarios made of 8760 hourly time-frames each.</p>
         </div>
         <div class="parent">
             <div class="div1">
-                Antares Simulator
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Simulator</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
             </div>
             <div class="div2">
-                Antares Xpansion
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Xpansion</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
             </div>
             <div class="div3">
-                Antares Web
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Web</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
             </div>
             <div class="div4">
-                Packages R
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Read</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
+            </div>
+            <div class="div5">
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Edit Object</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
+            </div>
+            <div class="div6">
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Processing</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
+            </div>
+            <div class="div7">
+                <img src="assets/images/antaresViz.jpg" alt="" class="img">
+                <h2 class="subtitle">Antares Viz</h2>
+                <p class="description">Visualize results generated by Antares. This package provides functions that create interactive charts to help users visually explore the results of their simulations.</p>
+            </div>
+            <div class="div8">
+                <img class="img" src="assets/images/antaresRead.png" alt="">
+                <h2 class="subtitle">Antares Flowbased</h2>
+                <p class="description">Import, manipulate and explore results generated by 'Antares', a powerful open source software developed by RTE (Réseau de Transport d’Électricité) to simulate and study electric power systems.</p>
+            </div>
+            <div class="div9">
+                <img src="assets/images/antaresWaterValues.png" alt="" class="img">
+                <h2 class="subtitle">Antares Water Values</h2>
+                <p class="description">Compute water values to use in Antares. This package allows to run specific simulations in Antares from within R, and to use the results of these simulations to compute Bellman values and water values for each stock level and each week of the year.</p>
             </div>
         </div> 
 
