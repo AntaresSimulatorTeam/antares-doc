@@ -55,11 +55,12 @@ header img {
     border: 1px solid #fff;
     background-color: #112446;
     padding: 8px;
-    transition: scale .5s ease, box-shadow .5s ease;
+    transition: scale .2s ease, box-shadow .2s ease;
+    border-radius: 8px;
 }
 .parent div:hover {
-    scale: 1.05;
-    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.5);
+    scale: 1.01;
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.5);
 }
 .parent div a {
     display: grid;

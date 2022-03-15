@@ -54,7 +54,7 @@
       },
       "move": {
         "enable": true,
-        "speed": 10,
+        "speed": 5,
         "direction": "none",
         "random": false,
         "straight": false,
@@ -74,19 +74,12 @@
           "enable": true,
           "mode": "repulse"
         },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
         "resize": true
       },
       "modes": {
         "repulse": {
           "distance": 150,
           "duration": 1
-        },
-        "push": {
-          "particles_nb": 4
         }
       }
     },
