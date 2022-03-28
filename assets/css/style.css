@@ -34,7 +34,7 @@ header img {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 160vh;
+    height: 180vh;
     z-index: 1;
 }
 .parent {
@@ -47,7 +47,7 @@ header img {
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 32px;
     grid-row-gap: 32px;
 }
@@ -106,11 +106,17 @@ header img {
     grid-row: 3;
     grid-column: 3;
 }
+.div10 {
+    grid-row: 4;
+    grid-column: 1;
+}
 .img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    margin: auto 0;
     grid-row: 1 / 3;
     grid-column: 1;
+    background-color: white;
 }
 .subtitle {
     grid-row: 1;
