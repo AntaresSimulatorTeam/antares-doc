@@ -1,7 +1,10 @@
 **/venv/
+**/.venv/
 
 **/.DS_Store
 
 **/.idea/
 
 **/documents/
+
+site/

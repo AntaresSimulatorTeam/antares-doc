@@ -1,0 +1,15 @@
+# Managed vs. on disc studies
+
+In Antares Web, you have the possibility to store your studies either on the disc or in a database. The later possibility is called, *managed studies* because it lets Antares Web the management of the data to optimize the memory efficiency, avoid data duplication and increase the responsiveness of the app.
+
+Another advantage of managed studies is the possibility to make variants of a main study. It is ideal for evaluating the impact of the variation of a certain parameter. **This is not possible with on disc studies.** 
+
+!!! tip
+
+	Given all these advantages, you should use as often as possible managed studies.
+
+As a consequence, you cannot directly access the file tree of the study as you could if the study lived lcally on your computer. You can still export the study file tree to your local machine via the export button in the top right dropdown menu.
+
+!!! note
+
+	Note that when you launch the study via Antares Web, it automatically transfer the corresponding file tree to the simulation executables as this is there input format.
