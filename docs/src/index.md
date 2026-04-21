@@ -3,7 +3,13 @@
 </figure>
 <h1 style="text-align:center">Comprehensive electrical grid modelling </h1>
 
-Antares is an open source software suite designed to simulate electrical power systems. Its goal is to quantify the adequacy, or the economic performance of interconnected energy systems for medium or long-term studies. With an adequate modelling of the energy consumption, generation and transportation, the software performs probabilistic simulations of the system throughout many year-long scenarios made of 8760 hourly time-frames each. These studies can be produced at nation or continental scale to produce reports enlightening government decision and public debates on energy planning.
+Antares is an open source software suite designed to simulate electrical power systems. Its goal are to:
+
+- Provide insight into the evolution trajectories of electricity mix
+- Identify key levers to ensure security of supply
+- Highlight necessary grid developments to support transformations in the electricity system
+
+Thus, Antares is used for [medium and long-term studies](overview/use-cases.md#reports-using-antares).
 
 ## Key features
 
@@ -99,6 +105,6 @@ This software is already used by multiple TSO, companies and universities includ
 
 We believe that open source software is essential in achieving the transformation of tomorrow's energy challenges, transparently and collaboratively. 
 
-Therefore, all Antares technical components are licensed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). Antares will remain open source for the years to come. We would love to hear from you! Feedback, issues and contributions are welcomed on GitHub or by email.
+Therefore, all Antares technical components are licensed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/) apart from [Antares Web](https://github.com/AntaresSimulatorTeam/AntaREST) licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0). Antares will remain open source for the years to come. We would love to hear from you! Feedback, issues and contributions are welcomed on GitHub or by email.
 
 [Roadmap :octicons-goal-24:](overview/roadmap.md){ .md-button }

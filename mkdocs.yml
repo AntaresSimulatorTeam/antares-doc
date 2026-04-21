@@ -11,6 +11,8 @@ theme:
     - navigation.instant
     - navigation.instant.preview
     - navigation.top
+    # - navigation.sections
+    # - navigation.tabs
     - content.tabs.link
     - content.code.copy
     - content.action.edit
@@ -30,25 +32,21 @@ theme:
 nav:
   - Home: src/index.md
   - Overview:
-    - Antares suite:
-      - Use Cases: src/overview/use-cases.md
-      - Products: src/overview/product-comparison.md
-      - Architecture: src/overview/architecture.md
+    - Use Cases: src/overview/use-cases.md
+    - Products: src/overview/product-comparison.md
+    - Architecture: src/overview/architecture.md
     - Release notes: src/overview/changelogs.md
     - Forum & support: src/overview/forum-and-support.md
     - Roadmap: src/overview/roadmap.md
-    - Research: src/overview/bibliography.md
-    - Licenses: src/overview/licenses.md
-    - Glossary: src/overview/glossary.md
   - Getting started:
     - Installation:
       - Desktop installation: src/getting-started/install-desktop.md
       - Base installation: src/getting-started/install-base.md
       - Performance installation: src/getting-started/install-performance.md
     - First steps:
-      - Import study: src/getting-started/import-study.md
+      - Import a study: src/getting-started/import-study.md
       - Explore data: src/getting-started/explore-data.md
-      - Launch simulation: src/getting-started/launch-simulation.md
+      - Launch a simulation: src/getting-started/launch-simulation.md
       - Read outputs: src/getting-started/read-outputs.md
   - Interface:
       - Sidebar: src/interface/sidebar.md
@@ -61,12 +59,12 @@ nav:
   - Tutorials:
     - Create links: src/tutorials/create-links.md
     - Manage studies:
-      - Import study: src/tutorials/import-study.md
+      - Import a study: src/tutorials/import-study.md
       - Export study: src/tutorials/export-study.md
       - Data management: src/tutorials/data-management.md
-      - Create variant: src/tutorials/create-variant.md
+      - Create a variant: src/tutorials/create-variant.md
     - Modelling:
-      - Set binding constraint: src/tutorials/set-binding-constraint.md
+      - Set binding constraints: src/tutorials/set-binding-constraint.md
       - Set additional constraints on short-term storage: src/tutorials/set-constraint-st-storage.md
       - Set load: src/tutorials/set-load.md
       - Build scenario: src/tutorials/build-scenario.md
@@ -87,32 +85,49 @@ nav:
       - Visualize by Variable: src/tutorials/vizualize-by-variable.md
   - Reference:
     - Fundamentals:
-      - Problem: src/technicals/problem.md
-      - Hypothesis: src/technicals/hypothesis.md
-    - Inputs: src/technicals/inputs.md
-    - Grid modelling:
-      - Area: src/technicals/area.md
-      - Link: src/technicals/link.md
-      - Load: src/technicals/load.md
-      - Thermal: src/technicals/thermal.md
-      - Renewables: src/technicals/renewables.md
-      - Run of river: src/technicals/ror.md
-      - Long-term storage: src/technicals/storage-long.md
-      - Short-term storage: src/technicals/storage-short.md
-      - Binding constraints: src/technicals/binding-constraints.md
+      - Problem: src/reference/problem.md
+      - Hypothesis: src/reference/hypothesis.md
+    - Modelling:
+      - Area: src/reference/area.md
+      - Link: src/reference/link.md
+      - Load: src/reference/load.md
+      - Thermals: src/reference/thermals.md
+      - Storages: src/reference/storages.md
+      - Renewables: src/reference/renewables.md
+      - Hydro: src/reference/hydro.md
+      - Reserves: src/reference/reserves.md
+      - Misc. gen.: src/reference/misc-gen.md
+      - Binding constraints: src/reference/binding-constraints.md
+    - Configuration:
+      - General: src/reference/config-general.md
+      - Time-series generation: src/reference/config-ts-generation.md
+      - Optimization: src/reference/config-optimization.md
+      - Adequacy patch: src/reference/config-adequacy-patch.md
+      - Advanced parameters: src/reference/config-advanced-parameters.md
+      - Economic options: src/reference/config-economic-options.md
+      - Geographic trimming: src/reference/config-geographic-trimming.md
+    - Table mode: src/reference/table-mode.md
     - Solver:
-      - At glance: src/technicals/solver-at-glance.md
-      - Solver parameters: src/technicals/solver-parameters.md
-      - Optimization: src/technicals/optimization.md
+      - At glance: src/reference/solver-at-glance.md
+      - Solver parameters: src/reference/solver-parameters.md
+      - Optimization: src/reference/optimization.md
     - Optimization problem:
-      - Optimization theory: src/technicals/optimization-problem.md
-      - Flow models: src/technicals/flow-models.md
-      - Random and epsilon parameters: src/technicals/random-and-epsilon-parameters.md
-    - Adequacy patch: src/technicals/adequacy-patch.md
-    - Output: src/technicals/output-structure.md
+      - Optimization theory: src/reference/optimization-problem.md
+      - Flow models: src/reference/flow-models.md
+      - Random and epsilon parameters: src/reference/random-and-epsilon-parameters.md
+    - Adequacy patch: src/reference/adequacy-patch.md
+    - Outputs: src/reference/outputs.md
     - Xpansion:
-      - Introduction: src/technicals/xpansion-intro.md
-      - Theory: src/technicals/xpansion-theory.md
+      - Introduction: src/reference/xpansion-intro.md
+      - Theory: src/reference/xpansion-theory.md
+      - Candidates: src/reference/xpansion-candidates.md
+      - Settings: src/reference/xpansion-settings.md
+      - Constraints: src/reference/xpansion-constraints.md
+      - Weights: src/reference/xpansion-weights.md
+      - Capacities: src/reference/xpansion-capacities.md
+    - Debug: src/reference/debug.md
+    - Research: src/reference/bibliography.md
+    - Glossary: src/reference/glossary.md
   - Contributing:
     - Code Guidelines: src/contributing/guidelines-code.md
     - Documentation Guidelines: src/contributing/guidelines-docs.md
