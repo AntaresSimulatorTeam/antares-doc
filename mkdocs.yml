@@ -1,6 +1,7 @@
 site_name: Antares
 repo_url: https://github.com/AntaresSimulatorTeam/antares-doc
 edit_uri: edit/main/docs/
+docs_dir: docs
 
 theme:
   name: material
@@ -30,7 +31,7 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Home: src/index.md
+  - Home: index.md
   - Overview:
     - Use Cases: src/overview/use-cases.md
     - Products: src/overview/product-comparison.md
@@ -43,11 +44,7 @@ nav:
       - Desktop installation: src/getting-started/install-desktop.md
       - Base installation: src/getting-started/install-base.md
       - Performance installation: src/getting-started/install-performance.md
-    - First steps:
-      - Import a study: src/getting-started/import-study.md
-      - Explore data: src/getting-started/explore-data.md
-      - Launch a simulation: src/getting-started/launch-simulation.md
-      - Read outputs: src/getting-started/read-outputs.md
+    - First steps: src/getting-started/first-steps.md
   - Interface:
       - Sidebar: src/interface/sidebar.md
       - Navigation: src/interface/navigation.md
@@ -69,7 +66,7 @@ nav:
       - Set load: src/tutorials/set-load.md
       - Build scenario: src/tutorials/build-scenario.md
     - GEMS: src/tutorials/gems.md
-    - Xpansion:
+    - Invest with Xpansion:
       - Define candidates: src/tutorials/define-candidates.md
       - Invest on a cluster: src/tutorials/invest-cluster.md
       - Invest on a link: src/tutorials/invest-link.md
@@ -83,10 +80,8 @@ nav:
       - Visualize Raw: src/tutorials/visualize-raw.md
       - Visualize by Area: src/tutorials/vizualize-by-area.md
       - Visualize by Variable: src/tutorials/vizualize-by-variable.md
+    - Debug your study: src/tutorials/debug-your-study.md
   - Reference:
-    - Fundamentals:
-      - Problem: src/reference/problem.md
-      - Hypothesis: src/reference/hypothesis.md
     - Modelling:
       - Area: src/reference/area.md
       - Link: src/reference/link.md
@@ -107,14 +102,6 @@ nav:
       - Economic options: src/reference/config-economic-options.md
       - Geographic trimming: src/reference/config-geographic-trimming.md
     - Table mode: src/reference/table-mode.md
-    - Solver:
-      - At glance: src/reference/solver-at-glance.md
-      - Solver parameters: src/reference/solver-parameters.md
-      - Optimization: src/reference/optimization.md
-    - Optimization problem:
-      - Optimization theory: src/reference/optimization-problem.md
-      - Flow models: src/reference/flow-models.md
-      - Random and epsilon parameters: src/reference/random-and-epsilon-parameters.md
     - Adequacy patch: src/reference/adequacy-patch.md
     - Outputs: src/reference/outputs.md
     - Xpansion:
@@ -126,7 +113,15 @@ nav:
       - Weights: src/reference/xpansion-weights.md
       - Capacities: src/reference/xpansion-capacities.md
     - Debug: src/reference/debug.md
-    - Research: src/reference/bibliography.md
+    - Mathematical formulation:
+      - Hypothesis: src/reference/hypothesis.md
+      - Optimization problem: src/reference/optimization-problem.md
+      - Flow models: src/reference/flow-models.md
+      - Random and epsilon parameters: src/reference/random-and-epsilon-parameters.md
+      - Hydro heuristic: src/reference/hydro-heuristic.md
+      - Thermal heuristic: src/reference/thermal-heuristic.md
+      - Water values: src/reference/water-values.md
+    - Bibliography: src/reference/bibliography.md
     - Glossary: src/reference/glossary.md
   - Contributing:
     - Code Guidelines: src/contributing/guidelines-code.md

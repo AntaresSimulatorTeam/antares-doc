@@ -38,7 +38,7 @@ Here is a comparison of the different versions of Antares:
 
 | Solution | Desktop | Base | Performance | SaaS | Legacy |
 | --- | --- | --- | --- | --- | --- | 
-| Operating system | Ubuntu, Windows | Cross platform for users: Linux, Windows, Mac; Ubuntu server | Cross platform for users: Linux, Windows, Mac; HPC on Linux | Windows |
+| Operating system | Ubuntu, Windows | Cross platform for users: Linux, Windows, Mac; Server: Ubuntu | Cross platform for users: Linux, Windows, Mac; HPC on Linux | Cross platform: Linux, Windows, Mac | Windows |
 | Performance | Low | Medium | High (depending on your cluster) | High | High (depending on your cluster) |
 | Multiple users | ❌ | ✅ | ✅ | ✅ | ✅ |
 | HPC | ❌ | ❌ | ✅ SLURM | ✅ SLURM | ✅ SLURM |
@@ -49,7 +49,7 @@ Here is a comparison of the different versions of Antares:
 
 !!! warning
 
-    Historically, Antares UI was built alongside the simulator. It is now unavailable since v10.0 for the benefit of Antares Web. 
+    Historically, Antares user interface was built alongside the simulator as a "rich client". This Legacy interface is now unavailable since v10.0 in favour of Antares Web. 
 
 
 
