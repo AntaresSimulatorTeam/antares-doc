@@ -16,37 +16,37 @@ The equilibrium between supply and demand of electricity must be satisfied at th
 
 ## Properties
 
-#### `Unsupplied` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Unsupplied` (€/MWh)
 
-`float` Average cost of failure for each area of the study
+Average cost of failure for each area of the study
 
-#### `Spilled` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Spilled` (€/MWh)
 
-`float` Average cost of spillage for each area of the study.
+Average cost of spillage for each area of the study.
 
-#### `Spread unsupplied` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Spread unsupplied` (€/MWh)
 
-`float` Spread on the cost of failure.
+Spread on the cost of failure.
 
-#### `Spread supplied` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Spread supplied` (€/MWh)
 
-`float` Spread on the cost of spillage.
+Spread on the cost of spillage.
 
-#### `Non dispatch. power`
+#### <span class="param-badge badge-bool">bool</span> `Non dispatch. power`
 
-`bool` Whether spillage can be performed from must-run production.
+Whether spillage can be performed from must-run production.
 
-#### `Dispatch. hydropower`
+#### <span class="param-badge badge-bool">bool</span> `Dispatch. hydropower`
 
-`bool` Whether spillage can be performed from hydro production.
+Whether spillage can be performed from hydro production.
 
-#### `Other dispatch. power`
+#### <span class="param-badge badge-bool">bool</span> `Other dispatch. power`
 
-`bool` Whether spillage can be performed from thermal production
+Whether spillage can be performed from thermal production
 
-#### `Adequacy patch`
+#### <span class="param-badge badge-enum">enum</span> `Adequacy patch`
 
-`enum` Allow to set the integration or not of the zone in the [adequacy patch](adequacy-patch.md).
+Allow to set the integration or not of the zone in the [adequacy patch](adequacy-patch.md).
 
 - `outside`
 - `inside`

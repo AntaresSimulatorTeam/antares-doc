@@ -2,9 +2,9 @@
 
 ## Parameters
 
-#### `Group`
+#### <span class="param-badge badge-enum">enum</span> `Group`
 
-`enum` Renewables sources:
+Renewables sources:
 
 - `wind onshore`
 - `wind offshore`
@@ -17,32 +17,31 @@
 - `other res 4`
 - `other res 5`
 
-#### `Name`
+#### <span class="param-badge badge-string">string</span> `Name`
 
-`string` User defined name of the cluster. 
+User defined name of the cluster. 
 
-#### `Enabled`
+#### <span class="param-badge badge-bool">bool</span> `Enabled`
 
-`bool` Whether this cluster is enabled
+Whether this cluster is enabled
 
-#### `TS interpretation`
+#### <span class="param-badge badge-enum">enum</span> `TS interpretation`
 
-`enum` The type of data recorded in the time series chronicles. 
+The type of data recorded in the time series chronicles. 
 
 - `power-generation`
 - `production-factor`
 
-#### `Unit`
+#### <span class="param-badge badge-int">int</span> `Unit`
 
-`int` Number of units inside the cluster.
+Number of units inside the cluster.
 
-#### `Nominal capacity` (MW)
+#### <span class="param-badge badge-float">float</span> `Nominal capacity` (MW)
 
-`float` Nominal capacity of a single unit. 
+Nominal capacity of a single unit. 
 
 ## Time series
 
-#### Time series
+#### <span class="param-badge badge-matrix">matrix</span> Time series
 
-`matrix` Hourly time series of Production Factors or Power generations as input for the associated renewable cluster.
-
+Hourly time series of Production Factors or Power generations as input for the associated renewable cluster.

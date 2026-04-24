@@ -2,25 +2,21 @@
 
 ## Management options
 
-#### `Follow load modulation`
+#### <span class="param-badge badge-bool">bool</span> `Follow load modulation`
 
-`bool`
 
 #### `Inter daily breakdown`
 
 #### `Inter-daily modulation`
 
-#### `Reservoir management`
+#### <span class="param-badge badge-bool">bool</span> `Reservoir management`
 
-`bool`
 
-#### `Hard bounds on rules curves`
+#### <span class="param-badge badge-bool">bool</span> `Hard bounds on rules curves`
 
-`bool`
 
-#### `Use heuristic target`
+#### <span class="param-badge badge-bool">bool</span> `Use heuristic target`
 
-`bool`
 
 #### `Reservoir capacity`
 
@@ -77,11 +73,10 @@
 
 ## Run of river
 
-#### Run of river
+#### <span class="param-badge badge-matrix">matrix</span> Run of river
 
-`matrix` Hourly time series of power in MW. Run-of-river (RoR) hydroelectric generation is a type of electricity production that relies on the natural flow of a river without significant water storage. Unlike traditional hydroelectric dams, RoR plants generate power continuously based on the river's current water level and flow rate. This makes them highly dependent on seasonal variations and weather conditions, leading to fluctuations in electricity production.
+Hourly time series of power in MW. Run-of-river (RoR) hydroelectric generation is a type of electricity production that relies on the natural flow of a river without significant water storage. Unlike traditional hydroelectric dams, RoR plants generate power continuously based on the river's current water level and flow rate. This makes them highly dependent on seasonal variations and weather conditions, leading to fluctuations in electricity production.
 
 ## Min gen
 
 #### Min gen
-

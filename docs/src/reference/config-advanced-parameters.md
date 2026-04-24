@@ -4,9 +4,9 @@
 
 Defining random seeds allow to control random number generation for time-series generation, noise (used to eliminate equivalent solution during the optimization) or reservoir levels.
 
-#### `Initial reservoir levels`
+#### <span class="param-badge badge-enum">enum</span> `Initial reservoir levels`
 
-`enum` **DEPRECATED since 9.2** The reservoir level is now always determined with cold start behavior. Simulations results may in some circumstances be heavily impacted by this setting, hence proper attention should be paid to its meaning before considering changing the default value.
+**DEPRECATED since 9.2** The reservoir level is now always determined with cold start behavior. Simulations results may in some circumstances be heavily impacted by this setting, hence proper attention should be paid to its meaning before considering changing the default value.
 
 - `cold start`
 - `hot start`
@@ -54,25 +54,23 @@ Defining random seeds allow to control random number generation for time-series 
 
         More generally, it has to be pointed out that the "hydro-storage" model implemented in Antares can be used to model " storable" resources quite different from actual hydro reserves: batteries, gas subterraneous stocks, etc.
 
-#### `Use accuracy mode`
-
-`enum`
+#### <span class="param-badge badge-enum">enum</span> `Use accuracy mode`
 
 - `wind`
 - `solar`
 - `load`
 
-#### `Hydro heuristic policy`
+#### <span class="param-badge badge-enum">enum</span> `Hydro heuristic policy`
 
-`enum` Define how the reservoir level should be managed throughout the year, either with emphasis put on the respect of rule curves or on the maximization of the use of natural inflows.
+Define how the reservoir level should be managed throughout the year, either with emphasis put on the respect of rule curves or on the maximization of the use of natural inflows.
 
 - `accommodate rule curves` Upper and lower rule curves are accommodated in both monthly and daily heuristic stages (described page 58). In the second stage, violations of the lower rule curve are avoided as much as possible (penalty cost on $\Psi$ higher than penalty cost on $Y$). This policy may result in a restriction of the overall yearly energy generated from the natural inflows.
 - `maximize generation` Upper and lower rule curves are accommodated in both monthly and daily heuristic stages (described page 58). In the second stage, incomplete use of natural inflows is avoided as much as possible (penalty cost on $Y$ higher than penalty cost on $\Psi$). This policy may result in violations of the lower rule curve.
 
 
-#### `Hydro pricing mode`
+#### <span class="param-badge badge-enum">enum</span> `Hydro pricing mode`
 
-`enum` Define how the reservoir level difference between the beginning and the end of an optimization week should be reflected in the hydro economic signal (water values) used in the computation of optimal hourly generated or pumped power during this week.
+Define how the reservoir level difference between the beginning and the end of an optimization week should be reflected in the hydro economic signal (water values) used in the computation of optimal hourly generated or pumped power during this week.
 
 - `fast` The water value is taken to remain about the same throughout the week, and a constant value equal to that found at the date and for the level at which the week begins is used in the course of the optimization. A value interpolated from the reference table for the exact level reached at each time step within the week is used ex-post in the assessment of the output variable "H.COST" (positive for generation, negative for pumping). This option should be reserved to simulations in which computation resources are an issue or to simulations in which level-dependent water value variations throughout a week are known to be small.
 - `accurate` The water value is considered as variable throughout the week. As a consequence, a different cost is used for each increment of stock from/to which energy can be withdrawn/injected, in an internal hydro merit-order involving the 100 tabulated water-values found at the date at which the week ends. A value interpolated from the reference table for the exact level reached at each time step within the week is used ex-post in the assessment of the variable "H.COST" (*positive for generation, negative for pumping*). This option should be used if computation resources are not an issue and if level-dependent water value variations throughout a week must be accounted for.
@@ -84,26 +82,24 @@ Defining random seeds allow to control random number generation for time-series 
     Simulations carried out in `fast` mode are less demanding in computer resources. From a qualitative standpoint, they are expected to lead to somewhat more intensive (less cautious) use of stored energy.
 
 
-#### `Power fluctuations`
-
-`enum` 
+#### <span class="param-badge badge-enum">enum</span> `Power fluctuations`
 
 - `free modulations`
 - `minimize excursions`
 - `minimize ramping` 
 
-#### `Shedding policy`
+#### <span class="param-badge badge-enum">enum</span> `Shedding policy`
 
-`enum` Power shedding policy.
+Power shedding policy.
 
 - `shave peaks`
 - `minimize duration`
 
 #### `Day ahead reserve management`
 
-#### `Unit commitment mode`
+#### <span class="param-badge badge-enum">enum</span> `Unit commitment mode`
 
-`enum` Define the mode in which Antares solves the unit-commitment problem.
+Define the mode in which Antares solves the unit-commitment problem.
 
 - `fast` Heuristic in which 2 LP problems are solved. No explicit modelling for the number of ON/OFF units.
 - `accurate` Heuristic in which 2 LP problems are solved. Explicit modelling for the number of ON/OFF units. Slower than `fast`.
@@ -141,9 +137,9 @@ Defining random seeds allow to control random number generation for time-series 
 
     In the second optimization stage, the unit commitment set by the intermediate IP is considered as a context to use in a new comprehensive optimal hydro-thermal schedule assessment. The amount of day-ahead (spinning) reserve, if any, is added to the demand considered in the first stage and subtracted in the second stage.
 
-#### `Simulation cores`
+#### <span class="param-badge badge-enum">enum</span> `Simulation cores`
 
-`enum` Allow to configure multi-threading.
+Allow to configure multi-threading.
 
 - `minimum`
 - `low`
@@ -189,7 +185,7 @@ Defining random seeds allow to control random number generation for time-series 
     |         _10_          |     1     |     3     |     5     |     8      |    10     |
     |         _11_          |     1     |     3     |     6     |     9      |    11     |
     |         _12_          |     1     |     3     |     6     |     9      |    12     |
-    |      _S &gt; 12_      |     1     | Ceil(S/4) | Ceil(S/2) | Ceil(3S/4) |     S     |
+    |      _S > 12_      |     1     | Ceil(S/4) | Ceil(S/2) | Ceil(3S/4) |     S     |
 
     **Before 9.2**
 
@@ -207,12 +203,12 @@ Defining random seeds allow to control random number generation for time-series 
     |         _10_          |     1     |     3     |     5     |     8      |     9     |
     |         _11_          |     1     |     3     |     6     |     8      |    10     |
     |         _12_          |     1     |     3     |     6     |     9      |    11     |
-    |      _S &gt; 12_      |     1     | Ceil(S/4) | Ceil(S/2) | Ceil(3S/4) |    S-1    |
+    |      _S > 12_      |     1     | Ceil(S/4) | Ceil(S/2) | Ceil(3S/4) |    S-1    |
 
 
-#### `Renewable generation modeling`
+#### <span class="param-badge badge-enum">enum</span> `Renewable generation modeling`
 
-`enum` Define the way to model renewable sources in Antares.
+Define the way to model renewable sources in Antares.
 
 - `aggregated` 
 - `clusters`
@@ -221,7 +217,4 @@ Defining random seeds allow to control random number generation for time-series 
 
     For a new study, it will default to cluster. For a legacy (Antares version <8.1.0) study it will default to aggregated.
 
-    If the parameter is set to aggregated, the user will have access to the Wind & Solar windows, but not the Renewable tab. When the parameter is set to cluster, the Renewable window will be available, but not the Wind nor the Solar tab. The data stored in the windows that are not available will always be conserved. However, only Renewable data ( and not the wind and solar data) will be considered for the calculations when the parameter is set to “cluster”. And only the wind and solar data (and not the renewable data) will be considered for the calculations when the parameter is set to aggregated.
-
-    The Renewable window can be filled out with the different renewable clusters inside each node. Each renewable cluster needs to have a group specified or will default to the «Other RES 1» group. Production Timeseries can be filled out much like the Thermal production ones. Note that unlike thermal clusters, negative production values are allowed. In the Simulation window, only "Ready-made" timeseries can be selected for renewables for now. This should be modified in a future release. The MC scenario builder for Renewables works the same way as for Thermal Clusters.
-
+    If the parameter is set to aggregated, the user will have access to the Wind & Solar windows, but not the Renewable tab. When the parameter is set to cluster, the Renewable window will be available, but not the Wind nor the Solar tab. The data stored in the windows that are not available will always be conserved. However, only Renewable data ( and not the wind and solar data) will be considered for the calculations when the parameter is set to "cluster". And only the wind and solar data (and not the renewable data) will be considered for the calculations when the parameter is set to aggregated. The Renewable window can be filled out with the different renewable clusters inside each node. Each renewable cluster needs to have a group specified or will default to the «Other RES 1» group. Production Timeseries can be filled out much like the Thermal production ones. Note that unlike thermal clusters, negative production values are allowed. In the Simulation window, only "Ready-made" timeseries can be selected for renewables for now. This should be modified in a future release. The MC scenario builder for Renewables works the same way as for Thermal Clusters.

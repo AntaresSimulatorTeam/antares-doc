@@ -4,9 +4,9 @@ A thermal cluster is a grouping of plants with close parameters.
 
 ## Operating parameters
 
-#### `Group`
+#### <span class="param-badge badge-string">string</span> `Group`
 
-`string` Group in which the cluster is, only for organization purpose.
+Group in which the cluster is, only for organization purpose.
 
 - `gas`
 - `hard coal`
@@ -20,51 +20,51 @@ A thermal cluster is a grouping of plants with close parameters.
 - `other 4`
 - `other 5`
 
-#### `Name`
+#### <span class="param-badge badge-string">string</span> `Name`
 
-`string` User defined name of the cluster.
+User defined name of the cluster.
 
-#### `Enabled`
+#### <span class="param-badge badge-bool">bool</span> `Enabled`
 
-`bool` Whether to enable this cluster for production. 
+Whether to enable this cluster for production. 
 
-#### `Must run`
+#### <span class="param-badge badge-bool">bool</span> `Must run`
 
-`bool` If enabled, the plants will generate at their maximum capacity, regardless of market conditions. Otherwise, above a partial "must-run level" (that may exist or not, see infra) plants will be dispatched on the basis of their market bids.
+If enabled, the plants will generate at their maximum capacity, regardless of market conditions. Otherwise, above a partial "must-run level" (that may exist or not, see infra) plants will be dispatched on the basis of their market bids.
 
-#### `Unit`
+#### <span class="param-badge badge-int">int</span> `Unit`
 
-`int` The number of units in the cluster. 
+The number of units in the cluster. 
 
-#### `Nominal capacity` (MW)
+#### <span class="param-badge badge-float">float</span> `Nominal capacity` (MW)
 
-`float` The nominal capactity of one unit.
+The nominal capactity of one unit. 
 
 !!! note
 
     The installed power is the product of the number of units and their nominal capacity. 
 
-#### `Min stable power` (MW)
+#### <span class="param-badge badge-float">float</span> `Min stable power` (MW)
 
-`float` The minimum power to keep a plant on. 
+The minimum power to keep a plant on. 
 
-#### `Spinning` (%)
+#### <span class="param-badge badge-int">int</span> `Spinning` (%)
 
-`int` Default contribution to the spinning reserve (percentage of nominal capacity).
+Default contribution to the spinning reserve (percentage of nominal capacity).
 
-#### `Min uptime` (h)
+#### <span class="param-badge badge-int">int</span> `Min uptime` (h)
 
-`int` Minimum uptime for a plant to go from off to its nominal capacity.
+Minimum uptime for a plant to go from off to its nominal capacity.
 
-#### `Min downtime` (h)
+#### <span class="param-badge badge-int">int</span> `Min downtime` (h)
 
-`int` Minimu downtime for a plant to go from its nominal capacity to completly off. 
+Minimu downtime for a plant to go from its nominal capacity to completly off. 
 
 ## Operating costs
 
-#### `TS cost`
+#### <span class="param-badge badge-enum">enum</span> `TS cost`
 
-`enum` Cost generation
+Cost generation
 
 - `SetManually`
 - `useCostTimeseries`
@@ -79,33 +79,33 @@ A thermal cluster is a grouping of plants with close parameters.
     ```
     where Efficiency[%], CO2_emission_factor[tons/MWh] and Variable_O&M_cost[€/MWh] are specified in the Common tab under operating costs and parameters, while Fuel_Cost[€/GJ] and C02_cost[€/tons] are provided as time-series in separate tabs.
 
-#### `Efficiency` (%)
+#### <span class="param-badge badge-int">int</span> `Efficiency` (%)
 
-`int` Fuel efficiency.
+Fuel efficiency.
 
-#### `Variable O&M` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Variable O&M` (€/MWh)
 
-`float` Variable operation and maintenance costs only use if cost generation is set to use cost timeseries.
+Variable operation and maintenance costs only use if cost generation is set to use cost timeseries.
 
-#### `Marginal cost` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Marginal cost` (€/MWh)
 
-`float` Marginal cost.
+Marginal cost.
 
-#### `Startup cost` (€)
+#### <span class="param-badge badge-float">float</span> `Startup cost` (€)
 
-`float` Cost of starting a new plan
+Cost of starting a new plan
 
-#### `Market bid cost` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Market bid cost` (€/MWh)
 
-`float` Market bid cost.
+Market bid cost.
 
-#### `Fixed O&M cost` (€/h)
+#### <span class="param-badge badge-float">float</span> `Fixed O&M cost` (€/h)
 
-`float` Fixed operation and maintenance costs.
+Fixed operation and maintenance costs.
 
-#### `Random spread` (€/MWh)
+#### <span class="param-badge badge-float">float</span> `Random spread` (€/MWh)
 
-`float` Random spread on the market bid. 
+Random spread on the market bid. 
 
 !!! note
 
@@ -116,86 +116,73 @@ A thermal cluster is a grouping of plants with close parameters.
 
 The following parameters allow the user to indicate the rates of emission of different polluants for a given cluster.
 
-#### `CO2` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `CO2` (t/MWh)
 
-`float`
 
-#### `SO2` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `SO2` (t/MWh)
 
-`float`
 
-#### `NH3` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `NH3` (t/MWh)
 
-`float`
 
-#### `NOx` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `NOx` (t/MWh)
 
-`float`
 
-#### `NMVOC` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `NMVOC` (t/MWh)
 
-`float`
 
-#### `PM2.5` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `PM2.5` (t/MWh)
 
-`float`
 
-#### `PM5` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `PM5` (t/MWh)
 
-`float`
 
-#### `PM10` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `PM10` (t/MWh)
 
-`float`
 
-#### `Other polluant 1` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `Other polluant 1` (t/MWh)
 
-`float`
 
-#### `Other polluant 2` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `Other polluant 2` (t/MWh)
 
-`float`
 
-#### `Other polluant 3` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `Other polluant 3` (t/MWh)
 
-`float`
 
-#### `Other polluant 4` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `Other polluant 4` (t/MWh)
 
-`float`
 
-#### `Other polluant 5` (t/MWh)
+#### <span class="param-badge badge-float">float</span> `Other polluant 5` (t/MWh)
 
-`float`
 
 ## Time series generation
 
-#### `Parameter`
+#### <span class="param-badge badge-enum">enum</span> `Parameter`
 
-`enum` Parameter to specify the behavior of this cluster for time-series generation. **This cluster-wise parameter takes priority over the study-wide one.** It can hold three values:
+Parameter to specify the behavior of this cluster for time-series generation. **This cluster-wise parameter takes priority over the study-wide one.** It can hold three values:
 
 - `use global`: 
 - `force no generation`: time-series for this cluster will not be generated. 
 - `force generation`: time-series for this cluster will be generated.
 
-#### `Volatility forced`
+#### <span class="param-badge badge-float">float</span> `Volatility forced`
 
-`float` A parameter between 0 and 1.
+A parameter between 0 and 1.
 
-#### `Volatility planned`
+#### <span class="param-badge badge-float">float</span> `Volatility planned`
 
-`float` A parameter between 0 and 1.
+A parameter between 0 and 1.
 
-#### `Law forced`
+#### <span class="param-badge badge-enum">enum</span> `Law forced`
 
-`enum` Probabilistic law used for the generation of the forced outage time-series.
+Probabilistic law used for the generation of the forced outage time-series.
 
 - `geometric`
 - `uniform`
 
-#### `Law planned`
+#### <span class="param-badge badge-enum">enum</span> `Law planned`
 
-`enum` Probabilistic law used for the generation of the planned outage time-series.
+Probabilistic law used for the generation of the planned outage time-series.
 
 - `geometric`
 - `uniform`

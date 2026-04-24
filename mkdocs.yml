@@ -60,6 +60,7 @@ nav:
       - Export study: src/tutorials/export-study.md
       - Data management: src/tutorials/data-management.md
       - Create a variant: src/tutorials/create-variant.md
+      - Use table mode: src/tutorials/use-table-mode.md
     - Modelling:
       - Set binding constraints: src/tutorials/set-binding-constraint.md
       - Set additional constraints on short-term storage: src/tutorials/set-constraint-st-storage.md

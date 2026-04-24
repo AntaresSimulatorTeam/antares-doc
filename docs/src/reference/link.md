@@ -4,29 +4,29 @@ A link is another fundamental object in Antares as it connects two areas togethe
 
 ## Properties
 
-#### Hurdle costs
+#### <span class="param-badge badge-bool">bool</span> Hurdle costs
 
-`bool` Whether linear transmission fees should be taken into account or not in economy and adequacy simulations.
+Whether linear transmission fees should be taken into account or not in economy and adequacy simulations.
 
-#### Loop flows
+#### <span class="param-badge badge-bool">bool</span> Loop flows
 
-`bool` Whether the Kirchoff include passive loop flows in the formulation of the constraints enforcing Kirchhoff laws.
+Whether the Kirchoff include passive loop flows in the formulation of the constraints enforcing Kirchhoff laws.
 
-#### PST
+#### <span class="param-badge badge-bool">bool</span> PST
 
-`bool` Whether the Kirchoff constraint generator include the settings of phase-shifting transformers int the formulation of the constraints enforcing Kirchoff laws.
+Whether the Kirchoff constraint generator include the settings of phase-shifting transformers int the formulation of the constraints enforcing Kirchoff laws.
 
-#### Transmission capacities
+#### <span class="param-badge badge-enum">enum</span> Transmission capacities
 
-`enum` Allow to state which capacities to take into account.
+Allow to state which capacities to take into account.
 
 - `Infinite` infinite capacity on the link.
 - `Null` null capacity on the link.
 - `Enabled` direct and indirect capacities set in the **Time series** tab.
 
-#### Type
+#### <span class="param-badge badge-enum">enum</span> Type
 
-`enum` Allow to state whether the link is either an AC component (subject to Kirchhoff's laws), a DC component, or another type of asset.
+Allow to state whether the link is either an AC component (subject to Kirchhoff's laws), a DC component, or another type of asset.
 
 - `AC`
 - `DC`
@@ -39,9 +39,9 @@ A link is another fundamental object in Antares as it connects two areas togethe
 
 ### Parameters
 
-#### Parameters
+#### <span class="param-badge badge-matrix">matrix</span> Parameters
 
-`matrix` Hourly time series for:
+Hourly time series for:
 
 - Hurdle cost direct: an upstream-to-downstream transmission fee, in €/MWh
 - Hurdle cost indirect: a downstream-to-upstream transmission fee, in €/MWh
@@ -52,10 +52,10 @@ A link is another fundamental object in Antares as it connects two areas togethe
 
 ### Capacities
 
-#### Trans. capacity direct
+#### <span class="param-badge badge-matrix">matrix</span> Trans. capacity direct
 
-`matrix` Hourly time series of upstream-to-downstream capacity in MW.
+Hourly time series of upstream-to-downstream capacity in MW.
 
-#### Trans. capacity indirect
+#### <span class="param-badge badge-matrix">matrix</span> Trans. capacity indirect
 
-`matrix` Hourly time series of downstream-to-upstream capacity in MW.
+Hourly time series of downstream-to-upstream capacity in MW.

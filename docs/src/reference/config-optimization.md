@@ -2,18 +2,18 @@
 
 ## General
 
-#### `Unfeasible problem behaviour`
+#### <span class="param-badge badge-enum">enum</span> `Unfeasible problem behaviour`
 
-`enum` Define the behavior of the simulator in case of an unfeasible problem.
+Define the behavior of the simulator in case of an unfeasible problem.
 
 - `warning-dry`: Continue simulation.
 - `warning-verbose`: Continue simulation, but export the MPS of the unfeasible problem. 
 - `error-dry`: Stop simulation.
 - `error-verbose` Stop simulation, and export the MPS of the unfeasible problem
 
-#### `Simplex optimization range`
+#### <span class="param-badge badge-enum">enum</span> `Simplex optimization range`
 
-`enum` The simplex optimization range:
+The simplex optimization range:
 
 - `week`
 - `day`
@@ -29,28 +29,28 @@ In the formulation of the optimal hydro-thermal unit-commitment and dispatch pro
 !!! info
     You can have more info on the impact of the optimization range in the [heuristic for seasonal hydro pre-allocation](hydro-heuristic.md).
 
-#### `Export MPS`
+#### <span class="param-badge badge-enum">enum</span> `Export MPS`
 
-`enum` Allow to choose which [MPS files](https://en.wikipedia.org/wiki/MPS_(format)) to export during the simulation.
+Allow to choose which [MPS files](https://en.wikipedia.org/wiki/MPS_(format)) to export during the simulation.
 
 - `none`: Don't export any MPS file.
 - `optim-1`: Export only the MPS file from the first optimization.
 - `optim-2`: Export only the MPS file from the second optimization.
 - `both`: Export both MPS files from the first and second optimization.
 
-#### `Binding constraints`
+#### <span class="param-badge badge-bool">bool</span> `Binding constraints`
 
-`bool` Whether to include binding constraints in the simulation.
+Whether to include binding constraints in the simulation.
 
-#### `Hurdle costs`
+#### <span class="param-badge badge-bool">bool</span> `Hurdle costs`
 
-`bool` Whether to include hurdle costs in the simulation. 
+Whether to include hurdle costs in the simulation. 
 
 ## Links
 
-#### `Transmission capacities`
+#### <span class="param-badge badge-enum">enum</span> `Transmission capacities`
 
-`enum` Allow the user to override the transmission capacities on links.
+Allow the user to override the transmission capacities on links.
 
 - `local-values`: use the local property for all links, including physical links (no override).
 - `null-for-all-links`: override all transmission capacities with 0.
@@ -61,28 +61,28 @@ In the formulation of the optimal hydro-thermal unit-commitment and dispatch pro
 
 ## Thermal clusters
 
-#### `Thermal clusters min stable power`
+#### <span class="param-badge badge-bool">bool</span> `Thermal clusters min stable power`
 
-`bool` Whether to activate the constraint of minimum stable power for thermal units.
+Whether to activate the constraint of minimum stable power for thermal units.
 
-#### `Thermal clusters min UD time`
+#### <span class="param-badge badge-bool">bool</span> `Thermal clusters min UD time`
 
-`bool` Whether to activate the constraint of minimum start-up time for thermal units.
+Whether to activate the constraint of minimum start-up time for thermal units.
 
 ## Reserve 
 
-#### `Day ahead reserve`
+#### <span class="param-badge badge-bool">bool</span> `Day ahead reserve`
 
-`bool` Whether to activate day-ahead reserve constraints.
+Whether to activate day-ahead reserve constraints.
 
-#### `Primary reserve`
+#### <span class="param-badge badge-bool">bool</span> `Primary reserve`
 
-`bool` Whether to activate primary reserve constraints.
+Whether to activate primary reserve constraints.
 
-#### `Strategic reserve`
+#### <span class="param-badge badge-bool">bool</span> `Strategic reserve`
 
-`bool` Whether to activate strategic reserve constraints.
+Whether to activate strategic reserve constraints.
 
-#### `Spinning reserve`
+#### <span class="param-badge badge-bool">bool</span> `Spinning reserve`
 
-`bool` Whether to activate spinning reserve constraints.
+Whether to activate spinning reserve constraints.

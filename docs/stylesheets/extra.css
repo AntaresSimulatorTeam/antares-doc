@@ -9,3 +9,28 @@
     --md-hue: 213; /* [0, 360] */
     --md-accent-fg-color: #ff9800;
 }
+
+.param-badge {
+  display: inline-block;
+  font-family: var(--md-code-font-family);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.badge-float  { background: #E6F1FB; color: #0C447C; border: 0.5px solid #85B7EB; }
+.badge-int    { background: #EAF3DE; color: #27500A; border: 0.5px solid #97C459; }
+.badge-string { background: #FAEEDA; color: #633806; border: 0.5px solid #EF9F27; }
+.badge-enum   { background: #EEEDFE; color: #3C3489; border: 0.5px solid #AFA9EC; }
+.badge-matrix { background: #FAECE7; color: #712B13; border: 0.5px solid #F0997B; }
+.badge-bool { background: #E1F5EE; color: #085041; border: 0.5px solid #5DCAA5; }
+
+[data-md-color-scheme="slate"] .badge-float  { background: #0C447C; color: #B5D4F4; border-color: #185FA5; }
+[data-md-color-scheme="slate"] .badge-int    { background: #27500A; color: #C0DD97; border-color: #639922; }
+[data-md-color-scheme="slate"] .badge-string { background: #633806; color: #FAC775; border-color: #BA7517; }
+[data-md-color-scheme="slate"] .badge-enum   { background: #3C3489; color: #CECBF6; border-color: #7F77DD; }
+[data-md-color-scheme="slate"] .badge-matrix { background: #712B13; color: #F5C4B3; border-color: #D85A30; }
+[data-md-color-scheme="slate"] .badge-bool { background: #085041; color: #9FE1CB; border-color: #1D9E75; }
