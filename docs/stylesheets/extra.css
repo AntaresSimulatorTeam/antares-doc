@@ -13,9 +13,9 @@
 .param-badge {
   display: inline-block;
   font-family: var(--md-code-font-family);
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 500;
-  padding: 2px 8px;
+  padding: 1px 6px;
   border-radius: 4px;
   margin-right: 6px;
   vertical-align: middle;

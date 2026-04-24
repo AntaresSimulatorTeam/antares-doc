@@ -103,7 +103,6 @@ nav:
       - Economic options: src/reference/config-economic-options.md
       - Geographic trimming: src/reference/config-geographic-trimming.md
     - Table mode: src/reference/table-mode.md
-    - Adequacy patch: src/reference/adequacy-patch.md
     - Outputs: src/reference/outputs.md
     - Xpansion:
       - Introduction: src/reference/xpansion-intro.md
@@ -121,6 +120,7 @@ nav:
       - Random and epsilon parameters: src/reference/random-and-epsilon-parameters.md
       - Hydro heuristic: src/reference/hydro-heuristic.md
       - Thermal heuristic: src/reference/thermal-heuristic.md
+      - Adequacy patch: src/reference/adequacy-patch.md
       - Water values: src/reference/water-values.md
     - Bibliography: src/reference/bibliography.md
     - Glossary: src/reference/glossary.md
