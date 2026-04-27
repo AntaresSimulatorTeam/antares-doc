@@ -12,8 +12,9 @@ theme:
     - navigation.instant
     - navigation.instant.preview
     - navigation.top
+    - navigation.indexes
     # - navigation.sections
-    # - navigation.tabs
+    - navigation.tabs
     - content.tabs.link
     - content.code.copy
     - content.action.edit
@@ -31,104 +32,108 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Home: index.md
   - Overview:
-    - Use Cases: src/overview/use-cases.md
-    - Products: src/overview/product-comparison.md
-    - Architecture: src/overview/architecture.md
-    - Release notes: src/overview/changelogs.md
-    - Forum & support: src/overview/forum-and-support.md
-    - Roadmap: src/overview/roadmap.md
+    - index.md
+    - Use Cases: overview/use-cases.md
+    - Products: overview/product-comparison.md
+    - Architecture: overview/architecture.md
+    - Release notes: overview/changelogs.md
+    - Forum & support: overview/forum-and-support.md
+    - Roadmap: overview/roadmap.md
   - Getting started:
+    - getting-started/index.md
     - Installation:
-      - Desktop installation: src/getting-started/install-desktop.md
-      - Base installation: src/getting-started/install-base.md
-      - Performance installation: src/getting-started/install-performance.md
-    - First steps: src/getting-started/first-steps.md
-  - Interface:
-      - Sidebar: src/interface/sidebar.md
-      - Navigation: src/interface/navigation.md
-      - Configuration: src/interface/config.md
-      - Outputs: src/interface/outputs.md
-      - Shortcuts: src/interface/shortcuts.md
-      - Table Mode: src/interface/table-mode.md
-      - XPansion: src/interface/xpansion.md
+      - Desktop installation: getting-started/install-desktop.md
+      - Base installation: getting-started/install-base.md
+    - First steps: getting-started/first-steps.md
   - Tutorials:
-    - Create links: src/tutorials/create-links.md
+    - tutorials/index.md
+    - Create links: tutorials/create-links.md
     - Manage studies:
-      - Import a study: src/tutorials/import-study.md
-      - Export study: src/tutorials/export-study.md
-      - Data management: src/tutorials/data-management.md
-      - Create a variant: src/tutorials/create-variant.md
-      - Use table mode: src/tutorials/use-table-mode.md
+      - Import a study: tutorials/import-study.md
+      - Export a study: tutorials/export-study.md
+      - Data management: tutorials/data-management.md
+      - Create a variant: tutorials/create-variant.md
+      - Use table mode: tutorials/use-table-mode.md
     - Modelling:
-      - Set binding constraints: src/tutorials/set-binding-constraint.md
-      - Set additional constraints on short-term storage: src/tutorials/set-constraint-st-storage.md
-      - Set load: src/tutorials/set-load.md
-      - Build scenario: src/tutorials/build-scenario.md
-    - GEMS: src/tutorials/gems.md
+      - Set binding constraints: tutorials/set-binding-constraint.md
+      - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
+      - Set load: tutorials/set-load.md
+      - Build scenario: tutorials/build-scenario.md
     - Invest with Xpansion:
-      - Define candidates: src/tutorials/define-candidates.md
-      - Invest on a cluster: src/tutorials/invest-cluster.md
-      - Invest on a link: src/tutorials/invest-link.md
-      - Set the parameters: src/tutorials/invest-parameters.md
-      - Analyze outputs: src/tutorials/invest-outputs.md
+      - Define candidates: tutorials/define-candidates.md
+      - Invest on a cluster: tutorials/invest-cluster.md
+      - Invest on a link: tutorials/invest-link.md
+      - Set the parameters: tutorials/invest-parameters.md
+      - Analyze outputs: tutorials/invest-outputs.md
     - Productivity:
-      - Modify TS: src/tutorials/modify-ts.md
-    - Random Seeds: src/tutorials/random-seeds.md
-    - Reduce Output: src/tutorials/reduce-output.md
+      - Modify time series: tutorials/modify-ts.md
+      - Shortcuts: tutorials/shortcuts.md
+    - Random seeds: tutorials/random-seeds.md
+    - Reduce output size: tutorials/reduce-output.md
     - Outputs:
-      - Visualize Raw: src/tutorials/visualize-raw.md
-      - Visualize by Area: src/tutorials/vizualize-by-area.md
-      - Visualize by Variable: src/tutorials/vizualize-by-variable.md
-    - Debug your study: src/tutorials/debug-your-study.md
+      - Visualize raw outputs: tutorials/visualize-raw.md
+      - Visualize by area: tutorials/vizualize-by-area.md
+      - Visualize by variable: tutorials/vizualize-by-variable.md
+    - Debug your study: tutorials/debug-your-study.md
+  - Programmation and CLI:
+    - programmatic/index.md
+    - Antares Craft overview: programmatic/antares-craft-overview.md
+    - Command line interface:
+      - Antares solver: programmatic/antares-solver-cli.md
+      - Modeler: programmatic/modeler-cli.md
+      - Antares Xpansion: programmatic/antares-xpansion-cli.md
   - Reference:
+    - reference/index.md
     - Modelling:
-      - Area: src/reference/area.md
-      - Link: src/reference/link.md
-      - Load: src/reference/load.md
-      - Thermals: src/reference/thermals.md
-      - Storages: src/reference/storages.md
-      - Renewables: src/reference/renewables.md
-      - Hydro: src/reference/hydro.md
-      - Reserves: src/reference/reserves.md
-      - Misc. gen.: src/reference/misc-gen.md
-      - Binding constraints: src/reference/binding-constraints.md
+      - Area: reference/area.md
+      - Link: reference/link.md
+      - Load: reference/load.md
+      - Thermals: reference/thermals.md
+      - Storages: reference/storages.md
+      - Renewables: reference/renewables.md
+      - Hydro: reference/hydro.md
+      - Reserves: reference/reserves.md
+      - Misc. gen.: reference/misc-gen.md
+      - Binding constraints: reference/binding-constraints.md
     - Configuration:
-      - General: src/reference/config-general.md
-      - Time-series generation: src/reference/config-ts-generation.md
-      - Optimization: src/reference/config-optimization.md
-      - Adequacy patch: src/reference/config-adequacy-patch.md
-      - Advanced parameters: src/reference/config-advanced-parameters.md
-      - Economic options: src/reference/config-economic-options.md
-      - Geographic trimming: src/reference/config-geographic-trimming.md
-    - Table mode: src/reference/table-mode.md
-    - Outputs: src/reference/outputs.md
+      - General: reference/config-general.md
+      - Time-series generation: reference/config-ts-generation.md
+      - Optimization: reference/config-optimization.md
+      - Adequacy patch: reference/config-adequacy-patch.md
+      - Advanced parameters: reference/config-advanced-parameters.md
+      - Economic options: reference/config-economic-options.md
+      - Geographic trimming: reference/config-geographic-trimming.md
+    - Table mode: reference/table-mode.md
+    - Outputs: reference/outputs.md
     - Xpansion:
-      - Introduction: src/reference/xpansion-intro.md
-      - Theory: src/reference/xpansion-theory.md
-      - Candidates: src/reference/xpansion-candidates.md
-      - Settings: src/reference/xpansion-settings.md
-      - Constraints: src/reference/xpansion-constraints.md
-      - Weights: src/reference/xpansion-weights.md
-      - Capacities: src/reference/xpansion-capacities.md
-    - Debug: src/reference/debug.md
+      - Introduction: reference/xpansion-intro.md
+      - Candidates: reference/xpansion-candidates.md
+      - Settings: reference/xpansion-settings.md
+      - Constraints: reference/xpansion-constraints.md
+      - Weights: reference/xpansion-weights.md
+      - Capacities: reference/xpansion-capacities.md
+    - Debug: reference/debug.md
     - Mathematical formulation:
-      - Hypothesis: src/reference/hypothesis.md
-      - Optimization problem: src/reference/optimization-problem.md
-      - Flow models: src/reference/flow-models.md
-      - Random and epsilon parameters: src/reference/random-and-epsilon-parameters.md
-      - Hydro heuristic: src/reference/hydro-heuristic.md
-      - Thermal heuristic: src/reference/thermal-heuristic.md
-      - Adequacy patch: src/reference/adequacy-patch.md
-      - Water values: src/reference/water-values.md
-    - Bibliography: src/reference/bibliography.md
-    - Glossary: src/reference/glossary.md
+      - Hypothesis: reference/hypothesis.md
+      - Optimization problem: reference/optimization-problem.md
+      - Flow models: reference/flow-models.md
+      - Random and epsilon parameters: reference/random-and-epsilon-parameters.md
+      - Hydro heuristic: reference/hydro-heuristic.md
+      - Thermal heuristic: reference/thermal-heuristic.md
+      - Adequacy patch: reference/adequacy-patch.md
+      - Water values: reference/water-values.md
+      - Investment problem: reference/xpansion-theory.md
+    - Performance:
+      - Xpansion performance: performance-xpansion.md
+    - Bibliography: reference/bibliography.md
+    - Glossary: reference/glossary.md
   - Contributing:
-    - Code Guidelines: src/contributing/guidelines-code.md
-    - Documentation Guidelines: src/contributing/guidelines-docs.md
-    - Local Editing: src/contributing/local-editing.md
-    - Online Editing: src/contributing/online-editing.md
+    - contributing/index.md
+    - Code Guidelines: contributing/guidelines-code.md
+    - Documentation Guidelines: contributing/guidelines-docs.md
+    - Local Editing: contributing/local-editing.md
+    - Online Editing: contributing/online-editing.md
 
 plugins:
   - search
