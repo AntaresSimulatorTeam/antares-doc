@@ -2,87 +2,113 @@
 
 ## General
 
-#### <span class="param-badge badge-enum">enum</span> `Unfeasible problem behaviour`
+#### Unfeasible problem behaviour
 
+<span class="param-badge badge-enum">enum</span>
 Define the behavior of the simulator in case of an unfeasible problem.
 
 - `warning-dry`: Continue simulation.
-- `warning-verbose`: Continue simulation, but export the MPS of the unfeasible problem. 
+- `warning-verbose`: Continue simulation, but export the MPS of the
+unfeasible problem.
 - `error-dry`: Stop simulation.
-- `error-verbose` Stop simulation, and export the MPS of the unfeasible problem
+- `error-verbose` Stop simulation, and export the MPS of the unfeasible
+problem
 
-#### <span class="param-badge badge-enum">enum</span> `Simplex optimization range`
+#### Simplex optimization range
 
+<span class="param-badge badge-enum">enum</span>
 The simplex optimization range:
 
 - `week`
 - `day`
 
-In the formulation of the optimal hydro-thermal unit-commitment and dispatch problem, the reference hydro energy $HIT$ used to set the right hand sides of hydro-constraints depends on the value chosen for this parameter, and is defined as follows:
+In the formulation of the optimal hydro-thermal unit-commitment and dispatch
+problem, the reference hydro energy $HIT$ used to set the right hand sides of
+hydro-constraints depends on the value chosen for this parameter, and is defined
+as follows:
 
 - `day`: for each day $d$ of the week $\omega$, $HIT = W_d^2$
-
 - `week`: for week $\omega$, $HIT = \sum_{d \in \omega} W_d^2$
 
-    Weekly optimization performs a more refined unit commitment, especially when [`Unit commitment mode`](config-advanced-parameters.md#enum-unit-commitment-mode) is set to `accurate`.
+Weekly optimization performs a more refined unit commitment, especially when
+[Unit commitment mode](config-advanced-parameters.md#unit-commitment-mode)
+is set to `accurate`.
 
 !!! info
-    You can have more info on the impact of the optimization range in the [heuristic for seasonal hydro pre-allocation](hydro-heuristic.md).
+    You can have more info on the impact of the optimization range in the
+    [heuristic for seasonal hydro pre-allocation](hydro-heuristic.md).
 
-#### <span class="param-badge badge-enum">enum</span> `Export MPS`
+#### Export MPS
 
-Allow to choose which [MPS files](https://en.wikipedia.org/wiki/MPS_(format)) to export during the simulation.
+<span class="param-badge badge-enum">enum</span>
+Allow to choose which
+[MPS files](https://en.wikipedia.org/wiki/MPS_(format)) to export during
+the simulation.
 
 - `none`: Don't export any MPS file.
 - `optim-1`: Export only the MPS file from the first optimization.
 - `optim-2`: Export only the MPS file from the second optimization.
 - `both`: Export both MPS files from the first and second optimization.
 
-#### <span class="param-badge badge-bool">bool</span> `Binding constraints`
+#### Binding constraints
 
+<span class="param-badge badge-bool">bool</span>
 Whether to include binding constraints in the simulation.
 
-#### <span class="param-badge badge-bool">bool</span> `Hurdle costs`
+#### Hurdle costs
 
-Whether to include hurdle costs in the simulation. 
+<span class="param-badge badge-bool">bool</span>
+Whether to include hurdle costs in the simulation.
 
 ## Links
 
-#### <span class="param-badge badge-enum">enum</span> `Transmission capacities`
+#### Transmission capacities
 
+<span class="param-badge badge-enum">enum</span>
 Allow the user to override the transmission capacities on links.
 
-- `local-values`: use the local property for all links, including physical links (no override).
+- `local-values`: use the local property for all links, including physical
+links (no override).
 - `null-for-all-links`: override all transmission capacities with 0.
-- `infinite-for-all-links`: override all transmission capacities with $\infty$.
-- `infinite-for-physical-links`: override transmission capacities with $\infty$ on **physical links only**.
-- `null-for-physical-links`: override transmission capacities with 0 on **physical links only**.
-
+- `infinite-for-all-links`: override all transmission capacities with
+$\infty$.
+- `infinite-for-physical-links`: override transmission capacities with
+$\infty$ on physical links only.
+- `null-for-physical-links`: override transmission capacities with 0 on
+physical links only.
 
 ## Thermal clusters
 
-#### <span class="param-badge badge-bool">bool</span> `Thermal clusters min stable power`
+#### Thermal clusters min stable power
 
-Whether to activate the constraint of minimum stable power for thermal units.
+<span class="param-badge badge-bool">bool</span>
+Whether to activate the constraint of minimum stable power for thermal
+units.
 
-#### <span class="param-badge badge-bool">bool</span> `Thermal clusters min UD time`
+#### Thermal clusters min UD time
 
-Whether to activate the constraint of minimum start-up time for thermal units.
+<span class="param-badge badge-bool">bool</span>
+Whether to activate the constraint of minimum start-up time for thermal
+units.
 
-## Reserve 
+## Reserve
 
-#### <span class="param-badge badge-bool">bool</span> `Day ahead reserve`
+#### Day ahead reserve
 
+<span class="param-badge badge-bool">bool</span>
 Whether to activate day-ahead reserve constraints.
 
-#### <span class="param-badge badge-bool">bool</span> `Primary reserve`
+#### Primary reserve
 
+<span class="param-badge badge-bool">bool</span>
 Whether to activate primary reserve constraints.
 
-#### <span class="param-badge badge-bool">bool</span> `Strategic reserve`
+#### Strategic reserve
 
+<span class="param-badge badge-bool">bool</span>
 Whether to activate strategic reserve constraints.
 
-#### <span class="param-badge badge-bool">bool</span> `Spinning reserve`
+#### Spinning reserve
 
+<span class="param-badge badge-bool">bool</span>
 Whether to activate spinning reserve constraints.

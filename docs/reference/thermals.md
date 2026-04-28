@@ -1,11 +1,12 @@
 # Thermals
 
-A thermal cluster is a grouping of plants with close parameters. 
+A thermal cluster is a grouping of plants with close parameters.
 
 ## Operating parameters
 
-#### <span class="param-badge badge-string">string</span> `Group`
+#### Group
 
+<span class="param-badge badge-string">string</span>
 Group in which the cluster is, only for organization purpose.
 
 - `gas`
@@ -20,168 +21,216 @@ Group in which the cluster is, only for organization purpose.
 - `other 4`
 - `other 5`
 
-#### <span class="param-badge badge-string">string</span> `Name`
+#### Name
 
+<span class="param-badge badge-string">string</span>
 User defined name of the cluster.
 
-#### <span class="param-badge badge-bool">bool</span> `Enabled`
+#### Enabled
 
-Whether to enable this cluster for production. 
+<span class="param-badge badge-bool">bool</span>
+Whether to enable this cluster for production.
 
-#### <span class="param-badge badge-bool">bool</span> `Must run`
+#### Must run
 
-If enabled, the plants will generate at their maximum capacity, regardless of market conditions. Otherwise, above a partial "must-run level" (that may exist or not, see infra) plants will be dispatched on the basis of their market bids.
+<span class="param-badge badge-bool">bool</span>
+If enabled, the plants will generate at their maximum capacity, regardless of
+market conditions. Otherwise, above a partial "must-run level" (that may exist
+or not, see infra) plants will be dispatched on the basis of their market bids.
 
-#### <span class="param-badge badge-int">int</span> `Unit`
+#### Unit
 
-The number of units in the cluster. 
+<span class="param-badge badge-int">int</span>
+The number of units in the cluster.
 
-#### <span class="param-badge badge-float">float</span> `Nominal capacity` (MW)
+#### Nominal capacity (MW)
 
-The nominal capactity of one unit. 
+<span class="param-badge badge-float">float</span>
+The nominal capactity of one unit.
 
 !!! note
+    The installed power is the product of the number of units and their nominal capacity.
 
-    The installed power is the product of the number of units and their nominal capacity. 
+#### Min stable power (MW)
 
-#### <span class="param-badge badge-float">float</span> `Min stable power` (MW)
+<span class="param-badge badge-float">float</span>
+The minimum power to keep a plant on.
 
-The minimum power to keep a plant on. 
+#### Spinning (%)
 
-#### <span class="param-badge badge-int">int</span> `Spinning` (%)
-
+<span class="param-badge badge-int">int</span>
 Default contribution to the spinning reserve (percentage of nominal capacity).
 
-#### <span class="param-badge badge-int">int</span> `Min uptime` (h)
+#### Min uptime (h)
 
+<span class="param-badge badge-int">int</span>
 Minimum uptime for a plant to go from off to its nominal capacity.
 
-#### <span class="param-badge badge-int">int</span> `Min downtime` (h)
+#### Min downtime (h)
 
-Minimu downtime for a plant to go from its nominal capacity to completly off. 
+<span class="param-badge badge-int">int</span>
+Minimum downtime for a plant to go from its nominal capacity to completly off.
 
 ## Operating costs
 
-#### <span class="param-badge badge-enum">enum</span> `TS cost`
+#### TS cost
 
+<span class="param-badge badge-enum">enum</span>
 Cost generation
 
 - `SetManually`
 - `useCostTimeseries`
 
 !!! note
+    If Cost generation is set to SetManually marginal and market bid costs (€/MWh)
+    are specified directly in **Time series** > **Common** tab and have the same
+    value for all time-series and hours.
 
-    If `Cost generation` is set to `SetManually` marginal and market bid costs (€/MWh) are specified directly in **Time series** > **Common** tab and have the same value for all time-series and hours.
-
-    If Cost generation is set to Use cost timeseries Marginal and Market bid costs (€/MWh) are calculated separately for all the time-series and hours using the following equation:
+    If Cost generation is set to Use cost timeseries Marginal and Market bid costs
+    (€/MWh) are calculated separately for all the time-series and hours using
+    the following equation:
     ```
     Marginal_Cost[€/MWh] = Market_Bid_Cost[€/MWh] = (Fuel_Cost[€/GJ] * 3.6 * 100 / Efficiency[%]) + CO2_emission_factor[tons/MWh] * C02_cost[€/tons] + Variable_O&M_cost[€/MWh]
     ```
-    where Efficiency[%], CO2_emission_factor[tons/MWh] and Variable_O&M_cost[€/MWh] are specified in the Common tab under operating costs and parameters, while Fuel_Cost[€/GJ] and C02_cost[€/tons] are provided as time-series in separate tabs.
+    where Efficiency[%], CO2_emission_factor[tons/MWh] and Variable_O&M_cost[€/MWh]
+    are specified in the Common tab under operating costs and parameters, while
+    Fuel_Cost[€/GJ] and C02_cost[€/tons] are provided as time-series in separate
+    tabs.
 
-#### <span class="param-badge badge-int">int</span> `Efficiency` (%)
+#### Efficiency (%)
 
+<span class="param-badge badge-int">int</span>
 Fuel efficiency.
 
-#### <span class="param-badge badge-float">float</span> `Variable O&M` (€/MWh)
+#### Variable O&M (€/MWh)
 
-Variable operation and maintenance costs only use if cost generation is set to use cost timeseries.
+<span class="param-badge badge-float">float</span>
+Variable operation and maintenance costs only use if cost generation is set
+to use cost timeseries.
 
-#### <span class="param-badge badge-float">float</span> `Marginal cost` (€/MWh)
+#### Marginal cost (€/MWh)
 
+<span class="param-badge badge-float">float</span>
 Marginal cost.
 
-#### <span class="param-badge badge-float">float</span> `Startup cost` (€)
+#### Startup cost (€)
 
+<span class="param-badge badge-float">float</span>
 Cost of starting a new plan
 
-#### <span class="param-badge badge-float">float</span> `Market bid cost` (€/MWh)
+#### Market bid cost (€/MWh)
 
+<span class="param-badge badge-float">float</span>
 Market bid cost.
 
-#### <span class="param-badge badge-float">float</span> `Fixed O&M cost` (€/h)
+#### Fixed O&M cost (€/h)
 
+<span class="param-badge badge-float">float</span>
 Fixed operation and maintenance costs.
 
-#### <span class="param-badge badge-float">float</span> `Random spread` (€/MWh)
+#### Random spread (€/MWh)
 
-Random spread on the market bid. 
+<span class="param-badge badge-float">float</span>
+Random spread on the market bid.
 
 !!! note
-
-    The **optimal dispatch plan** as well as **locational marginal prices** are based on **market bids**, while the assessment of the operating costs associated with this optimum are based on cost parameters. In standard "perfect" market modeling, there is no difference of approaches because market bids are equal to marginal costs.
-
+    The **optimal dispatch plan** as well as **locational marginal prices** are
+    based on **market bids**, while the assessment of the operating costs
+    associated with this optimum are based on cost parameters. In standard
+    "perfect" market modeling, there is no difference of approaches because
+    market bids are equal to marginal costs.
 
 ## Other emission rates
 
-The following parameters allow the user to indicate the rates of emission of different polluants for a given cluster.
+The following parameters allow the user to indicate the rates of emission of
+different polluants for a given cluster.
 
-#### <span class="param-badge badge-float">float</span> `CO2` (t/MWh)
+#### CO2 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `SO2` (t/MWh)
+#### SO2 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `NH3` (t/MWh)
+#### NH3 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `NOx` (t/MWh)
+#### NOx (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `NMVOC` (t/MWh)
+#### NMVOC (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `PM2.5` (t/MWh)
+#### PM2.5 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `PM5` (t/MWh)
+#### PM5 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `PM10` (t/MWh)
+#### PM10 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `Other polluant 1` (t/MWh)
+#### Other polluant 1 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `Other polluant 2` (t/MWh)
+#### Other polluant 2 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `Other polluant 3` (t/MWh)
+#### Other polluant 3 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `Other polluant 4` (t/MWh)
+#### Other polluant 4 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
-#### <span class="param-badge badge-float">float</span> `Other polluant 5` (t/MWh)
+#### Other polluant 5 (t/MWh)
 
+<span class="param-badge badge-float">float</span>
 
 ## Time series generation
 
-#### <span class="param-badge badge-enum">enum</span> `Parameter`
+#### Parameter
 
-Parameter to specify the behavior of this cluster for time-series generation. **This cluster-wise parameter takes priority over the study-wide one.** It can hold three values:
+<span class="param-badge badge-enum">enum</span>
+Parameter to specify the behavior of this cluster for time-series generation.
+**This cluster-wise parameter takes priority over the study-wide one.**
+It can hold three values:
 
-- `use global`: 
-- `force no generation`: time-series for this cluster will not be generated. 
+- `use global`:
+- `force no generation`: time-series for this cluster will not be generated.
 - `force generation`: time-series for this cluster will be generated.
 
-#### <span class="param-badge badge-float">float</span> `Volatility forced`
+#### Volatility forced
 
+<span class="param-badge badge-float">float</span>
 A parameter between 0 and 1.
 
-#### <span class="param-badge badge-float">float</span> `Volatility planned`
+#### Volatility planned
 
+<span class="param-badge badge-float">float</span>
 A parameter between 0 and 1.
 
-#### <span class="param-badge badge-enum">enum</span> `Law forced`
+#### Law forced
 
+<span class="param-badge badge-enum">enum</span>
 Probabilistic law used for the generation of the forced outage time-series.
 
 - `geometric`
 - `uniform`
 
-#### <span class="param-badge badge-enum">enum</span> `Law planned`
+#### Law planned
 
+<span class="param-badge badge-enum">enum</span>
 Probabilistic law used for the generation of the planned outage time-series.
 
 - `geometric`
@@ -191,16 +240,20 @@ Probabilistic law used for the generation of the planned outage time-series.
 
 ### Common
 
-`matrix` Hourly time-series for:
+<span class="param-badge badge-matrix">matrix</span>
+Hourly time-series for:
 
 - Seasonal evolution of the marginal cost variations (gas more expensive in winter).
 - Seasonal market bid modulations (assets costs charging strategy).
-- Nominal capacity modulations (seasonal thermodynamic efficiencies, special over-generation allowances, etc.). These modulations are taken into account during the generation of available power time-series.
+- Nominal capacity modulations (seasonal thermodynamic efficiencies, special
+  over-generation allowances, etc.). These modulations are taken into account
+  during the generation of available power time-series.
 - Minimal generation commitment (partial must-run level) set for the cluster.
 
 ### TS generator
 
-`matrix` Daily time series of:
+<span class="param-badge badge-matrix">matrix</span>
+Daily time series of:
 
 - Forced outage duration
 - Planned outage duration
@@ -211,12 +264,15 @@ Probabilistic law used for the generation of the planned outage time-series.
 
 ### Availability
 
-`matrix` Hourly availability of the cluster.
+<span class="param-badge badge-matrix">matrix</span>
+Hourly availability of the cluster.
 
 ### Fuel cost
 
-`matrix` Hourly fuel cost of the cluster.
+<span class="param-badge badge-matrix">matrix</span>
+Hourly fuel cost of the cluster.
 
 ### CO2 cost
 
-`matrix` Hourly CO2 cost of the cluster.
+<span class="param-badge badge-matrix">matrix</span>
+Hourly CO2 cost of the cluster.

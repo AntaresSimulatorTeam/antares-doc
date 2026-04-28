@@ -1,7 +1,7 @@
 # Miscellanous generation
 
+<span class="param-badge badge-matrix">matrix</span>
 This window is used to handle all input data regarding miscellaneous non dispatchable generation.
-
 On picking any area in the primary list, the user gets direct access to all data regarding the area, which amount to 8 ready-made 8760-hour time-series (expressed in MW):
 
 - `CHP` generation

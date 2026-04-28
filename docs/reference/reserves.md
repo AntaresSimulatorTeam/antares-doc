@@ -1,7 +1,8 @@
 # Reserves
 
-This window is used to handle all input data regarding reserves and the potential of *smart* load management 
-(when not modeled using *fake* thermal dispatchable plants). On picking any area in the primary list, 
+<span class="param-badge badge-matrix">matrix</span>
+This window is used to handle all input data regarding reserves 
+and the potential of *smart* load management (when not modeled using *fake* thermal dispatchable plants). On picking any area in the primary list, 
 the user gets direct access to all data regarding the area, which amount to four ready-made 
 8760-hour time-series (expressed in MW). Those reserves are available in either adequacy or economy simulations:
 

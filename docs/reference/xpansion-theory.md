@@ -78,7 +78,7 @@ due to link profiles on investment candidates.
 More details on the Antares problem can be found in the
 [Antares documentation](https://antares-simulator.readthedocs.io/en/latest/reference-guide/11-modeling/).
 We simply mention that the linear problem presented here and used in
-Antares-Xpansion is a relaxation of the Antares problem as
+Antares Xpansion is a relaxation of the Antares problem as
 unit-commitment constraints (minimum on and off time) are not taken into
 account.
 
@@ -92,7 +92,7 @@ problem on week $s \in [1,52]$ involves only the subvector
 $y_{s} = (y_{168 (s-1) + 1}, \ldots, y_{168s})$. In the sequel, the index
 $_{s}$ always denotes subvectors corresponding to week $s$.
 
-In Antares-Xpansion, the **weekly problems are assumed to be independent**,
+In Antares Xpansion, the **weekly problems are assumed to be independent**,
 this is why, **no coupling constraints between the weeks** are allowed.
 By doing so, the matrix $W$ is **block diagonal** i.e.
 $W = \mathrm{diag}(W_{1}, \ldots, W_{52})$. Writing:
@@ -128,7 +128,7 @@ $52N$ linear weekly Antares problems, with $N$ the number of MC years.
 
 The invested capacities of the different candidates can be bound by linear
 constraints, specified by the user with the
-[`additional-constraints`](../get-started/settings-definition.md#additional-constraints)
+[`additional-constraints`](xpansion-settings.md#additional-constraints)
 parameter. These constraints are written $Ax = b$, with
 $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^{m}$, where $m$ is the
 number of constraints.
@@ -138,7 +138,7 @@ number of constraints.
 The optimal investment problem is therefore:
 
 $$\begin{aligned}
-    \min_{x \in \mathcal{X}}\ & c^{\top}x + \Theta(x) \\\\
+    \min_{x \in \mathcal{X}}\ & c^{\top}x + \Theta(x) \\
     \text{s.t.}\ & Ax = b
 \end{aligned}$$
 
@@ -259,9 +259,9 @@ The optimality gap is the difference (either absolute or relative) between
 the lower and the upper bound. The Benders decomposition algorithm stops
 when the optimality gap falls below a value specified by the user (or set
 by default), see
-[`optimality_gap`](../get-started/settings-definition.md#optimality_gap)
+[`optimality_gap`](xpansion-settings.md#absolute-optimality-gap)
 and
-[`relative_gap`](../get-started/settings-definition.md#relative_gap).
+[`relative_gap`](xpansion-settings.md#relative-optimality-gap).
 
 ### The Benders by batch algorithm
 
@@ -281,15 +281,15 @@ in the thesis of Xavier Blanchot[@blanchot_solving_2022].
 
 ## Reliability-constrained investment problem
 
-Starting from version 1.3.0, Antares-Xpansion can take into account a
+Starting from version 1.3.0, Antares Xpansion can take into account a
 reliability constraint on the maximum expected number of hours of loss of
 load. This means that the user is able to specify, for each area, an expected
 number of hours of loss of load that should not be exceeded, see
-[Adequacy criterion](../get-started/adequacy-criterion.md).
+[Adequacy criterion](#).
 
-Antares-Xpansion will output a solution that satisfies this reliability
+Antares Xpansion will output a solution that satisfies this reliability
 criterion using a Benders-based matheuristic designed in Chapter 5 of the
-thesis of Xavier Blanchot[@blanchot_solving_2022].
+thesis of Xavier Blanchot[^blanchot_2022].
 
 The heuristic is based on the insight that increasing the investment cost is
 strongly correlated to a decrease in loss of load. It works by iteratively
@@ -315,7 +315,13 @@ The algorithm stops when
 $\overline{\Lambda}^{(k+1)}-\underline{\Lambda}^{(k+1)} < \varepsilon$
 where $\varepsilon$ is user-defined.
 
-Antares-Xpansion outputs a feasible solution for the reliability-constrained
+Antares Xpansion outputs a feasible solution for the reliability-constrained
 problem that should be of good quality thanks to the initial insight linking
 investment cost and loss of load. This procedure is a heuristic so there is
 no guarantee to get the theoretical optimal solution.
+
+[^blanchot_2022]: 
+    Xavier Blanchot. Solving large-scale stochastic optimization programs: 
+    application to investment problems for power systems. 
+    Optimization and Control [math.OC]. Université de Bordeaux, 2022. English. 
+    ⟨NNT:2022BORD0357⟩. ⟨tel-04003953⟩

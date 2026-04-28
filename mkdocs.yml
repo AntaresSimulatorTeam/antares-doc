@@ -104,16 +104,12 @@ nav:
       - Advanced parameters: reference/config-advanced-parameters.md
       - Economic options: reference/config-economic-options.md
       - Geographic trimming: reference/config-geographic-trimming.md
-    - Table mode: reference/table-mode.md
     - Outputs: reference/outputs.md
     - Xpansion:
       - Introduction: reference/xpansion-intro.md
+      - Prepare your study: reference/xpansion-prepare-study.md
       - Candidates: reference/xpansion-candidates.md
       - Settings: reference/xpansion-settings.md
-      - Constraints: reference/xpansion-constraints.md
-      - Weights: reference/xpansion-weights.md
-      - Capacities: reference/xpansion-capacities.md
-    - Debug: reference/debug.md
     - Mathematical formulation:
       - Hypothesis: reference/hypothesis.md
       - Optimization problem: reference/optimization-problem.md
@@ -124,8 +120,9 @@ nav:
       - Adequacy patch: reference/adequacy-patch.md
       - Water values: reference/water-values.md
       - Investment problem: reference/xpansion-theory.md
+      - Sensitivity analysis: reference/xpansion-sensitivity.md
     - Performance:
-      - Xpansion performance: performance-xpansion.md
+      - Xpansion performance: reference/performance-xpansion.md
     - Bibliography: reference/bibliography.md
     - Glossary: reference/glossary.md
   - Contributing:
@@ -151,13 +148,13 @@ extra_javascript:
   # - https://polyfill.io/v3/polyfill.min.js?features=es6
   # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   # - https://viewer.diagrams.net/js/viewer-static.min.js
-  # - javascripts/drawio-reload.js
+  - javascripts/drawio-reload.js
 
 markdown_extensions:
   - attr_list
   - toc:
       permalink: true
-      toc_depth: 3
+      toc_depth: 4
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

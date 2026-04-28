@@ -4,15 +4,16 @@
 
 Antares-Xpansion minimizes the following cost:
 
-$$
+$$ 
 \min (\text{expected operating costs for one year} + \text{fixed cost annuity})
 $$
+
 over a set of investment variables specified by the user.
 
 - The expected operating costs for one year, calculated by
 Antares, includes the variable costs of thermal generation (fuel and CO2
 costs), penalties in case of unsupplied energy, line transit costs (if
-any), and, if the [`expansion_accurate`](../get-started/settings-definition.md#uc_type) 
+any), and, if the [`expansion_accurate`](xpansion-settings.md#uc-type) 
 mode is used, the start-up costs of
 the thermal generation units. The production costs are calculated over
 the entire geographical perimeter of the Antares study, and in
@@ -21,15 +22,12 @@ expectation over the probabilistic scenarios defined in the study.
 maintenance costs of the generation and transit costs and, in the case
 of new units, the annualized investment cost.
 
-In the case of a problem with a single investment variable, the above
-cost function can be represented by the graph in **Figure 1**.
+In the case of a problem with a single investment variable, the 
+cost function can be represented by the graph:
 
 ![](../assets/diagrams/expected-op-cost-plus-annuity.png)
 
 ![](../assets/diagrams/total-cost.png)
-
-**Figure 1** – Objective function of the Antares-Xpansion
-optimization problem for one candidate.
 
 The expected operating costs for one year decrease as installed
 capacities increase. New generation or transmission capacities indeed
@@ -46,20 +44,17 @@ is a convex function of the installed capacity.
 In Antares-Xpansion, fixed-cost annuities are considered piecewise
 linear. Different potentials are defined, each of which is characterized
 by a fixed annuity in €/MW installed, and corresponds to one of the
-slopes of the function, see **Figure 1**. A particular case of this
+slopes of the function, see above figure. A particular case of this
 representation of fixed annuities is a fully linear function,
 therefore characterized by a single fixed cost (in €/MW installed).
 
 The final cost result - which will be called the total cost later on - is a convex function. It therefore has a minimum
-solution plateau (see **Figure 2**) which in most (but not all) applications on real
-data sets is reduced to a single point (see **Figure 1**). In some cases, there are several points leading to the optimal cost. Antares-Xpansion looks for an optimal solution, i.e.
+solution plateau (see below) which in most (but not all) applications on real
+data sets is reduced to a single point (see above). In some cases, there are several points leading to the optimal cost. Antares-Xpansion looks for an optimal solution, i.e.
 the point that minimizes the total cost, or any point of the minimum
 plateau in the case of a so-called degenerate problem.
 
 ![](../assets/diagrams/optimal-solution-plateau.png)
-
-**Figure** **2** – Generic case (but uncommon in practical
-Antares-Xpansion cases) with a set of optimal solutions (a plateau).
 
 ## Investment variables
 
@@ -76,8 +71,8 @@ input data of Antares-Xpansion.
 
 In the more general case with several investment candidates,
 Antares-Xpansion determines one optimal investment combination, that
-is, one combination \\((c_{1},c_{2},\ldots,c_{n})\\) of the capacities of
-the \\(n\\) investment candidates that minimizes the cost function.
+is, one combination $(c_{1},c_{2},\ldots,c_{n})$ of the capacities of
+the $n$ investment candidates that minimizes the cost function.
 
 The search for this optimal combination is done jointly (i.e. "at the same time") on
 the capacities of all investment candidates, and not candidate by
@@ -88,7 +83,7 @@ the B-C line is built - or of competitions - for example an A-B-C
 corridor parallel to another A-D-C corridor.
 
 The definition of the investment variables in Antares-Xpansion is
-detailed in [Define the candidates](../get-started/candidate-definition.md). For example, it may include:
+detailed in [Define the candidates](xpansion-candidates.md). For example, it may include:
 
 - **Investable capacity values limited to a
    finite set rather than a whole interval.** This allows to consider the following cases:   
