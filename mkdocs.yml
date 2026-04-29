@@ -48,34 +48,32 @@ nav:
     - First steps: getting-started/first-steps.md
   - Tutorials:
     - tutorials/index.md
+    - Create a blank study: tutorials/create-blank-study.md
+    - Import a study: tutorials/import-study.md
+    - Export a study: tutorials/export-study.md
+    - Create a variant: tutorials/create-variant.md
     - Create links: tutorials/create-links.md
-    - Manage studies:
-      - Import a study: tutorials/import-study.md
-      - Export a study: tutorials/export-study.md
-      - Data management: tutorials/data-management.md
-      - Create a variant: tutorials/create-variant.md
-      - Use table mode: tutorials/use-table-mode.md
-    - Modelling:
-      - Set binding constraints: tutorials/set-binding-constraint.md
-      - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
-      - Set load: tutorials/set-load.md
-      - Build scenario: tutorials/build-scenario.md
+    - Set load: tutorials/set-load.md
+    - Set binding constraints: tutorials/set-binding-constraint.md
+    - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
+    - Use table mode: tutorials/use-table-mode.md
+    - Build scenario: tutorials/build-scenario.md
     - Invest with Xpansion:
       - Define candidates: tutorials/define-candidates.md
-      - Invest on a cluster: tutorials/invest-cluster.md
       - Invest on a link: tutorials/invest-link.md
+      - Invest on a cluster: tutorials/invest-cluster.md
       - Set the parameters: tutorials/invest-parameters.md
       - Analyze outputs: tutorials/invest-outputs.md
     - Productivity:
       - Modify time series: tutorials/modify-ts.md
       - Shortcuts: tutorials/shortcuts.md
-    - Random seeds: tutorials/random-seeds.md
     - Reduce output size: tutorials/reduce-output.md
     - Outputs:
       - Visualize raw outputs: tutorials/visualize-raw.md
       - Visualize by area: tutorials/vizualize-by-area.md
       - Visualize by variable: tutorials/vizualize-by-variable.md
     - Debug your study: tutorials/debug-your-study.md
+    - Create a personal token: tutorials/create-token.md
   - Programmation and CLI:
     - programmatic/index.md
     - Antares Craft overview: programmatic/antares-craft-overview.md
@@ -110,6 +108,7 @@ nav:
       - Prepare your study: reference/xpansion-prepare-study.md
       - Candidates: reference/xpansion-candidates.md
       - Settings: reference/xpansion-settings.md
+      - Sensitivity analysis: reference/xpansion-sensitivity.md
     - Mathematical formulation:
       - Hypothesis: reference/hypothesis.md
       - Optimization problem: reference/optimization-problem.md
@@ -120,10 +119,10 @@ nav:
       - Adequacy patch: reference/adequacy-patch.md
       - Water values: reference/water-values.md
       - Investment problem: reference/xpansion-theory.md
-      - Sensitivity analysis: reference/xpansion-sensitivity.md
     - Performance:
       - Xpansion performance: reference/performance-xpansion.md
-    - Bibliography: reference/bibliography.md
+    - File structure: reference/file-structure.md
+    - Paper & conferences: reference/bibliography.md
     - Glossary: reference/glossary.md
   - Contributing:
     - contributing/index.md
@@ -144,10 +143,8 @@ extra_javascript:
   # mathjax integration
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  # - https://code.jquery.com/jquery-3.6.0.min.js
-  # - https://polyfill.io/v3/polyfill.min.js?features=es6
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-  # - https://viewer.diagrams.net/js/viewer-static.min.js
+  # drawio diagram integration
+  - https://viewer.diagrams.net/js/viewer-static.min.js
   - javascripts/drawio-reload.js
 
 markdown_extensions:

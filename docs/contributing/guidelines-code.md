@@ -9,4 +9,5 @@ Contributions to Antares are welcome! You can submit an issue on GitHub or a pul
 
 !!! tips
 
-    Communication is key! Explain clearly the problems you encounter. Ask when you don't know how things work.
+    Communication is key! Explain clearly the problems you encounter and
+    feel free to ask questions.

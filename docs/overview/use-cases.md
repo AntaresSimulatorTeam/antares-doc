@@ -30,6 +30,15 @@ Here are some reports that used Antares:
   </a>
 </div>
 
+## What does Antares do and doesn't do ?
 
+Antares models an aggregated grid and thus can't account for a detailed view of your area.
+Moreover, to have a fast conputation time per time step, Antares only consider a static regime 
+with DC assumptions. 
+
+The goal of Antares is to give an optimized dispatch with a centralized planner 
+with 1-hour time steps. So it cannot represent actor strategies.
+
+You can see more of the underlying hypothesis [here](../reference/hypothesis.md).
 
 

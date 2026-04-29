@@ -50,7 +50,11 @@ This software is already used by multiple TSO, companies and universities includ
     <img src="assets/logos/elia-logo.svg" alt="Elia group" />
   </div>
   <div class="logo-item">
-    <img src="assets/logos/apg.png" alt="APG" />
+    <img
+      src="assets/logos/apg-light.png"
+      alt="APG"
+      class="apg-logo"
+    />
   </div>
   <div class="logo-item">
     <img src="assets/logos/entsoe.svg" alt="entsoe" />
@@ -98,6 +102,16 @@ This software is already used by multiple TSO, companies and universities includ
   .logo-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Light mode (default) */
+.apg-logo {
+  content: url('../assets/logos/apg-light.png');
+}
+
+/* Dark mode — Material sets this attribute on <body> */
+[data-md-color-scheme="slate"] .apg-logo {
+  content: url('../assets/logos/apg-dark.png');
 }
 </style>
 

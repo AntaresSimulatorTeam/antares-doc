@@ -10,7 +10,7 @@ On the left, you have a collapsable sidebar to go to your last study, explore st
 
 By default you will be on the **Studies** view where you have:
 
-- Managed studies and on disk studies (see the differences [here](../tutorials/data-management.md)).
+- Managed studies and on disk studies (see the differences [here](../tutorials/create-blank-study.md#managed-vs-on-disk-studies)).
 - A view of your studies inside the right panel. We are yet to import a study!
 
 ## Importing a study
