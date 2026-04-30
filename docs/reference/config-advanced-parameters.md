@@ -108,6 +108,7 @@ before considering changing the default value.
 #### Use accuracy mode
 
 <span class="param-badge badge-enum">enum</span>
+
 - `wind`
 - `solar`
 - `load`
@@ -200,6 +201,12 @@ Define the mode in which Antares solves the unit-commitment problem.
   for the number of ON/OFF units. Slower than `fast`.
 - `MILP` A single MILP problem is solved, with explicit modelling for the
   number of ON/OFF units. Slower than `accurate`.
+
+| Steps | Accurate | Fast |
+| --- | --- | --- |
+| First optimization | Minimization of the overall system cost throughout the week in a continuous relaxed linear optimization. Fixed cost, Start-up cost, Pmin, Minimum Up/Down time are considered | Minimization of the overall system cost throughout the week in a continuous relaxed linear optimization. Fixed cost, Start-up cost, Pmin, Minimum Up/Down time are not considered |
+| Heuristic | Calculate a unit-commitment compatible with the integrity constraints in the immediate neighborhood of the relaxed solution obtained in the first optimization. | Calculate a unit-commitment compatible with the first optimization, with the additional conditions: On- and Off- periods should be exact multiple of the higher of the two thresholds and Pmin should be respected |
+| Second optimization | Take into account the integer variables found in the heuristic and solve again the optimal schedule problem for the week. | Take into account the integer variables found in the heuristic and solve again the optimal schedule problem for the week. Start-up costs as well as fixed costs are added ex post, but they are not considered to determine which units are on/off. |
 
 ??? info "More on unit-commitment mode"
 
