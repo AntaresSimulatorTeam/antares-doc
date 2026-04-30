@@ -68,6 +68,11 @@ Maximum possible power withdrawal from the storage (linked to an
 <span class="param-badge badge-int">int</span>
 Efficiency of the process of withdrawing power from the storage. 
 
+!!! info
+    Antares Web doesn't use the terms **Max Injection** for **Stored**
+    and **Max withdrawal** for **Released** because it depends whether you do a study
+    from the point of view of the grid or from the point of view of the storage.
+
 ## Time series
 
 ### Modulation
@@ -114,3 +119,63 @@ Natural inflows in MW that enters into the storage. The values for this file
 can be negative, corresponding to withdrawals imposed on the stock for other
 uses (for example agricultural withdrawals or imposed discharging of EV
 batteries).
+
+## Equations
+
+The goal of Antares is to find the variables:
+
+- $P_{\text{injection}}(h)$
+- $P_{\text{withdrawal}}(h)$
+- $\text{Level(h)}$
+
+To do that there are a set of equations and inequations.
+
+### Bounds
+
+$$
+0 \leq P_{\text{injection}}(h) \leq P_{\text{injection max}}(h)
+$$
+
+with:
+
+$$
+P_{\text{injection max}}(h) = \text{Injection max power} \times \text{hourly modulation of injection max power } (h)
+$$
+
+$$
+0 \leq P_{\text{withdrawal}}(h) \leq P_{\text{withdrawal max}}(h)
+$$
+
+with:
+
+$$
+P_{\text{withdrawal max}}(h) = \text{Withdrawal max power} \times \text{hourly modulation of withdrawal max power } (h)
+$$
+
+$$
+\text{Level}_{\text{min}}(h) \leq \text{Level}(h) \leq \text{Level}_{\text{max}}(h)
+$$
+
+with:
+
+$$
+\text{Level}_{\text{min}}(h) = \text{Storage capacity} \times \text{hourly modulation of min capacities } (h)
+$$
+
+and 
+
+$$
+\text{Level}_{\text{max}}(h) = \text{Storage capacity} \times \text{hourly modulation of max capacities } (h)
+$$
+
+### Storage level tracking (dynamic equation)
+
+$$
+\text{Level}(h) = \text{Level}(h-1) + P_{\text{injection}}(h) \times \text{efficiency} - P_{\text{withdrawal}}(h) + \text{hourly inflows } (h)
+$$
+
+With the implicit convention that the stock level at the end of the week is equal to the initial level:
+
+$$
+\text{Level}(168) = \text{Level}(0) \quad (\text{= Initial level} \times \text{Storage capacity})
+$$
