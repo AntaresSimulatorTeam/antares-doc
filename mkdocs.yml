@@ -54,6 +54,7 @@ nav:
     - Create a variant: tutorials/create-variant.md
     - Create links: tutorials/create-links.md
     - Set load: tutorials/set-load.md
+    - Generate thermal time series: tutorials/generate-thermal-ts.md
     - Set binding constraints: tutorials/set-binding-constraint.md
     - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
     - Use table mode: tutorials/use-table-mode.md
@@ -120,6 +121,7 @@ nav:
       - Water values: reference/water-values.md
       - Investment problem: reference/xpansion-theory.md
     - Performance:
+      - Supported solvers for Antares: reference/solver-choice.md
       - Xpansion performance: reference/performance-xpansion.md
     - File structure: reference/file-structure.md
     - Paper & conferences: reference/bibliography.md

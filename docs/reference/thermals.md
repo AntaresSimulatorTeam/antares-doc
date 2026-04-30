@@ -255,12 +255,12 @@ Hourly time-series for:
 <span class="param-badge badge-matrix">matrix</span>
 Daily time series of:
 
-- Forced outage duration
-- Planned outage duration
-- Forced outage rate
-- Planned outage rate
-- Minimum number of units able to go into maintenance at the same time
-- Maximum number of units able to go into maintenance at the same time
+- `FO duration` Forced outage duration (in days)
+- `PO duration` Planned outage duration (in days)
+- `FO rate` Forced outage rate (in $[0,1]$)
+- `PO rate` Planned outage rate (in $[0,1]$)
+- `NPO min` Minimum number of units able to go into maintenance at the same time
+- `NPO max` Maximum number of units able to go into maintenance at the same time
 
 ### Availability
 
