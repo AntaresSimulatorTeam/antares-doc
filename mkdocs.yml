@@ -58,7 +58,8 @@ nav:
     - Set binding constraints: tutorials/set-binding-constraint.md
     - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
     - Use table mode: tutorials/use-table-mode.md
-    - Build scenario: tutorials/build-scenario.md
+    - Use the scenario builder: tutorials/build-scenario.md
+    - Use the scenario playlist: tutorials/select-scenario.md
     - Invest with Xpansion:
       - Define candidates: tutorials/define-candidates.md
       - Invest on a link: tutorials/invest-link.md
@@ -69,6 +70,7 @@ nav:
       - Modify time series: tutorials/modify-ts.md
       - Shortcuts: tutorials/shortcuts.md
     - Reduce output size: tutorials/reduce-output.md
+    - Reduce simulation time: tutorials/reduce-simulation-time.md
     - Outputs:
       - Visualize raw outputs: tutorials/visualize-raw.md
       - Visualize by area: tutorials/vizualize-by-area.md

@@ -26,6 +26,15 @@ whole daily energy in one single hour is allowed.
 
 <span class="param-badge badge-bool">bool</span>
 Define whether the storage should be explicitly modeled or not.
+If enabled:
+
+```
+level(t) = level(t-1) - H. STOR(t) + efficiency * H. PUMP(t) + H. INFL(t) – H. OVF(t)​
+0 <= level(t) <= storage capacity
+```
+
+The initial level is randomly choosed between low and high rule curves of the first day
+See [outputs](outputs.md) for the definition of `H. STOR`, `H. PUMP`, `H. INFL` and `H. OVF`.
 
 #### Hard bounds on rules curves
 
@@ -82,6 +91,12 @@ of the month:
 States whether the energy taken from / stored into the reservoir should be
 given the reference value defined in the ad hoc table or should be given a
 zero value.
+
+!! warning
+    When water values are used, the respect of rule curves is not guaranteed unless 
+    the “hard bounds on rule curves” option is activated, 
+    and the reservoir level at the end of the year will not necessarily 
+    be the same as at the beginning!​
 
 #### Use leeway
 
@@ -219,10 +234,12 @@ hydro-thermal unit-commitment and dispatch process.
 
 ## Hydro storage
 
-#### Hydro storage
+#### Hydro storage (MWh)
 
 <span class="param-badge badge-matrix">matrix</span>
-Daily size in (MWh) of hydro storage.
+Hydro storage energy generated for each day (if [**Follow load**](#follow-load-modulation)
+is enabled) or daily inflows (if [**Follow load**](#follow-load-modulation)
+is disabled).
 
 ## Run of river
 
@@ -235,6 +252,9 @@ of a river without significant water storage. Unlike traditional hydroelectric
 dams, RoR plants generate power continuously based on the river's current water
 level and flow rate. This makes them highly dependent on seasonal variations
 and weather conditions, leading to fluctuations in electricity production.
+
+!!! info 
+    The run of river is a non dispatchable generation. There is no storage of energy.
 
 ## Min gen
 

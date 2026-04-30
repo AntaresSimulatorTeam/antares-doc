@@ -21,12 +21,19 @@ at the node level. That's why you can attach to a map:
 #### Unsupplied (€/MWh)
 
 <span class="param-badge badge-float">float</span>
-Average cost of failure for each area of the study
+Average cost of failure for each area of the study (or value of lost of load VOLL).
+
+!!! tip
+    It is better if the unsupplied energy cost is much larger than
+    the cost of the most expersive generating plant of the area.
 
 #### Spilled (€/MWh)
 
 <span class="param-badge badge-float">float</span>
 Average cost of spillage for each area of the study.
+
+!!! info
+    Even if this parameter is fixed to 0 €/MWh, no energy will be shed needlessly.
 
 #### Spread unsupplied (€/MWh)
 

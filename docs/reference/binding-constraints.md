@@ -1,5 +1,15 @@
 # Binding constraints
 
+Binding constraint are general additionnal constraint that can be added to the model
+to represent phenomenon not represented by Antares built-in models. 
+For example:
+
+- Kirchhoff's laws
+- Commercial contract-related flow patterns (boundaries on imports/exports from/to an area)
+- Flow-based modelling
+
+It is essentially a linear constraint on power flows at a given time step length.
+
 ## Parameters
 
 #### Enabled
