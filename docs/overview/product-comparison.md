@@ -33,7 +33,7 @@ Antares comes bundled in different ways depending on your needs and computing po
 
 ## Side-by-side comparison
 
-Here is a comparison of the different versions of Antares:
+Here is a comparison of the different Antares products:
 
 
 | Solution | Desktop | Base | Performance | SaaS | Legacy |

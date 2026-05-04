@@ -1,9 +1,12 @@
 # Create a blank study
 
-Creating a blank study is fairly easy you need to clik on the :octicons-plus-circle-16: 
-**Create** button in the top left.
-
-
+Creating a blank study is fairly easy you need to click on the 
+:octicons-plus-circle-16: **Create** button in the top left.
+Give it a name and select the study version you want to use. 
+This will depend on the list of installed executables on your installation
+as the study version corresponds to the version of 
+[Antares Simulator](https://github.com/AntaresSimulatorTeam/Antares_Simulator) used 
+to do the core computations.
 
 ## Managed vs. on disk studies
 

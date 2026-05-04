@@ -120,6 +120,12 @@ can be negative, corresponding to withdrawals imposed on the stock for other
 uses (for example agricultural withdrawals or imposed discharging of EV
 batteries).
 
+## Additional constraints
+
+TODO
+
+Available since v?.?
+
 ## Equations
 
 The goal of Antares is to find the variables:

@@ -5,7 +5,8 @@ window.MathJax = {
     inlineMath: [["\\(", "\\)"], ["$", "$"]],
     displayMath: [["\\[", "\\]"], ["$$", "$$"]],
     processEscapes: true,
-    processEnvironments: true
+    processEnvironments: true,
+    tags: "ams",
   },
   options: {
     ignoreHtmlClass: ".*|",
@@ -13,9 +14,20 @@ window.MathJax = {
   }
 };
 
-document$.subscribe(() => { 
+// document$.subscribe(() => { 
+//   MathJax.startup.output.clearCache()
+//   MathJax.typesetClear()
+//   MathJax.texReset()
+//   MathJax.typesetPromise()
+// })
+
+document$.subscribe(() => {
   MathJax.startup.output.clearCache()
   MathJax.typesetClear()
   MathJax.texReset()
-  MathJax.typesetPromise()
+  // First pass: registers all \labels and assigns numbers
+  MathJax.typesetPromise().then(() => {
+    // Second pass: resolves \eqref now that labels are known
+    MathJax.typesetPromise()
+  })
 })

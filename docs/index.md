@@ -21,25 +21,29 @@ Backed by the french transmission system operator (TSO) RTE, Antares is an indus
 
     ---
 
-    Modern UI for checking and visualizing studies.
+    [Modern UI](getting-started/first-steps.md) for checking and visualizing studies.
 
 -   :material-lightning-bolt:{ .lg .middle } **Blazing-fast C++ simulation engine**
 
     ---
 
-    Built for performance and 30 years long studies.
+    Built for [optimal energy dispatch](https://github.com/AntaresSimulatorTeam/Antares_Simulator) 
+    and [investment strategy](https://github.com/AntaresSimulatorTeam/antares-xpansion).
 
 -   :material-console:{ .lg .middle } **Scriptable Python automation**
 
     ---
 
-    Automation framework to fit your own workflow and to automate tasks.
+    [Automation framework](programmatic/antares-craft-overview.md) to fit your own workflow 
+    and to automate tasks.
 
 -   :material-vector-link:{ .lg .middle } **Open, interoperable energy models**
 
     ---
 
-    Support for generic models for integrating energy transition easily and interoperable between different simulation software
+    Support for [generic models](https://gems-energy.readthedocs.io/en/latest/)
+    for integrating energy transition easily 
+    and interoperable between different simulation software.
 
 </div>
 

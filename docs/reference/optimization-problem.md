@@ -2,22 +2,53 @@
 
 ## Introduction
 
-Let's dive into a detailed and comprehensive formulation of the main optimization problems solved by Antares inner optimization engine. It is intended as a formal demonstration of the inner working of the software for curious users interested in the optimization process and R&D.
-The goal here is to explain the resolution of the **hydro-thermal unit-commitment problem**. Each optimization problem is solved once when the milp option and twice otherwise.
+Let's dive into a detailed and comprehensive formulation of the main optimization problems 
+solved by Antares inner optimization engine. It is intended as a formal demonstration of 
+the inner working of the software for curious users interested in the optimization process and R&D.
+The goal here is to explain the resolution of the **hydro-thermal unit-commitment problem**. 
+Each optimization problem is solved once when the milp option and twice otherwise.
 
 !!! note
-    Antares Simulator offers an option that makes it possible for the user to print, in a standardized format, any or all of the optimization problems actually solved in the course of an Antares Simulation session in [MPS format](#).
+    Antares Simulator offers an option that makes it possible for the user to print, 
+    in a standardized format, any or all of the optimization problems actually solved 
+    in the course of an Antares Simulation session in 
+    [MPS format](https://www.ibm.com/docs/en/icos/22.1.2?topic=cplex-mps-file-format-industry-standard).
 
-The simulation of the system behavior throughout many years, with a **time step of 1 hour** is decomposed into a series of smaller problems. The elementary optimization problem resulting from this approach is the minimization of the overall system operation cost over a week of a given year, taking into account all proportional and non-proportional generation costs, transmission charges, unsupplied energy (generation shortage) costs and conversely, spilled energy (generation excess) costs.
+The simulation of the system behavior throughout many years, with a **time step of 1 hour** 
+is decomposed into a series of smaller problems. 
+The elementary optimization problem resulting from this approach is the minimization 
+of the overall system operation cost over a week of a given year, 
+taking into account all proportional and non-proportional generation costs, 
+transmission charges, unsupplied energy (generation shortage) costs and conversely, 
+spilled energy (generation excess) costs.
 
-Carrying out generation adequacy studies or transmission projects studies means formulating and solving a series of a great many week-long operation problems, one for each week of each Monte-Carlo year, assumed to be independent. This generic optimization problem will be further denoted $\mathcal{P}^k$, where $k$ is an index encompassing all weeks of all Monte-Carlo years.
+Carrying out generation adequacy studies or transmission projects studies means formulating 
+and solving a series of a great many week-long operation problems, 
+one for each week of each Monte-Carlo year, assumed to be independent. 
+This generic optimization problem will be further denoted $\mathcal{P}^k$, 
+where $k$ is an index encompassing all weeks of all Monte-Carlo years.
 
-Note that this independence assumption may sometimes be too lax, because in many contexts weekly problems are actually coupled to some degree. The only constraint coupling weekly problems3 is related to the management of reservoir-type hydro resources. When appropriate, these effects are therefore dealt with before the actual decomposition in weekly problems takes place, this being done4 either of the following way (depending on simulation options):
+Note that this independence assumption may sometimes be too lax, 
+because in many contexts weekly problems are actually coupled to some degree. 
+The only constraint coupling weekly problems is related to the management 
+of reservoir-type hydro resources. When appropriate, these effects are therefore dealt with 
+before the actual decomposition in weekly problems takes place,
+this being done4 either of the following way (depending on simulation options):
 
-1. Use of an economic signal (typically, a shadow "water value") yielded by an external preliminary stochastic dynamic programming optimization of the use of energy-constrained resources.
-2. Use of heuristics that provide an assessment of the relevant energy credits that should be used for each period, fitted so as to accommodate with sufficient versatility different operational rules.
+1. Use of an economic signal (typically, a shadow "water value") yielded by 
+   an external preliminary stochastic dynamic programming optimization 
+   of the use of energy-constrained resources.
+2. Use of heuristics that provide an assessment of the relevant energy credits 
+   that should be used for each period, fitted so as to accommodate with sufficient versatility 
+   different operational rules.
 
-Quite different is the situation that prevails in expansion studies, in which weekly problems cannot at all be separated from a formal standpoint, because new assets should be paid for all year-long, regardless of the fact that they are used or not during such or such week: the generic expansion problem encompasses therefore all the weeks of all the Monte-Carlo years at the same time. It will be further denoted $\mathcal{P}$.
+Quite different is the situation that prevails in expansion studies, 
+in which weekly problems cannot at all be separated from a formal standpoint,
+because new assets should be paid for all year-long,
+regardless of the fact that they are used or not during such or such week:
+the generic expansion problem encompasses therefore all the weeks 
+of all the Monte-Carlo years at the same time. It will be further denoted $\mathcal{P}$.
+
 
 ## Notations
 
@@ -42,20 +73,27 @@ Quite different is the situation that prevails in expansion studies, in which we
 
 Problems $P^k$ and $P$ call for the definition of many parameters and variables further described.
 
-The power system is supposed to be operated so as to be able to face some amount of unexpected demand increase with redispatching actions only (no change in the unit commitment). Two operating states are therefore modelled:
+The power system is supposed to be operated so as to be able to face some amount 
+of unexpected demand increase with redispatching actions only (no change in the unit commitment). 
+Two operating states are therefore modelled:
 
-- **nominal**: Actual conditions match exactly all standard forecast. Demand is supplied by optimal generation dispatch (variable notation: _Var_).
+- **nominal**: Actual conditions match exactly all standard forecast. 
+  Demand is supplied by optimal generation dispatch (variable notation: _Var_).
 
-- **uplifted**: Additional demand increases are applied to the nominal state and call for redispatch (activation of security reserves; variable notation: $Var^s$).
+- **uplifted**: Additional demand increases are applied to the nominal state 
+  and call for redispatch (activation of security reserves; variable notation: $Var^s$).
 
-Note: Almost all variables of the system are defined twice (one value per state). For clarity's sake, only the definition of the nominal variables (_Var_) are given hereafter, the definition of variables _$Var^s$_ are implicit.
+!!! note
+    Almost all variables of the system are defined twice (one value per state).
+    For clarity's sake, only the definition of the nominal variables (_Var_) are given hereafter,
+    the definition of variables _$Var^s$_ are implicit.
 
 ### Grid
 
 | Notation                                       | Explanation                                                                                             |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | $C_l^+ \in \mathbb{R}^T_+$                     | initial transmission capacity from $u_l$ to $d_l$ (variable of $P$ and $P^k$)                           |
-| $\overline{C}_l^+ \in \mathbb{R}^T_+ $      | maximum transmission capacity from $u_l$ to $d_l$ (variable of $P$, not used in $P^k$)                  |
+| $\overline{C}_l^+ \in \mathbb{R}^T_+$      | maximum transmission capacity from $u_l$ to $d_l$ (variable of $P$, not used in $P^k$)                  |
 | $C_l^- \in \mathbb{R}^T_+$                     | initial transmission capacity from $d_l$ to $u_l$ (variable of $P$ and $P^k$)                           |
 | $\overline{C}^{-}_l\in \mathbb{R}^T_{+}$   | maximum transmission capacity from $d_l$ to $u_l$ (variable of $P$, not used in $P^k$)                  |
 | $\Psi_l \in \mathbb{R}_+$                      | weekly cost of a maximum capacity investment                                                            |
@@ -140,8 +178,12 @@ Note: Almost all variables of the system are defined twice (one value per state)
 
 ### Binding constraints
 
-In problems $\mathcal{P}^k$, the need for a versatile modelling of the power system calls for the introduction of an arbitrary number of linear binding constraints between system's variables throughout the grid, expressed either in terms of hourly power, daily energies or weekly energies.
-These constraints may bind together synchronous flows as well as thermal units power outputs. They may be related to synchronous values or bear on different times.
+In problems $\mathcal{P}^k$, the need for a versatile modelling of the power system calls 
+for the introduction of an arbitrary number of linear binding constraints 
+between system's variables throughout the grid, expressed either in terms of hourly power,
+daily energies or weekly energies.
+These constraints may bind together synchronous flows as well as thermal units power outputs.
+They may be related to synchronous values or bear on different times.
 Herebelow, the generic notation size is used for the relevant dimension of the set to which parameters belong.
 
 These dimensions stand as follow
@@ -175,13 +217,17 @@ Generic notations for binding constraints:
 | $\delta_n^- \in \mathbb{R}^T$ | normative spilled energy value in node $n$ (value of wasted energy)                |
 | $G_n^- \in \mathbb{R}^T_+$    | spilled power in the nominal state                                                 |
 
-## Formulation of problem $\mathcal{P}^k$
+## Formulation of the problem 
 
-Superscript k is implicit in all subsequent notations of this section (omitted for simplicity's sake)
+Let's formulate the $\mathcal{P}^k$ problem. 
+The superscript $k$ is implicit in all subsequent notations of this section 
+(omitted for simplicity's sake).
 
 ## Objective
 $$
-\min_{M_\theta \in \mathrm{Argmin} \Omega_{\mathrm{unit com}}}(\Omega_{\mathrm{dispatch}})
+\begin{equation}
+    \min_{M_\theta \in \mathrm{Argmin} \Omega_{\mathrm{unit com}}}(\Omega_{\mathrm{dispatch}})
+\end{equation}
 $$
 
 
@@ -189,35 +235,48 @@ with
 
 
 $$
-\Omega_{\mathrm{dispatch}} = \Omega_{\mathrm{transmission}}+\Omega_{\mathrm{hydro}}+\Omega_{\mathrm{thermal}}+\Omega_{\mathrm{unsupplied}}+\Omega_{\mathrm{spillage}}
+\begin{equation}
+    \Omega_{\mathrm{dispatch}} = \Omega_{\mathrm{transmission}}+\Omega_{\mathrm{hydro}}+\Omega_{\mathrm{thermal}}+\Omega_{\mathrm{unsupplied}}+\Omega_{\mathrm{spillage}}
+\end{equation}
 $$
 
 
 $$
-\Omega_{\mathrm{transmission}}=\sum_{l \in L} \gamma_l^+ \cdot F_l^+ + \gamma_l^- \cdot F_l^-
+\begin{equation}
+    \Omega_{\mathrm{transmission}}=\sum_{l \in L} \gamma_l^+ \cdot F_l^+ + \gamma_l^- \cdot F_l^-
+\end{equation}
 $$
 
 
 $$
-\Omega_{\mathrm{hydro}} = \sum_{n \in N} \sum_{\lambda in \Lambda_n} (\varepsilon_\lambda + \varepsilon^*_\lambda)\cdot(H_\lambda - \rho_\lambda \Pi_\lambda + O_\lambda) - \sum_{n \in N} \sum_{\lambda \in \Lambda_n}\sum_{q=1}^Q \eta_{\lambda_q} \mathfrak{R}_{\lambda_q}
+\begin{equation}
+    \Omega_{\mathrm{hydro}} = \sum_{n \in N} \sum_{\lambda in \Lambda_n} (\varepsilon_\lambda + \varepsilon^*_\lambda)\cdot(H_\lambda - \rho_\lambda \Pi_\lambda + O_\lambda) - \sum_{n \in N} \sum_{\lambda \in \Lambda_n}\sum_{q=1}^Q \eta_{\lambda_q} \mathfrak{R}_{\lambda_q}
+\end{equation}
 $$
 
 
 $$
-\Omega_{\mathrm{thermal}}=\sum_{n \in N} \sum_{\theta \in \Theta_n} \chi_\theta \cdot P_\theta + \sigma_\theta^+ \cdot M_\theta^+ + \tau_\theta \cdot M_\theta
+\begin{equation}
+    \Omega_{\mathrm{thermal}}=\sum_{n \in N} \sum_{\theta \in \Theta_n} \chi_\theta \cdot P_\theta + \sigma_\theta^+ \cdot M_\theta^+ + \tau_\theta \cdot M_\theta
+\end{equation}
 $$
 
 
 $$
-\Omega_{\mathrm{unsupplied}}=\sum_{n \in N} \delta_n^+ \cdot G_n^+
+\begin{equation}
+    \Omega_{\mathrm{unsupplied}}=\sum_{n \in N} \delta_n^+ \cdot G_n^+
+\end{equation}
 $$
 
 
 $$
-\Omega_{\mathrm{spillage}}=\sum_{n \in N} \delta_n^- \cdot G_n^-
+\begin{equation}
+    \Omega_{\mathrm{spillage}}=\sum_{n \in N} \delta_n^- \cdot G_n^-
+\end{equation}
 $$
 
-$\Omega_{\mathrm{unit com}}$ is the expression derived from $\Omega_{\mathrm{dispatch}}$ by replacing all variables that depend on the system's state by their equivalent in the uplifted state.
+$\Omega_{\mathrm{unit com}}$ is the expression derived from $\Omega_{\mathrm{dispatch}}$ 
+by replacing all variables that depend on the system's state by their equivalent in the uplifted state.
 
 ## Constraints related to the nominal system state
 
@@ -226,33 +285,44 @@ $\Omega_{\mathrm{unit com}}$ is the expression derived from $\Omega_{\mathrm{dis
 Level equation. For each short-term storage $s\in\mathcal{S}$,
 
 $$
-L_s(t) - L_s(t-1) = \eta^i_s * P^i_s(t) - \eta^w_s * P^w_s(t) + I_s(t)
+\begin{equation}
+    L_s(t) - L_s(t-1) = \eta^i_s * P^i_s(t) - \eta^w_s * P^w_s(t) + I_s(t)
+\end{equation}
 $$
 
-Note that in this equation, time-steps are cycled. From now on, time indices are omitted for simplicity.
+Note that in this equation, time-steps are cycled. 
+From now on, time indices are omitted for simplicity.
 
 Bounded level
 
 $$
-0 \leq \underline{L}_s \leq L_s \leq \overline{L}_s
+\begin{equation}
+    0 \leq \underline{L}_s \leq L_s \leq \overline{L}_s
+\end{equation}
 $$
 
 Bounded injection
 
 $$
-\underline{P}^i_s \leq P^i_s \leq \overline{P^i}_s
+\begin{equation}
+    \underline{P}^i_s \leq P^i_s \leq \overline{P^i}_s
+\end{equation}
 $$
 
 Bounded withdrawal
 
 $$
-\underline{P}^w_s \leq P^w_s \leq \overline{P^w}_s
+\begin{equation}
+    \underline{P}^w_s \leq P^w_s \leq \overline{P^w}_s
+\end{equation}
 $$
 
 Initial level (optional)
 
 $$
-L_s(0) = L_s^0
+\begin{equation}
+    L_s(0) = L_s^0
+\end{equation}
 $$
 
 ### Balance between load and generation
@@ -260,34 +330,47 @@ $$
 First Kirchhoff's law:
 
 $$
-\forall n \in N, \sum_{l \in L_n^+} F_l - \sum_{l \in L_n^-} F_l = \left( G_n^+ + \sum_{\lambda \in \Lambda_n}(H_\lambda - \Pi_\lambda) + \sum_{\theta \ \in \Theta_n} P_\theta + \sum_{s \in \mathcal{S}} \left(P^w_s - P^i_s\right)\right)-(G_n^-+D_n)
+\begin{equation}
+    \forall n \in N, \quad \sum_{l \in L_n^+} F_l - \sum_{l \in L_n^-} F_l = \left( G_n^+ + \sum_{\lambda \in \Lambda_n}(H_\lambda - \Pi_\lambda) + \sum_{\theta \ \in \Theta_n} P_\theta + \sum_{s \in \mathcal{S}} \left(P^w_s - P^i_s\right)\right)-(G_n^-+D_n)
+\end{equation}
 $$
 
 
 On each node, the unsupplied power is bounded by the net positive demand:
 
 $$
-\forall n \in N, 0 \leq G_n^+ \leq \max(0, D_n)
+\begin{equation}
+    \forall n \in N, \quad 0 \leq G_n^+ \leq \max(0, D_n)
+\end{equation}
 $$
 
-On each node, the spilled power is bounded by the overall generation of the node (must-run + dispatchable power):
+On each node, the spilled power is bounded by the overall generation of the node
+(must-run + dispatchable power):
 
 $$
-\forall n \in N, 0 \leq G_n^- \leq -\min(0, D_n) + \sum_{\lambda \in \Lambda_n}H_\lambda + \sum_{\theta \ \in \Theta_n} P_\theta
+\begin{equation}
+    \forall n \in N, \quad 0 \leq G_n^- \leq -\min(0, D_n) + \sum_{\lambda \in \Lambda_n}H_\lambda + \sum_{\theta \ \in \Theta_n} P_\theta
+\end{equation}
 $$
 
 Flows on the grid:
 
 $$
-\forall l \in L, 0 \leq F_l^+ \leq C_l^+ +(\overline{C}^{+}_l - C_l^+)x_l
+\begin{equation}
+    \forall l \in L, \quad 0 \leq F_l^+ \leq C_l^+ +(\overline{C}^{+}_l - C_l^+)x_l
+\end{equation}
 $$
 
 $$
-\forall l \in L, 0 \leq F_l^- \leq C_l^- +(\overline{C}^{-}_l - C_l^-)x_l
+\begin{equation}
+    \forall l \in L, \quad  0 \leq F_l^- \leq C_l^- +(\overline{C}^{-}_l - C_l^-)x_l
+\end{equation}
 $$
 
 $$
-\forall l \in L, F_l = F_l^+ - F_l^-
+\begin{equation}
+    \forall l \in L, \quad  F_l = F_l^+ - F_l^-
+\end{equation}
 $$
 
 Flows are bounded by the sum of an initial capacity and of a complement brought by investment
@@ -295,113 +378,170 @@ Flows are bounded by the sum of an initial capacity and of a complement brought 
 Binding constraints:
 
 $$
-\forall b \in B_h, l^b \leq \sum_{e \in E} \alpha_e^b (F_e)_{\uparrow}^{o_e^b} \leq u^b
+\begin{equation}
+    \forall b \in B_h, \quad  l^b \leq \sum_{e \in E} \alpha_e^b (F_e)_{\uparrow}^{o_e^b} \leq u^b
+\end{equation}
 $$
 
 $$
-\forall b \in B_d, \forall k \in \lbrace 0,\dots,6\rbrace, l^b \leq \sum_{e \in E} \alpha_e^b \sum_{t \in \lbrace 1,\dots,24\rbrace} (F_e)_{\uparrow {24k+t}}^{o_e^b} \leq u^b
+\begin{equation}
+    \forall b \in B_d, \forall k \in \lbrace 0,\dots,6\rbrace, \quad  l^b \leq \sum_{e \in E} \alpha_e^b \sum_{t \in \lbrace 1,\dots,24\rbrace} (F_e)_{\uparrow {24k+t}}^{o_e^b} \leq u^b
+\end{equation}
 $$
 
 $$
-\forall b \in B_w, l^b \leq \sum_{e \in E} \alpha_e^b \sum_{t \in T} F_{e_t} \leq u^b
+\begin{equation}
+    \forall b \in B_w, \quad  l^b \leq \sum_{e \in E} \alpha_e^b \sum_{t \in T} F_{e_t} \leq u^b
+\end{equation}
 $$
 
 ### Binding constraints
 
 $$
-\forall n \in N, \forall \lambda \in \Lambda_n, \underline{W}_{\lambda} \ leq \sum_{t\in T} H_{\lambda_t} \leq \overline{W}_{\lambda}
+\begin{equation}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{W}_{\lambda} \ leq \sum_{t\in T} H_{\lambda_t} \leq \overline{W}_{\lambda}
+\end{equation}
 $$
 
 FIXME: RHS
 $$
-\forall n \in N, \forall \lambda \in \Lambda_n, \sum_{t\in T} H_{\lambda_t} - \sum_{t\in T} \rho_t \Pi_{\lambda_t} = \overline{W}_{\lambda}
+\begin{equation}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \sum_{t\in T} H_{\lambda_t} - \sum_{t\in T} \rho_t \Pi_{\lambda_t} = \overline{W}_{\lambda}
+\end{equation}
 $$
 
 Instantaneous generating power is bounded
 
 $$
-\forall n \in N, \forall \lambda \in \Lambda_n, \underline{H}_{\lambda} \leq H_{\lambda} \leq \overline{H}_{\lambda}
+\begin{equation}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{H}_{\lambda} \leq H_{\lambda} \leq \overline{H}_{\lambda}
+\end{equation}
 $$
 
 Intra-daily power modulations are bounded and power fluctuations may be subject to penalty fees [^12]
 
 $$
-\forall n \in N, \forall \lambda \in \Lambda_n, \forall k \in \lbrace 1, \ldots, 6 \rbrace, \frac{\max_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H_{\lambda_t}}{\sum_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H_{\lambda_t}} \leq r_{\lambda}
+\begin{equation}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \forall k \in \lbrace 1, \ldots, 6 \rbrace, \quad  \frac{\max_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H_{\lambda_t}}{\sum_{t \in \lbrace 24k+1,\ldots, 24k+24 \rbrace} H_{\lambda_t}} \leq r_{\lambda}
+\end{equation}
 $$
 
 Instantaneous pumping power is bounded
 
 $$
-\forall n \in N, \forall \lambda \in \Lambda_n, 0 \leq \Pi_{\lambda} \leq \overline{\Pi}_{\lambda}
+\begin{equation}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  0 \leq \Pi_{\lambda} \leq \overline{\Pi}_{\lambda}
+\end{equation}
 $$
 
-Reservoir level evolution depends on generating power, pumping power, pumping efficiency, natural inflows and overflows
+Reservoir level evolution depends on generating power, pumping power, pumping efficiency, 
+natural inflows and overflows
 
 $$
-(14)(a) \forall n \in N, \forall \lambda \in \Lambda_n, \forall t \in T, R_{\lambda_t} - R_{\lambda_{t-1}} = \rho_\lambda \Pi_{\lambda_t} - H_{\lambda_t} + I_{\lambda_t} - O_{\lambda_t}
+\begin{equation}
+    (14)(a) \forall n \in N, \forall \lambda \in \Lambda_n, \forall t \in T, \quad  R_{\lambda_t} - R_{\lambda_{t-1}} = \rho_\lambda \Pi_{\lambda_t} - H_{\lambda_t} + I_{\lambda_t} - O_{\lambda_t}
+\end{equation}
 $$
 
 $$
-(14)(b) \forall n \in N, \forall \lambda \in \Lambda_n, R_{\lambda T} = \sum_{q=1,Q} \mathfrak{R}_{\lambda_q}
+\begin{equation}
+    (14)(b) \forall n \in N, \forall \lambda \in \Lambda_n, \quad  R_{\lambda T} = \sum_{q=1,Q} \mathfrak{R}_{\lambda_q}
+\end{equation}
 $$
 
 $$
-(14)(c) \forall n \in N, \forall \lambda \in \Lambda_n, q=1,Q, \mathfrak{R}_{\lambda_q} \leq \frac{S_{\lambda}}{Q}
+\begin{equation}
+    (14)(c) \forall n \in N, \forall \lambda \in \Lambda_n, q=1,Q, \quad  \mathfrak{R}_{\lambda_q} \leq \frac{S_{\lambda}}{Q}
+\end{equation}
 $$
 
 Reservoir level is bounded by admissible lower and upper bounds (rule curves)
 
 $$
-(15) \forall n \in N, \forall \lambda \in \Lambda_n, \underline{R}_\lambda \leq R_\lambda \leq \overline{R}_\lambda
+\begin{equation}
+    (15) \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{R}_\lambda \leq R_\lambda \leq \overline{R}_\lambda
+\end{equation}
 $$
 
-### Thermal units [^8]
+### Thermal units
+
 
 Power output is bounded by must-run commitments and power availability
 
 $$
-(16) \forall n \in N, \forall \theta \in \Theta_n, \underline{P_\theta} \leq P_\theta \leq \overline{P_\theta}
+\begin{equation}
+    (16) \forall n \in N, \forall \theta \in \Theta_n, \quad  \underline{P_\theta} \leq P_\theta \leq \overline{P_\theta}
+    \label{eq:constraint-power-output}
+\end{equation}
 $$
 
 The number of running units is bounded
 
 $$
-(17) \forall n \in N, \forall \theta \in \Theta_n, \underline{M_\theta} \leq M_\theta \leq \overline{M_\theta}
+\begin{equation}
+    (17) \forall n \in N, \forall \theta \in \Theta_n, \quad   \underline{M_\theta} \leq M_\theta \leq \overline{M_\theta} 
+\end{equation}
 $$
 
 Power output remains within limits set by minimum stable power and maximum capacity thresholds
 
 $$
-(18) \forall n \in N, \forall \theta \in \Theta_n, l_\theta M_\theta \leq M_\theta \leq u_\theta M_\theta
+\begin{equation}
+    (18) \forall n \in N, \forall \theta \in \Theta_n, \quad  l_\theta M_\theta \leq M_\theta \leq u_\theta M_\theta
+\end{equation}
 $$
 
 
-Minimum running and not-running durations contribute to the unit-commitment plan. Note that this modeling requires[^9] that one at least of the following conditions is met: $\Delta_\theta^- \leq \Delta_\theta^+$ or $\overline{M}_\theta \leq 1_T$
+Minimum running and not-running durations contribute to the unit-commitment plan. 
+Note that this modeling requires[^9] that one at least of the following conditions is met: 
+$\Delta_\theta^- \leq \Delta_\theta^+$ or $\overline{M}_\theta \leq 1_T$
 
 $$
-(19) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, M_{\theta_t} = M_{\theta_{t-1}} + M_{\theta_t}^+ - M_{\theta_t}^-
-$$
-
-$$
-(20) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, {M_\theta^{- -}}_t \leq {M _ \theta^{-}}_t
-$$
-
-$$
-(21) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, {M_\theta^{- -}}_t \leq \max(0, \overline{M}_{\theta_{t-1}} - \overline{M}_{\theta_t})
+\begin{equation}
+    (19) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} = M_{\theta_{t-1}} + M_{\theta_t}^+ - M_{\theta_t}^-
+\end{equation}
 $$
 
 $$
-(22) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, M_{\theta_ t} \geq \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^+ - {M_\theta^{- -}}_k)
+\begin{equation}
+    (20) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  {M_\theta^{- -}}_t \leq {M _ \theta^{-}}_t
+\end{equation}
 $$
 
 $$
-(23) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, M_{\theta_t} \leq \overline{M}_{\theta_{t - \Delta_\theta^-}} + \sum_{k=t+1-\Delta_\theta^+}^{k=t} \max(0, \overline{M}_{\theta_k} - \overline{M}_{\theta_{k-1}}) - \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^-)
+\begin{equation}
+    (21) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  {M_\theta^{- -}}_t \leq \max(0, \overline{M}_{\theta_{t-1}} - \overline{M}_{\theta_t})
+\end{equation}
 $$
 
+$$
+\begin{equation}
+    (22) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_ t} \geq \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^+ - {M_\theta^{- -}}_k)
+\end{equation}
+$$
 
-[^12]: Contraints 12(a) are implemented only if the "heuristic" mode is used. <br> Contraints 12(b) are implemented only if the "power fluctuations" option is set to "minimize ramping". <br> Contraints 12(c) are implemented only if the "power fluctuations" option is set to "minimize excursion".
+$$
+\begin{equation}
+    (23) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} \leq \overline{M}_{\theta_{t - \Delta_\theta^-}} + \sum_{k=t+1-\Delta_\theta^+}^{k=t} \max(0, \overline{M}_{\theta_k} - \overline{M}_{\theta_{k-1}}) - \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^-)
+    \label{eq:num-run-unit}
+\end{equation}
+$$
 
-[^8]: The constraints implemented depend on the option selected for unit commitment. In "fast" mode, implementation is restricted to (16), whereas "accurate" mode involved modelling of constraints (16) to (23). Note that in both cases, a heuristic stage takes place between the "uplifted" and "nominal" optimization runs to deal with integrity issues.
+!!! info
+    The constraints implemented depend on the option selected for unit commitment. 
+    In "fast" mode, implementation is restricted to $\eqref{eq:constraint-power-output}$, 
+    whereas "accurate" mode involved modelling of constraints 
+    $\eqref{eq:constraint-power-output}$ to $\eqref{eq:num-run-unit}$. 
+    Note that in both cases, a heuristic stage takes place between 
+    the "uplifted" and "nominal" optimization runs to deal with integrity issues.
+
+
+
+[^12]: 
+    Contraints 12(a) are implemented only if the "heuristic" mode is used. 
+    **Contraints 12(b) are implemented only if the "power fluctuations" option is set to "minimize ramping".**
+    Contraints 12(c) are implemented only if the "power fluctuations" option is set to "minimize excursion".
+
 
 [^9]: This does not actually limit the model's field of application: all datasets can easily be put in a format that meets this commitment.
 
