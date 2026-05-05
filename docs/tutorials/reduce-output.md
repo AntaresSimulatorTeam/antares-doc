@@ -5,12 +5,16 @@ This is the goal of the **Thematic trimming**.
 
 !!! tip
     Use these features to reduce your memory footprint as studies can get quite heavy!
+    This will also result in a [decrease of the simulation time](./reduce-simulation-time.md).
 
 ## Geographic trimming
 
 In the **Configuration** > **General** tab, select **Custom** for the **Georgraphic trimming**.
 
-TODO
+<!-- TODO -->
+
+!!! warning
+    This section is under construction.
 
 ## Thematic trimming
 

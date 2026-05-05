@@ -2,25 +2,19 @@
 
 ## Create a link
 
-Once you have created the two nodes on the graph, you have to click on the :material-link-plus: icon of the first node that will become yellow then click on the second node. 
+Once you have created the two nodes on the graph, you have to click on the :material-link-plus: icon
+of the first node that will become yellow then click on the second node. 
 
 ![link creation](../assets/tuto/link-creation.png)
 
 !!! note
 
-	Links are directional, indeed in Antares the aggregation makes links directional. That's why you have to fill the direct and indirect capacity of the link.
+	Links are directional, indeed in Antares the aggregation makes links directional.
+    That's why you have to fill the direct and indirect capacity of the link.
 
-To set the direct and indirect capacities go to **MODELING** > **LINKS** and select the link that you want node_1 / node_2 in the left panels. Then go to **TIME SERIES** > **CAPACITIES** and import the two different hourly capacities matrix.
-
-Alternatively with Antares Craft, you can create a link with:
-
-```python
-link_be_fr = study.create_link(area_from='be', area_to="fr") 
-link_be_fr.set_capacity_direct(pd.DataFrame(8760 * [1000]))
-link_be_fr.set_capacity_indirect(pd.DataFrame(8760 * [1000]))
-```
-
-You can also set a custom direct and indirect capacity by passing a pandas Dataframe.
+To set the direct and indirect capacities go to **MODELING** > **LINKS** and select the link
+that you want node_1 / node_2 in the left panels. Then go to **TIME SERIES** > **CAPACITIES**
+and import the two different hourly capacities matrix.
 
 ## Delete a link
 

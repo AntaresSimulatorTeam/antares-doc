@@ -55,7 +55,7 @@ Define the sign of the constraint to apply between the left and right hand side:
 - `=`: equal to 
 - `<`: less than
 - `>`: greater than
-- `< and >`: different to
+- `< and >`: different from
 
 #### Constraint terms
 
@@ -68,3 +68,23 @@ A linear combination of link or cluster constraint terms.
 
 <span class="param-badge badge-matrix">matrix</span>
 The right hand side of the constraint at the same time step given by the [Type](#type) parameter.
+
+!!! tip
+    The right-hand side of a binding constraint can be set to "inf" 
+    (for $>$ constraints) or "-inf" (for $<$ constraints) 
+    for any timestamp. In that case, the constraint will be ignored by the solver 
+    for this timestamp. Please note that it is the user's responsibility to ensure 
+    that these values are set in a consistent way.
+
+!!! info
+    When some clusters are defined as being in must-run, 
+    these clusters are automatically removed from the binding constraints 
+    in order to avoid potential incompatibilities between these constraints 
+    and the power output imposed to the must-run clusters. 
+    The clusters which are removed from binding constraints are visible in the "Summary" tab,
+    in which they are multiplied by N/As in the binding constraints. 
+    In case a binding constraint only contains must-run clusters,
+    it will be ignored in the simulation and subsequently identified as "Skipped" in the summary tab. Please note that in the specific context of the adequacy simulation mode 
+    (in which all thermal clusters are considered as being fully must-run), 
+    all thermal clusters will consequently be de-activated from the binding constraints.
+    This can lead to incorrect adequacy indicators in Antares studies containing binding constraints.

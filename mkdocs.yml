@@ -7,13 +7,11 @@ theme:
   name: material
   logo: assets/logos/logo.png
   favicon: assets/logos/icone.png
-  prev_next_buttons_location: none
   features:
     - navigation.instant
     - navigation.instant.preview
     - navigation.top
     - navigation.indexes
-    # - navigation.sections
     - navigation.tabs
     - content.tabs.link
     - content.code.copy
@@ -38,7 +36,7 @@ nav:
     - Products: overview/product-comparison.md
     - Architecture: overview/architecture.md
     - Release notes: overview/changelogs.md
-    - Forum & support: overview/forum-and-support.md
+    - Support: overview/support.md
     - Roadmap: overview/roadmap.md
   - Getting started:
     - getting-started/index.md
@@ -49,11 +47,9 @@ nav:
   - Tutorials:
     - tutorials/index.md
     - Create a blank study: tutorials/create-blank-study.md
-    - Import a study: tutorials/import-study.md
-    - Export a study: tutorials/export-study.md
+    - Import & export a study: tutorials/import-export-study.md
     - Create a variant: tutorials/create-variant.md
     - Create links: tutorials/create-links.md
-    - Set load: tutorials/set-load.md
     - Generate thermal time series: tutorials/generate-thermal-ts.md
     - Set binding constraints: tutorials/set-binding-constraint.md
     - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
@@ -62,8 +58,6 @@ nav:
     - Use the scenario playlist: tutorials/select-scenario.md
     - Invest with Xpansion:
       - Define candidates: tutorials/define-candidates.md
-      - Invest on a link: tutorials/invest-link.md
-      - Invest on a cluster: tutorials/invest-cluster.md
       - Set the parameters: tutorials/invest-parameters.md
       - Analyze outputs: tutorials/invest-outputs.md
     - Productivity:
@@ -77,6 +71,7 @@ nav:
       - Visualize by variable: tutorials/vizualize-by-variable.md
     - Debug your study: tutorials/debug-your-study.md
     - Create a personal token: tutorials/create-token.md
+    - Get your study ID: tutorials/get-study-id.md
   - Programmation and CLI:
     - programmatic/index.md
     - Antares Craft overview: programmatic/antares-craft-overview.md

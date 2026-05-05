@@ -36,7 +36,7 @@ Here are all the available keyboard shortcuts in Antares Web for navigating, sel
 |++tab++|Confirm and move right|
 
 !!! note 
-    "Keyboard support" Shortcuts are consistent with common spreadsheet software for ease of use.
+    Keyboard shortcuts are consistent with common spreadsheet software for ease of use.
 
 ## Advanced Editing
 

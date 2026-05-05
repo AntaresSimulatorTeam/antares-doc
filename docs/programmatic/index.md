@@ -1,4 +1,4 @@
-# Programmation and CLI
+# Programmation and command line interface
 
 Sometimes, you will want to automate your workflow. For this, Antares has a python package 
 [Antares Craft](https://github.com/AntaresSimulatorTeam/antares_craft) for interacting with 

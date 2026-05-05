@@ -1,2 +1,0 @@
-# Import a study
-

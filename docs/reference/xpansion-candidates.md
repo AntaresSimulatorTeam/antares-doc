@@ -55,7 +55,10 @@ Corresponds to the candidate's potential in terms of number of installable
 units. If the parameters max-units and unit-size are set, then the invested
 capacity is necessarily a multiple of unit-size from the set:
 
-$$\n{0, \texttt{unit-size}, 2 \cdot \texttt{unit-size}, \ldots , \texttt{max-units} \cdot \texttt{unit-size}}.$$\n
+$$
+{0, \texttt{unit-size}, 2 \cdot \texttt{unit-size}, \ldots , \texttt{max-units} \cdot \texttt{unit-size}}
+$$
+
 !!! warning
     The definition of an investment candidate must necessarily include either
     (i) a maximum potential in MW (max-investment) or (ii) a unit size in MW

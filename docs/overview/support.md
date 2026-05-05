@@ -1,14 +1,15 @@
-# Forum and support
+# Support
 
 ## Long term support (LTS)
 
 There are currently several version of the simulator that are maintained as of 2026: 
-8.8, 9.3 and 10.1. They are maintained as long as the last recurrency​ study occurency is needed
+8.8 and 9.3. They are maintained as long as the last recurrency​ study occurency is needed
 which is about 2 years.​
 
 !!! info
     The interface of Antares Web adapts to the version of the study.
-    For example if a new parameter has been added. 
+    For example if a new parameter has been added in version 9.3, it will be displayed
+    in the interface. 
 
 ## Retrocompatibility
 

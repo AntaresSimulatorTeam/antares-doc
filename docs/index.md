@@ -1,9 +1,19 @@
-<figure markdown="span">
-    ![logo](assets/logos/antares.png)
-</figure>
-<h1 style="text-align:center">Plop</h1>
+<div style="display: flex; align-items: center; margin-bottom: 30px; justify-content: center;">
+  <img
+    src="assets/logos/logo-antares.svg"
+    alt="Antares Logo"
+    style="height: 150px; width: 150px; margin-right: 30px;"
+  />
+  <div>
+    <h1 style="margin: 0;">Antares</h1>
+    <p style="margin: 5px 0 0 0; font-size: 1.2em; color: #666;">
+      On the future of transmission systems
+    </p>
+  </div>
+</div>
 
-Antares is an open source software suite designed to simulate electrical power systems. Its goal are to:
+Antares is an open source software suite designed to simulate electrical power systems. 
+Its goals are to:
 
 - Provide insight into the evolution trajectories of electricity mix
 - Identify key levers to ensure security of supply
@@ -46,6 +56,8 @@ Backed by the french transmission system operator (TSO) RTE, Antares is an indus
     and interoperable between different simulation software.
 
 </div>
+
+## User community
 
 This software is already used by multiple TSO, companies and universities including :
 
@@ -121,8 +133,16 @@ This software is already used by multiple TSO, companies and universities includ
 
 ## Open source
 
-We believe that open source software is essential in achieving the transformation of tomorrow's energy challenges, transparently and collaboratively. 
+We believe that open source software is essential in achieving 
+the transformation of tomorrow's energy challenges, transparently and collaboratively. 
 
-Therefore, all Antares technical components are licensed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/) apart from [Antares Web](https://github.com/AntaresSimulatorTeam/AntaREST) licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0). Antares will remain open source for the years to come. We would love to hear from you! Feedback, issues and contributions are welcomed on GitHub or by email.
+Therefore, all Antares technical components are licensed under 
+[MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/) apart from 
+[Antares Web](https://github.com/AntaresSimulatorTeam/AntaREST) licensed under 
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+Antares will remain open source for the years to come. 
+
+We would love to hear from you! Feedback, issues and [contributions](./contributing/index.md) 
+are welcomed on GitHub.
 
 [Roadmap :octicons-goal-24:](overview/roadmap.md){ .md-button }
