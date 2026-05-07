@@ -44,3 +44,7 @@ energy deviations exceeding this threshold (0: no tolerance)
 In order to avoid solver issues, lower and upper boundaries of the energy
 not served variable and lower bound of the spillage variable can be relaxed
 with this parameter.
+
+#### Redispatch
+
+<span class="param-badge badge-bool">bool</span>

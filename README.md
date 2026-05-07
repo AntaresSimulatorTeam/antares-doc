@@ -7,7 +7,7 @@ and the [`Material for MkDocs theme`](https://squidfunk.github.io/mkdocs-materia
 
 ## How to build and edit the documentation
 
-Before making changes, please review the [style guides](contributing/guidelines-docs.md)
+Before making changes, please review the [guidelines](contributing/guidelines-docs.md)
 to ensure consistency.
 
 If you're unfamiliar with Git or pull requests, you can submit your modified file as an issue, 

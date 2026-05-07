@@ -72,6 +72,7 @@ nav:
     - Debug your study: tutorials/debug-your-study.md
     - Create a personal token: tutorials/create-token.md
     - Get your study ID: tutorials/get-study-id.md
+    - Upgrade your study version: tutorials/study-migration.md
   - Programmation and CLI:
     - programmatic/index.md
     - Antares Craft overview: programmatic/antares-craft-overview.md
