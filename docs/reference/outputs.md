@@ -175,15 +175,32 @@ Withdrawal of energy from each short-term storage group into the area.
 
 #### <STS **group**\>_level
 
-Average level of each short-term storage group.
+Level of each short-term storage group.
+
+!!! warning
+    When the data is aggregated by a longer time scale than the hour 
+    for all year or by Monte-Carlo year, 
+    the aggregated value corresponds to the *average* of the hourly values.
+    The only exception is when the data is aggregated by group and Monte-Carlo year,
+    the data is the *sum* of the detailed results.
 
 #### <STS\>,P-injection
 
-Injection of energy from the area into the short-term storage
+Injection of energy from the area into the short-term storage.
+
+!!! warning
+    When the data is aggregated by a longer time scale than the hour
+    for all year or by Monte-Carlo year, 
+    the aggregated value corresponds to the *sum* of the hourly values.
 
 #### <STS\>,P-withdrawal
 
-Withdrawal of energy from the short-term storage into the area
+Withdrawal of energy from the short-term storage into the area.
+
+!!! warning
+    When the data is aggregated by a longer time scale than the hour
+    for all year or by Monte-Carlo year, 
+    the aggregated value corresponds to the *sum* of the hourly values.
 
 #### UNSP. ENRG
 
