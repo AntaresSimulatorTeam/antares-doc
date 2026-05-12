@@ -115,5 +115,5 @@ Sometimes it is interesting to view the logs and understand what went wrong duri
 You can find more information on these tabs in the following pages:
 
 - [Table mode](../tutorials/use-table-mode.md)
-- [Xpansion]()
-- [Debug](../tutorials/debug-your-study.md)
+- [Xpansion](../reference/xpansion-intro.md)
+- [Debug](../reference/debug.md)

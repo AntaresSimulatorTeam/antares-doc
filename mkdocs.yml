@@ -65,12 +65,9 @@ nav:
       - Shortcuts: tutorials/shortcuts.md
     - Reduce output size: tutorials/reduce-output.md
     - Reduce simulation time: tutorials/reduce-simulation-time.md
-    - Outputs:
-      - Visualize raw outputs: tutorials/visualize-raw.md
-      - Visualize by area: tutorials/vizualize-by-area.md
-      - Visualize by variable: tutorials/vizualize-by-variable.md
-    - Debug your study: tutorials/debug-your-study.md
-    - Create a personal token: tutorials/create-token.md
+    - Visualize outputs: 
+      - Antares outputs: tutorials/outputs-antares.md
+      - Xpansion outputs: tutorials/outputs-xpansion.md
     - Get your study ID: tutorials/get-study-id.md
     - Upgrade your study version: tutorials/study-migration.md
   - Programmation and CLI:
@@ -118,6 +115,8 @@ nav:
       - Adequacy patch: reference/adequacy-patch.md
       - Water values: reference/water-values.md
       - Investment problem: reference/xpansion-theory.md
+    - Debug tab: reference/debug.md
+    - Create a personal token: tutorials/create-token.md
     - Performance:
       - Supported solvers for Antares: reference/solver-choice.md
       - Xpansion performance: reference/performance-xpansion.md

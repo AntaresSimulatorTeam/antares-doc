@@ -23,10 +23,17 @@ at a given time indexing and for different values.
 
     ![](../assets/tuto/filter-active.png){ width="400" }
 
-You can set some filters on columns, select a range of columns to make some modifications,
+You can set some filters on columns (1-based numbering)
+select a range of columns to make some modifications,
 and then do some replace or basic math operations.
 
-## Or inside your prefered software
+- List: you can input a list of non contiguous columns. For example to modify columns 1 and 3, 
+  you can type 1, press enter and then type 3 and press enter. You will see your selection
+  underneath the input field.
+- Range: you can select a range of contiguous columns to modify.
+
+Your selection will appear automatically next to the filter panel.
+
 
 You can alternatively modify your time series inside a spreadsheet app or programmatically 
-and import it in Antares Web.
+and import/copy-paste it in Antares Web.
