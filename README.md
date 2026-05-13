@@ -1,9 +1,10 @@
-# Antares Website
+# Antares Documentation Website
 
 Welcome to the Antares website for user documentation!
 
-This documentation is written in `markdown` and built using [`MkDocs`](https://www.mkdocs.org/) 
-and the [`Material for MkDocs theme`](https://squidfunk.github.io/mkdocs-material/).
+This documentation is written in `markdown` then built using the static site generator
+[`MkDocs`](https://www.mkdocs.org/) and the 
+[`Material for MkDocs theme`](https://squidfunk.github.io/mkdocs-material/).
 
 ## How to build and edit the documentation
 

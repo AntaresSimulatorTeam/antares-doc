@@ -84,17 +84,17 @@ Cost generation
 !!! note
     If Cost generation is set to SetManually marginal and market bid costs (€/MWh)
     are specified directly in **Time series** > **Common** tab and have the same
-    value for all time-series and hours.
+    value for all time series and hours.
 
     If Cost generation is set to Use cost timeseries Marginal and Market bid costs
-    (€/MWh) are calculated separately for all the time-series and hours using
+    (€/MWh) are calculated separately for all the time series and hours using
     the following equation:
     ```
     Marginal_Cost[€/MWh] = Market_Bid_Cost[€/MWh] = (Fuel_Cost[€/GJ] * 3.6 * 100 / Efficiency[%]) + CO2_emission_factor[tons/MWh] * C02_cost[€/tons] + Variable_O&M_cost[€/MWh]
     ```
     where Efficiency[%], CO2_emission_factor[tons/MWh] and Variable_O&M_cost[€/MWh]
     are specified in the Common tab under operating costs and parameters, while
-    Fuel_Cost[€/GJ] and C02_cost[€/tons] are provided as time-series in separate
+    Fuel_Cost[€/GJ] and C02_cost[€/tons] are provided as time series in separate
     tabs.
 
 #### Efficiency (%)
@@ -202,13 +202,13 @@ different polluants for a given cluster.
 #### Parameter
 
 <span class="param-badge badge-enum">enum</span>
-Parameter to specify the behavior of this cluster for time-series generation.
+Parameter to specify the behavior of this cluster for time series generation.
 **This cluster-wise parameter takes priority over the study-wide one.**
 It can hold three values:
 
 - `use global`:
-- `force no generation`: time-series for this cluster will not be generated.
-- `force generation`: time-series for this cluster will be generated.
+- `force no generation`: time series for this cluster will not be generated.
+- `force generation`: time series for this cluster will be generated.
 
 #### Volatility forced
 
@@ -223,7 +223,7 @@ A parameter between 0 and 1.
 #### Law forced
 
 <span class="param-badge badge-enum">enum</span>
-Probabilistic law used for the generation of the forced outage time-series.
+Probabilistic law used for the generation of the forced outage time series.
 
 - `geometric`
 - `uniform`
@@ -231,7 +231,7 @@ Probabilistic law used for the generation of the forced outage time-series.
 #### Law planned
 
 <span class="param-badge badge-enum">enum</span>
-Probabilistic law used for the generation of the planned outage time-series.
+Probabilistic law used for the generation of the planned outage time series.
 
 - `geometric`
 - `uniform`
@@ -241,13 +241,13 @@ Probabilistic law used for the generation of the planned outage time-series.
 ### Common
 
 <span class="param-badge badge-matrix">matrix</span>
-Hourly time-series for:
+Hourly time series for:
 
 - Seasonal evolution of the marginal cost variations (gas more expensive in winter).
 - Seasonal market bid modulations (assets costs charging strategy).
 - Nominal capacity modulations (seasonal thermodynamic efficiencies, special
   over-generation allowances, etc.). These modulations are taken into account
-  during the generation of available power time-series.
+  during the generation of available power time series.
 - Minimal generation commitment (partial must-run level) set for the cluster.
 
 ### TS generator

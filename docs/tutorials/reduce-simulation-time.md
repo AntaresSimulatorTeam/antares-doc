@@ -18,7 +18,7 @@ which are related to the topic of [reducing your output size](reduce-output.md).
 
 **Manage adequately the memory** ​
 
-- Number of time-series without refresh​
+- Number of time series without refresh​
 
 **Reduce the number of output files**​
 

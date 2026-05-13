@@ -2,7 +2,7 @@
 
 <span class="param-badge badge-matrix">matrix</span>
 This window is used to handle all input data regarding miscellaneous non dispatchable generation.
-On picking any area in the primary list, the user gets direct access to all data regarding the area, which amount to 8 ready-made 8760-hour time-series (expressed in MW):
+On picking any area in the primary list, the user gets direct access to all data regarding the area, which amount to 8 ready-made 8760-hour time series (expressed in MW):
 
 - `CHP` generation
 - `Bio Mass` generation
@@ -10,7 +10,7 @@ On picking any area in the primary list, the user gets direct access to all data
 - `Waste` generation
 - `Geothermal` generation
 - Any `other` kind of non-dispatchable generation
-- A predefined time-series for the operation of Pumped Storage Power (`PSP`) plants,
+- A predefined time series for the operation of Pumped Storage Power (`PSP`) plants,
   if they are not explicitly modeled. 
   A **positive value is considered as an output (generating)** to the grid, 
   a **negative value is an input (pumping)** to the station.

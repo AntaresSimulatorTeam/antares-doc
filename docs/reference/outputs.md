@@ -372,7 +372,7 @@ the output folders may also include either, both or none of the following sectio
 |                                | `/renewables`[^ren] | `/<area_names>/...`  |
 |                                | `/ntc`              | `/<area_names>/...`  |
 
-These files contain, for each kind of time-series, the number drawn (randomly or not) 
+These files contain, for each kind of time series, the number drawn (randomly or not) 
 in each Monte-Carlo year (files are present if "output profile / MC scenarios" was set to "true").
 
 | `output/<simu_id>/ts-generator/` |                |                                |
@@ -383,8 +383,8 @@ in each Monte-Carlo year (files are present if "output profile / MC scenarios" w
 |                                  | `/solar`[^agg] | `/batch_number/area_names/...` |
 
 
-These files contain, for each kind of Antares-generated time-series, 
-copies of the whole set of time-series generated.
+These files contain, for each kind of Antares-generated time series, 
+copies of the whole set of time series generated.
 
 ## Miscellaneous
 

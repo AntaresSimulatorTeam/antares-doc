@@ -73,8 +73,8 @@ moved to a virtual node connected to the physical node area1. The Antares link
 for the investment candidate is the link between these two nodes.
 
 For the type of renewable production of interest (wind or solar), a corresponding
-production time-series (Antares wind or solar tab) must be defined in the
-virtual node. The production time-series must be deterministic, constant, and
+production time series (Antares wind or solar tab) must be defined in the
+virtual node. The production time series must be deterministic, constant, and
 higher than the potential (`max-investment`) of the candidate. The parameters
 `(in)direct-link-profile` from the candidates.ini file will then be used to define
 the hourly load factor.

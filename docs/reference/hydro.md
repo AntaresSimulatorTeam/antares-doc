@@ -144,7 +144,7 @@ month.
 <span class="param-badge badge-matrix">matrix</span>
 The average daily pattern of inflows within each month. Each day is given a
 relative "weight" in the month. If all days are given the same weight, daily
-energy time-series will be obtained by dividing the monthly energy in equal
+energy time series will be obtained by dividing the monthly energy in equal
 days. If not, the ratio between two daily energies will be equal to that of
 the daily weights in the pattern array.
 
@@ -162,7 +162,7 @@ hydro monthly inflow.
 <span class="param-badge badge-matrix">matrix</span>
 Annual inter-area allocation matrix $A(i,j)$ that may be used during a
 heuristic hydro pre-allocation process, regardless of whether the stochastic
-time-series generator is used or not. This matrix describes the weights that
+time series generator is used or not. This matrix describes the weights that
 are given to the loads of areas $i$ in the definition of the monthly and
 weekly hydro storage generation profiles of areas $j$.
 
@@ -182,7 +182,7 @@ and all terms lying between (-100 ,+100).
 
 <span class="param-badge badge-matrix">matrix</span>
 Two level-dependent (101 round percentage values ranging from 0% to 100%)
-time-series of modulation coefficients defined for either generating or
+time series of modulation coefficients defined for either generating or
 storing (pumping).
 
 These modulations, which can take any positive value, may (depending on the
@@ -193,7 +193,7 @@ maximum daily power and energies.
 #### Standard credits
 
 <span class="param-badge badge-matrix">matrix</span>
-Two daily time-series (365 values) defined for energy generation/storage (hydro
+Two daily time series (365 values) defined for energy generation/storage (hydro
 turbines or hydro pumps). Both arrays represent the maximum daily energy (either
 generated or stored).
 
@@ -261,3 +261,4 @@ and weather conditions, leading to fluctuations in electricity production.
 #### Min gen
 
 <span class="param-badge badge-matrix">matrix</span>
+Minimum generation to satisfy. It defaults to 0 if it's not changed.

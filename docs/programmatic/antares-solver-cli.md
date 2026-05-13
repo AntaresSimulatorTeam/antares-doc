@@ -26,7 +26,7 @@
 | command                  | usage                                                                                                                |
 |:-------------------------|:---------------------------------------------------------------------------------------------------------------------|
 | -n, --name=VALUE         | Set the name of the new simulation                                                                                   |
-| -g, --generators-only    | Run the time-series generators only                                                                                  |
+| -g, --generators-only    | Run the time series generators only                                                                                  |
 | -c, --comment-file=VALUE | Specify the file to copy as comments of the simulation                                                               |
 | -f, --force              | Ignore all warnings at loading                                                                                       |
 | --no-output              | Do not write the results in the output folder                                                                        |

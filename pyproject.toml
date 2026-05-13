@@ -6,7 +6,11 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "click==8.2.1",
+    "ipykernel>=7.2.0",
+    "matplotlib>=3.10.9",
     "mkdocs>=1.6.1",
     "mkdocs-drawio>=1.15.0",
+    "mkdocs-jupyter>=0.26.3",
     "mkdocs-material>=9.7.6",
+    "pandas>=3.0.3",
 ]

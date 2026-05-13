@@ -3,7 +3,7 @@
 ## Seeds for random number
 
 Defining random seeds allow to control random number generation for
-time-series generation, noise (used to eliminate equivalent solution during
+time series generation, noise (used to eliminate equivalent solution during
 the optimization) or reservoir levels.
 
 #### Initial reservoir levels

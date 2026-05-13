@@ -23,7 +23,7 @@ Thus, Antares is used for [medium and long-term studies](overview/use-cases.md#r
 
 ## Key features
 
-Backed by the french transmission system operator (TSO) RTE, Antares is an industry grade software.
+Backed by the french transmission system operator RTE, Antares is an industry grade software.
 
 <div class="grid cards" markdown>
 

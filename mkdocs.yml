@@ -92,7 +92,7 @@ nav:
       - Binding constraints: reference/binding-constraints.md
     - Configuration:
       - General: reference/config-general.md
-      - Time-series generation: reference/config-ts-generation.md
+      - Time series generation: reference/config-ts-generation.md
       - Optimization: reference/config-optimization.md
       - Adequacy patch: reference/config-adequacy-patch.md
       - Advanced parameters: reference/config-advanced-parameters.md
@@ -119,7 +119,7 @@ nav:
     - Create a personal token: tutorials/create-token.md
     - Performance:
       - Supported solvers for Antares: reference/solver-choice.md
-      - Xpansion performance: reference/performance-xpansion.md
+      - Xpansion performance: reference/performance-xpansion.ipynb
     - File structure: reference/file-structure.md
     - Paper & conferences: reference/bibliography.md
     - Glossary: reference/glossary.md
@@ -134,6 +134,10 @@ plugins:
   - search
   - drawio:
       darkmode: true
+  - mkdocs-jupyter:
+      execute: False
+      show_input: False
+      theme: dark
 
 extra_css:
   - stylesheets/extra.css

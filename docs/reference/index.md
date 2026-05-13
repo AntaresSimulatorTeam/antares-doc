@@ -20,7 +20,7 @@ for users seeking **explanations**.
     - [Binding constraints](binding-constraints.md)
 - Configuration
     - [General](config-general.md)
-    - [Time-series generation](config-ts-generation.md)
+    - [Time series generation](config-ts-generation.md)
     - [Optimization](config-optimization.md)
     - [Adequacy patch](config-adequacy-patch.md)
     - [Advanced parameters](config-advanced-parameters.md)
@@ -45,7 +45,7 @@ for users seeking **explanations**.
     - [Investment problem](xpansion-theory.md)
 - Performance
     - [Supported solvers for Antares](solver-choice.md)
-    - [Xpansion performance](performance-xpansion.md)
+    - [Xpansion performance](performance-xpansion.ipynb)
 - [File structure](file-structure.md)
 - [Paper & conferences](bibliography.md)
 - [Glossary](glossary.md)

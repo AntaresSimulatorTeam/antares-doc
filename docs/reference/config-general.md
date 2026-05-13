@@ -66,17 +66,17 @@ by user-playlist and playlist parameters).
 <span class="param-badge badge-enum">enum</span>
 Random (or not draw) of time series:
 
-- `Automatic`: All time-series will be drawn at random.
+- `Automatic`: All time series will be drawn at random.
 - `Custom`: The simulation will be carried out on a mix of deterministic and
-probabilistic conditions, with some time-series randomly drawn and others set
+probabilistic conditions, with some time series randomly drawn and others set
 to user-defined values. This option allows setting up detailed "what if"
 simulations that may help to understand the phenomena at work and quantify
 various kinds of risk indicators. To set up the simulation profile, use the
 [scenario builder](../tutorials/build-scenario.md).
-- `Derated`: All time-series will be replaced by their general average and the
+- `Derated`: All time series will be replaced by their general average and the
 number of MC years set to 1. If the TS are ready-made or Antares-generated but
-are not to be stored in the INPUT folder, no time-series will be written over
-the original ones (if any). If the time-series are built by Antares and if it
+are not to be stored in the INPUT folder, no time series will be written over
+the original ones (if any). If the time series are built by Antares and if it
 is specified that they should be stored in the INPUT, a single average-out time
 series will be stored instead of the whole set.
 
