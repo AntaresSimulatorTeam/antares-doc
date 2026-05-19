@@ -7,3 +7,6 @@ to click on the :material-content-copy: button.
 For example, inside the study in the top right:
 
 ![](../assets/tuto/top-bar.png)
+
+!!! note
+    Each variant has its own unique study ID!

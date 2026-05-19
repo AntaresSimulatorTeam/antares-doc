@@ -36,6 +36,9 @@ Then make sure you select the variant (or main study) and click explore to open 
 !!! tip
     You can create a variant of a variant and so on!
 
+!!! note
+    Each variant has its own study ID. 
+
 ## Variant manager and command history
 
 Variants are defined by the collection of commands which change it from the parent study.​

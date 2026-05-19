@@ -1,5 +1,6 @@
 site_name: Antares
 repo_url: https://github.com/AntaresSimulatorTeam/antares-doc
+repo_name: antares-doc
 edit_uri: edit/main/docs/
 docs_dir: docs
 
@@ -15,6 +16,7 @@ theme:
     - navigation.tabs
     - content.tabs.link
     - content.code.copy
+    - content.code.annotate
     - content.action.edit
     - content.action.view
   palette:
@@ -52,7 +54,7 @@ nav:
     - Create links: tutorials/create-links.md
     - Generate thermal time series: tutorials/generate-thermal-ts.md
     - Set binding constraints: tutorials/set-binding-constraint.md
-    - Set additional constraints on short-term storage: tutorials/set-constraint-st-storage.md
+    - Set additional constraints on storages: tutorials/set-constraint-st-storage.md
     - Use table mode: tutorials/use-table-mode.md
     - Use the scenario builder: tutorials/build-scenario.md
     - Use the scenario playlist: tutorials/select-scenario.md
@@ -85,7 +87,9 @@ nav:
       - Load: reference/load.md
       - Thermals: reference/thermals.md
       - Storages: reference/storages.md
-      - Renewables: reference/renewables.md
+      - Renewable sources: 
+        - Renewables: reference/renewables.md
+        - Wind & Solar: reference/wind-and-solar.md
       - Hydro: reference/hydro.md
       - Reserves: reference/reserves.md
       - Misc. gen.: reference/misc-gen.md
@@ -118,7 +122,7 @@ nav:
     - Debug tab: reference/debug.md
     - Create a personal token: tutorials/create-token.md
     - Performance:
-      - Supported solvers for Antares: reference/solver-choice.md
+      - Supported solvers for Antares: reference/supported-solvers.md
       - Xpansion performance: reference/performance-xpansion.ipynb
     - File structure: reference/file-structure.md
     - Paper & conferences: reference/bibliography.md

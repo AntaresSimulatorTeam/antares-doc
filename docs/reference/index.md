@@ -44,7 +44,7 @@ for users seeking **explanations**.
     - [Water values](water-values.md)
     - [Investment problem](xpansion-theory.md)
 - Performance
-    - [Supported solvers for Antares](solver-choice.md)
+    - [Supported solvers for Antares](supported-solvers.md)
     - [Xpansion performance](performance-xpansion.ipynb)
 - [File structure](file-structure.md)
 - [Paper & conferences](bibliography.md)
