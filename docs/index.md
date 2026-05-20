@@ -51,10 +51,9 @@ Backed by the french transmission system operator RTE, Antares is an industry gr
 
     ---
 
-    Support for [generic models](https://gems-energy.readthedocs.io/en/latest/)
-    for integrating energy transition easily 
-    and interoperable between different simulation software.
-
+    Alongside built-in optimized models, Antares will soon fully support 
+    [generic GEMS models](https://gems-energy.readthedocs.io/en/latest/).
+    
 </div>
 
 ## User community

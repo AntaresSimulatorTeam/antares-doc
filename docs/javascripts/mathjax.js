@@ -1,12 +1,16 @@
 window.MathJax = {
-  loader: {load: ['[tex]/mhchem']},
+  loader: {load: ['[tex]/mhchem', '[tex]/ams']},
   tex: {
-    packages: {'[+]': ['mhchem']},
+    packages: {'[+]': ['mhchem', 'ams']},
     inlineMath: [["\\(", "\\)"], ["$", "$"]],
     displayMath: [["\\[", "\\]"], ["$$", "$$"]],
     processEscapes: true,
     processEnvironments: true,
     tags: "ams",
+    macros: {
+        leq: "\\leqslant",
+        geq: "\\geqslant",
+    },
   },
   options: {
     ignoreHtmlClass: ".*|",

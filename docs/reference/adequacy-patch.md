@@ -85,11 +85,11 @@ in its list of physical nodes).
 In the first iteration, the following link capacities in the following direction
 will be set to 0 MW:
 
-- node "physical inside" <-> node "physical inside"
-- node "physical inside" -> node "physical outside"
-- node "physical outside" -> node "physical inside": optional/user defined
+- node "physical inside" :octicons-arrow-both-16: node "physical inside"
+- node "physical inside" :material-arrow-right: node "physical outside"
+- node "physical outside" :material-arrow-right: node "physical inside": optional/user defined
   (default `true`),
-- node "physical outside" <-> node "physical outside": optional/user defined
+- node "physical outside" :octicons-arrow-both-16: node "physical outside": optional/user defined
   (default `true`).
 
 Once the first iteration is completed, we have access to the DENS value,
@@ -166,7 +166,7 @@ limited to nodes "2" and the links that exist between these nodes 2.
   "Flow_direct" and "Flow_indirect" with this simple relation:
   $\text{Flow} = \text{Flow}_\text{direct} - \text{Flow}_\text{indirect}$
 
-- **"net_position" variable:** "net_position (node A)" is the balance between node A
+- **"net}_\text{position}" variable:** "net_position (node A)" is the balance between node A
   and all other nodes "2" connected to node A.
 
 - **"ENS" variable:** "ENS (node A)" contains the ENS to be optimized for that node.
@@ -176,12 +176,12 @@ limited to nodes "2" and the links that exist between these nodes 2.
 
 ### Parameter definitions
 
-- **"net_position_init" parameter:** The "net_position_init (node A)" parameter value
-  is the value of the "net_position" calculated from the output of the
+- **"net}_\text{position}_init" parameter:** The "net_position_init (node A)" parameter value
+  is the value of the "net}_\text{position}" calculated from the output of the
   Antares calculation for node A, considering results we get from the Antares
   calculation at the end of Local matching rule optimization.
 
-- **"ENS_init" parameter:** The "ENS_init (node A)" parameter value is the value of
+- **"ENS}_\text{init}" parameter:** The "ENS}_\text{init} (node A)" parameter value is the value of
   the "ENS" obtained from the output of the Antares calculation for node A
   at the end of Local matching rule optimization.
 
@@ -201,88 +201,130 @@ limited to nodes "2" and the links that exist between these nodes 2.
 ### Constraints and relations between variables
 
 - **Constraints on "Flows", "Flow_direct" and "Flow_indirect" variables:**
-  These variables should have exactly the same constraints as the ones considered
-  in the Antares problem:
-  - NTC constrains (independent lower and upper bounds for each link).
-  - Flowbased binding constraints to be extracted from the hourly binding
-    constraint list.
+    These variables should have exactly the same constraints as the ones considered
+    in the Antares problem:
+    
+    - NTC constrains (independent lower and upper bounds for each link).
+    - Flowbased binding constraints to be extracted from the hourly binding
+        constraint list.
 
-- **Relation between "Flows" over links and "net_position" on nodes:**
-  The value of "net_position (node A)" is deduced from "flow" variable as
-  follows:
+- **Relation between "Flows" over links and "net}_\text{position}" on nodes:**
+    The value of "net}_\text{position} (node A)" is deduced from "flow" variable as
+    follows:
 
-  $$\text{net}_\text{position} (node A) = \sum \text{algebraic "Flows" over links involving node A}$$ 
+    $$
+    \text{net}_\text{position} (\text{node A}) = \sum \text{algebraic "Flows" over links involving node A}
+    $$ 
 
-  Remember that:
+    Remember that:
+
     - a "Flow" that goes from another node "2" to node A is an import for node A
-      and should be counted positively
+    and should be counted positively
     - a "Flow" that goes from node A to another node "2" is an export for node A
-      and should be counted negatively.
+    and should be counted negatively.
 
-- **The detailed formulation for calculating the value of "net_position (node
-  A)"** is, for all "nodes 2 upstream" and all "nodes 2 downstream":
-  $$\begin{aligned}
-  \text{net\_position (node A)} = \sum &\text{flow\_direct (node 2 upstream } \to \text{ node A)} \\
-  + \sum &\text{flow\_indirect (node A } \leftarrow \text{ node 2 downstream)} \\
-  - \sum &\text{flow\_indirect (node 2 upstream } \leftarrow \text{ node A)} \\
-  - \sum &\text{flow\_direct (node A } \to \text{ node 2 downstream)}
-  \end{aligned}$$
+- **The detailed formulation for calculating the value of "net}_\text{position} (node
+    A)"** is, for all "nodes 2 upstream" and all "nodes 2 downstream":
+  
+    $$
+    \begin{align}
+    &\text{net}_\text{position} \text{(node A)} \\
+    = \sum \ &\text{flow_direct (node 2 upstream } \to \text{ node A)} \\
+    + \sum \ &\text{flow_indirect (node A } \leftarrow \text{ node 2 downstream)} \\
+    - \sum \ &\text{flow_indirect (node 2 upstream } \leftarrow \text{ node A)} \\
+    - \sum \ &\text{flow_direct (node A } \to \text{ node 2 downstream)}
+    \end{align}
+    $$
 
-  Considering that:
+    Considering that:
+
     - "Node 2 upstream" is any node "2" which name in alphabetic order is before
-      node A
+    node A
     - "Node 2 downstream" is any node "2" which name in alphabetic order is after
-      node A
+    node A
 
 - **Formula for calculating DENS_new parameter:**
 
-  $$\text{DENS\_new (node A)} = \max \left[ 0; \text{ENS\_init (node A)} + \text{net\_position\_init (node A)} - \text{DTG.MRG (node A)}\right]$$
+    $$
+    \text{DENS}_\text{new} \text{(node A)} 
+    = \max 
+    \left[ 
+        0, 
+        \text{ENS}_\text{init} \text{(node A)} 
+        + \text{net}_\text{position, init} \text{(node A)} 
+        - \text{DTG. MRG (node A)}
+    \right]
+    $$
 
-  Depending on the parameter in the GUI that includes or not possible imports
-  from nodes "1" to nodes "2" in the DENS calculation, we should modify this
-  formula. Precisely, it is when "NTC from physical areas outside to physical
-  areas inside adequacy patch" is set to null then the formulation should be
-  modified as follows:
+    Depending on the parameter in the GUI that includes or not possible imports
+    from nodes "1" to nodes "2" in the DENS calculation, we should modify this
+    formula. Precisely, it is when "NTC from physical areas outside to physical
+    areas inside adequacy patch" is set to null then the formulation should be
+    modified as follows:
 
-  $$\text{DENS\_new (node A)} = \max \left[ 0; \text{ENS\_init (node A)} + \text{net\_position\_init (node A)} + \sum \text{flows (node 1 } \to \text{ node A)} - \text{DTG.MRG (node A)}\right]$$
+    $$
+    \text{DENS}_\text{new} \text{(node A)} = 
+    \max 
+    \left[ 
+        0, 
+        \text{ENS}_\text{init} \text{(node A)} 
+        + \text{net}_\text{position, init} \text{(node A)} 
+        + \sum \text{flows (node 1 } \to \text{ node A)} 
+        - \text{DTG. MRG (node A)}
+    \right]
+    $$
 
-  The detailed formulation for calculating the last term is,
-  for all "nodes 1 upstream" and all "nodes 1 downstream":
-  $$\begin{aligned}
-  \sum \text{flows (node 1 } \to \text{ node A)} = \sum &\text{flow\_direct (node 1 upstream } \to \text{ node A)} \\
-  + \sum &\text{flow\_indirect (node A } \leftarrow \text{ node 1 downstream)}
-  \end{aligned}$$
+    The detailed formulation for calculating the last term is,
+    for all "nodes 1 upstream" and all "nodes 1 downstream":
 
-  Considering that:
+    $$
+    \begin{aligned}
+    \sum \text{flows (node 1 } \to \text{ node A)} = \sum &\text{flow}_\text{direct} \text{(node 1 upstream } \to \text{ node A)} \\
+    + \sum &\text{flow}_\text{indirect} \text{(node A } \leftarrow \text{ node 1 downstream)}
+    \end{aligned}
+    $$
+
+    Considering that:
+
     - "Node 1 upstream" is any node "1" which name in alphabetic order is before
-      node A
+    node A
     - "Node 1 downstream" is any node "1" which name in alphabetic order is after
-      node A
+    node A
 
-  The consideration of a correct DENS_new as presented above should ensure that
-  the Local Matching Approach is respected: (node A) can't be "Exporting" and
-  having ENS after CSR.
+    The consideration of a correct $\text{DENS}_\text{new}$ as presented above should ensure that
+    the Local Matching Approach is respected: (node A) can't be "Exporting" and
+    having ENS after CSR.
 
 - **Relation induced by node balancing conservation:**
-  $$\begin{aligned}
-  &\text{ENS (node A)} + \text{net\_position (node A)} - \text{spillage (node A)} \\
-  &= \text{ENS\_init (node A)} + \text{net\_position\_init (node A)} \\
-  &\- \text{spillage\_init (node A)}
-  \end{aligned}$$
+  
+    $$
+    \begin{aligned}
+    &\text{ENS (node A)} + \text{net}_\text{position} \text{(node A)} - \text{spillage (node A)} \\
+    =\ &\text{ENS}_\text{init} \text{(node A)} + \text{net}_\text{position_init} \text{(node A)} \\
+    - &\text{spillage}_\text{init} \text{(node A)}
+    \end{aligned}
+    $$
 
-  Actually, this simplified formulation takes into account that these variables are
-  the only ones we are allowed to update by this optimization (power generation for
-  all nodes and power flows between other nodes than nodes "2" will not be
-  modified).
+    Actually, this simplified formulation takes into account that these variables are
+    the only ones we are allowed to update by this optimization (power generation for
+    all nodes and power flows between other nodes than nodes "2" will not be
+    modified).
 
 - **Constraint induced by Local matching rule:**
 
-  $$\text{ENS (node A)} \leq \text{DENS}_{\text{new}}(\text{node A})$$
+    $$
+    \text{ENS (node A)} \leq \text{DENS}_{\text{new}}(\text{node A})
+    $$
 
 - **Positivity constraints:**
 
-  $$\text{ENS (node A)} \geq 0$$
-  $$\text{spillage (node A)} \geq 0$$
+    $$
+    \text{ENS (node A)} \geq 0
+    $$
+
+    $$
+    \text{spillage (node A)} \geq 0
+    $$
 
 ### Notes
 
@@ -290,48 +332,59 @@ limited to nodes "2" and the links that exist between these nodes 2.
   deal with some situations for which "Flowbased" constraints, combining with
   adequacy patch rules, lead to an increase of Total ENS over the different nodes
   "2". Such increase of Total ENS could happen for 2 reasons:
-  - We have new violations of Local Matching rule and the optimal solution found
-    by Antares is no longer a valid solution, regards to this rule;
-  - The curtailment sharing rule target is to minimize
-    $\sum(\text{ENS}^2/\text{PTO})$ and such objective is not exactly
-    equivalent than minimizing Total ENS.
 
-  As a matter of fact, if we sum over all nodes "2" the relation induced by node
-  balancing conservation, as the sum of all "net_position" is null, it leads to:
+    - We have new violations of Local Matching rule and the optimal solution found
+        by Antares is no longer a valid solution, regards to this rule;
+    - The curtailment sharing rule target is to minimize
+        $\sum(\text{ENS}^2/\text{PTO})$ and such objective is not exactly
+        equivalent than minimizing Total ENS.
 
-  $$\text{Total ENS} - \text{Total Spillage} = \text{Total ENS\_init} - \text{Total Spillage\_init, over all nodes \"2\"}$$
+    As a matter of fact, if we sum over all nodes "2" the relation induced by node
+    balancing conservation, as the sum of all $\text{net}_\text{position}$ is null, it leads to:
 
-  So, an increase of Total ENS will necessarily lead to the same increase of
-  Total Spillage.
+    $$
+    \text{Total ENS} - \text{Total Spillage} 
+    = \text{Total ENS}_\text{init} - \text{Total Spillage_init, over all nodes "2"}
+    $$
+
+    So, an increase of Total ENS will necessarily lead to the same increase of
+    Total Spillage.
 
 - Spillage results after curtailment sharing rule quadratic optimization are
   presented in the separate column inside Antares output, titled "SPIL. ENRG.
   CSR" so the user has access to the spillage results both prior to and after
   CSR optimization.
 - In order to avoid solver issues, lower and upper boundaries of the ENS and
-  Spillage variables can be relaxed using GUI option "Relax CSR variable
-  boundaries". Following relaxations can be imposed:
+    Spillage variables can be relaxed using GUI option "Relax CSR variable
+    boundaries". Following relaxations can be imposed:
 
-  $$-10^{-m} \leq \text{ENS(node A)} \leq \text{DENS}_{\text{new}}(\text{node A}) + 10^{-m}$$
-  $$-10^{-m} \leq \text{spillage(node A)} \leq + \infty$$
+    $$
+    -10^{-m} \leq \text{ENS(node A)} \leq \text{DENS}_\text{new} (\text{node A}) + 10^{-m}
+    $$
 
-  Where $m$ is an integer defined by the user.
+    $$
+    -10^{-m} \leq \text{spillage(node A)} \leq + \infty
+    $$
+
+    Where $m$ is an integer defined by the user.
 
 ### Objective function
 
 Minimize:
-$$\begin{aligned}
-\left[ \sum &\frac{\text{ENS}^2}{\text{PTO}} 
-+ \sum \frac{1}{M} \left( \text{hurdle cost direct} \times \text{flow direct} \right) \\
-&+ \sum \frac{1}{M} \left( \text{hurdle cost indirect} \times \text{flow indirect} \right) 
-\right]
-\end{aligned}$$
+
+$$
+\begin{aligned}
+    &\sum \frac{\text{ENS}^2}{\text{PTO}} \\
+    + &\sum \frac{1}{M} \left( \text{hurdle cost direct} \times \text{flow direct} \right) \\
+    + &\sum \frac{1}{M} \left( \text{hurdle cost indirect} \times \text{flow indirect} \right)
+\end{aligned}
+$$
 
 The 2 latest terms are introduced to minimize loop flows in the considering
 domain, and $M$ is the highest curtailment cost between a link's origin and
 destination nodes, used to adapt the scale of hurdle costs to this new objective
-(in practice, those tend to be the same for all nodes, typically 3000\u20ac/MW or
-10000\u20ac/MW).
+(in practice, those tend to be the same for all nodes, typically 3000 €/MW or
+10000 €/MW).
 
 In order to assess the quality of the CSR solution additional verification can be
 imposed by activating GUI option "Check CSR cost function value prior and after
@@ -345,22 +398,26 @@ the appropriate information (year, hour cost prior to quad optimization, cost
 after quadratic optimization).
 
 Initial objective function value:
-$$\begin{aligned}
-\text{QUAD}_0 = \left[ 
+
+$$
+\begin{aligned}
+\text{QUAD}_0 = 
 \sum &\frac{\text{ENS}_{\text{init}}^2}{\text{PTO}} \\
 + \sum &\frac{1}{M} \left( \text{hurdle cost}_{\text{direct}} \times \text{flow}_{\text{direct, init}} \right) \\
 + \sum &\frac{1}{M} \left( \text{hurdle cost}_{\text{indirect}} \times \text{flow}_{\text{indirect, init}} \right) 
-\right]
-\end{aligned}$$
+\end{aligned}
+$$
 
 Final objective function value:
-$$\begin{aligned}
-\text{QUAD}_1 = \left[ 
-\sum &\frac{\text{ENS}_{\text{final}}^2}{\text{PTO}} \\
+
+$$
+\begin{aligned}
+\text{QUAD}_1 = 
+\sum &\frac{\text{ENS}_\text{final}^2}{\text{PTO}} \\
 + \sum &\frac{1}{M} \left( \text{hurdle cost}_{\text{direct}} \times \text{flow}_{\text{direct, final}} \right) \\
 + \sum &\frac{1}{M} \left( \text{hurdle cost}_{\text{indirect}} \times \text{flow}_{\text{indirect, final}} \right) 
-\right]
-\end{aligned}$$
+\end{aligned}
+$$
 
 If:
 
@@ -379,17 +436,17 @@ area inside adequacy patch still experiences unsupplied energy:
 following adjustments will be performed. Available dispatchable margin "DTG
 MRG" will be used to compensate for the residual unsupplied energy ENS:
 
-- $\text{ENS (node A)} = \max[0.0, \text{ENS (node A)} - \text{DTG.MRG (node A)}]$
+- $\text{ENS (node A)} = \max[0, \text{ENS (node A)} - \text{DTG.MRG (node A)}]$
 
 Remaining dispatchable margin after above-described post-optimisation
 calculation is stored inside new column "DTG MRG CSR":
 
-- $\text{DTG.MRG.CSR (node A)} = \max[0.0, \text{DTG.MRG (node A)} - \text{ENS (node A)}]$
+- $\text{DTG. MRG. CSR (node A)} = \max[0, \text{DTG.MRG (node A)} - \text{ENS (node A)}]$
 
 Note that for all the hours for which curtailment sharing rule was not triggered,
 as well as for the hours for which curtailment sharing rule was triggered but
 after quadratic optimization ENS (node A) is equal to zero,
-$\text{DTG.MRG.CSR (node A)}$ will be equal to $\text{DTG.MRG (node A)}$.
+$\text{DTG. MRG. CSR (node A)}$ will be equal to $\text{DTG. MRG (node A)}$.
 
 For the curtailment sharing rule triggered hours, if after quadratic
 optimization and above-described post calculation process,
@@ -414,11 +471,15 @@ marginal price "MRG.PRICE" will be aligned with the price cap in the model
       Hourly value of LMR violation is set to value one if all following
       conditions are met:
 
-      - $\text{ENS\_init (node A)} > 0$.
-      - $\text{net\_position\_init (node A)} + \sum \text{flows (node 1 } \to \text{ node A)} < 0$.
+        - $\text{ENS}_\text{init} \text{(node A)} > 0$.
+        - $\text{net}_\text{position, init} \text{(node A)} + \sum \text{flows (node 1 } \to \text{ node A)} < 0$.
 
-      $$\text{Abs}\left[\text{net\_position\_init (node A)} + \sum \text{flows (node 1 } \to \text{ node A)}\right] > \text{ENS\_init (node A)} + \text{GUI\_defined\_threshold}$$
+        $$
+        \text{Abs}\left[\text{net}_\text{position, init} \text{(node A)} + 
+        \sum \text{flows (node 1 } \to \text{ node A)}\right] 
+        > \text{ENS}_\text{init} \text{(node A)} + \text{GUI_defined_threshold}
+        $$
 
         Second equation is satisfied if the area is exporting power.
         Depending on the GUI option member
-        $(\sum \text{flows (node 1 } \to \text{ node A)}$ is optional.
+        $(\sum \text{flows (node 1 } \to \text{node A)}$ is optional.

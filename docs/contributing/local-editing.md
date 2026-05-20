@@ -1,6 +1,7 @@
 # Editing locally
 
-To edit locally, you will have to install python on your computer. You can use `uv` to install python and then to manage this project.
+To edit locally, you will have to install python on your computer. 
+You can use `uv` to install python and then to manage this project.
 
 First clone the repository:
 
@@ -33,9 +34,14 @@ then activate it
 Then sync the dependencies 
 
 ```shell
-uv pip sync requirements.txt
+uv sync 
 ```
 
-And now you are ready to edit pages ! You can preview the docs on your local machine by running `mkdocs serve` in your terminal. 
+And now you are ready to edit pages ! You can preview the docs on your local machine 
+by running `mkdocs serve` in your terminal. 
 You will be able to open a preview of the doc in your browser. 
 It will reload automatically when you change and save a file.
+
+!!! bug
+    If the site doesn't reload automatically on serve, try downgrading the click package from
+    `click==8.3.0` to `click==8.2.1` (see [issue](https://github.com/mkdocs/mkdocs/issues/4032))

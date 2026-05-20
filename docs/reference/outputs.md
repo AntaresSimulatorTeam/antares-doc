@@ -99,6 +99,7 @@ The area files that belong to the **General values** class display fields corres
 the expectation, standard deviation, minimal and maximal values of the variables
 whose list is given hereafter.
 
+### General data
 
 #### OV. COST (Euro)
 
@@ -122,6 +123,89 @@ Locational marginal price corresponding to the overall economic effect of a loca
 
 <!-- TODO -->
 
+#### BALANCE (MWh)
+
+Overall import/export balance of the area (positive value: export).
+
+#### ROW BAL. (MWh)
+
+Rest of the worl balance, that is to say import/export with areas outside the modeled system
+(positive value: import)[^12].
+
+#### UNSP. ENRG (MWh)
+
+Unsupplied energy: adequacy indicator (Expected Energy Not Served–EENS).
+
+#### UNSP. ENRG. CSR (MWh)
+
+Unsupplied energy after CSR (demand that cannot be satisfied)[^adqp].
+
+#### DENS (MWh)
+
+**Introduced in v8.3.**
+Domestic Energy Not Supplied:
+the difference between the local production capabilities of an area and its local load[^adqp].
+
+#### LMR. VIOL
+
+**Introduced in v8.5**
+Local Matching Rule Violation after the Antares Simulation
+as defined by the adequacy patch[^adqp].
+
+#### SPIL. ENRG
+
+**Introduced in v8.5**
+Spilled energy (energy produced that cannot be used and has to be wasted).
+
+#### LOLD (h)
+
+Loss of load duration: adequacy indicator (length of shortfalls).
+
+#### LOLD CSR (h)
+
+Loss of load duration, CSR (Curtailment Sharing) version:
+same as above, but based on unsupplied energy CSR (see **UNSP. ENRG. CSR**)
+rather than **UNSP. ENRG**[^adqp]
+
+#### LOLP (%)
+
+The loss of load probability is an adequacy indicator corresponding to the 
+probability of at least one hour of shortfall within the considered period,
+without normalization by the duration of the considered period.
+
+#### LOLP CSR (%)
+
+Loss of Load probability, CSR (Curtailment Sharing) version:
+same as above, but based on unsupplied energy CSR (see [**UNSP. ENRG. CSR**](#unsp-enrg-csr-mwh))
+rather than [**UNSP. ENRG**](#unsp-enrg-mwh)[^adqp].
+
+#### AVL DTG (MWh)
+
+Available dispatchable thermal generation (sum of available power over all plants).
+
+#### DTG MRG (MWh)
+
+Disp. Ther. Gen. (AVL DTG – sum of all dispatched thermal generation)
+
+#### DTG MRG CSR (MWh)
+
+DTG MRG after CSR[^adqp].
+
+#### MAX. MRG (MWh)
+
+Maximum margin: operational margin obtained if the hydro storage energy
+of the week were used to maximise margins instead of minimizing costs.
+
+#### MAX. MRG CSR (MWh)
+
+<!-- TODO -->
+
+### Thermal objects
+
+#### DISPATCH. GEN. (MWh)
+
+Dispatchable generation for thermal clusters.
+
 #### DTG by plant (MWh)
 
 Dispatchable thermal generation for any active thermal cluster that is to say its production.
@@ -134,25 +218,35 @@ For any active thermal cluster, minimum between:
 - the product of the minimum generation modulation, the number of units
   and the nominal capacity associated to the cluster
 
-#### RES generation by plant (MWh)
-
-For any active renewable cluster, its production (necessarily must-run).
-Only when using clustered renewable generation modeling.
-
 #### CO2, NH3, SO2... EMIS. (Tons)
 
 **Introduced in v8.6.**
-Amount emitted by all dispatchable thermal plants for polluants:
+Amount emitted by *all dispatchable thermal plants* for polluants:
 CO2, SO2, NH3, NOX, PM2_5, PM5, PM10, NMVOC, OP1, OP2, OP3, OP4, OP5 EMIS.
 
-#### BALANCE (MWh)
+#### NODU
 
-Overall import/export balance of the area (positive value: export).
+Number of Dispatched Units aggregated accross all clusters.
 
-#### ROW BAL. (MWh)
+!!! note
+    NODU and NP Cost do not appear in "Adequacy" results since these variables 
+    are irrelevant in that context.
 
-Rest of the worl balance, that is to say import/export with areas outside the modeled system
-(positive value: import)[^12].
+#### NODU by plant 
+
+Number of dispatchable units by plant. 
+
+#### PROFIT by plant
+
+**Introduced in v8.3.**
+
+<!-- TODO: check where you can see this inside Antares Web -->
+
+Net profit of the cluster in euros[^15]:
+
+```
+(MRG. PRICE - marginal cost of the cluster) × (dispatchable production of the cluster)
+```
 
 #### PSP (MWh)
 
@@ -177,9 +271,25 @@ RES LOAD = load - allMustRunGeneration
 
 where `mustRunSum = total production of thermal clusters must-run and enabled`.
 
-#### H. ROR (MWh)
+#### NP COST (Euro)
 
-Hydro generation, Run-of-river share.
+Non-proportional costs of the dispatchable plants (start-up and fixed costs)
+
+#### NP Cost by plant (Euro)
+
+Same as above, but by dispatchable plant.
+
+#### NPCAP HOURS (h)
+
+Near price cap hours.
+<!-- Depends on unsupplied energy cost parameter and margin threshold (5.0) ? -->
+
+### Renewable sources
+
+#### RES generation by plant (MWh)
+
+For any active renewable cluster, its production (necessarily must-run).
+Only when using clustered renewable generation modeling.
 
 #### WIND (MWh)
 
@@ -216,15 +326,12 @@ Solar generation[^agg] (thermal and PV).
 !!! note
     The index i can be either 1, 2, 3 or 4.
 
-
-#### DISPATCH. GEN. (MWh)
-
-Dispatchable generation for thermal clusters.
-
 #### RENEWABLE GEN. (MWh)
 
 Renewable generation
 (only when using clustered Renewable generation modeling).
+
+### Hydro object
 
 #### H. STOR (MWh)
 
@@ -255,15 +362,33 @@ Marginal value of stored energy (typically: shadow water value).
 
 Expenses/Income brought by energy storage actions (H.STOR, H.PUMP).
 
-#### <STS **group**\>_injection
+#### H. ROR (MWh)
+
+Hydro generation, Run-of-river share.
+
+### Short-term storage
+
+#### STS INJECTION by plant
 
 Injection of energy from the area into each short-term storage group.
 
-#### <STS **group**\>_withdrawal
+!!! warning
+    When the data is aggregated by a longer time scale than the hour
+    for all year or by Monte-Carlo year, 
+    the aggregated value corresponds to the *sum* of the hourly values.
+
+
+#### STS WITHDRAWAL by plant
 
 Withdrawal of energy from each short-term storage group into the area.
 
-#### <STS **group**\>_level
+!!! warning
+    When the data is aggregated by a longer time scale than the hour
+    for all year or by Monte-Carlo year, 
+    the aggregated value corresponds to the *sum* of the hourly values.
+
+
+#### STS LEVEL by plant
 
 Level of each short-term storage group.
 
@@ -274,115 +399,10 @@ Level of each short-term storage group.
     The only exception is when the data is aggregated by group and Monte-Carlo year,
     the data is the *sum* of the detailed results.
 
-#### <STS\>,P-injection
+#### STS Cashflow by cluster (Euro)
 
-Injection of energy from the area into the short-term storage.
+Cashflow by short-term storage.
 
-!!! warning
-    When the data is aggregated by a longer time scale than the hour
-    for all year or by Monte-Carlo year, 
-    the aggregated value corresponds to the *sum* of the hourly values.
-
-#### <STS\>,P-withdrawal
-
-Withdrawal of energy from the short-term storage into the area.
-
-!!! warning
-    When the data is aggregated by a longer time scale than the hour
-    for all year or by Monte-Carlo year, 
-    the aggregated value corresponds to the *sum* of the hourly values.
-
-#### UNSP. ENRG (MWh)
-
-Unsupplied energy: adequacy indicator (Expected Energy Not Served–EENS).
-
-#### UNSP. ENRG. CSR (MWh)
-
-Unsupplied energy after CSR (demand that cannot be satisfied)[^adqp].
-
-#### DENS (MWh)
-
-**Introduced in v8.3.**
-Domestic Energy Not Supplied:
-the difference between the local production capabilities of an area and its local load[^adqp].
-
-#### LMR. VIOL
-
-**Introduced in v8.5**
-Local Matching Rule Violation after the Antares Simulation
-as defined by the adequacy patch[^adqp].
-
-#### SPIL. ENRG
-
-**Introduced in v8.5**
-Spilled energy (energy produced that cannot be used and has to be wasted).
-
-#### LOLD (h)
-
-Loss of load duration: adequacy indicator (length of shortfalls).
-
-#### LOLD CSR
-
-Loss of load duration, CSR (Curtailment Sharing) version:
-same as above, but based on unsupplied energy CSR (see **UNSP. ENRG. CSR**)
-rather than **UNSP. ENRG**[^adqp]
-
-#### LOLP (%)
-
-The loss of load probability is an adequacy indicator corresponding to the 
-probability of at least one hour of shortfall within the considered period,
-without normalization by the duration of the considered period.
-
-#### LOLP CSR
-
-Loss of Load probability, CSR (Curtailment Sharing) version:
-same as above, but based on unsupplied energy CSR (see [**UNSP. ENRG. CSR**](#unsp-enrg-csr-mwh))
-rather than [**UNSP. ENRG**](#unsp-enrg-mwh)[^adqp].
-
-#### AVL DTG (MWh)
-
-Available dispatchable thermal generation (sum of available power over all plants).
-
-#### DTG MRG (MWh)
-
-Disp. Ther. Gen. (AVL DTG – sum of all dispatched thermal generation)
-
-#### MAX. MRG (MWh)
-
-Maximum margin: operational margin obtained if the hydro storage energy
-of the week were used to maximise margins instead of minimizing costs
-
-#### DTG MRG CSR (MWh)
-
-DTG MRG after CSR[^adqp]
-
-#### NP COST (Euro)
-
-Non-proportional costs of the dispatchable plants (start-up and fixed costs)
-
-#### NP Cost by plant
-
-Same as above, but by dispatchable plant
-
-#### NODU
-
-Number of Dispatched Units.
-
-!!! note
-    NODU and NP Cost do not appear in "Adequacy" results since these variables 
-    are irrelevant in that context.
-
-#### PROFIT
-
-**Introduced in v8.3.**
-
-<!-- TODO: check where you can see this inside Antares Web -->
-
-Net profit of the cluster in euros[^15]:
-
-```
-(MRG. PRICE - marginal cost of the cluster) × (dispatchable production of the cluster)
-```
 
 !!! note
     In `economy` simulations, all variables have a techno-economic meaning.
@@ -423,7 +443,7 @@ Flow (signed + from upstream to downstream) assessed by the linear optimization.
 These flows follow Kirchhoff's law only if these laws have been explicitly enforced 
 by suitable binding constraints.
 
-#### UCAP (MWh)
+#### UCAP LIN. (MWh)
 
 Used capacity: absolute value of FLOW LIN. This indicator may be of interest to differentiate 
 the behavior of interconnectors showing low average flows: in some cases, 
@@ -450,7 +470,7 @@ Algebraic congestion rent = linear flow × (downstream price – upstream price)
 
 #### CONG. FEE (ABS.) (Euro)
 
-<!-- TODO -->
+Absolute congestion rent = linear flow × abs(downstream price – upstream price).
 
 #### MARG. COST (Euro/MW)
 
@@ -459,11 +479,15 @@ of an additional 1 MW transmission capacity (in both directions).
 
 #### CONG. PROB + (%)
 
+Probability for the line to be congested in the upstream-downstream way.
+
 Up>Dwn Congestion probability = (NC+) / (total number of MC years) with:
 NC+ = number of years during which the interconnection was congested in the Up>Dwn way
 for **any** length of time within the time frame relevant to the file.
 
 #### CONG. PROB - (%)
+
+Probability for the line to be congested in the downstream-upstream way.
 
 Dwn>Up Congestion probability = (NC-) / (total number of MC years) with:
 NC- = number of years during which the interconnection was congested in the Dwn>Up way
@@ -484,6 +508,10 @@ if (FLOW LIN. – LOOP FLOW) > 0
 
 The file is a matrix that provides the marginal cost associated with each binding constraint. 
 Equality constraints are not included in this marginal cost calculation.
+
+#### BC. MARG. COST (Euro)
+
+Marginal cost for binding constraints.
 
 <!-- TODO: complete this subsection -->
 

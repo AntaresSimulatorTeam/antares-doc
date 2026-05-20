@@ -16,6 +16,5 @@ and someone from the team can assist you.
 
 ## Useful links
 
-- Antares website:
-- Source files:
-- Forum:
+- Antares website: [https://antares-doc.readthedocs.io/](https://antares-doc.readthedocs.io/)
+- Source files: [https://github.com/AntaresSimulatorTeam/antares-doc](https://github.com/AntaresSimulatorTeam/antares-doc)
