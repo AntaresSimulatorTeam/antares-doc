@@ -1,4 +1,4 @@
-# Select scenarios
+# Set scenario playlist
 
 Sometimes you want to select some specific Monte-Carlo (MC) years for the simulation 
 from all those prepared. For example to:
