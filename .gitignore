@@ -8,3 +8,4 @@
 **/documents/
 
 site/
+*.egg-info/
