@@ -1,8 +1,8 @@
-# The optimal investment problem in Antares-Xpansion
+# Optimal investment problem in Antares Xpansion
 
 ## General description
 
-Antares-Xpansion minimizes the following cost:
+Antares Xpansion minimizes the following cost:
 
 $$ 
 \min (\text{expected operating costs for one year} + \text{fixed cost annuity})
@@ -41,7 +41,7 @@ have a lower economic utility, or even none in the case of overcapacity.
 Mathematically, these characteristics ensure that the expected operating cost 
 is a convex function of the installed capacity.
 
-In Antares-Xpansion, fixed-cost annuities are considered piecewise
+In Antares Xpansion, fixed-cost annuities are considered piecewise
 linear. Different potentials are defined, each of which is characterized
 by a fixed annuity in €/MW installed, and corresponds to one of the
 slopes of the function, see above figure. A particular case of this
@@ -50,7 +50,7 @@ therefore characterized by a single fixed cost (in €/MW installed).
 
 The final cost result - which will be called the total cost later on - is a convex function. It therefore has a minimum
 solution plateau (see below) which in most (but not all) applications on real
-data sets is reduced to a single point (see above). In some cases, there are several points leading to the optimal cost. Antares-Xpansion looks for an optimal solution, i.e.
+data sets is reduced to a single point (see above). In some cases, there are several points leading to the optimal cost. Antares Xpansion looks for an optimal solution, i.e.
 the point that minimizes the total cost, or any point of the minimum
 plateau in the case of a so-called degenerate problem.
 
@@ -60,37 +60,37 @@ plateau in the case of a so-called degenerate problem.
 
 The investment variables are the installed capacities (in MW) of the
 generation and/or transmission assets defined in the input of
-Antares-Xpansion as candidates for investment.
+Antares Xpansion as candidates for investment.
 
 The cases shown in **Figure 1** and **Figure 2** contain only one
 investment variable. The search for the optimal solution is then carried
 out over the interval \[0, available potential\], bounded on the left by
 zero and on the right by the maximum available potential of the
 investment under consideration. The available potential is one of the
-input data of Antares-Xpansion.
+input data of Antares Xpansion.
 
 In the more general case with several investment candidates,
-Antares-Xpansion determines one optimal investment combination, that
+Antares Xpansion determines one optimal investment combination, that
 is, one combination $(c_{1},c_{2},\ldots,c_{n})$ of the capacities of
 the $n$ investment candidates that minimizes the cost function.
 
 The search for this optimal combination is done jointly (i.e. "at the same time") on
 the capacities of all investment candidates, and not candidate by
-candidate. By doing this, Antares-Xpansion is able to
+candidate. By doing this, Antares Xpansion is able to
 identify and assess the impact of synergies between
 structures - for example an A-B line which only becomes interesting once
 the B-C line is built - or of competitions - for example an A-B-C
 corridor parallel to another A-D-C corridor.
 
-The definition of the investment variables in Antares-Xpansion is
+The definition of the investment variables in Antares Xpansion is
 detailed in [Define the candidates](xpansion-candidates.md). For example, it may include:
 
 - **Investable capacity values limited to a
    finite set rather than a whole interval.** This allows to consider the following cases:   
-    - The investment is made in unit steps of 200 MW and we wish to constrain the search of Antares-Xpansion to the discrete set {0 MW, 200 MW, 400 MW, 600 MW…}. 
+    - The investment is made in unit steps of 200 MW and we wish to constrain the search of Antares Xpansion to the discrete set {0 MW, 200 MW, 400 MW, 600 MW…}. 
     - Adopt an all-or-nothing approach in which only two choices are possible: not to invest or to invest up to an imposed unit capacity.
 
-    Antares-Xpansion can manage a mix of continuous investment variables, i.e. valid over the whole interval \[0, maximum potential\], and discrete variables, valid only over a finite set of values (see later).
+    Antares Xpansion can manage a mix of continuous investment variables, i.e. valid over the whole interval \[0, maximum potential\], and discrete variables, valid only over a finite set of values (see later).
 
 - **Linear constraints between investable
   capacities.** Linear constraints between variables can be
@@ -100,7 +100,7 @@ detailed in [Define the candidates](xpansion-candidates.md). For example, it may
 
 ## Resolution with the Benders decomposition
 
-The resolution method used by Antares-Xpansion - called Benders
+The resolution method used by Antares Xpansion - called Benders
 decomposition - is an iterative method, which for each iteration:
 
 - performs an Antares simulation to evaluate the expected annual

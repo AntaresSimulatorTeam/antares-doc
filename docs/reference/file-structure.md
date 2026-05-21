@@ -1,5 +1,8 @@
 # File structure of an Antares study
 
+!!! warning
+    This page is under construction.
+
 An on disk Antares study has a certain structure and is composed of different configuratin files
 (`.ini`) and some delimiter separated value files such as `.csv`. 
 

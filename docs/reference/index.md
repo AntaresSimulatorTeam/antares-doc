@@ -47,5 +47,4 @@ for users seeking **explanations**.
     - [Supported solvers for Antares](supported-solvers.md)
     - [Xpansion performance](performance-xpansion.ipynb)
 - [File structure](file-structure.md)
-- [Paper & conferences](bibliography.md)
-- [Glossary](glossary.md)
+- [Bibliography](bibliography.md)

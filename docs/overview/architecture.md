@@ -1,5 +1,16 @@
 # Architecture
 
+Antares is very versatile and can be installed on different infrastructure
+depending on your need: on a local machine, on a server or even on a high 
+performance computing cluster.
+
+In the following, the architecture of Antares on a server with and without
+high performance computing is detailed. It explicits also the interaction 
+between different librairies, user scripts and the general workflow.
+
+It is not intended as a technical view but more as a general view and its 
+capabilities.
+
 ## Base version
 
 In the base version, the application backend and core computations are using a server 

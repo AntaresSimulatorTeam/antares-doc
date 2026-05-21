@@ -1,6 +1,7 @@
 # Install Antares Base
 
-This installation of Antares is more technical than the Desktop installation, as it involves
+This installation of [Antares base](../overview/architecture.md#base-version) 
+is more technical than the Desktop installation, as it involves
 the use of an Ubuntu Server and Docker. 
 
 You can find the architecture of the base version of Antares 
@@ -10,7 +11,7 @@ You can find the architecture of the base version of Antares
 
 ### Prerequisites
 
-### System Requirements
+#### System Requirements
 
 - **OS**: Ubuntu 24.04.3 LTS
 - **RAM**: 512 GB
@@ -166,8 +167,6 @@ sudo systemctl start antarest
 sudo systemctl status antarest
 ```
 
----
-
 ### Configuration
 
 #### Change Default Port
@@ -192,8 +191,6 @@ security:
     admin:
       pwd: admin
 ```
-
----
 
 ## Troubleshooting
 
@@ -229,8 +226,6 @@ Use a newer Debian base image:
 FROM python:3.11-slim-bookworm
 ```
 
----
-
 ### PostgreSQL “Too Many Clients Already” Error with Gunicorn
 
 #### Symptoms
@@ -246,8 +241,6 @@ Limit the number of Gunicorn workers in `resources/deploy/gunicorn.py`:
 ```python
 workers = 4
 ```
-
----
 
 ### Redis Connection Error with Non-Admin Users
 

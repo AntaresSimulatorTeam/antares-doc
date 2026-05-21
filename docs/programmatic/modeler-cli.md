@@ -4,14 +4,14 @@
 
 The modeler takes only one argument the path to the study directory.
 
-=== Windows
+=== "Windows"
 
-```
-antares-modeler.exe C:\path\to\my\study
-```
+    ```
+    antares-modeler.exe C:\path\to\my\study
+    ```
 
-=== Linux
+=== "Linux"
 
-```
-antares-modeler /path/to/my/study
-```
+    ```
+    antares-modeler /path/to/my/study
+    ```

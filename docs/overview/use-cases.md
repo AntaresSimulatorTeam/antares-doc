@@ -30,6 +30,10 @@ Here are some reports that used Antares:
   </a>
 </div>
 
+Antares is also used in the academic world for peer-reviewed articles and is
+undergoing active research and development 
+[:material-open-in-new:](../reference/bibliography.md){target="_blank"}.
+
 ## What does Antares do and doesn't do ?
 
 Antares models an aggregated grid and thus can't account for a detailed view of your area.
