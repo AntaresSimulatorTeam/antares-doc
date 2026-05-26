@@ -34,7 +34,7 @@ theme:
 nav:
   - Overview:
     - index.md
-    - Use Cases: overview/use-cases.md
+    - Use cases: overview/use-cases.md
     - Products: overview/product-comparison.md
     - Architecture: overview/architecture.md
     - Release notes: overview/changelogs.md
@@ -90,7 +90,7 @@ nav:
       - Storages: reference/storages.md
       - Renewable sources: 
         - Renewables: reference/renewables.md
-        - Wind & Solar: reference/wind-and-solar.md
+        - Wind & solar: reference/wind-and-solar.md
       - Hydro: reference/hydro.md
       - Reserves: reference/reserves.md
       - Misc. gen.: reference/misc-gen.md
@@ -129,11 +129,11 @@ nav:
   - Contributing:
     - contributing/index.md
     - To the code:
-      - Code Guidelines: contributing/guidelines-code.md
+      - Code guidelines: contributing/guidelines-code.md
     - To the documentation:
-      - Documentation Guidelines: contributing/guidelines-docs.md
-      - Local Editing: contributing/local-editing.md
-      - Online Editing: contributing/online-editing.md
+      - Documentation guidelines: contributing/guidelines-docs.md
+      - Editing on GitHub: contributing/online-editing.md
+      - Editing locally: contributing/local-editing.md
 
 plugins:
   - search

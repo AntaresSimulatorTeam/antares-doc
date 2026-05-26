@@ -17,4 +17,4 @@ Note that you can also check the source code by a clicking on the
 
 !!! warning
 
-    By editing locally, you will not be able to preview your changes locally. So it is best for correcting typo, adding small paragraphs and when you have no doubt on how it will render after compilation
+    By editing locally, you will not be able to preview your changes locally. So it is best for correcting typo, adding small paragraphs and when you have no doubt on how it will render after compilation.

@@ -374,21 +374,21 @@ Let us recall the formulation of the master problem:
 
 $$
 \begin{aligned}
-    \min\_{x \in \mathcal{X}}\ & c^{\top}x + \frac{1}{N} \sum_{l=1}^{N} \sum_{s=1}^{52} p_{l, s}\vartheta_{l, s} \\\\
+    \min_{x \in \mathcal{X}}\ & c^{\top}x + \frac{1}{N} \sum_{l=1}^{N} \sum_{s=1}^{52} p_{l, s}\vartheta_{l, s} \\\\
     \text{s.t.} \ & Ax = b\\\\
-    & \vartheta_{l, s} \geq {{}\bar{\pi}\_{l, s}^{i}}^{\top} (d_{l, s} - T_{s}x)\ , \quad \forall l \ , \forall s \ , \forall i
+    & \vartheta_{l, s} \geq {{}\bar{\pi}_{l, s}^{i}}^{\top} (d_{l, s} - T_{s}x)\ , \quad \forall l \ , \forall s \ , \forall i
 \end{aligned}
 $$
 
-where the constraints $ \vartheta_{l, s} \geq {{}\bar{\pi}\_{l, s}^{i}}^{\top} (d_{l, s} - T_{s}x) $ are the Benders cuts. More details can be found in [Mathematical formulation of the investment problem](xpansion-theory.md).
+where the constraints $\vartheta_{l, s} \geq {{}\bar{\pi}_{l, s}^{i}}^{\top} (d_{l, s} - T_{s}x)$ are the Benders cuts. More details can be found in [Mathematical formulation of the investment problem](xpansion-theory.md).
 
 The sensitivity analysis problem is then of the form:
 
 $$
 \begin{aligned}
-    \min\_{x \in \mathcal{X}}\ & \tilde{c}^{\top}x \\\\
+    \min_{x \in \mathcal{X}}\ & \tilde{c}^{\top}x \\\\
     \text{s.t.} \ & Ax = b\\\\
-    & \vartheta_{l, s} \geq {{}\bar{\pi}\_{l, s}^{i}}^{\top} (d_{l, s} - T_{s}x)\ , \quad \forall l \ , \forall s \ , \forall i \\\\
+    & \vartheta_{l, s} \geq {{}\bar{\pi}_{l, s}^{i}}^{\top} (d_{l, s} - T_{s}x)\ , \quad \forall l \ , \forall s \ , \forall i \\\\
     & c^{\top}x + \frac{1}{N} \sum_{l=1}^{N} \sum_{s=1}^{52} p_{l, s}\vartheta_{l, s} \leq UB^{*} + \varepsilon
 \end{aligned}
 $$
@@ -404,13 +404,13 @@ The sensitivity problem is also solved as a maximization problem to find $\varep
 
 Suppose that for candidate $i$, the one-dimensional projection of $\varepsilon$-optimal solutions is the interval $[x_{lb}, x_{ub}]$.
 
-- The lower bound $x_{lb}$ is the minimum installed capacity of candidate $i$ found in **every** $\varepsilon$-optimal solution. This means that for an investment up to $x\_{lb}$, profitability is ensured.
+- The lower bound $x_{lb}$ is the minimum installed capacity of candidate $i$ found in **every** $\varepsilon$-optimal solution. This means that for an investment up to $x_{lb}$, profitability is ensured.
 
 - The upper bound $x_{ub}$ is the maximum installed capacity of candidate $i$ found in the set of $\varepsilon$-optimal solutions.
 
 The width of the interval gives information on the robustness of the solution:
 
-- If the interval $[x\_{lb}, x_{ub}]$ is tight, this means that all _equivalent_ solutions have almost the same installed capacity of candidate $i$. The optimal solution is _stable_ for this candidate, therefore the investment is profitable and robust to small variations of the overall cost.
+- If the interval $[x_{lb}, x_{ub}]$ is tight, this means that all _equivalent_ solutions have almost the same installed capacity of candidate $i$. The optimal solution is _stable_ for this candidate, therefore the investment is profitable and robust to small variations of the overall cost.
 
 - If the interval is large, the cost function is flat near the optimum in the direction of candidate $i$. The economic criterion alone is not sufficient to choose a capacity value over another. 
 

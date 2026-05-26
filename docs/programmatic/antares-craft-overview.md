@@ -1,5 +1,10 @@
 # Antares Craft overview
 
+!!! info
+    You can find more on Antares Craft on the dedicated 
+    [website](https://antares-craft.readthedocs.io/en/latest/) for 
+    examples and API reference.
+
 ## A programmatic approach to Antares
 
 Interacting with Antares only through the UI of Antares Web can be less productive for some tasks.
