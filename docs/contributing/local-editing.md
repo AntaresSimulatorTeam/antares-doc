@@ -67,7 +67,7 @@ then activate it
     .venv\Source\activate
     ```
 
-## Use `mkdocs` to previsulize your changes
+## Use `mkdocs` to previsualize your changes
 
 And now you are ready to edit pages ! You can preview the docs on your local machine 
 by running `mkdocs serve` in your terminal. 
