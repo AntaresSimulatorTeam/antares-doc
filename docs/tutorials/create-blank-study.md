@@ -1,6 +1,6 @@
 # Create a blank study
 
-Creating a blank study is fairly easy you need to click on the 
+Creating a blank study is fairly easy. You need to click on the 
 :octicons-plus-circle-16: **Create** button in the top left.
 Give it a name and select the study version you want to use. 
 This will depend on the list of installed executables on your installation
@@ -29,5 +29,5 @@ to your local machine via the export button in the top right dropdown menu.
 
 !!! note
 
-	Note that when you launch the study via Antares Web, it automatically transfer 
-    the corresponding file tree to the simulation executables as this is there input format.
+	Note that when you launch the study via Antares Web, it automatically transfers 
+    the corresponding file tree to the simulation executables as this is their input format.
