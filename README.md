@@ -1,4 +1,4 @@
-# Antares Documentation Website
+# Antares documentation website
 
 Welcome to the Antares website for user documentation!
 
