@@ -63,32 +63,32 @@ This software is already used by multiple TSO, companies and universities includ
 
 <div class="logo-grid">
   <div class="logo-item">
-    <img src="assets/logos/elia-logo.svg" alt="Elia group" />
+    <img src="./assets/logos/elia-logo.svg" alt="Elia group" />
   </div>
   <div class="logo-item">
     <img
-      src="assets/logos/apg-light.png"
+      src="./assets/logos/apg-light.png"
       alt="APG"
       class="apg-logo"
     />
   </div>
   <div class="logo-item">
-    <img src="assets/logos/entsoe.svg" alt="entsoe" />
+    <img src="./assets/logos/entsoe.svg" alt="entsoe" />
   </div>
   <div class="logo-item">
-    <img src="assets/logos/natran.svg" alt="NaTran" />
+    <img src="./assets/logos/natran.svg" alt="NaTran" />
   </div>
   <div class="logo-item">
-    <img src="assets/logos/cea.jpg" alt="CEA" />
+    <img src="./assets/logos/cea.jpg" alt="CEA" />
   </div>
   <div class="logo-item">
-    <img src="assets/logos/rte-light.svg" alt="RTE" /> 
+    <img src="./assets/logos/rte-light.svg" alt="RTE" /> 
   </div>
   <div class="logo-item">
-    <img src="assets/logos/mines-paris-tech-light.png" alt="Mines Paris Tech" />
+    <img src="./assets/logos/mines-paris-tech-light.png" alt="Mines Paris Tech" />
   </div>
   <div class="logo-item">
-    <img src="assets/logos/mepso.svg" alt="Mepso" />
+    <img src="./assets/logos/mepso.svg" alt="Mepso" />
   </div>
 </div>
 
@@ -122,12 +122,12 @@ This software is already used by multiple TSO, companies and universities includ
 
 /* Light mode (default) */
 .apg-logo {
-  content: url('../assets/logos/apg-light.png');
+  content: url('./assets/logos/apg-light.png');
 }
 
 /* Dark mode — Material sets this attribute on <body> */
 [data-md-color-scheme="slate"] .apg-logo {
-  content: url('../assets/logos/apg-dark.png');
+  content: url('./assets/logos/apg-dark.png');
 }
 </style>
 
