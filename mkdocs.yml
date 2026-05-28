@@ -1,7 +1,7 @@
 site_name: Antares
 repo_url: https://github.com/AntaresSimulatorTeam/antares-doc
 repo_name: antares-doc
-edit_uri: edit/main/docs/
+edit_uri: edit/master/docs/
 docs_dir: docs
 
 theme:
@@ -40,6 +40,7 @@ nav:
     - Release notes: overview/changelogs.md
     - Support: overview/support.md
     - Roadmap: overview/roadmap.md
+    - Links: overview/links.md
   - Getting started:
     - getting-started/index.md
     - Installation:

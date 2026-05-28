@@ -15,19 +15,16 @@ In terms of power studies, the different fields of application Antares has been 
 Antares is used by TSO and institutions for energy planning and decarbonation pathways. 
 Here are some reports that used Antares:
 
-<div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 5px; margin: 10px 0;">
-  <a href="https://www.entsoe.eu/outlooks/tyndp/2024/" target="_blank">
-    <img src="/assets/reports/tyndp-2024.svg" alt="Image 1" style="height: 200px; width: auto;" />
-  </a>
-  <a href="https://www.rte-france.com/donnees-publications/etudes-prospectives/futurs-energetique-2050#Premiereedition2021" target="_blank">
-    <img src="/assets/reports/futurs-energetiques-2050.svg" alt="futurs-energetiques-2050" style="height: 200px; width: auto;" />
-  </a>
-  <a href="https://www.rte-france.com/donnees-publications/etudes-prospectives/bilans-previsonnels#Lebilanprevisionnel20252035" target="_blank">
-    <img src="/assets/reports/bp-2025.svg" alt="bp-2025" style="height: 200px; width: auto;" />
-  </a>
-  <a href="path/to/image4.svg" target="_blank">
-    <img src="/assets/reports/belgian-electricity-system-blueprint-2035-2050.svg" alt="belgian-electricity-system-blueprint-2035-2050" style="height: 200px; width: auto;" />
-  </a>
+<div class="grid" markdown>
+
+[![Image 1](../assets/reports/tyndp-2024.svg)](https://www.entsoe.eu/outlooks/tyndp/2024/)
+
+[![futurs-energetiques-2050](../assets/reports/futurs-energetiques-2050.svg)](https://www.rte-france.com/donnees-publications/etudes-prospectives/futurs-energetique-2050#Premiereedition2021)
+
+[![bp-2025](../assets/reports/bp-2025.svg)](https://www.rte-france.com/donnees-publications/etudes-prospectives/bilans-previsonnels#Lebilanprevisionnel20252035)
+
+[![belgian-electricity-system-blueprint-2035-2050](../assets/reports/belgian-electricity-system-blueprint-2035-2050.svg)](https://issuu.com/eliagroup/docs/20240924_belgianelectricitysystemblueprint2035-205)
+
 </div>
 
 Antares is also used in the academic world for peer-reviewed articles and is
