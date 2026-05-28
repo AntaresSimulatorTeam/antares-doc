@@ -11,6 +11,9 @@ are links to the main repositories used in Antares:
 - [Antares Web](https://github.com/AntaresSimulatorTeam/AntaREST)
 - [Antares Craft](https://github.com/AntaresSimulatorTeam/antares_craft)
 
+You can get more info on what each of these repositories do in the following
+page: [Technical overview](./technical-overview.md)
+
 !!! tips
 
     Communication is key! Explain clearly the problems you encounter and

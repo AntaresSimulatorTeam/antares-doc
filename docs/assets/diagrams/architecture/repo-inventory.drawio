@@ -1,0 +1,141 @@
+<mxfile host="65bd71144e">
+    <diagram id="cBri6Hdc2GhxOZRFDQsT" name="Page-1">
+        <mxGraphModel dx="3716" dy="1664" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="17" value="Antares Simulator" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-720" y="680" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="&lt;b&gt;Antares_Simulator&lt;/b&gt;&lt;div&gt;Core computations&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="17">
+                    <mxGeometry x="30" y="40" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Other libraries" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="-960" y="1180" width="640" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;b&gt;antares_craft&lt;/b&gt;&lt;div&gt;Python library for interacting with Antares studies&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
+                    <mxGeometry x="20" y="40" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;div&gt;&lt;b&gt;antares-water-values&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Water values computation with Antares (Python)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
+                    <mxGeometry x="20" y="110" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;b&gt;antares_data_collection&lt;/b&gt;&lt;div&gt;Python library for reading and managing ENTSOE data files&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
+                    <mxGeometry x="220" y="40" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;div&gt;&lt;b&gt;antares-study-version&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Antares study and solver version number model&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
+                    <mxGeometry x="220" y="110" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;div&gt;&lt;b&gt;antares-timeseries-generation&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Library for generating time series&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
+                    <mxGeometry x="420" y="110" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;b&gt;antares-launcher&lt;/b&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26lt%3Bb%26gt%3BAntares_Simulator%26lt%3B%2Fb%26gt%3B%26lt%3Bdiv%26gt%3BCore%20computations%26lt%3B%2Fdiv%26gt%3B%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22-240%22%20y%3D%2260%22%20width%3D%22120%22%20height%3D%2260%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;div&gt;Python library for launching Antares studies on a remote server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
+                    <mxGeometry x="405" y="40" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Tests" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-960" y="1390" width="420" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="&lt;div&gt;&lt;b&gt;Antares_Simulator_Test_NR&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Non regression test&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="30">
+                    <mxGeometry x="10" y="35" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;NonRegTests&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;Non regression test&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="30">
+                    <mxGeometry x="220" y="35" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;Antares_Simulator_Tests&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Deprecated&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;dashed=1;" vertex="1" parent="30">
+                    <mxGeometry x="220" y="175" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="&lt;div&gt;&lt;b&gt;SimTest&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Ref studies and results for Antares Simulator&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="30">
+                    <mxGeometry x="10" y="105" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;Antares_Simulator_Examples&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Micro studies examples&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="30">
+                    <mxGeometry x="220" y="105" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="&lt;div&gt;&lt;b&gt;&lt;font&gt;simulator-cucumber-tests&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;non regression tests&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="30">
+                    <mxGeometry x="10" y="175" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Antares Web&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; font-weight: 400; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22Simulator%22%20style%3D%22swimlane%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22-440%22%20y%3D%22680%22%20width%3D%22600%22%20height%3D%22370%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20value%3D%22%26lt%3Bb%26gt%3BAntares_Simulator%26lt%3B%2Fb%26gt%3B%26lt%3Bdiv%26gt%3BCore%20computations%26lt%3B%2Fdiv%26gt%3B%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%222%22%3E%3CmxGeometry%20x%3D%2220%22%20y%3D%2250%22%20width%3D%22120%22%20height%3D%2260%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="-960" y="680" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="&lt;b&gt;AntaREST&lt;/b&gt;&lt;div&gt;REST API and web UI for Antares&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="44">
+                    <mxGeometry x="20" y="40" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Other" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="1520" width="200" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="&lt;div&gt;&lt;b&gt;cache&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Fork of cache dependencies and build outputs in GitHub actions.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="46">
+                    <mxGeometry x="15" y="125" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="&lt;div&gt;&lt;b&gt;antares-web-installer&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Antares Web desktop installer.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="46">
+                    <mxGeometry x="15" y="40" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="Public archive" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="-960" y="1660" width="420" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;sirius-solver&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Original solver for Antares&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="59">
+                    <mxGeometry x="60" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;or-tools&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Fork of Google OR-Tools&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;" vertex="1" parent="59">
+                    <mxGeometry x="240" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="GEMS (modelling language)" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="-960" y="900" width="320" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;b&gt;GEMS-ViewsBuilder&lt;/b&gt;&lt;div&gt;Prototype of business view builder&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                    <mxGeometry x="85" y="180" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="&lt;div&gt;&lt;b&gt;GemsPy&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Parser and simulator for GEMS models&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                    <mxGeometry x="15" y="40" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="&lt;div&gt;&lt;b&gt;AntaresLegacyModels-to-GEMS-Converter&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Converter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                    <mxGeometry x="165" y="110" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="&lt;b&gt;PyPSA-to-GEMS-Converter&lt;/b&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26lt%3Bb%26gt%3BAntares_Simulator%26lt%3B%2Fb%26gt%3B%26lt%3Bdiv%26gt%3BCore%20computations%26lt%3B%2Fdiv%26gt%3B%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22-240%22%20y%3D%2260%22%20width%3D%22120%22%20height%3D%2260%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;div&gt;Converter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                    <mxGeometry x="165" y="40" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="&lt;b&gt;GEMS&lt;/b&gt;&lt;br&gt;&lt;div&gt;Language syntax and examples&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                    <mxGeometry x="15" y="110" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="Antares Simulator" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="680" width="190" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="&lt;b&gt;antares-xpansion&lt;/b&gt;&lt;div&gt;Investment module&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="79">
+                    <mxGeometry x="25" y="40" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" style="edgeStyle=none;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="84">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-380" y="845"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="86" style="edgeStyle=none;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="18">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-655" y="845"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="&lt;b&gt;antares-vcpkg-registry&lt;/b&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26lt%3Bb%26gt%3BAntares_Simulator%26lt%3B%2Fb%26gt%3B%26lt%3Bdiv%26gt%3BCore%20computations%26lt%3B%2Fdiv%26gt%3B%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22-240%22%20y%3D%2260%22%20width%3D%22120%22%20height%3D%2260%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;div&gt;Shared dependencies of Antares Simulator &amp;amp; Xpansion&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-600" y="810" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="Antares Documentation" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="1390" width="200" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="&lt;div&gt;&lt;b&gt;antares-doc&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Unified documentation&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="88">
+                    <mxGeometry x="15" y="35" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Antares Data Manager" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="-570" y="900" width="250" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="&lt;b&gt;antares-datamanager-back&lt;/b&gt;&lt;div&gt;Pegase back&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="40">
+                    <mxGeometry x="20" y="40" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;b&gt;antares-datamanager-front&lt;/b&gt;&lt;div&gt;Pegase front&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="40">
+                    <mxGeometry x="20" y="110" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="&lt;b&gt;antares-datamanager-generator&lt;/b&gt;&lt;div&gt;Pegase engine ?&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="40">
+                    <mxGeometry x="20" y="180" width="210" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,7 +1,7 @@
 # Create a personal token
 
-To have access to the Antares Web API when using the [base](../overview/product-comparison.md)
-or [performance](../overview/product-comparison.md) version,
+To have access to the Antares Web API when using the [base](../overview/deployment-options.md)
+or [performance](../overview/deployment-options.md) version,
 notably with Antares Craft, you will have to create your personal token inside the app. 
 It is essentially a unique string that give you remote access to the API.
 

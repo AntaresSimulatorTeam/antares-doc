@@ -7,7 +7,7 @@
   <div>
     <h1 style="margin: 0;">Antares</h1>
     <p style="margin: 5px 0 0 0; font-size: 1.2em; color: #666;">
-      On the future of transmission systems
+      Powering decisions on tomorrow's energy systems
     </p>
   </div>
 </div>
@@ -23,7 +23,8 @@ Thus, Antares is used for [medium and long-term studies](overview/use-cases.md#r
 
 ## Key features
 
-Backed by the french transmission system operator RTE, Antares is an industry grade software.
+Backed by the french transmission system operator [RTE](https://www.rte-france.com/en/home), 
+Antares is an industry grade software.
 
 <div class="grid cards" markdown>
 

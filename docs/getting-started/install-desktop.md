@@ -1,6 +1,9 @@
 # Antares desktop installation
 
-Antares Desktop is essentially an executable to run on your local machine for personal use. This tutorial describes how to install and run your instance of Antares Desktop. You can refer to the [comparison page](../overview/product-comparison.md) for more info on what features to expect with the desktop version.
+Antares Desktop is essentially an executable to run on your local machine for personal use. 
+This tutorial describes how to install and run your instance of Antares Desktop.
+You can refer to the [comparison page](../overview/deployment-options.md) for more info
+on what features to expect with the desktop version.
 
 ## Installing
 

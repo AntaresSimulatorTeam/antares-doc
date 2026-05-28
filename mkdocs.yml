@@ -35,7 +35,7 @@ nav:
   - Overview:
     - index.md
     - Use cases: overview/use-cases.md
-    - Products: overview/product-comparison.md
+    - Deployment options: overview/deployment-options.md
     - Architecture: overview/architecture.md
     - Release notes: overview/changelogs.md
     - Support: overview/support.md
@@ -130,6 +130,7 @@ nav:
     - contributing/index.md
     - To the code:
       - Code guidelines: contributing/guidelines-code.md
+      - Technical overview: contributing/technical-overview.md
     - To the documentation:
       - Documentation guidelines: contributing/guidelines-docs.md
       - Editing on GitHub: contributing/online-editing.md
