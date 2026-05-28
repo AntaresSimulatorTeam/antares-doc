@@ -1,19 +1,24 @@
-site_name: Antares Docs
-repo_url: https://github.com/AntaresSimulatorTeam/Antares_Simulator
-
+site_name: Antares
+repo_url: https://github.com/AntaresSimulatorTeam/antares-doc
+repo_name: antares-doc
+edit_uri: edit/main/docs/
+docs_dir: docs
 
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/Icone.png
-  prev_next_buttons_location: none
+  logo: assets/logos/logo.png
+  favicon: assets/logos/icone.png
   features:
     - navigation.instant
+    - navigation.instant.preview
     - navigation.top
-    - navigation.expand
-  #  - navigation.sections
-  #   - header.autohide
-  #   - toc.separate
+    - navigation.indexes
+    - navigation.tabs
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: antares
@@ -27,44 +32,151 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Home: index.md
-  - Antares Simulator : 'https://antares-simulator.readthedocs.io'
-  - Antares Xpansion : 'https://antares-xpansion.readthedocs.io'
-  - Antares Web : 'https://antares-web.readthedocs.io'
-  - 'Packages R':
-    - 'Overview': 'r-packages/overview.md'
-    - 'Adequacy patch': 
-      - 'Introduction': 'r-packages/4-adequacy-patch/1-Introduction.md'
-      - 'Principles': 'r-packages/4-adequacy-patch/2-principes.md'
-      - 'Modelisation': 'r-packages/4-adequacy-patch/3-modelisation.md'
-      - 'R Package': 'r-packages/4-adequacy-patch/4-r-package.md'
+  - Overview:
+    - index.md
+    - Use cases: overview/use-cases.md
+    - Deployment options: overview/deployment-options.md
+    - Architecture: overview/architecture.md
+    - Release notes: overview/changelogs.md
+    - Support: overview/support.md
+    - Roadmap: overview/roadmap.md
+  - Getting started:
+    - getting-started/index.md
+    - Installation:
+      - Desktop installation: getting-started/install-desktop.md
+      - Base installation: getting-started/install-base.md
+    - First steps: getting-started/first-steps.md
+  - Tutorials:
+    - tutorials/index.md
+    - Create a blank study: tutorials/create-blank-study.md
+    - Import & export a study: tutorials/import-export-study.md
+    - Create a variant: tutorials/create-variant.md
+    - Create links: tutorials/create-links.md
+    - Generate thermal time series: tutorials/generate-thermal-ts.md
+    - Set binding constraints: tutorials/set-binding-constraint.md
+    - Set additional constraints on storages: tutorials/set-constraint-st-storage.md
+    - Use table mode: tutorials/use-table-mode.md
+    - Use the scenario builder: tutorials/build-scenario.md
+    - Use the scenario playlist: tutorials/select-scenario.md
+    - Invest with Xpansion:
+      - Define candidates: tutorials/define-candidates.md
+      - Set the parameters: tutorials/invest-parameters.md
+      - Analyze outputs: tutorials/invest-outputs.md
+    - Productivity:
+      - Modify time series: tutorials/modify-ts.md
+      - Shortcuts: tutorials/shortcuts.md
+    - Reduce output size: tutorials/reduce-output.md
+    - Reduce simulation time: tutorials/reduce-simulation-time.md
+    - Visualize outputs: 
+      - Antares outputs: tutorials/outputs-antares.md
+      - Xpansion outputs: tutorials/outputs-xpansion.md
+    - Create a personal token: tutorials/create-token.md
+    - Get your study ID: tutorials/get-study-id.md
+    - Upgrade your study version: tutorials/study-migration.md
+  - Programmation and CLI:
+    - programmatic/index.md
+    - Antares Craft overview: programmatic/antares-craft-overview.md
+    - Command line interface:
+      - Antares solver: programmatic/antares-solver-cli.md
+      - Modeler: programmatic/modeler-cli.md
+      - Antares Xpansion: programmatic/antares-xpansion-cli.md
+  - Reference:
+    - reference/index.md
+    - Modelling:
+      - Area: reference/area.md
+      - Link: reference/link.md
+      - Load: reference/load.md
+      - Thermals: reference/thermals.md
+      - Storages: reference/storages.md
+      - Renewable sources: 
+        - Renewables: reference/renewables.md
+        - Wind & solar: reference/wind-and-solar.md
+      - Hydro: reference/hydro.md
+      - Reserves: reference/reserves.md
+      - Misc. gen.: reference/misc-gen.md
+      - Binding constraints: reference/binding-constraints.md
+    - Configuration:
+      - General: reference/config-general.md
+      - Time series generation: reference/config-ts-generation.md
+      - Optimization: reference/config-optimization.md
+      - Adequacy patch: reference/config-adequacy-patch.md
+      - Advanced parameters: reference/config-advanced-parameters.md
+      - Economic options: reference/config-economic-options.md
+      - Geographic trimming: reference/config-geographic-trimming.md
+    - Outputs: reference/outputs.md
+    - Xpansion:
+      - Introduction: reference/xpansion-intro.md
+      - Prepare your study: reference/xpansion-prepare-study.md
+      - Candidates: reference/xpansion-candidates.md
+      - Settings: reference/xpansion-settings.md
+      - Sensitivity analysis: reference/xpansion-sensitivity.md
+    - Mathematical formulation:
+      - Hypothesis: reference/hypothesis.md
+      - Optimization problem: reference/optimization-problem.md
+      - Flow models: reference/flow-models.md
+      - Random and epsilon parameters: reference/random-and-epsilon-parameters.md
+      - Hydro heuristic: reference/hydro-heuristic.md
+      - Thermal heuristic: reference/thermal-heuristic.md
+      - Adequacy patch: reference/adequacy-patch.md
+      - Water values: reference/water-values.md
+      - Investment problem: reference/xpansion-theory.md
+    - Debug tab: reference/debug.md
+    - Performance:
+      - Supported solvers for Antares: reference/supported-solvers.md
+      - Xpansion performance: reference/performance-xpansion.ipynb
+    - File structure: reference/file-structure.md
+    - Bibliography: reference/bibliography.md
+  - Contributing:
+    - contributing/index.md
+    - To the code:
+      - Code guidelines: contributing/guidelines-code.md
+      - Technical overview: contributing/technical-overview.md
+    - To the documentation:
+      - Documentation guidelines: contributing/guidelines-docs.md
+      - Editing on GitHub: contributing/online-editing.md
+      - Editing locally: contributing/local-editing.md
 
-extra:
-  generator: false
-  version:
-    provider: mike
 plugins:
   - search
+  - drawio:
+      darkmode: true
+  - mkdocs-jupyter:
+      execute: False
+      show_input: False
+      theme: dark
 
 extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - https://code.jquery.com/jquery-3.6.0.min.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  # mathjax integration
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # drawio diagram integration
+  - https://viewer.diagrams.net/js/viewer-static.min.js
+  - javascripts/drawio-reload.js
 
 markdown_extensions:
   - attr_list
   - toc:
       permalink: true
-      toc_depth: 3
+      toc_depth: 4
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
 
-copyright: Copyright &copy; 2007 - 2021 RTE
+copyright: Copyright &copy; 2007 - 2026 RTE
