@@ -47,18 +47,11 @@ cd /opt/AntaREST/
 sudo git clone --branch <tag> https://github.com/AntaresSimulatorTeam/AntaREST.git AntaREST-<tag>/
 ```
 
-#### Set up python environment
+#### Set up python environment and dependencies
 
 ```bash
-uv venv .venv
-source .venv/bin/activate  
-```
-
-#### Install python dependencies
-
-```bash
-uv pip install --upgrade pip
 uv sync
+source .venv/bin/activate  
 ```
 
 #### Create a service (optional)
