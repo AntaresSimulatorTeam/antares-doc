@@ -9,3 +9,5 @@
 
 site/
 *.egg-info/
+.cache/
+
