@@ -4,10 +4,14 @@ Some useful links.
 
 ## Technical documentation
 
-- [Antares Simulator](https://antares-simulator.readthedocs.io/en/latest/)
-- [Antares Web](https://antares-web.readthedocs.io/en/latest/)
-- [Antares Craft](https://antares-craft.readthedocs.io/en/latest/)
-- [Antares Xpansion](https://antares-xpansion.readthedocs.io/en/latest/)
+- Antares products:
+
+    - [Antares Simulator](https://antares-simulator.readthedocs.io/en/latest/)
+    - [Antares Web](https://antares-web.readthedocs.io/en/latest/)
+    - [Antares Craft](https://antares-craft.readthedocs.io/en/latest/)
+    - [Antares Xpansion](https://antares-xpansion.readthedocs.io/en/latest/)
+ 
+- [GEMS modelling](https://gems-energy.readthedocs.io/en/latest/)
 
 ## Related GitHub organizations
 
