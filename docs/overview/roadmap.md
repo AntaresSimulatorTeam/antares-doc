@@ -15,7 +15,7 @@ Reserves model (FCR, aFFR, mFRR, RR...).
 Investment on the objects (and not only on links).
 New parameters for thermal modulation ramps.
 
-Qualification of a new open source [solver](../reference/supported-solvers.md) to replace our old Sirius.
+Qualification of a new open source [solver](../reference/supported-solvers/) to replace our old Sirius.
 
 Output data in [Parquet format file](https://parquet.apache.org), instead of txt.
 
