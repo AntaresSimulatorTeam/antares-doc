@@ -180,4 +180,10 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.keys
 
+validation:
+  omitted_files: warn
+  absolute_links: warn  # Or 'relative_to_docs' - new in MkDocs 1.6
+  unrecognized_links: warn
+  anchors: warn 
+
 copyright: Copyright &copy; 2007 - 2026 RTE
