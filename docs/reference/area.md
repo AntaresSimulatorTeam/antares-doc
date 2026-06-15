@@ -10,12 +10,12 @@ at the node level. That's why you can attach to a map:
 - Consumption which is called [load](load.md)
 - Generation
     - [Thermal plants](thermals.md)
-    - Short-term [storage](storages.md)
     - [Renewable](renewables.md) sources
     - [Hydro](hydro.md) objects
     - [Reserves](reserves.md)
     - Other [miscellenous generation](misc-gen.md)
-- storage
+- Storage
+    - Short-term [storage](storages.md)
 ## Properties
 
 #### Unsupplied (€/MWh)
@@ -24,8 +24,8 @@ at the node level. That's why you can attach to a map:
 Average cost of failure for each area of the study (or value of lost of load VOLL).
 
 !!! tip
-    It is better if the unsupplied energy cost is much larger than
-    the cost of the most expersive generating plant of the area.
+    It is recommended that the unsupplied energy cost is much larger than
+    the cost of the most expensive generating plant of the area, otherwise such plant will never be activated.
 
 #### Spilled (€/MWh)
 
@@ -68,3 +68,5 @@ Allow to set the integration or not of the zone in the [adequacy patch](adequacy
 - `outside`
 - `inside`
 - `virtual`
+Remarque : Par rapport à Xwiki, il manque les vues d'AntaresWeb ou du moins un lien qui permet d'y accéder
+Il manque aussi la partie mathématique ou du moins un lien vers la formulation mathématique des équations au noeud
