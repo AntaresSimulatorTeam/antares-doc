@@ -15,7 +15,7 @@ at the node level. That's why you can attach to a map:
     - [Hydro](hydro.md) objects
     - [Reserves](reserves.md)
     - Other [miscellenous generation](misc-gen.md)
-
+- storage
 ## Properties
 
 #### Unsupplied (€/MWh)
