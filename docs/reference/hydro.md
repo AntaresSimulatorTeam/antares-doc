@@ -248,13 +248,17 @@ is disabled).
 <span class="param-badge badge-matrix">matrix</span>
 Hourly time series of power in MW. Run-of-river (RoR) hydroelectric
 generation is a type of electricity production that relies on the natural flow
-of a river without significant water storage. Unlike traditional hydroelectric
-dams, RoR plants generate power continuously based on the river's current water
-level and flow rate. This makes them highly dependent on seasonal variations
-and weather conditions, leading to fluctuations in electricity production.
+of a river without significant water storage, not considered in the modelling. 
+Unlike traditional hydroelectricdams, RoR plants generate power continuously based 
+on the river's current water level and flow rate, considered as stochastic input data, like other RES generation. 
+This makes them highly dependent on seasonal variations and weather conditions, leading to fluctuations in electricity production.
 
 !!! info 
     The run of river is a non dispatchable generation. There is no storage of energy.
+    Like other RES, it can be curtailed. 
+    This curtailment is not yet implemented in Antares, a post treatment is necessary to convert spillage (area variable) into RES curtailment. 
+
+Remarque JMJ : comme pour tous les autres objets, ce serait bien de préciser dans quelles équations mathématiques les paramètres du RoR interviennent.
 
 ## Min gen
 
