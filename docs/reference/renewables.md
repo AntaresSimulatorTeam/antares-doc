@@ -90,4 +90,8 @@ Hourly time series of Production Factors or Power generations as input for
 the associated renewable cluster.
 
 Remarque JMJ : comme pour les autres vues, ce serait très utile de faire des copies d'écran d'AntaresWeb pour montrer comment piloter tous les paramètres
-Je comprends qu'on souhaite dissocier la documentation de AntaresSimulator de celle de AntaresWeb. Dans ce cas, prévoir des liens hypertextes pour basculer de l'une vers l'autre en passant directement de la vue "Renewables" de l'un à la vue "Renewables" de l'autre.
+Je comprends qu'on souhaite dissocier la documentation de AntaresSimulator de celle de AntaresWeb. Dans ce cas, prévoir des liens hypertextes pour basculer de l'une vers l'autre en passant directement de la vue "Renewables" d'une doc à la vue "Renewables" de l'autre doc.
+
+Remarque JMJ : Comme pour les autres vues, il manque un lien vers les équations mathématiques impactées par les paramètres de cette vue.
+
+Remarque JMJ : Comme pour les autres vues qui contiennent des Times Series, il manque un lien vers le "Building mode" qui explique comment on construit les années Monte Carlo.
