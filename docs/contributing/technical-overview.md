@@ -32,7 +32,7 @@ installed capacity in MW.
 
 ### Antares Craft
 
-Antares Craft is a python library that allows users to interact locally or 
+[Antares Craft](https://github.com/AntaresSimulatorTeam/antares_craft) is a python library that allows users to interact locally or 
 via the API with Antares studies.
 
 ### Full cartography of the repositories
