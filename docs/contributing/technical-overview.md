@@ -47,4 +47,16 @@ APIs, scripts, executables... in the [performance version](../overview/architect
 
 ![](../assets/diagrams/architecture/antares-technical-overview.drawio)
 
+## Assets You Shouldn’t Use
+
+### [Antares R Packages](https://rte-antares-rpackage.github.io/rPackagesRte/)
+
+These are the old R packages we used before Antares Craft to interact with Antares studies. They still exist, but we will no longer maintain them.
+We strongly recommend using [Antares Craft](https://github.com/AntaresSimulatorTeam/antares_craft) instead.
+
+### [Antares Data Manager](https://github.com/AntaresSimulatorTeam/antares-datamanager-back)
+
+This is a new application used by RTE to prepare data for some Antares studies.
+This application is highly specific to RTE’s national studies structure and data. It would not be easy to use with international studies.
+Perhaps one day we will make it more generic, but it is not in our [roadmap](overview/roadmap.md) yet.
 
