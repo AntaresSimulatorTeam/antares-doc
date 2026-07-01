@@ -2,17 +2,18 @@
 
 !!! info "Technical changelogs"
 
-    For complete technical changelogs check out the respective ones on the respo:
+    For complete technical changelogs check out the respective ones on the repos:
     [Antares Web](https://github.com/AntaresSimulatorTeam/AntaREST/blob/dev/docs/CHANGELOG.md),
     [Antares Simulator](https://github.com/AntaresSimulatorTeam/Antares_Simulator/blob/develop/docs/developer-guide/CHANGELOG.md),
     [Antares Xpansion](https://github.com/AntaresSimulatorTeam/antares-xpansion/blob/develop/docs/changelog/CHANGELOG.md) or
     [Antares Craft](https://github.com/AntaresSimulatorTeam/antares_craft/blob/main/docs/CHANGELOG.md).
 
-:arrow_down: Check out our curated feed of user-friendly release notes !
+:arrow_down: Check out our curated feed of user-oriented release notes !
 
 ---
 
-## Antares Web v2.33.00
+## Antares Web v2.33.00 
+<span class="release-date">📅 Jun 24, 2026</span>
 
 ## 🎉 What's New
 
@@ -42,7 +43,8 @@ These updates enhance the stability and performance of the application.
 
 ---
 
-## Antares Simulator v9.3.11
+## Antares Simulator v9.3.11 
+<span class="release-date">📅 May 27, 2026</span>
 
 ### 🐛 Notable Bug Fixes
 
@@ -52,7 +54,8 @@ These updates enhance the stability and performance of the application.
 
 ---
 
-## Antares Web v2.31.00
+## Antares Web v2.32.00 
+<span class="release-date">📅 May 27, 2026</span>
 
 ### 🎉 What's New
 
@@ -74,7 +77,8 @@ These updates enhance the stability and performance of the application.
 
 ---
 
-## Antares Web v2.31.00
+## Antares Web v2.31.00 
+<span class="release-date">📅 Apr 23, 2026</span>
 
 ### 🎉 What's New
 
