@@ -55,7 +55,7 @@ These updates enhance the stability and performance of the application.
 ---
 
 ## Antares Web v2.32.00 
-<span class="release-date">📅 May 27, 2026</span>
+<span class="release-date">📅 May 26, 2026</span>
 
 ### 🎉 What's New
 
