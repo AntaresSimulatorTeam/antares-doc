@@ -25,7 +25,7 @@ Multiple short-term storages can be created by considering the following relatio
 ## Parameters
 
 ### Operating parameters
-
+Remarque générale : il faudrait préciser l'existence ou non d'une valeur par défaut et dans ce cas sa valeur.
 #### Group
 
 <span class="param-badge badge-enum">enum</span>
@@ -44,7 +44,7 @@ The type of storage for aggregation in the general values output:
 #### Name
 
 <span class="param-badge badge-string">string</span>
-User defined name for the cluster.
+User defined name for the storage cluster.
 
 #### Enabled
 
@@ -54,7 +54,9 @@ Whether to enable this cluster.
 #### Stock (MWh)
 
 <span class="param-badge badge-float">float</span>
-The storage maximum capacity $S_\text{max}$ (linked to an 
+Nominal maximum storage capacity $S_\text{max}$ 
+This capacity corresponds to the volume stored when the reservoir is full.
+A fluctuating restriction can be defined (linked to an 
 [hourly modulation of min and max capacities time series](#rule-curves)).
 
 #### Initial level optimized
@@ -75,36 +77,42 @@ In this case corresponds to the ratio of the storage level between empty 0 and f
 #### Stored (MW)
 
 <span class="param-badge badge-float">float</span>
-Maximum possible power injection $P_\text{stored}^\text{max}$ in the storage linked to
+Nominal maximum power injection $P_\text{stored}^\text{max}$ in the storage. A fluctuating restriction can be defined, linked to
 [hourly modulation of the maximum injection power time series](#stored-modulation).
 
 #### Stored efficiency (%)
 
 <span class="param-badge badge-int">int</span>
 Efficiency $e_\text{stored}$ of the process of injecting power inside the storage. 
+This is the ratio between the stored energy and the energy taken from the system.
+This ratio should be lower or equal to 1.
 
 #### Penalty on injection variation
 
 <span class="param-badge badge-bool">bool</span>
 Whether to penalize the variation in the injection flowrate.
+If "true", new variables to penalize the variation in the injection flowrate are created. 
 
 ### Released parameters
 
 #### Released (MW)
 
 <span class="param-badge badge-float">float</span>
-Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storage (linked to an 
-[hourly modulation of the maximum withdrawal power](#released-modulation)).
+Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storage A fluctuating restriction can be defined, linked to an 
+[hourly modulation of the maximum withdrawal power](#released-modulation).
 
 #### Released efficiency (%)
 
 <span class="param-badge badge-int">int</span>
 Efficiency $e_\text{released}$ of the process of withdrawing power from the storage. 
+This is the ratio between the energy withdrawn from storage to the energy returned to the system.
+This ratio should be greater or equal than 1.
 
 #### Penalty on withdrawal variation
 
 <span class="param-badge badge-bool">bool</span>
 Whether to penalize the variation in the withdrawal flowrate.
+If "true", new variables to penalize the variation in the withdrawal flowrate are created. 
 
 !!! info
     Antares Web doesn't use the terms **Max Injection** for **Stored**
