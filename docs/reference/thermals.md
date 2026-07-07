@@ -2,7 +2,9 @@
 
 A thermal cluster is a grouping of plants with close parameters.
 
-## Operating parameters
+## Parameters
+
+### Operating parameters
 
 #### Group
 
@@ -34,22 +36,22 @@ Whether to enable this cluster for production.
 #### Must run
 
 <span class="param-badge badge-bool">bool</span>
-If enabled, the plants will generate at their maximum capacity, regardless of
+If enabled, the plants will generate at their maximum capacity defined in availability time-serie, regardless of
 market conditions. Otherwise, above a partial "must-run level" (that may exist
-or not, see infra) plants will be dispatched on the basis of their market bids.
+or not, see below), plants will be dispatched on the basis of their market bids.
 
 #### Unit
 
 <span class="param-badge badge-int">int</span>
-The number of units in the cluster.
+The number of units in the cluster. Only used to generate time series and to compute the NODU in the outputs. The number of available units in the optimization is derived from the nominal capacity and the availability time series.
 
 #### Nominal capacity (MW)
 
 <span class="param-badge badge-float">float</span>
-The nominal capactity of one unit.
+The nominal capacity of one unit.
 
 !!! note
-    The installed power is the product of the number of units and their nominal capacity.
+    The installed power is the product of the number of units and their nominal capacity. The availability time-serie may exceed the installed power.
 
 #### Min stable power (MW)
 
@@ -64,14 +66,14 @@ Default contribution to the spinning reserve (percentage of nominal capacity).
 #### Min uptime (h)
 
 <span class="param-badge badge-int">int</span>
-Minimum uptime for a plant to go from off to its nominal capacity.
+Minimum time a plant must stay on after starting before it can be shut down again.
 
 #### Min downtime (h)
 
 <span class="param-badge badge-int">int</span>
-Minimum downtime for a plant to go from its nominal capacity to completly off.
+Minimum time a plant must stay off after stopping before it can be started again.
 
-## Operating costs
+### Operating costs
 
 #### TS cost
 
@@ -82,11 +84,11 @@ Cost generation
 - `useCostTimeseries`
 
 !!! note
-    If Cost generation is set to SetManually marginal and market bid costs (€/MWh)
+    If `Cost generation` is set to `SetManually` marginal and market bid costs (€/MWh)
     are specified directly in **Time series** > **Common** tab and have the same
     value for all time series and hours.
 
-    If Cost generation is set to Use cost timeseries Marginal and Market bid costs
+    If `Cost generation` is set to `useCostTimeseries` Marginal and Market bid costs
     (€/MWh) are calculated separately for all the time series and hours using
     the following equation:
     ```
@@ -100,104 +102,116 @@ Cost generation
 #### Efficiency (%)
 
 <span class="param-badge badge-int">int</span>
-Fuel efficiency.
+Fuel efficiency. Only used if `Cost generation` is set to `useCostTimeseries`.
 
 #### Variable O&M (€/MWh)
 
 <span class="param-badge badge-float">float</span>
-Variable operation and maintenance costs only use if cost generation is set
-to use cost timeseries.
+Variable operation and maintenance costs, only used if `Cost generation` is set to `useCostTimeseries`.
 
 #### Marginal cost (€/MWh)
 
 <span class="param-badge badge-float">float</span>
-Marginal cost.
+Marginal cost. Only used to compute operating costs in the outputs.
 
 #### Startup cost (€)
 
 <span class="param-badge badge-float">float</span>
-Cost of starting a new plan
+Cost of starting a new plant. Used in the optimization for `accurate` and `milp` mode and in the outputs for all modes.
 
 #### Market bid cost (€/MWh)
 
 <span class="param-badge badge-float">float</span>
-Market bid cost.
+Market bid cost. Only used in the optimization for defining operating costs.
 
 #### Fixed O&M cost (€/h)
 
 <span class="param-badge badge-float">float</span>
-Fixed operation and maintenance costs.
+Fixed operation and maintenance costs.  Used in the optimization for `accurate` and `milp` mode and in the outputs for all modes.
 
 #### Random spread (€/MWh)
 
 <span class="param-badge badge-float">float</span>
-Random spread on the market bid.
+Used to define noise on market bid cost in the optimization to avoid equivalent solutions. Even with a null value, a small noise (absolute value between 5e-4 and 6e-4) is applied.
 
 !!! note
-    The **optimal dispatch plan** as well as **locational marginal prices** are
+    The **optimal dispatch plan** as well as **marginal prices** are
     based on **market bids**, while the assessment of the operating costs
     associated with this optimum are based on cost parameters. In standard
     "perfect" market modeling, there is no difference of approaches because
     market bids are equal to marginal costs.
 
-## Other emission rates
+### Other emission rates
 
 The following parameters allow the user to indicate the rates of emission of
-different polluants for a given cluster.
+different polluants for a given cluster. They are not used in the optimization.
 
 #### CO2 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Carbon dioxide emission rate.
 
 #### SO2 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Sulfur dioxide emission rate.
 
 #### NH3 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Ammonia emission rate.
 
 #### NOx (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Nitrogen oxides emission rate.
 
 #### NMVOC (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Non-methane volatile organic compounds emission rate.
 
 #### PM2.5 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Fine particulate matter (diameter below 2.5 µm) emission rate.
 
 #### PM5 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Particulate matter (diameter below 5 µm) emission rate.
 
 #### PM10 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+Particulate matter (diameter below 10 µm) emission rate.
 
 #### Other polluant 1 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+User defined pollutant emission rate.
 
 #### Other polluant 2 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+User defined pollutant emission rate.
 
 #### Other polluant 3 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+User defined pollutant emission rate.
 
 #### Other polluant 4 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+User defined pollutant emission rate.
 
 #### Other polluant 5 (t/MWh)
 
 <span class="param-badge badge-float">float</span>
+User defined pollutant emission rate.
 
-## Time series generation
+### Time series generation
 
 #### Parameter
 
@@ -206,7 +220,7 @@ Parameter to specify the behavior of this cluster for time series generation.
 **This cluster-wise parameter takes priority over the study-wide one.**
 It can hold three values:
 
-- `use global`:
+- `use global`: use study parameter
 - `force no generation`: time series for this cluster will not be generated.
 - `force generation`: time series for this cluster will be generated.
 
@@ -243,12 +257,12 @@ Probabilistic law used for the generation of the planned outage time series.
 <span class="param-badge badge-matrix">matrix</span>
 Hourly time series for:
 
-- Seasonal evolution of the marginal cost variations (gas more expensive in winter).
-- Seasonal market bid modulations (assets costs charging strategy).
-- Nominal capacity modulations (seasonal thermodynamic efficiencies, special
-  over-generation allowances, etc.). These modulations are taken into account
+- `Marginal cost modulation` Seasonal evolution of the marginal cost variations (gas more expensive in winter). Used for both values of `Cost generation`.
+- `Market bid modulation` Seasonal market bid modulations (assets costs charging strategy). Used for both values of `Cost generation`.
+- `Capacity modulation` Nominal capacity modulations (seasonal thermodynamic efficiencies, special
+  over-generation allowances, etc.). These modulations are only taken into account
   during the generation of available power time series.
-- Minimal generation commitment (partial must-run level) set for the cluster.
+- `Min gen modulation` Minimal generation commitment (partial must-run level) set for the cluster.
 
 ### TS generator
 
@@ -265,14 +279,14 @@ Daily time series of:
 ### Availability
 
 <span class="param-badge badge-matrix">matrix</span>
-Hourly availability of the cluster.
+Hourly availability of the cluster. Used in optimization to define maximum generation power and the number of available units.
 
 ### Fuel cost
 
 <span class="param-badge badge-matrix">matrix</span>
-Hourly fuel cost of the cluster.
+Hourly fuel cost of the cluster. Only used if `Cost generation` is set to `useCostTimeseries`.
 
 ### CO2 cost
 
 <span class="param-badge badge-matrix">matrix</span>
-Hourly CO2 cost of the cluster.
+Hourly CO2 cost of the cluster. Only used if `Cost generation` is set to `useCostTimeseries`.
