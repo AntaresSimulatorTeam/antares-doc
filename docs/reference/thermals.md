@@ -61,7 +61,7 @@ The minimum power to keep a plant on.
 #### Spinning (%)
 
 <span class="param-badge badge-int">int</span>
-Default contribution to the spinning reserve (percentage of nominal capacity).
+Default contribution to the spinning reserve, between 0 and 100 (percentage of nominal capacity).
 
 #### Min uptime (h)
 
