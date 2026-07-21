@@ -18,7 +18,7 @@ node logic as described below.**
 
 ### Investment in transmission capacity between two areas
 
-The Antares link candidate for investment, shown in red in Figure (1), is directly
+The Antares link candidate for investment, shown in red in diagram (1), is directly
 the interconnection for which the interest in increasing capacity is being studied.
 
 In the case of the construction of a new line, a link must be added in the Antares
@@ -34,9 +34,9 @@ this capacity beyond what is already installed.
 ### Investment in thermal generation capacity
 
 Suppose that the thermal generation capacity subject to expansion is physically
-located in area1 for the example in Figure (2). As Antares Xpansion only performs
+located in area 1 for the example in diagram (2). As Antares Xpansion only performs
 investment through links of the study, the modelling trick consists in creating
-a virtual node, here `invest_semibase`, connected to the physical node area1.
+a virtual node, here `invest_semibase`, connected to the physical node area 1.
 The Antares link of the investment candidate is the link between these two nodes.
 
 The generation unit, candidate for investment, must be defined by a thermal
@@ -68,8 +68,8 @@ However, they will only be taken into account by Antares Xpansion if the
 ### Investment in renewable generation capacity
 
 Similarly as for thermal generation, the renewable generation capacity subject
-to expansion, physically located for the example in Figure (2) in area1, must be
-moved to a virtual node connected to the physical node area1. The Antares link
+to expansion, physically located for the example in diagram (2) in area 1, must be
+moved to a virtual node connected to the physical node area 1. The Antares link
 for the investment candidate is the link between these two nodes.
 
 For the type of renewable production of interest (wind or solar), a corresponding
@@ -87,13 +87,17 @@ flexibility an investment candidate, a link must be identified in the Antares
 modelling whose transmission capacity corresponds to the capacity of the
 flexibility (e.g. its maximum power or the size of a stock for example).
 
-In the case of pumped storage in Figure (3), the capacity of the pumped
+In the case of pumped storage in diagram (3), the capacity of the pumped
 storage (equal to its pumping and turbining capacity) is defined by the
-maximum possible flow on the link between area1 and hub: the investment in
+maximum possible flow on the link between the area and the hub: the investment in
 the flexibility will be characterized by this link. The classical binding
 constraints must be added in the Antares simulation to represent the storage:
 for example a negative ROW Balance in `psp-in`, positive ROW Balance in `psp-out`
-and the following constraint:
+and the following constraint daily equality constraint on the links:
+
+$$
+0.8 \times \texttt{hub/psp_in} + 1.0 \times \texttt{hub/psp_out}
+$$
 
 ## Decommissioning decisions for thermal capacities
 
@@ -139,13 +143,13 @@ the investment in thermal generation capacity. Decommissioning candidates are
 existing physical facilities that should be moved to a virtual node.
 
 For example, suppose that we aim at taking a decommissioning decision for
-thermal generation capacities that are physically located in area1 of
-Figure (2). To be considered decommissioning candidates, these generation
-units must be moved to a virtual node (`invest_semibase` in Figure (2)) with
+thermal generation capacities that are physically located in area 1 of
+diagram (2). To be considered decommissioning candidates, these generation
+units must be moved to a virtual node (`invest_semibase` in diagram (2)) with
 an hourly availability time series higher than their potential.
 
 The decommissioning decision is made in Antares Xpansion through the capacity
-of the link between area1 and `invest_semibase`. Thus, the capacity invested
+of the link between area 1 and `invest_semibase`. Thus, the capacity invested
 by Antares Xpansion on the link corresponds to the capacity that is not
 decommissioned.
 
@@ -155,7 +159,7 @@ candidates are given in the next part.
 ## Additional characteristics for links of investment candidates
 
 In the four aforementioned cases, the link used to define investment candidates
-(in red in Figure):
+(in red in the diagrams):
 
 - must have the parameter `transmission capacities = use transmission
   capacities`, and not set to null or set to infinite,
