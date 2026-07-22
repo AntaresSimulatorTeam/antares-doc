@@ -145,7 +145,7 @@ The parameters link-profile, already-installed-capacity and
 already-installed-link-profile are used to define the link between the
 capacity installed by Antares Xpansion, the already installed capacity and
 the truly available capacity in the Antares study, hour by hour and in both
-directions of the link, following the relationship presented in **Figure 6**.
+directions of the link:
 
 $$
 \underbrace{\text{available capacity}}_{\substack{\text{Capacity time series} \\
@@ -182,8 +182,7 @@ conventionally used to:
   Monte-Carlo year.
 
 - Represent the maintenance of a thermal generation asset by considering a
-  reduction of its power, possibly different according to the season (see
-  **Figure 7**),
+  reduction of its power, possibly different according to the season.
 
 - Model renewable generation by multiplying the invested capacities by a
   load factor chronicle (e.g. an average chronicle or the chronicles of some

@@ -62,7 +62,7 @@ The investment variables are the installed capacities (in MW) of the
 generation and/or transmission assets defined in the input of
 Antares Xpansion as candidates for investment.
 
-The cases shown in **Figure 1** and **Figure 2** contain only one
+The cases shown above contain only one
 investment variable. The search for the optimal solution is then carried
 out over the interval \[0, available potential\], bounded on the left by
 zero and on the right by the maximum available potential of the
