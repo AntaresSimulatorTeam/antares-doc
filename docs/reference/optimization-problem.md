@@ -90,6 +90,8 @@ Two operating states are therefore modelled:
 
 ### Grid
 
+#### Parameters
+
 | Notation                                       | Explanation                                                                                             |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | $C_l^+ \in \mathbb{R}^T_+$                     | initial transmission capacity from $u_l$ to $d_l$ (variable of $P$ and $P^k$)                           |
@@ -97,40 +99,53 @@ Two operating states are therefore modelled:
 | $C_l^- \in \mathbb{R}^T_+$                     | initial transmission capacity from $d_l$ to $u_l$ (variable of $P$ and $P^k$)                           |
 | $\overline{C}^{-}_l\in \mathbb{R}^T_{+}$   | maximum transmission capacity from $d_l$ to $u_l$ (variable of $P$, not used in $P^k$)                  |
 | $\Psi_l \in \mathbb{R}_+$                      | weekly cost of a maximum capacity investment                                                            |
+| $\gamma_l^+\in \mathbb{R}^T$                   | transmission cost through $l$, from $u_l$ to $d_l$. Proportional to the power flow                      |
+| $\gamma_l^-\in \mathbb{R}^T$                   | transmission cost through $l$, from $d_l$ to $u_l$. Proportional to the power flow                      |
+| $Z_l \in \mathbb{R}_+$                        | overall impedance of $l$                                                                                |
+
+#### Variables
+
+| Notation                                       | Explanation                                                                                             |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | $x_l \in [0,1]$                                | transmission capacity investment level                                                                  |
 | $F_l^+ \in \mathbb{R}^T_+$                     | power flow through $l$, from $u_l$ to $d_l$                                                             |
 | $F_l^- \in \mathbb{R}^T_+$                     | power flow through $l$, from $d_l$ to $u_l$                                                             |
 | $F_l\in \mathbb{R}^T$                          | total power flow through $l$, $F_l=F_l^+-F_l^-$                                                         |
 | $\tilde{F}_t \in \mathbb{R}^T$                 | system flow snapshot at time $t$                                                                        |
-| $\gamma_l^+\in \mathbb{R}^T$                   | transmission cost through $l$, from $u_l$ to $d_l$. Proportional to the power flow                      |
-| $\gamma_l^-\in \mathbb{R}^T$                   | transmission cost through $l$, from $d_l$ to $u_l$. Proportional to the power flow                      |
-| $Z_l \in \mathbb{R}_+$                        | overall impedance of $l$                                                                                |
 
 ### Thermal units
 
+#### Parameters
+
 | Notation                                                       | Explanation                                                                             |
 |----------------------------------------------------------------|-----------------------------------------------------------------------------------------|
-| $\theta \in \Theta_n$                                          | thermal clusters (sets of identical units) installed in node $n$                        |
-| $\Theta$                                                       | set of all thermal clusters of the power system $\Theta = \cup_{n\in N} \Theta_n$       |
-| $\overline{P}_\theta \in \mathbb{R}^T_+$                      | maximum power output from cluster $\theta$, depends on units availability               |
-| $\underline{P}_\theta \in \mathbb{R}^T_+$                     | mimimum power output from cluster $\theta$, units availability allowing                 |
-| $P_\theta \in \mathbb{R}^T_+$                                  | power output from cluster $\theta$                                                      |
-| $\chi_\theta \in \mathbb{R}^T$                                 | power output from cluster $\theta$                                                      |
-| $\sigma_\theta^+ \in \mathbb{R}^T$                             | startup cost of a single unit in cluster $\theta$                                       |
-| $\tau_\theta \in \mathbb{R}^T$                                 | running unit in $\theta$: cost independent from output level (aka NoLoadHeatCost)      |
-| $l_\theta \in \mathbb{R}_+$                                    | unit in $\theta$: minimum stable power output when running                             |
-| $u_\theta \in \mathbb{R}_+$                                    | unit in $\theta$: maximum net power output when running                                |
-| $\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace$            | unit in $\theta$: minumum on time when running                                         |
-| $\Delta_\theta^- \in \lbrace 1,\dots, \|T\|\rbrace$            | unit in $\theta$: minumum off time when not running                                    |
-| $\Delta_\theta = \max(\Delta_\theta^-, \Delta_\theta^+)$       | duration above which both state changes are allowed                                     |
-| $M_\theta \in \mathbb{N}^T$                                    | number of running units in cluster $\theta$                                             |
-| $\overline{M}_\theta \in \mathbb{N}^T$                         | maximum number of running units in cluster $\theta$                                     |
-| $\underline{M}_\theta \in \mathbb{N}^T$                        | minimum number of running units in cluster $\theta$                                     |
-| $M_\theta^+ \in \mathbb{N}^T$                                  | number of units in cluster changing from state off to state on in cluster $\theta$      |
-| $M_\theta^- \in \mathbb{N}^T$                                  | number of units in cluster changing from state on to state off in cluster $\theta$      |
-| $M_\theta^{--} \in \mathbb{N}^T$                               | number of units in cluster changing from state on to state outage cluster $\theta$      |
+| $\theta \in \Theta_n$                                          | Thermal clusters (sets of identical units) installed in node $n$                        |
+| $\overline{P}_\theta \in \mathbb{R}^T_+$                      | Maximum power output from cluster $\theta$, depends on cluster availability. Given directly by the `Availability` time series: the one provided by the user if set, otherwise the one generated by Antares from the `TS generator` parameters |
+| $\underline{P}_\theta \in \mathbb{R}^T_+$                     | Minimum power output from cluster $\theta$. Computed as `Min gen modulation` $\times$ `Unit` $\times$ `Nominal capacity`                 |
+| $\chi_\theta \in \mathbb{R}^T$                                 | Market bid cost of cluster $\theta$. Equal to `Market bid cost`                                             |
+| $\sigma_\theta^+ \in \mathbb{R}^T$                             | Startup cost for each unit. Equal to `Startup cost`                                       |
+| $\tau_\theta \in \mathbb{R}^T$                                 | Cost for each running unit, independently of the power output. Equal to `Fixed O&M cost`      |
+| $l_\theta \in \mathbb{R}_+$                                    | Minimum stable power output for each running unit. Equal to `Min stable power`                             |
+| $u_\theta \in \mathbb{R}_+$                                    | Maximum net power output for each running unit. Equal to `Nominal capacity`                                |
+| $\zeta_\theta \in [0,100]$                                     | Default contribution to the spinning reserve (%). Equal to `Spinning`                            |
+| $\Delta_\theta^+ \in \lbrace 1,\dots, \|T\|\rbrace$            | Minimum on time when running for each unit. Equal to `Min uptime`                                         |
+| $\Delta_\theta^- \in \lbrace 1,\dots, \|T\|\rbrace$            | Minimum off time when not running for each unit. Equal to `Min downtime`                                    |
+| $\overline{M}_\theta \in \mathbb{N}^T$                         | Maximum number of running units in cluster $\theta$. Computed as $\lceil \overline{P}_\theta / u_\theta \rceil$                                     |
+| $\underline{M}_\theta \in \mathbb{N}^T$                        | Minimum number of running units in cluster $\theta$. Computed as $\lceil \underline{P}_\theta / (u_\theta \times (1 - \zeta_\theta/100)) \rceil$                                     |
+
+#### Variables
+
+| Notation                                                       | Explanation                                                                             |
+|----------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| $P_\theta \in \mathbb{R}^T_+$                                  | Power output from cluster $\theta$. Continuous variable, used in "fast", "accurate" and "milp" modes      |
+| $M_\theta \in \mathbb{N}^T$                                    | Number of running units in cluster $\theta$. Used only in "accurate" and "milp" modes (integer in "milp" mode, relaxed to continuous in "accurate" mode); derived heuristically in "fast" mode      |
+| $M_\theta^+ \in \mathbb{N}^T$                                  | Number of units in cluster changing from state off to state on in cluster $\theta$. Used only in "accurate" and "milp" modes (integer in "milp" mode, relaxed to continuous in "accurate" mode)      |
+| $M_\theta^- \in \mathbb{N}^T$                                  | Number of units in cluster changing from state on to state off in cluster $\theta$. Used only in "accurate" and "milp" modes (integer in "milp" mode, relaxed to continuous in "accurate" mode)      |
+| $M_\theta^{--} \in \mathbb{N}^T$                               | Number of units in cluster changing from state on to state off due to outages. Used only in "accurate" and "milp" modes (integer in "milp" mode, relaxed to continuous in "accurate" mode)      |
 
 ### Reservoir-type hydropower units (or other power storage facilities)
+
+#### Parameters
 
 | Notation                                          | Explanation                                                                                                                                                                        |
 |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|                
@@ -141,7 +156,6 @@ Two operating states are therefore modelled:
 | $\underline{W}_\lambda \in \mathbb{R}_+$         | minimum energy output from $\lambda$ throughout the optimization period                                                                                                            |
 | $\overline{H}_\lambda \in \mathbb{R}_+^T$        | maximum power output from reservoir $\lambda$. Note: $\sum_{t\in T} \overline{H}_{\lambda_t} \geq \underline{W}_\lambda$                                                       |
 | $\underline{H}_\lambda \in \mathbb{R}_+^T$       | minimum power output from reservoir $\lambda$. Note: $\sum_{t\in T} \underline{H}_{\lambda_t} \leq \overline{W}_\lambda$                                                       |
-| $H_\lambda \in \mathbb{R}_+^T$                   | power output from reservoir $\lambda$                                                                                                                                              |
 | $r_\lambda \in \mathbb{R}_+$                     | maximum ratio between output power daily peak and daily average ($1 \leq r_\lambda \leq 24$)                                                                                      |
 | $\varepsilon_\lambda \in \mathbb{R}$             | reference water value associated with the reservoir's initial state (date, level)                                                                                                  | $\eta_\lambda \in \mathbb{R}^Q$             | reference water value associated with the reservoir's final state (date) <br> if _hydro pricing option:= fast_ then: $\eta_\lambda \leftarrow 0$                                                  <br> if _hydro pricing option:= accurate_ then: $v_\lambda \leftarrow 0$ |
 | $\epsilon_\lambda^1 \in \mathbb{R}$              | penalty fee on hydro generation variations (dispatch smoothing effect) <br> if _hydro power fluctuations option:= free modulations_ then $\epsilon_\lambda^1 \leftarrow O$       |
@@ -151,29 +165,42 @@ Two operating states are therefore modelled:
 | $\eta_\lambda \in \mathbb{R}^Q$                  | reference water value associated with the reservoir's final state (date)                                                                                                           |
 | $\rho_\lambda \in \mathbb{R}_+$                  | efficiency ratio of pumping units (or equivalent devices) available in reservoir $\lambda$                                                                                         |
 | $\overline{\Pi}_\lambda \in \mathbb{R}_+^T$      | maximum power absorbed by pumps of reservoir $\lambda$                                                                                                                             |
-| $\Pi_\lambda \in \mathbb{R}_+^T$                 | power absorbed by pumps of reservoir $\lambda$                                                                                                                                     |
 | $I_\lambda \in \mathbb{R}^T_+$                   | natural power inflow to reservoir $\lambda$                                                                                                                                        |
-| $O_\lambda \in \mathbb{R}_+^T$                   | power overflowing from reservoir $\lambda$: part of inflow that cannot be stored                                                                                                  |
 | $\overline{R}_\lambda \in \mathbb{R}_+^T$        | upper bound of the admissible level in reservoir $\lambda$                                                                                                                         |
 | $\underline{R}_\lambda \in \mathbb{R}_+^T$       | lower bound of the admissible level in reservoir $\lambda$                                                                                                                         |
+
+#### Variables
+
+| Notation                                          | Explanation                                                                                                                                                                        |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| $H_\lambda \in \mathbb{R}_+^T$                   | power output from reservoir $\lambda$                                                                                                                                              |
+| $\Pi_\lambda \in \mathbb{R}_+^T$                 | power absorbed by pumps of reservoir $\lambda$                                                                                                                                     |
+| $O_\lambda \in \mathbb{R}_+^T$                   | power overflowing from reservoir $\lambda$: part of inflow that cannot be stored                                                                                                  |
 | $R_\lambda \in \mathbb{R}^T_+$                   | stored energy level in reservoir $\lambda$                                                                                                                                         |
 | $\mathfrak{R}_{\lambda_q} \in \mathbb{R}_+$      | filling level of reservoir layer $q$ at time $T$ (end of the week)                                                                                                                 |
 
 ### Short-term storages
 
+#### Parameters
+
 | Notation                                                                      | Explanation                                                                                                                              |
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | $s\in \mathcal{S}$                                                            | A single short-term storge reservoir. There is one set of short-term storage per area.                                                   |
-| $L_s \in \mathbb{R}_+^T$                                                      | Level for storage $s$                                                                                                                    |
 | $\underline{L}_s \in \mathbb{R}^T$, $\overline{L}_s \in \mathbb{R}^T$         | Minimum (resp. maximum) level for storage $s$ also known as "rule-curves"                                                                |
 | $L_s^0 \in \mathbb{R}_+$                                                      | Initial level for storage $s$ (optional)                                                                                                 |
-| $P^w_s \in \mathbb{R}_+^T$                                                    | Withdrawal for storage $s$. Note that this is from the storage's perspective: the amount of power withdrawn from the storage            |
 | $\underline{P}^i_s \in \mathbb{R}^T$, $\overline{P}^i_s \in \mathbb{R}^T$     | Minimum (resp. maximum) injection for storage $s$                                                                                        |
 | $\eta^i_s \in [0, 1]$                                                         | Injection efficiency for storage $s$                                                                                                     |
-| $P^i_s \in \mathbb{R}_+^T$                                                    | Injection for storage $s$. Note that this is from the storage's perspective: the amount of power injected into the storage              |
 | $\underline{P}^w_s \in \mathbb{R}^T$, $\overline{P}^w_s \in \mathbb{R}^T$     | Minimum (resp. maximum) withdrawal for storage $s$                                                                                       |
 | $\eta^w_s \in [0, 1]$                                                         | Withdrawal efficiency for storage $s$                                                                                                    |
 | $I_s \in \mathbb{R}^T$                                                        | Inflows for storage $s$. Energy that is injected into the storage over time                                                              |
+
+#### Variables
+
+| Notation                                                                      | Explanation                                                                                                                              |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| $L_s \in \mathbb{R}_+^T$                                                      | Level for storage $s$                                                                                                                    |
+| $P^w_s \in \mathbb{R}_+^T$                                                    | Withdrawal for storage $s$. Note that this is from the storage's perspective: the amount of power withdrawn from the storage            |
+| $P^i_s \in \mathbb{R}_+^T$                                                    | Injection for storage $s$. Note that this is from the storage's perspective: the amount of power injected into the storage              |
 
 
 ### Binding constraints
@@ -194,6 +221,8 @@ $\mathrm{size}=\frac{T}{168}=1$: applicable to lower and upper bounds of constra
 
 Generic notations for binding constraints:
 
+#### Parameters
+
 | Notation                                  | Explanation                                                                                                  |
 |-------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | $e \in E$                                 | set of all grid interconnections and thermal clusters. $E = L \cup \Theta$                                   |
@@ -208,13 +237,20 @@ Generic notations for binding constraints:
 
 ### Demand, security uplift, unsupplied and spilled energies
 
+#### Parameters
+
 | Notation                      | Explanation                                                                        |
 |-------------------------------|------------------------------------------------------------------------------------|
 | $D_n \in \mathbb{R}^T$        | net power demand expressed in node $n$, including must-run generation              |
 | $S_n \in \mathbb{R}^T_+$      | demand security uplift to be faced in node $n$, by activation of security reserves |
 | $\delta_n^+ \in \mathbb{R}^T$ | normative unsupplied energy value in node $n$. Value of lost load - VOLL           |
-| $G_n^+ \in \mathbb{R}^T_+$    | unsupplied power in the nominal state                                              |
 | $\delta_n^- \in \mathbb{R}^T$ | normative spilled energy value in node $n$ (value of wasted energy)                |
+
+#### Variables
+
+| Notation                      | Explanation                                                                        |
+|-------------------------------|------------------------------------------------------------------------------------|
+| $G_n^+ \in \mathbb{R}^T_+$    | unsupplied power in the nominal state                                              |
 | $G_n^- \in \mathbb{R}^T_+$    | spilled power in the nominal state                                                 |
 
 ## Formulation of the problem 
@@ -375,7 +411,7 @@ $$
 
 Flows are bounded by the sum of an initial capacity and of a complement brought by investment
 
-Binding constraints:
+### Binding constraints
 
 $$
 \begin{equation}
@@ -395,15 +431,14 @@ $$
 \end{equation}
 $$
 
-### Binding constraints
+### Hydropower units
 
 $$
 \begin{equation}
-    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{W}_{\lambda} \ leq \sum_{t\in T} H_{\lambda_t} \leq \overline{W}_{\lambda}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{W}_{\lambda} \leq \sum_{t\in T} H_{\lambda_t} \leq \overline{W}_{\lambda}
 \end{equation}
 $$
 
-FIXME: RHS
 $$
 \begin{equation}
     \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \sum_{t\in T} H_{\lambda_t} - \sum_{t\in T} \rho_t \Pi_{\lambda_t} = \overline{W}_{\lambda}
@@ -418,7 +453,7 @@ $$
 \end{equation}
 $$
 
-Intra-daily power modulations are bounded and power fluctuations may be subject to penalty fees [^12]
+Intra-daily power modulations are bounded and power fluctuations may be subject to penalty fees [^1]
 
 $$
 \begin{equation}
@@ -439,19 +474,22 @@ natural inflows and overflows
 
 $$
 \begin{equation}
-    (14)(a) \forall n \in N, \forall \lambda \in \Lambda_n, \forall t \in T, \quad  R_{\lambda_t} - R_{\lambda_{t-1}} = \rho_\lambda \Pi_{\lambda_t} - H_{\lambda_t} + I_{\lambda_t} - O_{\lambda_t}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \forall t \in T, \quad  R_{\lambda_t} - R_{\lambda_{t-1}} = \rho_\lambda \Pi_{\lambda_t} - H_{\lambda_t} + I_{\lambda_t} - O_{\lambda_t}
+    \label{eq:reservoir-level-evolution}
 \end{equation}
 $$
 
 $$
 \begin{equation}
-    (14)(b) \forall n \in N, \forall \lambda \in \Lambda_n, \quad  R_{\lambda T} = \sum_{q=1,Q} \mathfrak{R}_{\lambda_q}
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  R_{\lambda T} = \sum_{q=1,Q} \mathfrak{R}_{\lambda_q}
+    \label{eq:reservoir-final-level}
 \end{equation}
 $$
 
 $$
 \begin{equation}
-    (14)(c) \forall n \in N, \forall \lambda \in \Lambda_n, q=1,Q, \quad  \mathfrak{R}_{\lambda_q} \leq \frac{S_{\lambda}}{Q}
+    \forall n \in N, \forall \lambda \in \Lambda_n, q=1,Q, \quad  \mathfrak{R}_{\lambda_q} \leq \frac{S_{\lambda}}{Q}
+    \label{eq:reservoir-layer-bound}
 \end{equation}
 $$
 
@@ -459,7 +497,7 @@ Reservoir level is bounded by admissible lower and upper bounds (rule curves)
 
 $$
 \begin{equation}
-    (15) \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{R}_\lambda \leq R_\lambda \leq \overline{R}_\lambda
+    \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \underline{R}_\lambda \leq R_\lambda \leq \overline{R}_\lambda
 \end{equation}
 $$
 
@@ -470,7 +508,7 @@ Power output is bounded by must-run commitments and power availability
 
 $$
 \begin{equation}
-    (16) \forall n \in N, \forall \theta \in \Theta_n, \quad  \underline{P_\theta} \leq P_\theta \leq \overline{P_\theta}
+    \forall n \in N, \forall \theta \in \Theta_n, \quad  \min(\max(\overline{P}_\theta \cdot (1-\zeta_\theta/100), l_\theta \cdot \overline{M}_\theta),\underline{P}_\theta) \leq P_\theta \leq \max(\overline{P}_\theta \cdot (1-\zeta_\theta/100), l_\theta \cdot \overline{M}_\theta)
     \label{eq:constraint-power-output}
 \end{equation}
 $$
@@ -479,7 +517,8 @@ The number of running units is bounded
 
 $$
 \begin{equation}
-    (17) \forall n \in N, \forall \theta \in \Theta_n, \quad   \underline{M_\theta} \leq M_\theta \leq \overline{M_\theta} 
+    \forall n \in N, \forall \theta \in \Theta_n, \quad   \min(\underline{M}_\theta,\overline{M}_\theta ) \leq M_\theta \leq \overline{M}_\theta 
+    \label{eq:thermal_units}
 \end{equation}
 $$
 
@@ -487,42 +526,42 @@ Power output remains within limits set by minimum stable power and maximum capac
 
 $$
 \begin{equation}
-    (18) \forall n \in N, \forall \theta \in \Theta_n, \quad  l_\theta M_\theta \leq M_\theta \leq u_\theta M_\theta
+    \forall n \in N, \forall \theta \in \Theta_n, \quad  l_\theta M_\theta \leq P_\theta \leq u_\theta M_\theta
 \end{equation}
 $$
 
 
 Minimum running and not-running durations contribute to the unit-commitment plan. 
-Note that this modeling requires[^9] that one at least of the following conditions is met: 
+Note that this modeling requires[^2] that one at least of the following conditions is met: 
 $\Delta_\theta^- \leq \Delta_\theta^+$ or $\overline{M}_\theta \leq 1_T$
 
 $$
 \begin{equation}
-    (19) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} = M_{\theta_{t-1}} + M_{\theta_t}^+ - M_{\theta_t}^-
+    \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} = M_{\theta_{t-1}} + M_{\theta_t}^+ - M_{\theta_t}^-
 \end{equation}
 $$
 
 $$
 \begin{equation}
-    (20) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  {M_\theta^{- -}}_t \leq {M _ \theta^{-}}_t
+    \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  {M_{\theta_t}^{--}} \leq {M_{\theta_t}^{-}}
 \end{equation}
 $$
 
 $$
 \begin{equation}
-    (21) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  {M_\theta^{- -}}_t \leq \max(0, \overline{M}_{\theta_{t-1}} - \overline{M}_{\theta_t})
+    \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  {M_{\theta_t}^{--}} \leq \max(0, \overline{M}_{\theta_{t-1}} - \overline{M}_{\theta_t})
 \end{equation}
 $$
 
 $$
 \begin{equation}
-    (22) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_ t} \geq \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^+ - {M_\theta^{- -}}_k)
+    \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} \geq \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^+ - {M_{\theta_k}^{--}})
 \end{equation}
 $$
 
 $$
 \begin{equation}
-    (23) \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} \leq \overline{M}_{\theta_{t - \Delta_\theta^-}} + \sum_{k=t+1-\Delta_\theta^+}^{k=t} \max(0, \overline{M}_{\theta_k} - \overline{M}_{\theta_{k-1}}) - \sum_{k=t+1-\Delta_\theta^+}^{k=t}(M_{\theta_k}^-)
+    \forall n \in N, \forall \theta \in \Theta_n, \forall t \in T, \quad  M_{\theta_t} \leq \overline{M}_{\theta_{t - \Delta_\theta^-}} + \sum_{k=t+1-\Delta_\theta^-}^{k=t} \max(0, \overline{M}_{\theta_k} - \overline{M}_{\theta_{k-1}}) - \sum_{k=t+1-\Delta_\theta^-}^{k=t}(M_{\theta_k}^-)
     \label{eq:num-run-unit}
 \end{equation}
 $$
@@ -530,20 +569,19 @@ $$
 !!! info
     The constraints implemented depend on the option selected for unit commitment. 
     In "fast" mode, implementation is restricted to $\eqref{eq:constraint-power-output}$, 
-    whereas "accurate" mode involved modelling of constraints 
-    $\eqref{eq:constraint-power-output}$ to $\eqref{eq:num-run-unit}$. 
-    Note that in both cases, a heuristic stage takes place between 
-    the "uplifted" and "nominal" optimization runs to deal with integrity issues.
+    whereas "accurate" and "milp" mode involved modelling of constraints 
+    $\eqref{eq:thermal_units}$ to $\eqref{eq:num-run-unit}$. 
+    Note that for "fast" and "accurate" mode, all variables are continuous and a heuristic stage takes place between the "uplifted" and "nominal" optimization runs to deal with integrity issues. For "milp" mode, variables representing the number of units are integer.
 
 
 
-[^12]: 
-    Contraints 12(a) are implemented only if the "heuristic" mode is used. 
-    **Contraints 12(b) are implemented only if the "power fluctuations" option is set to "minimize ramping".**
-    Contraints 12(c) are implemented only if the "power fluctuations" option is set to "minimize excursion".
+[^1]: 
+    Constraint $\eqref{eq:reservoir-level-evolution}$ is implemented only if the "heuristic" mode is used. 
+    **Constraint $\eqref{eq:reservoir-final-level}$ is implemented only if the "power fluctuations" option is set to "minimize ramping".**
+    Constraint $\eqref{eq:reservoir-layer-bound}$ is implemented only if the "power fluctuations" option is set to "minimize excursion".
 
 
-[^9]: This does not actually limit the model's field of application: all datasets can easily be put in a format that meets this commitment.
+[^2]: This does not actually limit the model's field of application: all datasets can easily be put in a format that meets this commitment.
 
 
 
