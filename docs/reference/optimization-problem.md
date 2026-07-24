@@ -439,7 +439,6 @@ $$
 \end{equation}
 $$
 
-FIXME: RHS
 $$
 \begin{equation}
     \forall n \in N, \forall \lambda \in \Lambda_n, \quad  \sum_{t\in T} H_{\lambda_t} - \sum_{t\in T} \rho_t \Pi_{\lambda_t} = \overline{W}_{\lambda}

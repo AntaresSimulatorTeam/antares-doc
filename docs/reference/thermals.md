@@ -43,7 +43,7 @@ or not, see below), plants will be dispatched on the basis of their market bids.
 #### Unit
 
 <span class="param-badge badge-int">int</span>
-The number of units in the cluster. Only used to generate time series and to compute the NODU in the outputs. The number of available units in the optimization is derived from the nominal capacity and the availability time series.
+The number of units in the cluster. Only used to generate time series and to compute the [NODU](./outputs.md#nodu) in the outputs. The number of available units in the optimization is derived from the nominal capacity and the availability time series.
 
 #### Nominal capacity (MW)
 
@@ -284,9 +284,9 @@ Hourly availability of the cluster. Used in optimization to define maximum gener
 ### Fuel cost
 
 <span class="param-badge badge-matrix">matrix</span>
-Hourly fuel cost of the cluster. Only used if `Cost generation` is set to `useCostTimeseries`.
+Hourly fuel cost of the cluster. Only used if [`Cost generation`](#ts-cost) is set to `useCostTimeseries`.
 
 ### CO2 cost
 
 <span class="param-badge badge-matrix">matrix</span>
-Hourly CO2 cost of the cluster. Only used if `Cost generation` is set to `useCostTimeseries`.
+Hourly CO2 cost of the cluster. Only used if [`Cost generation`](#ts-cost) is set to `useCostTimeseries`.
