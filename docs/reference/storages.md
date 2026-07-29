@@ -261,7 +261,7 @@ Boolean matrix of the hours where there the constraint applies
 #### Time series
 
 <span class="param-badge badge-matrix">matrix</span>
-Right-hand side $\text{RHS}" of the constraint.
+Right-hand side $\text{RHS}$ of the constraint.
 
 ## Equations
 
@@ -314,11 +314,22 @@ When there is penalization on the stored/released variation there are two new va
 
 - $P_\text{var, stored}(h)$
 - $P_\text{var, released}(h)$
-Remarque JMJ - Il manque les contraintes à rajouter à ces nouvelles variables (formulation du Xwiki à reprendre) :
-P_variation_injection (h) ≥ P_injection (h) - P_injection (h-1)
-P_variation_injection (h) ≥ P_injection (h-1) - P_injection (h)
-P_variation_withdrawal (h) ≥ P_withdrawal (h) - P_withdrawal (h-1)
-P_variation_withdrawal (h) ≥ P_withdrawal (h-1) - P_withdrawal (h)
+
+$$
+P_\text{var, stored}(h) \geq P_\text{stored}(h) - P_\text{stored}(h-1)
+$$
+
+$$
+P_\text{var, stored}(h) \geq P_\text{stored}(h-1) - P_\text{stored}(h)
+$$
+
+$$
+P_\text{var, released}(h) \geq  P_\text{released}(h) - P_\text{released}(h-1)
+$$
+
+$$
+P_\text{var, released}(h) \geq P_\text{released}(h-1) - P_\text{released}(h)
+$$
 
 Then the penalty is:
 
