@@ -258,8 +258,6 @@ This makes them highly dependent on seasonal variations and weather conditions, 
     Like other RES, it can be curtailed. 
     This curtailment is not yet implemented in Antares, a post treatment is necessary to convert spillage (area variable) into RES curtailment. 
 
-Remarque JMJ : comme pour tous les autres objets, ce serait bien de préciser dans quelles équations mathématiques les paramètres du RoR interviennent.
-
 ## Min gen
 
 #### Min gen
