@@ -22,7 +22,6 @@ There is a cohabitation of the 2 models. The choice of renewable generation mode
 - Aggregated (default value)
 - Clusters
    
-Remarque JMJ : mettre la vue de l'écran "AntaresWeb"
 
 Please note that the renewable generation data loaded or developed in Antares for a modeling will not be switched to the other modeling when this parameter is modified, they will simply be ignored. However, they will not be lost and will be visible again and taken into account during the reverse switch (they are stored in different directories in the "input" folder of an Antares study).
 
