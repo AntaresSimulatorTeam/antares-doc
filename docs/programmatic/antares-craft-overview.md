@@ -26,6 +26,6 @@ in the [Antares Craft by Example](https://antares-craft.readthedocs.io/en/latest
 page. 
 
 Moreover, you can see all the reference for the classes and methods in the reference section of 
-[Antares website](https://antares-craft.readthedocs.io/en/latest/api-reference/).
+[Antares website](https://antares-craft.readthedocs.io/en/latest/api-reference/api_conf/).
 
 

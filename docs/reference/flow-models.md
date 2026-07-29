@@ -126,4 +126,4 @@ $$
     FB stands for "flow-based", denomination used in the framework given to 
     the internal electricity market of western Europe.
 
-[^KL]: Such a model was used in the European [E-Highway project](http://www;e-highwy2050.eu).
+[^KL]: Such a model was used in the European [E-Highway project](https://zenodo.org/records/8232662).

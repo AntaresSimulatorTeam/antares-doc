@@ -75,8 +75,8 @@ hydraulic inflows, that are taken into account in the right-hand side of the
 constraint through the term $d_{l}$. The term $T_{l}$ changes between MC years
 due to link profiles on investment candidates.
 
-More details on the Antares problem can be found in the
-[Antares documentation](https://antares-simulator.readthedocs.io/en/latest/reference-guide/11-modeling/).
+More details on the Antares problem can be found in 
+[Optimization problem](./optimization-problem.md).
 We simply mention that the linear problem presented here and used in
 Antares Xpansion is a relaxation of the Antares problem as
 unit-commitment constraints (minimum on and off time) are not taken into
@@ -285,7 +285,7 @@ Starting from version 1.3.0, Antares Xpansion can take into account a
 reliability constraint on the maximum expected number of hours of loss of
 load. This means that the user is able to specify, for each area, an expected
 number of hours of loss of load that should not be exceeded, see
-[Adequacy criterion](#).
+[Adequacy criterion](./xpansion-adequacy-criterion.md).
 
 Antares Xpansion will output a solution that satisfies this reliability
 criterion using a Benders-based matheuristic designed in Chapter 5 of the
