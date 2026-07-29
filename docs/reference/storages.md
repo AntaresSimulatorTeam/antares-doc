@@ -25,7 +25,7 @@ Multiple short-term storages can be created by considering the following relatio
 ## Parameters
 
 ### Operating parameters
-Remarque générale : il faudrait préciser l'existence ou non d'une valeur par défaut et dans ce cas sa valeur.
+
 #### Group
 
 <span class="param-badge badge-enum">enum</span>
@@ -286,7 +286,7 @@ $$
 $$
 S_\text{max} \, \text{mod}_\text{lower}(h) \leq S(h) \leq S_\text{max} \, \text{mod}_\text{upper}(h)
 $$
-Remarque JMJ : Smin n'existe pas !
+
 Finally, these variables are related in the dynamical equation:
 
 $$
@@ -314,11 +314,6 @@ When there is penalization on the stored/released variation there are two new va
 
 - $P_\text{var, stored}(h)$
 - $P_\text{var, released}(h)$
-Remarque JMJ - Il manque les contraintes à rajouter à ces nouvelles variables (formulation du Xwiki à reprendre) :
-P_variation_injection (h) ≥ P_injection (h) - P_injection (h-1)
-P_variation_injection (h) ≥ P_injection (h-1) - P_injection (h)
-P_variation_withdrawal (h) ≥ P_withdrawal (h) - P_withdrawal (h-1)
-P_variation_withdrawal (h) ≥ P_withdrawal (h-1) - P_withdrawal (h)
 
 Then the penalty is:
 

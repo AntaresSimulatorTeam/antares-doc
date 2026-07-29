@@ -43,8 +43,6 @@ Finally for each of the latter result, you can choose to view your results at a 
 
 Additionnally, an aggregated summary of the results is proposed for the whole grid.
 
-Remarque JMJ : Je croyais que tu ne souhaitais pas décrire la structure des fichiers dans la doc
-
 ## General output file structure
 
 For each simulation, Antares Simulator generates an output folder such as `output/<output_id>`.
