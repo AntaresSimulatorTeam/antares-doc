@@ -16,6 +16,7 @@ at the node level. That's why you can attach to a map:
     - Other [miscellenous generation](misc-gen.md)
 - Storage
     - Short-term [storage](storages.md)
+
 ## Properties
 
 #### Unsupplied (€/MWh)
