@@ -199,9 +199,7 @@ program with outages and RES intermittence varying according to the scenarios.
 From Antares-Simulator 8.2, users can define different NTC chronicles for
 different Monte-Carlo years. Briefly, users define any number of chronicles
 for each link. For each link, users can select (randomly or not) one of the
-said chronicles in a result we call _scenario_. Refer to [Antares Simulator
-documentation](https://antares-simulator.readthedocs.io/en/latest/reference-guide/04-active_windows/#links)
-for more information.
+said chronicles in a result we call _scenario_. 
 
 In Antares Xpansion, it is possible to use those scenarios to select a
 different link profile depending on the Monte-Carlo year. There are a few
