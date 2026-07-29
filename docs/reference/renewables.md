@@ -73,7 +73,8 @@ Number of units inside the cluster.
 
 Note that this setting allows you to explicitly divide your cluster into a set of identical units and specify the nominal capacity of each.
 However, this feature does not affect the resolution behavior. Therefore, these 2 sets are equivalent :
-- Unit = n / Nominal capacity = x
+
+- `unit = n / nominal capacity = x`
 - Unit = 1 / Nominal capacity = n*x
 
 #### Nominal capacity (MW)
