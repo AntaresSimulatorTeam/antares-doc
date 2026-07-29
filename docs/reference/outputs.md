@@ -43,8 +43,6 @@ Finally for each of the latter result, you can choose to view your results at a 
 
 Additionnally, an aggregated summary of the results is proposed for the whole grid.
 
-Remarque JMJ : Je croyais que tu ne souhaitais pas décrire la structure des fichiers dans la doc
-
 ## General output file structure
 
 For each simulation, Antares Simulator generates an output folder such as `output/<output_id>`.
@@ -117,8 +115,11 @@ and hydro cost.**
 
 #### OV. COST CSR (Euro)
 
+This variable, along with all subsequent variables bearing the "CSR" suffix, is similar to the corresponding variables lacking this suffix.
+They differ only through the application of a post-processing correction intended to net DTG MRG and UNSP ENRG; this netting results in the addition of a corrective term to the variable with the "CSR" suffix.
+
 Same as the [overall cost](#ov-cost-euro), but with CSR (curtailment sharing rule)
-unsupplied cost version[^adqp].
+unsupplied correction cost [^adqp].
 
 #### OP. COST (Euro)
 
@@ -130,7 +131,8 @@ Locational marginal price corresponding to the overall economic effect of a loca
 
 #### MRG. PRICE CSR (Euro)
 
-<!-- TODO -->
+Same as the [marginal price](#mrg-price-euro), but with CSR (curtailment sharing rule)
+unsupplied correction cost [^adqp].
 
 #### BALANCE (MWh)
 
@@ -147,7 +149,7 @@ Unsupplied energy: adequacy indicator (Expected Energy Not Served–EENS).
 
 #### UNSP. ENRG. CSR (MWh)
 
-Unsupplied energy after CSR (demand that cannot be satisfied)[^adqp].
+Unsupplied energy after CSR correction (demand that cannot be satisfied)[^adqp].
 
 #### DENS (MWh)
 
@@ -163,7 +165,7 @@ as defined by the adequacy patch[^adqp].
 
 #### SPIL. ENRG
 
-**Introduced in v8.5**
+Remarque JMJ : c'est faux de dire que cette variable a été introduite en V9.5 !
 Spilled energy (energy produced that cannot be used and has to be wasted).
 
 #### LOLD (h)
@@ -198,7 +200,7 @@ Disp. Ther. Gen. (AVL DTG – sum of all dispatched thermal generation)
 
 #### DTG MRG CSR (MWh)
 
-DTG MRG after CSR[^adqp].
+DTG MRG after CSR correction[^adqp].
 
 #### MAX. MRG (MWh)
 
@@ -207,7 +209,7 @@ of the week were used to maximise margins instead of minimizing costs.
 
 #### MAX. MRG CSR (MWh)
 
-<!-- TODO -->
+MAX. MRG after CSR correction[^adqp].
 
 ### Thermal objects
 
@@ -291,6 +293,8 @@ Same as above, but by dispatchable plant.
 #### NPCAP HOURS (h)
 
 Near price cap hours.
+Indicator of the number of hours during which the marginal price exceeds a given threshold.
+This threshold generally corresponds to the Value of Loss Load (VoLL) minus 5 €/MWh.
 <!-- Depends on unsupplied energy cost parameter and margin threshold (5.0) ? -->
 
 ### Renewable sources

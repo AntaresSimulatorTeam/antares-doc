@@ -16,6 +16,7 @@ at the node level. That's why you can attach to a map:
     - Other [miscellenous generation](misc-gen.md)
 - Storage
     - Short-term [storage](storages.md)
+
 ## Properties
 
 #### Unsupplied (€/MWh)
@@ -68,5 +69,24 @@ Allow to set the integration or not of the zone in the [adequacy patch](adequacy
 - `outside`
 - `inside`
 - `virtual`
-Remarque : Par rapport à Xwiki, il manque les vues d'AntaresWeb ou du moins un lien qui permet d'y accéder
-Il manque aussi la partie mathématique ou du moins un lien vers la formulation mathématique des équations au noeud
+
+## Equations
+
+!!! info
+    You can check the section 
+    [Balance between load and generation](./optimization-problem.md#balance-between-load-and-generation)
+    from the [Optimization problem](./optimization-problem.md) page for details
+    about the **equations for a give node.**
+
+2 hourly variables are created per node:
+
+- The hourly spillage power 
+- The hourly unsupplied power
+
+4 parameters are created per node :
+
+- Average unsupplied energy cost 
+- Average spilled energy cost 
+- Spread unsupplied energy cost 
+- Spread spilled energy cost 
+

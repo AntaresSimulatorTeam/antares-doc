@@ -25,7 +25,7 @@ Multiple short-term storages can be created by considering the following relatio
 ## Parameters
 
 ### Operating parameters
-Remarque générale : il faudrait préciser l'existence ou non d'une valeur par défaut et dans ce cas sa valeur.
+
 #### Group
 
 <span class="param-badge badge-enum">enum</span>
@@ -54,7 +54,7 @@ Whether to enable this cluster.
 #### Stock (MWh)
 
 <span class="param-badge badge-float">float</span>
-Nominal maximum storage capacity $S_\text{max}$ 
+Nominal maximum storage capacity $S_\text{max}$.
 This capacity corresponds to the volume stored when the reservoir is full.
 A fluctuating restriction can be defined (linked to an 
 [hourly modulation of min and max capacities time series](#rule-curves)).
@@ -98,7 +98,7 @@ If "true", new variables to penalize the variation in the injection flowrate are
 #### Released (MW)
 
 <span class="param-badge badge-float">float</span>
-Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storage A fluctuating restriction can be defined, linked to an 
+Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storage. A fluctuating restriction can be defined, linked to an 
 [hourly modulation of the maximum withdrawal power](#released-modulation).
 
 #### Released efficiency (%)
@@ -106,7 +106,7 @@ Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storag
 <span class="param-badge badge-int">int</span>
 Efficiency $e_\text{released}$ of the process of withdrawing power from the storage. 
 This is the ratio between the energy withdrawn from storage to the energy returned to the system.
-This ratio should be greater or equal than 1.
+This ratio should be greater or equal to 1.
 
 #### Penalty on withdrawal variation
 
@@ -286,7 +286,7 @@ $$
 $$
 S_\text{max} \, \text{mod}_\text{lower}(h) \leq S(h) \leq S_\text{max} \, \text{mod}_\text{upper}(h)
 $$
-Remarque JMJ : Smin n'existe pas !
+
 Finally, these variables are related in the dynamical equation:
 
 $$
