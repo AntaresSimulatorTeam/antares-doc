@@ -15,7 +15,7 @@ must:
 
 The resolution of the reliability-constrained investment problem is based on a 
 heuristic that is described in 
-[Reliability-constrained investment problem](./xpansion-theory.md/#reliability-constrained-investment-problem).
+[Reliability-constrained investment problem](./xpansion-theory.md#reliability-constrained-investment-problem).
 
 ## Input data for adequacy criterion in `adequacy_criterion.yml`
 
@@ -33,7 +33,7 @@ patterns:
     criterion: 5
 ```
 
-- `stopping_threshold` in euros (positive float): Stopping criterion of the algorithm, that is the difference between `lambda_min` and `lambda_max`, see [Reliability-constrained investment problem](./xpansion-theory.md/#reliability-constrained-investment-problem).
+- `stopping_threshold` in euros (positive float): Stopping criterion of the algorithm, that is the difference between `lambda_min` and `lambda_max`, see [Reliability-constrained investment problem](./xpansion-theory.md#reliability-constrained-investment-problem).
     - Default value: `1e-4`
 - `criterion_count_threshold` in MWh (positive float): Number of MWh of unsupplied energy in a given hour to consider that this is an hour with loss of load (ex: An hour is considered to be with loss of load if there is more than 1 MWh of unsupplied energy).
     - Default value: `1`

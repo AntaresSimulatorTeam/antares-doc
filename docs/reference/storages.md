@@ -44,7 +44,7 @@ The type of storage for aggregation in the general values output:
 #### Name
 
 <span class="param-badge badge-string">string</span>
-User defined name for the cluster.
+User defined name for the storage cluster.
 
 #### Enabled
 
@@ -54,7 +54,9 @@ Whether to enable this cluster.
 #### Stock (MWh)
 
 <span class="param-badge badge-float">float</span>
-The storage maximum capacity $S_\text{max}$ (linked to an 
+Nominal maximum storage capacity $S_\text{max}$.
+This capacity corresponds to the volume stored when the reservoir is full.
+A fluctuating restriction can be defined (linked to an 
 [hourly modulation of min and max capacities time series](#rule-curves)).
 
 #### Initial level optimized
@@ -75,36 +77,42 @@ In this case corresponds to the ratio of the storage level between empty 0 and f
 #### Stored (MW)
 
 <span class="param-badge badge-float">float</span>
-Maximum possible power injection $P_\text{stored}^\text{max}$ in the storage linked to
+Nominal maximum power injection $P_\text{stored}^\text{max}$ in the storage. A fluctuating restriction can be defined, linked to
 [hourly modulation of the maximum injection power time series](#stored-modulation).
 
 #### Stored efficiency (%)
 
 <span class="param-badge badge-int">int</span>
 Efficiency $e_\text{stored}$ of the process of injecting power inside the storage. 
+This is the ratio between the stored energy and the energy taken from the system.
+This ratio should be lower or equal to 1.
 
 #### Penalty on injection variation
 
 <span class="param-badge badge-bool">bool</span>
 Whether to penalize the variation in the injection flowrate.
+If "true", new variables to penalize the variation in the injection flowrate are created. 
 
 ### Released parameters
 
 #### Released (MW)
 
 <span class="param-badge badge-float">float</span>
-Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storage (linked to an 
-[hourly modulation of the maximum withdrawal power](#released-modulation)).
+Maximum possible power withdrawal $P_\text{released}^\text{max}$ from the storage. A fluctuating restriction can be defined, linked to an 
+[hourly modulation of the maximum withdrawal power](#released-modulation).
 
 #### Released efficiency (%)
 
 <span class="param-badge badge-int">int</span>
 Efficiency $e_\text{released}$ of the process of withdrawing power from the storage. 
+This is the ratio between the energy withdrawn from storage to the energy returned to the system.
+This ratio should be greater or equal to 1.
 
 #### Penalty on withdrawal variation
 
 <span class="param-badge badge-bool">bool</span>
 Whether to penalize the variation in the withdrawal flowrate.
+If "true", new variables to penalize the variation in the withdrawal flowrate are created. 
 
 !!! info
     Antares Web doesn't use the terms **Max Injection** for **Stored**
@@ -118,23 +126,23 @@ Whether to penalize the variation in the withdrawal flowrate.
 #### Stored modulation
 
 <span class="param-badge badge-matrix">matrix</span>
-The values $\text{mod}_\text{stored}(h)$ entered are dimensionless decimal numbers, between 0 and 1.
-This involves modulation of the injection capacity each hour in the storage, reflecting lower
-availability of the storage at certain times (planned or forced outages).
+The entered values $\text{mod}_\text{stored}(h)$ are dimensionless decimal numbers, between 0 and 1.
+They represent an hourly modulation of the storage injection capacity, reflecting reduced
+availability at certain times (planned or forced outages).
 
 #### Released modulation
 
 <span class="param-badge badge-matrix">matrix</span>
-The values $\text{mod}_\text{released}(h)$ entered are dimensionless decimal numbers, between 0 and 1. 
-This involves modulation of the withdrawal capacity each hour from the storage, reflecting lower
-availability of the storage at certain times (planned or forced outages).
+The entered values $\text{mod}_\text{released}(h)$ are dimensionless decimal numbers, between 0 and 1. 
+They represent an hourly modulation of the storage withdrawal capacity, reflecting reduced
+availability at certain times (planned or forced outages).
 
 ### Rule curves
 
 #### Lower rule curve
 
 <span class="param-badge badge-matrix">matrix</span>
-The values $S_\text{lower}(h)$ entered are dimensionless decimal numbers, between 0 and 1.
+The entered values $S_\text{lower}(h)$ are dimensionless decimal numbers, between 0 and 1.
 This is the lower limit for filling the stock, expressed as a filling rate,
 imposed each hour.
 
@@ -158,23 +166,23 @@ can be negative, corresponding to withdrawals imposed on the stock for other
 uses (for example agricultural withdrawals or imposed discharging of EV
 batteries).
 
-### Costs
+### Flow Costs (€/MW)
 
-#### Stored cost (€/MW)
+#### Stored cost
 
 <span class="param-badge badge-matrix">matrix</span>
 Penalizes the injection flowrate at each hour ($c_\text{stored}(h)$). This penalty must be positive.
 This penalty will add an injection cost in the model.
 
-#### Released cost (€/MW)
+#### Released cost
 
 <span class="param-badge badge-matrix">matrix</span>
 Penalizes the withdrawal flowrate at each hour ($c_\text{released}(h)$). This penalty must be positive.
 This penalty will add a withdrawal cost in the model.
 
-### Variation costs
+### Flow-Variation costs (€/MW/h)
 
-#### Stored variation cost (€/MW/h)
+#### Stored variation cost 
 
 <span class="param-badge badge-matrix">matrix</span>
 Penalizes the injection flowrate variation every hour ($c_\text{var, stored}(h)$). 
@@ -183,7 +191,7 @@ This penalty is only enabled if the boolean parameter
 [penalty on injection variation](#penalty-on-injection-variation) is enabled.
 This penalty will penalize proportionally any injection flowrate variation between 2 hours.
 
-#### Released variation cost (€/MW/h)
+#### Released variation cost
 
 <span class="param-badge badge-matrix">matrix</span>
 Penalizes the withdrawal flowrate variation every hour ($c_\text{var, released}(h)$). 
@@ -202,19 +210,19 @@ If the penalty is negative, it will favor higher-level trajectories.
 
 ## Additional constraints
 
-When solving the problem of short-term storages, Antares then finds the evolution of 3 variables:
+When solving the problem of short-term storages, Antares determines the evolution of 3 types of variables:
 
 - Level $S(h)$ (in MWh) of the storage 
-- Charge $P_\text{stored}(h)$ (in MW): incoming power
-- Discharge $P_\text{released}(h)$ (in MW): outgoing power
+- Charge $P_\text{stored}(h)$ (in MW): incoming power flow
+- Discharge $P_\text{released}(h)$ (in MW): outgoing power flow
 
-You can set additional constraints on these variables to restrict the solutions of the problem.
+You can define additional constraints on these variables to restrict the solutions of the problem.
+However, you cannot combine variables of different types within the same constaint. 
 
-Additional constraints are a powerful feature that allow to couple a set of time steps
-to apply the constraint on (see the [constraint equation](#additional-constraint-model)). 
-For example, additional constraints allow to model 
-a daily constraint on a range of hours such as the amount of power injection in the storage
-should be bounded between 10am and 2pm.
+These additional constraints are linked to a powerful feature that allows you to select any set of time steps
+to which the constraint applies (see the [constraint equation](#additional-constraint-model)). 
+For example, this feature enables the modeling of a daily constraint over a specific time window, 
+such as requiring that power be injected into storage only between 10am and 2pm.
 
 #### Name
 
@@ -224,7 +232,7 @@ Name of the additional constraint.
 #### Variable
 
 <span class="param-badge badge-enum">enum</span>
-The different variable on which you can apply the additional constraint:
+The differents types of variable on which you can apply the additional constraint:
 
 - Level variation $S(h) - S(h-1) - I(h)$. 
 - Charge $P_\text{stored}(h)$.
@@ -253,7 +261,7 @@ Boolean matrix of the hours where there the constraint applies
 #### Time series
 
 <span class="param-badge badge-matrix">matrix</span>
-Right-hand side $\text{RHS}" of the constraint.
+Right-hand side $\text{RHS}$ of the constraint.
 
 ## Equations
 
@@ -276,7 +284,7 @@ $$
 $$
 
 $$
-S_\text{max} \, \text{mod}_\text{lower}(h) \leq S(h) \leq S_\text{min} \, \text{mod}_\text{upper}(h)
+S_\text{max} \, \text{mod}_\text{lower}(h) \leq S(h) \leq S_\text{max} \, \text{mod}_\text{upper}(h)
 $$
 
 Finally, these variables are related in the dynamical equation:
@@ -306,6 +314,22 @@ When there is penalization on the stored/released variation there are two new va
 
 - $P_\text{var, stored}(h)$
 - $P_\text{var, released}(h)$
+
+$$
+P_\text{var, stored}(h) \geq P_\text{stored}(h) - P_\text{stored}(h-1)
+$$
+
+$$
+P_\text{var, stored}(h) \geq P_\text{stored}(h-1) - P_\text{stored}(h)
+$$
+
+$$
+P_\text{var, released}(h) \geq  P_\text{released}(h) - P_\text{released}(h-1)
+$$
+
+$$
+P_\text{var, released}(h) \geq P_\text{released}(h-1) - P_\text{released}(h)
+$$
 
 Then the penalty is:
 

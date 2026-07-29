@@ -62,7 +62,7 @@ Set the optimization method used by Antares Xpansion.
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `benders`            | Launch the classical Benders decomposition or the Benders by batch algorithm depending on `batch_size`.
 | `mergeMPS`           | Launch a frontal resolution of the investment problem (i.e. without decomposition). This is much more time-consuming than using Benders decomposition. |
-| `adequacy_criterion` | Launch Antares Xpansion with reliability constraints, see [adequacy criterion](#).                                                 |
+| `adequacy_criterion` | Launch Antares Xpansion with reliability constraints, see adequacy criterion.                                                 |
 
 ### `--problem-format {MPS, OPTIMIZED}`
 
