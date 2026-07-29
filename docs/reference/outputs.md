@@ -165,7 +165,6 @@ as defined by the adequacy patch[^adqp].
 
 #### SPIL. ENRG
 
-Remarque JMJ : c'est faux de dire que cette variable a été introduite en V9.5 !
 Spilled energy (energy produced that cannot be used and has to be wasted).
 
 #### LOLD (h)
