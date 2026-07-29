@@ -34,3 +34,17 @@
 [data-md-color-scheme="slate"] .badge-enum   { background: #3C3489; color: #CECBF6; border-color: #7F77DD; }
 [data-md-color-scheme="slate"] .badge-matrix { background: #712B13; color: #F5C4B3; border-color: #D85A30; }
 [data-md-color-scheme="slate"] .badge-bool { background: #085041; color: #9FE1CB; border-color: #1D9E75; }
+
+.release-date {
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--md-default-fg-color--light);
+    background-color: var(--md-code-bg-color);
+    border-radius: 1em;
+    padding: 0.15em 0.75em;
+    margin-top: 0.3em;
+}

@@ -72,7 +72,7 @@ close to the optimum, but it does not provide any information on the distance
 (in MW) between the installed capacities of this solution and those of the
 optimal solution: if the cost function is relatively flat around the optimum,
 solutions whose costs are close may have significantly different installed
-capacities (see **Figure 10**).
+capacities.
 
 **Which settings should I use for the** `optimality_gap`?
 
