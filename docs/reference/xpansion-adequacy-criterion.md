@@ -15,7 +15,7 @@ must:
 
 The resolution of the reliability-constrained investment problem is based on a 
 heuristic that is described in 
-[Reliability-constrained investment problem](./xpansion-theory.md/#reliability-constrained-investment-problem).
+[Reliability-constrained investment problem](./xpansion-theory.md#reliability-constrained-investment-problem).
 
 ## Input data for adequacy criterion in `adequacy_criterion.yml`
 
