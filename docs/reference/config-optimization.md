@@ -93,6 +93,9 @@ units.
 
 ## Reserve
 
+!!! info
+    This feature is available before v10.2 of Antares Simulator.
+
 #### Day ahead reserve
 
 <span class="param-badge badge-bool">bool</span>
@@ -107,6 +110,20 @@ Whether to activate primary reserve constraints.
 
 <span class="param-badge badge-bool">bool</span>
 Whether to activate strategic reserve constraints.
+
+#### Spinning reserve
+
+<span class="param-badge badge-bool">bool</span>
+Whether to activate spinning reserve constraints.
+
+
+!!! info
+    This feature is available since v10.2 of Antares Simulator.
+    
+#### Include reserves
+
+<span class="param-badge badge-bool">bool</span>
+Whether to activate reserve constraints.
 
 #### Spinning reserve
 
