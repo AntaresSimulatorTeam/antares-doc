@@ -12,6 +12,73 @@
 
 ---
 
+## Antares Web v2.35.00 
+<span class="release-date">📅 Sep 23, 2026</span>
+
+## 🎉 What's New
+
+- **Database-backed studies: creation and import** — Creating and importing database-backed studies is now available.
+- **GDPR: RTE notices displayed** — RTE’s GDPR notices are now displayed in the application, in compliance with regulatory requirements.
+- **Documentation: updated link** — The documentation link now points to the new version, so no more broken pages.
+- **Outputs: easier access to search fields and filters** — Search fields and filters are now more accessible, making it faster to navigate through outputs.
+- **Outputs: annual outputs prioritized** — Output displays now prioritize annual results by default, providing more relevant information at a glance.
+
+
+
+## 🐛 Notable Bug Fixes
+
+- Fixed an issue preventing scanning from working when database-backed studies were present.
+- Fixed an issue preventing Xpansion link profiles from being viewed.
+- Fixed an issue affecting the display of zone dropdown lists in coupling constraints.
+- Fixed an issue preventing a value from being propagated across multiple cells in the Scenario Builder.
+- Fixed an issue affecting the Scenario Builder on studies using version 8.6 or earlier.
+
+## ⚡ Performance
+
+Extensive technical improvements have been made: 
+
+- removal of unnecessary output compression/decompression (significantly reducing processing time for large managed studies)
+- refactoring and fixes to the output/download API for the Parquet format
+- adoption of a more compact identifier for database-backed studies.
+
+These updates enhance the stability and performance of the application.
+
+---
+
+## Antares Web v2.34.00 
+<span class="release-date">📅 Aug 19, 2026</span>
+
+## 🎉 What's New
+
+- **Launcher: schedule a simulation**  — Delay the launch of a simulation.
+- **Favorites: save an external folder** — Add an external folder directly to your favorites for one-click access.
+- **Import: multiple studies at once** — Import several studies simultaneously without having to repeat the operation.
+- **"Move" button hidden for variants** — This irrelevant button is now hidden for variant studies, making the interface cleaner.
+- **Outputs: optimized per-variable output screen** — Navigation and readability of the per-variable output screen have been improved.
+- **Table mode stored in the database** — The table display mode is now persisted in the database instead of localStorage, so your preferences follow you wherever you go.
+
+## 🐛 Notable Bug Fixes
+
+- Fixed an issue that made autocompletion unreliable in the "Variable" field in Outputs.
+- Fixed an error occurring when importing a failed simulation.
+- Fixed an issue with unarchiving studies stored in the database.
+- Fixed a bug preventing a study from being launched in Xpansion mode when it is not an Xpansion study. This case is now correctly blocked with a clear error message.
+- Fixed an issue causing some outputs to be invisible in adequacy mode.
+- Fixed the Digest being unavailable for "adequacy" results.
+
+## ⚡ Performance
+
+Extensive technical improvements have been made: 
+
+- migration to Pydantic for configuration management (for improved robustness and maintainability)
+- background loading of cluster load information to prevent the UI from being blocked
+- removal of unnecessary output disk-usage recalculations
+- harmonization of result aggregation logic.
+
+These updates enhance the stability and performance of the application.
+
+---
+
 ## Antares Web v2.33.00 
 <span class="release-date">📅 Jun 24, 2026</span>
 
