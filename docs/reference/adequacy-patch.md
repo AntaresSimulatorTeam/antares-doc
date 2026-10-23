@@ -252,7 +252,6 @@ limited to nodes "2" and the links that exist between these nodes 2.
         0, 
         \text{ENS}_\text{init} \text{(node A)} 
         + \text{net}_\text{position, init} \text{(node A)} 
-        - \text{DTG. MRG (node A)}
     \right]
     $$
 
@@ -270,7 +269,6 @@ limited to nodes "2" and the links that exist between these nodes 2.
         \text{ENS}_\text{init} \text{(node A)} 
         + \text{net}_\text{position, init} \text{(node A)} 
         + \sum \text{flows (node 1 } \to \text{ node A)} 
-        - \text{DTG. MRG (node A)}
     \right]
     $$
 
