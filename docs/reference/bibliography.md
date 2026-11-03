@@ -9,7 +9,8 @@ Antares introduction by Antoine Oustry
 June 2025, Berlin: [Energy Innovation Summit](https://www.gurobi.com/microsite/2025-energy-innovation-summit/){:target="_blank"}, 
 GEMS (modeler) by Thomas Bittar and Antoine Oustry
 
-November 2025: [Conférence PGMO Days](https://fondation-hadamard.fr/en/our-programs/thematic-programs/pgmohome/pgmodays/){:target="_blank"},
+November 2025:
+[Conférence PGMO Days](https://www.fondation-hadamard.fr/en/articles/2025/06/06/pgmodays-2025/){:target="_blank"},
 Trajectory investment by Thomas Bittar
 
 
@@ -98,7 +99,7 @@ The TIMES-ANTARES linking approach.*
 *Towards a Decarbonized Energy System in Europe in 2050: Impact of Vector
 Coupling and Renewable Deployment Limits*
 [Thèse de doctorat, Paris EHESS].
-[https://theses.fr/2023EHES0014](https://theses.fr/2023EHES0014)
+[Thesis record and full text](https://theses.fr/2023EHES0014)
 
 **Alimou, Y. (2024).**
 *A multi-scale modeling framework to build long-term optimal and secure

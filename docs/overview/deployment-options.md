@@ -20,7 +20,7 @@ Antares comes bundled in different ways depending on your needs and computing po
     ---
 
     <span style="display: inline-block; background-color: #0078d4; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin-top: 8px;">
-        <a href="https://antares-simulator.org/pages/presentation/12/" style="color: white; text-decoration: none;">Contact RTE-I :octicons-link-external-16:</a>
+        <a href="https://www.rte-international.com/en/contact-us/" style="color: white; text-decoration: none;">Contact RTE-I :octicons-link-external-16:</a>
     </span>
     
     Ideal for institutions having both servers and high performance computing clusters.
@@ -60,6 +60,6 @@ Here is a comparison of the different Antares deployment options:
 [^rtei]:
     [RTE international](https://www.rte-international.com/) can bring their expertise for the
     installation, use and support of Antares on your infrastructure. More on their
-    [website](https://antares-simulator.org/).
+    [Antares services page](https://www.rte-international.com/en/digital-solutions/).
 
 

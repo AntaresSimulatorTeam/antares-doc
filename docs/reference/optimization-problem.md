@@ -12,7 +12,7 @@ Each optimization problem is solved once when the milp option and twice otherwis
     Antares Simulator offers an option that makes it possible for the user to print, 
     in a standardized format, any or all of the optimization problems actually solved 
     in the course of an Antares Simulation session in 
-    [MPS format](https://www.ibm.com/docs/en/icos/22.1.2?topic=cplex-mps-file-format-industry-standard).
+    [MPS format](https://docs.gurobi.com/projects/optimizer/en/current/reference/fileformats/modelformats.html#mps-format).
 
 The simulation of the system behavior throughout many years, with a **time step of 1 hour** 
 is decomposed into a series of smaller problems. 
