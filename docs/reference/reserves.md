@@ -22,10 +22,11 @@ the need for reserve will be interpreted as "week-ahead".
     This feature is available since v10.2 of Antares Simulator.
     
 Reserves refer to the power margins available to the grid operator to maintain the balance between generation and consumption at all times. 
-Reserves therefore serve to: 
-•	handle fluctuations in consumption (rapid changes in demand), 
-•	compensate for generation fluctuations (power plant outages, drops in wind or solar output), 
-•	ensure grid stability (frequency, voltage, cross-border exchanges).
+Reserves therefore serve to:
+
+- `handle fluctuations in consumption (rapid changes in demand)` 
+- `compensate for generation fluctuations (power plant outages, drops in wind or solar output)` 
+- `ensure grid stability (frequency, voltage, cross-border exchanges)`
 
 ## General
 ### Global parameters
