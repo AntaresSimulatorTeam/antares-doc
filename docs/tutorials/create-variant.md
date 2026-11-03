@@ -1,4 +1,4 @@
-# Create a variant
+# Manage variants
 
 ## Why use a variant?
 
@@ -62,4 +62,15 @@ Select the variant you want to delete in the study variant tree, then click on t
 :material-dots-vertical: in the top left of your screen to show the dropdown menu. 
 Then click on :octicons-trash-16: **Delete**.
 
+## Archive variant outputs
 
+Archiving a main study does not archive its variants’ outputs. Open each variant, go to
+**Explore → Outputs**, and click **Archive** beside each output you want to archive.
+
+## Disk storage
+
+Variant definitions are compact: they reference the parent study and store the list of modifications.
+Generated input snapshots and additional input data also consume disk space.
+
+Simulation outputs are stored separately for each variant and can be as large as those of a standalone
+study. When freeing disk space, check the outputs of every variant.

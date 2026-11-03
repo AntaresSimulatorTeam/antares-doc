@@ -22,5 +22,5 @@ Some useful links.
 ## RTE and RTE international
 
 - [RTE official website](https://www.rte-france.com/en/home)
-- [RTE-I website for Antares](https://antares-simulator.org/)
+- [RTE-I services for Antares](https://www.rte-international.com/en/digital-solutions/)
 - [RTE-I official website](https://www.rte-international.com/en/)
