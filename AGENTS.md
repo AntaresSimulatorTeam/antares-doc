@@ -24,6 +24,15 @@ mkdocs serve       # Start local dev server at http://localhost:8000
 mkdocs build       # Build static site into /site (gitignored)
 ```
 
+CI builds with `uv sync --locked` and `uv run --locked mkdocs build --strict`.
+Check local Markdown links with Lychee 0.24.2:
+
+```bash
+lychee --config lychee.toml --offline README.md AGENTS.md 'docs/**/*.md'
+```
+
+See [Run checks](README.md#run-checks) for the scheduled/manual external-link check.
+
 ---
 
 ## Project structure
@@ -77,6 +86,9 @@ For shell commands, use `bash`. For output-only blocks (no prompt), use `text` o
 - Use **relative links** between docs pages: `[see this page](../other/page.md)`.
 - Use absolute URLs only for external sites.
 - Do not use bare URLs in prose — always use `[label](url)` syntax.
+- PRs check local links and build the site. Scheduled/manual runs check external links and report
+  failures, including timeouts. Keep shared Lychee settings in `lychee.toml`; do not exclude whole
+  domains to make transient external failures pass.
 
 ### Images
 

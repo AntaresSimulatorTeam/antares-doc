@@ -1,0 +1,23 @@
+# Shared by the local and external jobs in .github/workflows/check-links.yml.
+# Select local-only (--offline) or HTTP(S) (--scheme http --scheme https) on the command line.
+no_progress = true
+cache = false
+
+# Bound slow requests and retry transient failures without overwhelming hosts.
+timeout = 30
+max_retries = 3
+retry_wait_time = 2
+max_concurrency = 8
+host_concurrency = 2
+
+# Report timeouts, rate limits, and other HTTP errors as failures.
+accept = ["200..=299"]
+accept_timeouts = false
+
+# MkDocs validates anchors with its own heading rules; Lychee checks file targets.
+include_fragments = "none"
+# Formatting examples in code blocks are not real documentation links.
+include_verbatim = false
+
+# Keep external sites, including theses.fr, monitored without domain exclusions.
+exclude = []
