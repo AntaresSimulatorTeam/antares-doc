@@ -1,0 +1,29 @@
+name: Check links
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: links-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  links:
+    name: Markdown links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6.1.0
+      - name: Check Markdown links
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          lycheeVersion: v0.24.2
+          args: --config lychee.toml README.md AGENTS.md 'docs/**/*.md'
+          fail: true
+          jobSummary: true
