@@ -15,7 +15,7 @@
 ## Antares Web v2.35.00 
 <span class="release-date">📅 Sep 23, 2026</span>
 
-## 🎉 What's New
+### 🎉 What's New
 
 - **Database-backed studies: creation and import** — Creating and importing database-backed studies is now available.
 - **GDPR: RTE notices displayed** — RTE’s GDPR notices are now displayed in the application, in compliance with regulatory requirements.
@@ -25,7 +25,7 @@
 
 
 
-## 🐛 Notable Bug Fixes
+### 🐛 Notable Bug Fixes
 
 - Fixed an issue preventing scanning from working when database-backed studies were present.
 - Fixed an issue preventing Xpansion link profiles from being viewed.
@@ -33,7 +33,7 @@
 - Fixed an issue preventing a value from being propagated across multiple cells in the Scenario Builder.
 - Fixed an issue affecting the Scenario Builder on studies using version 8.6 or earlier.
 
-## ⚡ Performance
+### ⚡ Performance
 
 Extensive technical improvements have been made: 
 
@@ -48,7 +48,7 @@ These updates enhance the stability and performance of the application.
 ## Antares Web v2.34.00 
 <span class="release-date">📅 Aug 19, 2026</span>
 
-## 🎉 What's New
+### 🎉 What's New
 
 - **Launcher: schedule a simulation**  — Delay the launch of a simulation.
 - **Favorites: save an external folder** — Add an external folder directly to your favorites for one-click access.
@@ -57,7 +57,7 @@ These updates enhance the stability and performance of the application.
 - **Outputs: optimized per-variable output screen** — Navigation and readability of the per-variable output screen have been improved.
 - **Table mode stored in the database** — The table display mode is now persisted in the database instead of localStorage, so your preferences follow you wherever you go.
 
-## 🐛 Notable Bug Fixes
+### 🐛 Notable Bug Fixes
 
 - Fixed an issue that made autocompletion unreliable in the "Variable" field in Outputs.
 - Fixed an error occurring when importing a failed simulation.
@@ -66,7 +66,7 @@ These updates enhance the stability and performance of the application.
 - Fixed an issue causing some outputs to be invisible in adequacy mode.
 - Fixed the Digest being unavailable for "adequacy" results.
 
-## ⚡ Performance
+### ⚡ Performance
 
 Extensive technical improvements have been made: 
 
