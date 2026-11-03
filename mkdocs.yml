@@ -51,7 +51,7 @@ nav:
     - tutorials/index.md
     - Create a blank study: tutorials/create-blank-study.md
     - Import & export a study: tutorials/import-export-study.md
-    - Create a variant: tutorials/create-variant.md
+    - Manage variants: tutorials/create-variant.md
     - Create links: tutorials/create-links.md
     - Generate thermal time series: tutorials/generate-thermal-ts.md
     - Set binding constraints: tutorials/set-binding-constraint.md

@@ -62,12 +62,15 @@ Select the variant you want to delete in the study variant tree, then click on t
 :material-dots-vertical: in the top left of your screen to show the dropdown menu. 
 Then click on :octicons-trash-16: **Delete**.
 
-## Archive a variant
+## Archive variant outputs
 
-Currently, archiving a main study does not archive its variants. You have to archive each variant individually.
+Archiving a main study does not archive its variants’ outputs. Open each variant, go to
+**Explore → Outputs**, and click **Archive** beside each output you want to archive.
 
-## Disc storage
+## Disk storage
 
-Input data of a variant do not represent a lot of data. Indeed, variant inputs are just a link towards the main study + the list of modifications made on the variant.
-Outputs data however are as heavy as a normal study.
-When cleaning studies to lighten disc storage, please check all the variant outputs data in order to clean them.
+Variant definitions are compact: they reference the parent study and store the list of modifications.
+Generated input snapshots and additional input data also consume disk space.
+
+Simulation outputs are stored separately for each variant and can be as large as those of a standalone
+study. When freeing disk space, check the outputs of every variant.
