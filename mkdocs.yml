@@ -84,18 +84,25 @@ nav:
   - Reference:
     - reference/index.md
     - Modelling:
-      - Area: reference/area.md
-      - Link: reference/link.md
-      - Load: reference/load.md
-      - Thermals: reference/thermals.md
-      - Storages: reference/storages.md
-      - Renewable sources: 
-        - Renewables: reference/renewables.md
-        - Wind & solar: reference/wind-and-solar.md
-      - Hydro: reference/hydro.md
-      - Reserves: reference/reserves.md
-      - Misc. gen.: reference/misc-gen.md
-      - Binding constraints: reference/binding-constraints.md
+      - Built-in:
+        - Area: reference/area.md
+        - Link: reference/link.md
+        - Load: reference/load.md
+        - Thermals: reference/thermals.md
+        - Storages: reference/storages.md
+        - Renewable sources: 
+          - Renewables: reference/renewables.md
+          - Wind & solar: reference/wind-and-solar.md
+        - Hydro: reference/hydro.md
+        - Reserves: reference/reserves.md
+        - Misc. gen.: reference/misc-gen.md
+        - Binding constraints: reference/binding-constraints.md
+      - GEMS:
+        - Overview: reference/gems-overview.md
+        - Inputs: reference/gems-inputs.md
+        - Parameters: reference/gems-parameters.md
+      - Hydrid:
+        - Hybrid studies: reference/hybrid-studies.md
     - Configuration:
       - General: reference/config-general.md
       - Time series generation: reference/config-ts-generation.md
@@ -104,7 +111,9 @@ nav:
       - Advanced parameters: reference/config-advanced-parameters.md
       - Economic options: reference/config-economic-options.md
       - Geographic trimming: reference/config-geographic-trimming.md
-    - Outputs: reference/outputs.md
+    - Outputs: 
+      - Fully built-in study: reference/outputs.md
+      - Hybrid or full GEMS studies: reference/simulation-table.md
     - Xpansion:
       - Introduction: reference/xpansion-intro.md
       - Prepare your study: reference/xpansion-prepare-study.md
