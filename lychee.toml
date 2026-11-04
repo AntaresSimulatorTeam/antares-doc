@@ -1,0 +1,22 @@
+# Shared settings for .github/workflows/check-links.yml.
+no_progress = true
+cache = false
+
+# Bound slow requests and retry transient failures without overwhelming hosts.
+timeout = 30
+max_retries = 3
+retry_wait_time = 2
+max_concurrency = 8
+host_concurrency = 2
+
+# Report timeouts, rate limits, and other HTTP errors as failures.
+accept = ["200..=299"]
+accept_timeouts = false
+
+# MkDocs validates page anchors. Lychee checks file targets.
+include_fragments = "none"
+# Formatting examples in code blocks are not real documentation links.
+include_verbatim = false
+
+# Temporarily skip theses.fr while its GitHub-runner connection failures are investigated.
+exclude = ['^https?://theses\.fr/']
