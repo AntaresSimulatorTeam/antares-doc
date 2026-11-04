@@ -12,6 +12,28 @@
 
 ---
 
+## Antares Web v2.36.00 
+<span class="release-date">📅 Oct 21, 2026</span>
+
+### 🎉 What's New
+
+- **Antares 10.2** — Support for version 10.2 for studies and addition of this version to the available simulation options.
+- **Reserves** — Added new screens to support the new reserve modeling format.
+- **Results** — Improved naming of result exports to make them more explicit.
+
+
+### 🐛 Notable Bug Fixes
+
+- Fixed translation typos in the interface.
+
+### ⚡ Performance
+
+Several major optimizations have been made to the application: synchronization of the cluster cache with changes made in other parts of the application for better consistency of displayed data, and migration of thermal views to TanStack Query to improve data management and reliability on the interface side.
+
+These updates enhance the stability and performance of the application.
+
+---
+
 ## Antares Web v2.35.00 
 <span class="release-date">📅 Sep 23, 2026</span>
 
