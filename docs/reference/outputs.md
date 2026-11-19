@@ -125,13 +125,13 @@ unsupplied correction cost [^adqp].
 
 The operating cost corresponds to the sum of proportional costs and non-proportional costs.
 
-#### MRG. PRICE (Euro)
+#### MRG. PRICE (Euro/MWh)
 
 Locational marginal price corresponding to the overall economic effect of a local 1MW load increase.
 
-#### MRG. PRICE CSR (Euro)
+#### MRG. PRICE CSR (Euro/MWh)
 
-Same as the [marginal price](#mrg-price-euro), but with CSR (curtailment sharing rule)
+Same as the [marginal price](#mrg-price-euromwh), but with CSR (curtailment sharing rule)
 unsupplied correction cost [^adqp].
 
 #### BALANCE (MWh)
@@ -163,7 +163,7 @@ the difference between the local production capabilities of an area and its loca
 Local Matching Rule Violation after the Antares Simulation
 as defined by the adequacy patch[^adqp].
 
-#### SPIL. ENRG
+#### SPIL. ENRG (MWh)
 
 Spilled energy (energy produced that cannot be used and has to be wasted).
 
@@ -246,7 +246,7 @@ Number of Dispatched Units aggregated accross all clusters.
 
 Number of dispatchable units by plant. 
 
-#### PROFIT by plant
+#### PROFIT by plant (Euro)
 
 **Introduced in v8.3.**
 
@@ -353,7 +353,7 @@ Power generated from energy storage units (typically: Hydro reservoir).
 
 Power absorbed by energy storage units (typically: PSP pumps consumption).
 
-#### H. LEV (MWh)
+#### H. LEV (%)
 
 Energy level remaining in storage units
 (percentage of reservoir size).
@@ -362,7 +362,7 @@ Energy level remaining in storage units
 
 External input to the energy storage units (typically: natural inflows).
 
-#### H. OVFL (%)
+#### H. OVFL (MWh)
 
 Wasted natural inflow overflowing from an already full energy storage unit.
 
@@ -380,7 +380,7 @@ Hydro generation, Run-of-river share.
 
 ### Short-term storage
 
-#### STS INJECTION by plant
+#### STS INJECTION by plant (MWh)
 
 Injection of energy from the area into each short-term storage group.
 
@@ -390,7 +390,7 @@ Injection of energy from the area into each short-term storage group.
     the aggregated value corresponds to the *sum* of the hourly values.
 
 
-#### STS WITHDRAWAL by plant
+#### STS WITHDRAWAL by plant (MWh)
 
 Withdrawal of energy from each short-term storage group into the area.
 
@@ -400,7 +400,7 @@ Withdrawal of energy from each short-term storage group into the area.
     the aggregated value corresponds to the *sum* of the hourly values.
 
 
-#### STS LEVEL by plant
+#### STS LEVEL by plant (MWh)
 
 Level of each short-term storage group.
 
@@ -521,7 +521,7 @@ if (FLOW LIN. – LOOP FLOW) > 0
 The file is a matrix that provides the marginal cost associated with each binding constraint. 
 Equality constraints are not included in this marginal cost calculation.
 
-#### BC. MARG. COST (Euro)
+#### BC. MARG. COST (Euro/MWh)
 
 Marginal cost for binding constraints.
 
